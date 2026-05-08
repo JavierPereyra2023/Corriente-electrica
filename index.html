@@ -1,0 +1,1057 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Apunte: corriente eléctrica</title>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["\\(", "\\)"]],
+        displayMath: [["\\[", "\\]"]]
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+  <style>
+    :root {
+      --ink: #15191d;
+      --muted: #5c646c;
+      --paper: #e8e2d6;
+      --page: #fffdf7;
+      --line: #d6c9af;
+      --accent: #1d3557;
+      --accent-soft: #edf3f7;
+      --gold: #f2c230;
+      --warm: #fff6d8;
+      --danger: #b94a37;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background:
+        linear-gradient(rgba(21, 25, 29, 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(21, 25, 29, 0.045) 1px, transparent 1px),
+        var(--paper);
+      background-size: 28px 28px;
+      color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.68;
+    }
+
+    mjx-container {
+      max-width: 100%;
+      overflow-x: auto;
+      overflow-y: hidden;
+    }
+
+    main {
+      width: min(100%, 920px);
+      margin: 28px auto;
+      padding: 0 16px;
+    }
+
+    .page {
+      background:
+        linear-gradient(rgba(29, 53, 87, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(29, 53, 87, 0.035) 1px, transparent 1px),
+        var(--page);
+      background-size: 24px 24px;
+      border: 1px solid #ddd6c8;
+      box-shadow: 0 18px 50px rgba(31, 41, 51, 0.13);
+      padding: 62px 72px;
+    }
+
+    .doc-header {
+      position: relative;
+      border-bottom: 1px solid var(--line);
+      padding: 0 0 24px 24px;
+      margin-bottom: 30px;
+    }
+
+    .cover {
+      display: grid;
+      grid-template-columns: 1fr 178px;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .ampere-card {
+      border: 1px solid #2a4a78;
+      background: #fffdf7;
+      padding: 8px;
+      box-shadow: 8px 8px 0 rgba(242, 194, 48, 0.75);
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    .ampere-card img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      filter: sepia(0.16) contrast(1.04);
+    }
+
+    .ampere-card figcaption {
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: 0.78rem;
+      line-height: 1.35;
+      text-align: center;
+    }
+
+    .doc-header::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 4px;
+      bottom: 26px;
+      width: 8px;
+      background: var(--gold);
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--accent);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      max-width: 720px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 2.75rem;
+      font-weight: 900;
+      letter-spacing: -0.01em;
+    }
+
+    .subtitle {
+      max-width: 760px;
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .meta {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 22px;
+      font-size: 0.9rem;
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    .meta div {
+      border: 1px solid var(--line);
+      padding: 9px 10px;
+      background: #faf8f2;
+    }
+
+    section {
+      margin-top: 30px;
+    }
+
+    h2 {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 10px;
+      font-size: 1.38rem;
+      color: #16252b;
+      font-family: Georgia, "Times New Roman", serif;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 5px;
+    }
+
+    h2 span {
+      color: #111827;
+      background: var(--gold);
+      min-width: 28px;
+      height: 28px;
+      display: inline-grid;
+      place-items: center;
+      font-size: 0.95rem;
+      font-weight: 900;
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    h3 {
+      margin: 18px 0 8px;
+      font-size: 1.05rem;
+    }
+
+    p {
+      margin: 0 0 11px;
+      font-size: 1.02rem;
+    }
+
+    .definition, .example, .teacher-note {
+      margin: 16px 0;
+      border-left: 5px solid var(--gold);
+      background: var(--accent-soft);
+      padding: 14px 16px;
+    }
+
+    .teacher-note {
+      border-left-color: #d29a22;
+      background: var(--warm);
+    }
+
+    .formula-box {
+      display: grid;
+      grid-template-columns: 245px 1fr;
+      gap: 18px;
+      align-items: center;
+      margin: 18px 0;
+      border: 1px solid var(--line);
+      background: #faf8f2;
+      padding: 16px;
+    }
+
+    .formula {
+      display: grid;
+      place-items: center;
+      min-height: 110px;
+      background: #101820;
+      color: white;
+      font-size: 1.55rem;
+      font-weight: 850;
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    .formula mjx-container {
+      font-size: 135% !important;
+    }
+
+    .compact-diagram {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 18px;
+      align-items: center;
+      margin: 18px 0;
+      border: 1px solid var(--line);
+      padding: 16px;
+      background: #fbfaf6;
+    }
+
+    .figure {
+      margin: 18px 0;
+      border: 1px solid var(--line);
+      background: #fbfaf6;
+      padding: 12px;
+    }
+
+    .figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .figure figcaption {
+      margin-top: 9px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      text-align: center;
+      font-style: italic;
+    }
+
+    .wire {
+      position: relative;
+      height: 135px;
+    }
+
+    .wire::before {
+      content: "";
+      position: absolute;
+      left: 8px;
+      right: 54px;
+      top: 48px;
+      height: 42px;
+      border-radius: 999px;
+      background: linear-gradient(#b8c2c4, #f7f8f6 48%, #8b989b);
+      border: 1px solid #8d9a9d;
+    }
+
+    .cut {
+      position: absolute;
+      right: 24px;
+      top: 29px;
+      width: 82px;
+      height: 82px;
+      border-radius: 50%;
+      background: white;
+      border: 6px solid #d8e6e4;
+      outline: 3px solid var(--accent);
+    }
+
+    .charge {
+      position: absolute;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: #24576b;
+    }
+
+    .charge::after {
+      content: "";
+      position: absolute;
+      left: 18px;
+      top: 5px;
+      width: 34px;
+      border-top: 2px solid var(--danger);
+    }
+
+    .q1 { left: 38px; top: 58px; }
+    .q2 { left: 96px; top: 78px; }
+    .q3 { left: 158px; top: 58px; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 14px 0;
+      font-size: 0.95rem;
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    th, td {
+      border: 1px solid var(--line);
+      padding: 10px 11px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #ede7d9;
+    }
+
+    .steps {
+      display: grid;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .step {
+      border: 1px solid var(--line);
+      padding: 11px 13px;
+      background: #fbfaf6;
+    }
+
+    .math-note {
+      display: inline-block;
+      padding: 1px 4px;
+      background: rgba(242, 194, 48, 0.22);
+      border-radius: 2px;
+    }
+
+    .exercises {
+      margin: 12px 0 0;
+      padding-left: 24px;
+    }
+
+    .exercises li {
+      margin: 0 0 16px;
+      padding-left: 4px;
+      break-inside: avoid;
+    }
+
+    .work-line {
+      display: block;
+      height: 34px;
+      margin-top: 8px;
+      border-bottom: 1px solid #c9c1b4;
+    }
+
+    .graph-box {
+      width: min(100%, 430px);
+      height: 230px;
+      margin: 14px 0 8px;
+      border-left: 3px solid #51606c;
+      border-bottom: 3px solid #51606c;
+      position: relative;
+      background:
+        linear-gradient(to right, transparent 31px, rgba(102, 115, 124, 0.13) 32px),
+        linear-gradient(to bottom, transparent 31px, rgba(102, 115, 124, 0.13) 32px);
+      background-size: 32px 32px;
+      background-color: #fffdf7;
+    }
+
+    .graph-box::after {
+      content: none;
+      position: absolute;
+      left: 24px;
+      bottom: 24px;
+      width: 305px;
+      border-top: 5px solid var(--accent);
+      transform: rotate(-27deg);
+      transform-origin: left center;
+      z-index: 1;
+    }
+
+    .multi-slope::before {
+      content: none;
+      position: absolute;
+      left: 24px;
+      bottom: 24px;
+      width: 286px;
+      border-top: 4px solid var(--danger);
+      transform: rotate(-17deg);
+      transform-origin: left center;
+      z-index: 1;
+    }
+
+    .axis-label {
+      position: absolute;
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-weight: 700;
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    .point-label {
+      position: absolute;
+      font-family: "Segoe UI", Arial, sans-serif;
+      font-size: 0.92rem;
+      color: var(--accent);
+      font-weight: 800;
+      z-index: 3;
+      padding: 3px 7px;
+      border: 1px solid rgba(29, 53, 87, 0.22);
+      border-radius: 3px;
+      background: rgba(255, 253, 247, 0.96);
+      box-shadow: 0 1px 0 rgba(21, 25, 29, 0.08);
+    }
+
+    .graph-point {
+      position: absolute;
+      z-index: 2;
+      width: 12px;
+      height: 12px;
+      border: 3px solid var(--accent);
+      border-radius: 50%;
+      background: var(--page);
+      transform: translate(-50%, 50%);
+    }
+
+    .graph-line {
+      position: absolute;
+      left: 46px;
+      bottom: 30px;
+      z-index: 1;
+      width: 335px;
+      border-top: 5px solid var(--accent);
+      transform: rotate(-26.6deg);
+      transform-origin: left center;
+    }
+
+    .slope-a,
+    .slope-b {
+      position: absolute;
+      left: 46px;
+      bottom: 30px;
+      z-index: 1;
+      transform-origin: left center;
+    }
+
+    .slope-a {
+      width: 330px;
+      border-top: 5px solid var(--accent);
+      transform: rotate(-30deg);
+    }
+
+    .slope-b {
+      width: 295px;
+      border-top: 5px solid var(--danger);
+      transform: rotate(-16deg);
+    }
+
+    .gp1 { left: 46px; bottom: 30px; }
+    .gp2 { left: 106px; bottom: 60px; }
+    .gp3 { left: 166px; bottom: 90px; }
+    .gp4 { left: 226px; bottom: 120px; }
+    .gp5 { left: 286px; bottom: 150px; }
+    .gp6 { left: 346px; bottom: 180px; }
+    .p1 { left: 64px; bottom: 62px; }
+    .p2 { left: 292px; top: 10px; }
+
+    .guide {
+      position: absolute;
+      z-index: 0;
+      border-color: rgba(29, 53, 87, 0.55);
+      border-style: dashed;
+    }
+
+    .guide-x {
+      left: 46px;
+      bottom: 180px;
+      width: 300px;
+      border-top-width: 2px;
+    }
+
+    .guide-y {
+      left: 346px;
+      bottom: 30px;
+      height: 150px;
+      border-left-width: 2px;
+    }
+
+    .axis-tick {
+      position: absolute;
+      background: #51606c;
+      z-index: 2;
+    }
+
+    .tick-x-mark {
+      left: 344px;
+      bottom: -7px;
+      width: 3px;
+      height: 14px;
+    }
+
+    .tick-y-mark {
+      left: -7px;
+      bottom: 178px;
+      width: 14px;
+      height: 3px;
+    }
+
+    .graph-caption {
+      margin-top: 6px;
+      color: var(--muted);
+      font-family: "Segoe UI", Arial, sans-serif;
+      font-size: 0.86rem;
+    }
+
+    .data-graph {
+      margin: 14px 0 8px;
+      width: min(100%, 560px);
+    }
+
+    .math-graph {
+      position: relative;
+      width: 560px;
+      max-width: 100%;
+      height: 330px;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(to right, transparent 31px, rgba(102, 115, 124, 0.12) 32px),
+        linear-gradient(to bottom, transparent 31px, rgba(102, 115, 124, 0.12) 32px),
+        #fffdf7;
+      background-size: 32px 32px;
+      overflow: hidden;
+    }
+
+    .data-graph figcaption {
+      margin-top: 8px;
+      color: var(--muted);
+      font-family: "Segoe UI", Arial, sans-serif;
+      font-size: 0.88rem;
+      line-height: 1.45;
+    }
+
+    .data-graph figcaption mjx-container {
+      font-size: 100% !important;
+    }
+
+    .mg-axis-x,
+    .mg-axis-y {
+      position: absolute;
+      background: #51606c;
+      z-index: 2;
+    }
+
+    .mg-axis-x {
+      left: 70px;
+      top: 270px;
+      width: 440px;
+      height: 3px;
+    }
+
+    .mg-axis-y {
+      left: 70px;
+      top: 42px;
+      width: 3px;
+      height: 228px;
+    }
+
+    .mg-label {
+      position: absolute;
+      z-index: 5;
+      color: #1d3557;
+      font-family: "Segoe UI", Arial, sans-serif;
+      font-size: 0.95rem;
+      padding: 4px 7px;
+      border: 1px solid #c9c1b4;
+      border-radius: 4px;
+      background: rgba(255, 253, 247, 0.96);
+      box-shadow: 0 1px 0 rgba(21, 25, 29, 0.08);
+    }
+
+    .mg-axis-label {
+      position: absolute;
+      z-index: 4;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .mg-q { left: 44px; top: 49px; }
+    .mg-t { left: 497px; top: 279px; }
+
+    .mg-tick-label {
+      position: absolute;
+      z-index: 4;
+      color: #4d5964;
+      font-family: "Segoe UI", Arial, sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .mg-y40 { left: 25px; top: 59px; }
+    .mg-x10 { left: 441px; top: 286px; }
+
+    .mg-tick-x,
+    .mg-tick-y {
+      position: absolute;
+      z-index: 3;
+      background: #51606c;
+    }
+
+    .mg-tick-x {
+      left: 459px;
+      top: 262px;
+      width: 3px;
+      height: 16px;
+    }
+
+    .mg-tick-y {
+      left: 62px;
+      top: 67px;
+      width: 16px;
+      height: 3px;
+    }
+
+    .mg-guide-x,
+    .mg-guide-y {
+      position: absolute;
+      z-index: 1;
+      border-color: rgba(29, 53, 87, 0.5);
+      border-style: dashed;
+    }
+
+    .mg-guide-x {
+      left: 70px;
+      top: 68px;
+      width: 390px;
+      border-top-width: 2px;
+    }
+
+    .mg-guide-y {
+      left: 460px;
+      top: 68px;
+      height: 202px;
+      border-left-width: 2px;
+    }
+
+    .mg-line {
+      position: absolute;
+      left: 70px;
+      top: 270px;
+      z-index: 2;
+      width: 439px;
+      border-top: 5px solid var(--accent);
+      transform: rotate(-27.4deg);
+      transform-origin: left center;
+    }
+
+    .mg-point {
+      position: absolute;
+      z-index: 4;
+      width: 13px;
+      height: 13px;
+      border: 4px solid var(--accent);
+      border-radius: 50%;
+      background: #fffdf7;
+      transform: translate(-50%, -50%);
+    }
+
+    .mg-p0 { left: 70px; top: 270px; }
+    .mg-p2 { left: 148px; top: 230px; }
+    .mg-p4 { left: 226px; top: 189px; }
+    .mg-p6 { left: 304px; top: 149px; }
+    .mg-p8 { left: 382px; top: 108px; }
+    .mg-p10 { left: 460px; top: 68px; }
+
+    .mg-origin-label { left: 88px; top: 232px; }
+    .mg-end-label { left: 336px; top: 24px; }
+
+    .tick-label {
+      position: absolute;
+      color: #485560;
+      font-family: "Segoe UI", Arial, sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .tick-x { left: 322px; bottom: -30px; }
+    .tick-y { left: -48px; top: 36px; }
+
+    .x-label { right: 8px; bottom: -25px; }
+    .y-label { left: -26px; top: 4px; }
+    .line-a { position: absolute; right: 26px; top: 44px; color: var(--accent); font-weight: 800; }
+    .line-b { position: absolute; right: 40px; top: 85px; color: var(--danger); font-weight: 800; }
+
+    .answers {
+      columns: 2 280px;
+      margin-bottom: 0;
+    }
+
+    footer {
+      margin-top: 32px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    @media (max-width: 760px) {
+      main {
+        margin: 0;
+        padding: 0;
+      }
+
+      .page {
+        padding: 30px 18px;
+        border: 0;
+        box-shadow: none;
+      }
+
+      .doc-header {
+        padding-left: 18px;
+      }
+
+      .meta, .formula-box, .compact-diagram {
+        grid-template-columns: 1fr;
+      }
+
+      .meta {
+        gap: 6px;
+      }
+
+      .cover {
+        grid-template-columns: 1fr;
+      }
+
+      .ampere-card {
+        max-width: 190px;
+        margin-top: 8px;
+      }
+
+      h1 {
+        font-size: 1.9rem;
+      }
+
+      h2 {
+        align-items: flex-start;
+        font-size: 1.22rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      .formula-box {
+        padding: 12px;
+      }
+
+      .formula {
+        min-height: 92px;
+      }
+
+      .figure {
+        padding: 7px;
+        margin-left: -6px;
+        margin-right: -6px;
+      }
+
+      .figure figcaption,
+      .data-graph figcaption {
+        font-size: 0.82rem;
+        text-align: left;
+      }
+
+      table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+        font-size: 0.86rem;
+      }
+
+      th, td {
+        padding: 8px 9px;
+      }
+
+      .exercises {
+        padding-left: 20px;
+      }
+
+      .graph-box {
+        transform: scale(0.82);
+        transform-origin: left top;
+        margin-bottom: -28px;
+      }
+    }
+
+    @media print {
+      @page {
+        size: A4;
+        margin: 16mm;
+      }
+
+      body {
+        background: white;
+      }
+
+      main {
+        width: auto;
+        margin: 0;
+        padding: 0;
+      }
+
+      .page {
+        border: 0;
+        box-shadow: none;
+        padding: 0;
+      }
+
+      section, li, .formula-box, .compact-diagram, .figure {
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <article class="page">
+      <header class="doc-header">
+        <div class="cover">
+          <div>
+            <p class="eyebrow">Sistemas Multi Física - Profesor Javier Pereyra</p>
+            <h1>Corriente eléctrica: carga que atraviesa un conductor</h1>
+            <p class="subtitle">Apunte de estudio para comprender la relación entre intensidad de corriente, carga eléctrica y tiempo: <strong>\(I=\frac{q}{t}\)</strong>.</p>
+          </div>
+          <figure class="ampere-card">
+            <img src="assets/Ampere.jpg" alt="Retrato de André-Marie Ampère">
+            <figcaption>André-Marie Ampère. Físico y matemático francés; el ampere lleva su nombre.</figcaption>
+          </figure>
+        </div>
+        <div class="meta">
+          <div><strong>Curso:</strong> Secundaria</div>
+          <div><strong>Tema:</strong> Corriente eléctrica</div>
+          <div><strong>Unidades:</strong> A, C, s</div>
+        </div>
+      </header>
+
+      <section>
+        <h2><span>1</span> Idea inicial</h2>
+        <p>Cuando conectamos una lamparita, un cargador o un motor eléctrico, en el interior de los conductores se produce un movimiento ordenado de cargas. En los metales, esas cargas móviles son principalmente los <strong>electrones libres</strong>.</p>
+        <p>La corriente eléctrica no mide cuán rápido se mueve un electrón individual. Mide algo más útil para estudiar circuitos: <strong>cuánta carga eléctrica atraviesa una sección del conductor durante cierto intervalo de tiempo</strong>.</p>
+        <div class="definition">
+          <strong>Definición:</strong> la intensidad de corriente eléctrica es la cantidad de carga que pasa por una sección de un conductor por unidad de tiempo.
+        </div>
+      </section>
+
+      <section>
+        <h2><span>2</span> Electrones libres</h2>
+        <p>En un metal, algunos electrones no quedan ligados a un único átomo. Por eso se los llama <strong>electrones libres</strong>: pueden desplazarse por la estructura metálica cuando existe una diferencia de potencial que los impulsa.</p>
+        <p>Para entender por qué ocurre esto, conviene mirar los <strong>electrones de valencia</strong>. Son los electrones ubicados en la capa más externa del átomo. Al estar más lejos del núcleo positivo, sienten una atracción eléctrica menor que los electrones internos.</p>
+        <p>La <strong>ley de Coulomb</strong> ayuda a interpretar esta idea: la fuerza eléctrica entre dos cargas depende del producto de sus cargas y disminuye cuando aumenta la distancia entre ellas. De manera simplificada:</p>
+        <div class="formula-box">
+          <div class="formula">\[F = k \frac{|q_1 q_2|}{r^2}\]</div>
+          <div>
+            <p>El núcleo positivo atrae a los electrones negativos.</p>
+            <p>Los electrones internos están más cerca del núcleo y quedan más fuertemente ligados.</p>
+            <p>Los electrones de valencia están más alejados y, en los metales, pueden compartirse entre muchos átomos.</p>
+          </div>
+        </div>
+        <p>En un metal, los átomos forman una red de iones positivos y los electrones de valencia quedan <strong>deslocalizados</strong>: no pertenecen a un átomo específico, sino que se mueven por el material como una nube electrónica. Por eso los metales conducen bien la electricidad.</p>
+        <figure class="figure">
+          <img src="assets/electron_valencia.png" alt="Infografía sobre electrones de valencia, electrones libres deslocalizados y conducción eléctrica en metales">
+          <figcaption>En los metales, los electrones de valencia pueden separarse parcialmente de sus átomos y moverse por la red metálica. Ese movimiento ordenado, cuando se aplica un voltaje, constituye la corriente eléctrica.</figcaption>
+        </figure>
+        <p>Una analogía posible es imaginar una multitud atravesando una puerta. Para saber si la puerta está muy transitada no alcanza con mirar a una sola persona: nos interesa cuántas personas pasan en determinado tiempo. En electricidad, esas "personas" son cargas eléctricas.</p>
+      </section>
+
+      <section>
+        <h2><span>3</span> Modelo del conductor como cilindro</h2>
+        <p>Para estudiar la corriente, imaginamos el cable como un cilindro y hacemos un corte transversal. Esa superficie funciona como una puerta imaginaria. Durante un intervalo de tiempo, cierta cantidad de carga cruza esa sección.</p>
+        <figure class="figure">
+          <img src="assets/electrones.png" alt="Modelo de conductor cilíndrico con área transversal, electrones libres, velocidad de arrastre y relación fundamental I igual q sobre t">
+          <figcaption>Modelo de flujo de carga en un conductor: los electrones atraviesan un área transversal \(A\) durante un intervalo de tiempo; la corriente se expresa como \(I=\frac{q}{t}\).</figcaption>
+        </figure>
+        <p><strong>Lectura del modelo:</strong> elegimos una sección del cable, medimos cuánta carga <strong>q</strong> la atraviesa, registramos el intervalo de tiempo <strong>t</strong> y calculamos la corriente <strong>I</strong>.</p>
+      </section>
+
+      <section>
+        <h2><span>4</span> Fórmula fundamental</h2>
+        <div class="formula-box">
+          <div class="formula">\[I = \frac{q}{t}\]</div>
+          <div>
+            <p><strong>I</strong>: intensidad de corriente eléctrica.</p>
+            <p><strong>q</strong>: carga eléctrica que atraviesa la sección.</p>
+            <p><strong>t</strong>: intervalo de tiempo considerado.</p>
+            <p>La fórmula se lee como una razón: carga por unidad de tiempo.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2><span>5</span> Sistema de unidades</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Magnitud</th>
+              <th>Simbolo</th>
+              <th>Unidad del SI</th>
+              <th>Relación importante</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Corriente eléctrica</td>
+              <td>I</td>
+              <td>ampere (A)</td>
+              <td>\(1\,\mathrm{A}=1\,\mathrm{C/s}\)</td>
+            </tr>
+            <tr>
+              <td>Carga eléctrica</td>
+              <td>q</td>
+              <td>coulomb (C)</td>
+              <td>\(1\,\mathrm{C}\approx 6{,}24\times10^{18}\) electrones</td>
+            </tr>
+            <tr>
+              <td>Tiempo</td>
+              <td>t</td>
+              <td>segundo (s)</td>
+              <td>\(1\,\mathrm{min}=60\,\mathrm{s}\); \(1\,\mathrm{h}=3600\,\mathrm{s}\)</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2><span>6</span> Pasaje de términos</h2>
+        <p>Según el dato que falte, se puede despejar la fórmula:</p>
+        <div class="steps">
+          <div class="step"><strong>Para averiguar corriente:</strong> \(\displaystyle I=\frac{q}{t}\)</div>
+          <div class="step"><strong>Para averiguar carga:</strong> \(\displaystyle q=I\cdot t\)</div>
+          <div class="step"><strong>Para averiguar tiempo:</strong> \(\displaystyle t=\frac{q}{I}\)</div>
+        </div>
+        <div class="teacher-note">
+          <strong>Consejo de resolución:</strong> antes de reemplazar, verificar que el tiempo esté expresado en segundos.
+        </div>
+      </section>
+
+      <section>
+        <h2><span>7</span> Ejemplo resuelto</h2>
+        <div class="example">
+          <p><strong>Problema:</strong> por la sección de un cable pasan 18 C de carga en 6 s. Calcular la corriente.</p>
+          <p><strong>Datos:</strong> \(q=18\,\mathrm{C}\); \(t=6\,\mathrm{s}\); \(I=?\)</p>
+          <p><strong>Fórmula:</strong> \(\displaystyle I=\frac{q}{t}\)</p>
+          <p><strong>Reemplazo:</strong> \(\displaystyle I=\frac{18\,\mathrm{C}}{6\,\mathrm{s}}=3\,\mathrm{C/s}\)</p>
+          <p><strong>Resultado:</strong> \(I=3\,\mathrm{A}\)</p>
+        </div>
+      </section>
+
+      <section>
+        <h2><span>8</span> Actividades</h2>
+        <h3>Lectura de un gráfico \(q(t)\)</h3>
+        <p>Un gráfico de carga en función del tiempo muestra cómo cambia la carga eléctrica \(q\), medida en coulomb, a medida que transcurre el tiempo \(t\), medido en segundos. Cada punto del gráfico representa una pareja de datos: un tiempo y la carga total que ya atravesó la sección del conductor hasta ese instante.</p>
+        <p>Por ejemplo, el punto \((10\,\mathrm{s},40\,\mathrm{C})\) significa que, luego de \(10\,\mathrm{s}\), pasaron \(40\,\mathrm{C}\) de carga por la sección transversal. Si los puntos quedan alineados en una recta, significa que la carga aumenta siempre al mismo ritmo: en tiempos iguales pasan cantidades iguales de carga.</p>
+        <figure class="figure">
+          <img src="assets/grafico.png" alt="Gráfico de carga eléctrica en función del tiempo con tabla de valores, puntos, pendiente y cálculo de corriente">
+          <figcaption>Ejemplo de lectura de un gráfico \(q(t)\): la pendiente de la recta representa la corriente eléctrica.</figcaption>
+        </figure>
+        <div class="teacher-note">
+          <strong>¿Por qué el gráfico \(q(t)\) es lineal?</strong> Si la corriente es constante, en tiempos iguales pasan cantidades iguales de carga. Como \(I=\frac{q}{t}\), al despejar queda \(q=I\cdot t\). Esta relación es de proporcionalidad directa: si el tiempo se duplica, la carga también se duplica. Por eso el gráfico de \(q\) en función de \(t\) es una recta, y su pendiente representa la corriente.
+        </div>
+        <ol class="exercises">
+          <li>Por un conductor pasan \(24\,\mathrm{C}\) de carga en \(8\,\mathrm{s}\). Calcula la intensidad de corriente.<span class="work-line"></span></li>
+          <li>Una corriente de \(5\,\mathrm{A}\) circula durante \(12\,\mathrm{s}\). ¿Qué carga total atravesó la sección del cable?<span class="work-line"></span></li>
+          <li>Si pasan \(90\,\mathrm{C}\) por una sección y la corriente es de \(15\,\mathrm{A}\), ¿cuánto tiempo duró el paso de carga?<span class="work-line"></span></li>
+          <li>En un circuito, \(2\,\mathrm{C}\) atraviesan una lamparita cada \(0{,}5\,\mathrm{s}\). Calcula la corriente.<span class="work-line"></span></li>
+          <li>Una batería entrega una corriente de \(0{,}2\,\mathrm{A}\) durante \(3\,\mathrm{min}\). ¿Cuánta carga circuló? Primero pasa minutos a segundos.<span class="work-line"></span></li>
+          <li>Con los datos de la tabla, construye el gráfico \(q(t)\) y calcula la corriente eléctrica. ¿La corriente es constante? Justifica con la pendiente de la recta.
+            <table>
+              <tbody>
+                <tr>
+                  <th>\(t\,(\mathrm{s})\)</th>
+                  <td>0</td>
+                  <td>3</td>
+                  <td>6</td>
+                  <td>9</td>
+                  <td>12</td>
+                </tr>
+                <tr>
+                  <th>\(q\,(\mathrm{C})\)</th>
+                  <td>0</td>
+                  <td>6</td>
+                  <td>12</td>
+                  <td>18</td>
+                  <td>24</td>
+                </tr>
+              </tbody>
+            </table>
+            <p>Orientación: ubica los puntos \((0,0)\), \((3,6)\), \((6,12)\), \((9,18)\) y \((12,24)\). Luego calcula \(I=\frac{\Delta q}{\Delta t}\).</p>
+            <span class="work-line"></span>
+          </li>
+          <li>Completa: si \(I=4\,\mathrm{A}\), entonces en cada segundo pasan ____ \(\mathrm{C}\). ¿Cuánta carga pasa en \(7\,\mathrm{s}\)?<span class="work-line"></span></li>
+          <li>Por un cable circulan \(300\,\mathrm{C}\) en \(2\,\mathrm{min}\). Calcula la corriente en ampere.<span class="work-line"></span></li>
+          <li>Un cargador indica \(2\,\mathrm{A}\). Si estuvo funcionando durante \(30\,\mathrm{s}\), ¿cuánta carga entregó?<span class="work-line"></span></li>
+          <li>En un gráfico \(q(t)\), una recta más inclinada representa mayor corriente. Ordena de menor a mayor corriente las rectas A y B.
+            <div class="graph-box multi-slope"><span class="axis-label y-label">\(q\)</span><span class="axis-label x-label">\(t\)</span><span class="slope-a"></span><span class="slope-b"></span><span class="line-a">A</span><span class="line-b">B</span></div>
+            <span class="work-line"></span>
+          </li>
+        </ol>
+      </section>
+
+      <section>
+        <h2><span>9</span> Preguntas para pensar</h2>
+        <p>Si dos cables transportan la misma carga, pero uno lo hace en menos tiempo, ¿en cuál hay mayor corriente? Justifica usando la fórmula.</p>
+        <p>¿Por qué no es correcto decir que corriente eléctrica y carga eléctrica son lo mismo?</p>
+      </section>
+
+      <section>
+        <h2><span>10</span> Respuestas para el docente</h2>
+        <ol class="answers">
+          <li>3 A.</li>
+          <li>60 C.</li>
+          <li>6 s.</li>
+          <li>4 A.</li>
+          <li>36 C, porque 3 min = 180 s.</li>
+          <li>2 A. La pendiente es \(\Delta q/\Delta t = 24\,\mathrm{C}/12\,\mathrm{s}=2\,\mathrm{A}\).</li>
+          <li>4 C cada segundo; en 7 s pasan 28 C.</li>
+          <li>2,5 A, porque 2 min = 120 s.</li>
+          <li>60 C.</li>
+          <li>B, A. La recta A tiene mayor pendiente, por lo tanto mayor corriente.</li>
+        </ol>
+      </section>
+
+      <footer>
+        Sugerencia de trabajo: pedir que cada resolución incluya datos, fórmula, reemplazo numérico, resultado y unidad.
+      </footer>
+    </article>
+  </main>
+</body>
+</html>
