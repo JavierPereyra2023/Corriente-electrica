@@ -1,0 +1,986 @@
+﻿<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Apunte: resistencia eléctrica</title>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["\\(", "\\)"]],
+        displayMath: [["\\[", "\\]"]]
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+  <style>
+    :root {
+      --ink: #15191d;
+      --muted: #5c646c;
+      --paper: #e8e2d6;
+      --page: #fffdf7;
+      --line: #d6c9af;
+      --accent: #1d3557;
+      --accent-soft: #edf3f7;
+      --gold: #f2c230;
+      --warm: #fff6d8;
+      --danger: #b94a37;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background:
+        linear-gradient(rgba(21, 25, 29, 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(21, 25, 29, 0.045) 1px, transparent 1px),
+        var(--paper);
+      background-size: 28px 28px;
+      color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.68;
+      overflow-x: hidden;
+    }
+
+    mjx-container {
+      max-width: 100%;
+      overflow-x: auto;
+      overflow-y: hidden;
+    }
+
+    main {
+      width: 100%;
+      max-width: 920px;
+      margin: 28px auto;
+      padding: 0 16px;
+    }
+
+    .page {
+      width: 100%;
+      background:
+        linear-gradient(rgba(29, 53, 87, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(29, 53, 87, 0.035) 1px, transparent 1px),
+        var(--page);
+      background-size: 24px 24px;
+      border: 1px solid #ddd6c8;
+      box-shadow: 0 18px 50px rgba(31, 41, 51, 0.13);
+      padding: 62px 72px;
+    }
+
+    .doc-header {
+      position: relative;
+      border-bottom: 1px solid var(--line);
+      padding: 0 0 24px 24px;
+      margin-bottom: 30px;
+    }
+
+    .doc-header::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 4px;
+      bottom: 26px;
+      width: 8px;
+      background: var(--gold);
+    }
+
+    .cover {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(210px, 230px);
+      gap: 28px;
+      align-items: start;
+    }
+
+    .scientist-card {
+      border: 1px solid #2a4a78;
+      background: #fffdf7;
+      padding: 8px;
+      box-shadow: 8px 8px 0 rgba(242, 194, 48, 0.75);
+      font-family: "Segoe UI", Arial, sans-serif;
+      width: 100%;
+      max-width: 230px;
+      overflow-wrap: break-word;
+    }
+
+    .scientist-card img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      filter: sepia(0.16) contrast(1.04);
+      background: #ede7d9;
+      color: transparent;
+      font-size: 0;
+    }
+
+    .scientist-card figcaption {
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: 0.78rem;
+      line-height: 1.35;
+      text-align: center;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--accent);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      max-width: 720px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 2.75rem;
+      font-weight: 900;
+    }
+
+    .subtitle {
+      max-width: 760px;
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 1.08rem;
+      overflow-wrap: break-word;
+    }
+
+    .meta {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 22px;
+      font-size: 0.9rem;
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    .meta div {
+      border: 1px solid var(--line);
+      padding: 9px 10px;
+      background: #faf8f2;
+    }
+
+    section {
+      margin-top: 30px;
+    }
+
+    h2 {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 10px;
+      font-size: 1.38rem;
+      color: #16252b;
+      font-family: Georgia, "Times New Roman", serif;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 5px;
+    }
+
+    h2 span {
+      color: #111827;
+      background: var(--gold);
+      min-width: 28px;
+      height: 28px;
+      display: inline-grid;
+      place-items: center;
+      font-size: 0.95rem;
+      font-weight: 900;
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    h3 {
+      margin: 18px 0 8px;
+      font-size: 1.05rem;
+    }
+
+    p {
+      margin: 0 0 11px;
+      font-size: 1.02rem;
+      overflow-wrap: break-word;
+    }
+
+    .definition, .example, .teacher-note {
+      margin: 16px 0;
+      border-left: 5px solid var(--gold);
+      background: var(--accent-soft);
+      padding: 14px 16px;
+    }
+
+    .teacher-note {
+      border-left-color: #d29a22;
+      background: var(--warm);
+    }
+
+    .formula-box {
+      display: grid;
+      grid-template-columns: 245px 1fr;
+      gap: 18px;
+      align-items: center;
+      margin: 18px 0;
+      border: 1px solid var(--line);
+      background: #faf8f2;
+      padding: 16px;
+    }
+
+    .formula {
+      display: grid;
+      place-items: center;
+      min-height: 110px;
+      background: #101820;
+      color: white;
+      font-size: 1.55rem;
+      font-weight: 850;
+      font-family: Georgia, "Times New Roman", serif;
+      min-width: 0;
+    }
+
+    .formula mjx-container {
+      font-size: 135% !important;
+    }
+
+    .figure {
+      margin: 18px 0;
+      border: 1px solid var(--line);
+      background: #fbfaf6;
+      padding: 12px;
+    }
+
+    .figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+      min-height: 180px;
+      object-fit: contain;
+      background: #ede7d9;
+      color: transparent;
+      font-size: 0;
+    }
+
+    .figure figcaption {
+      margin-top: 9px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      text-align: center;
+      font-style: italic;
+      overflow-wrap: break-word;
+    }
+
+    .readable-figure {
+      overflow-x: auto;
+      overscroll-behavior-x: contain;
+      scrollbar-color: var(--gold) #ede7d9;
+      scrollbar-width: thin;
+    }
+
+    .readable-figure img {
+      width: clamp(860px, 92vw, 1120px);
+      max-width: none;
+      margin: 0 auto;
+    }
+
+    .readable-figure::-webkit-scrollbar {
+      height: 12px;
+    }
+
+    .readable-figure::-webkit-scrollbar-track {
+      background: #ede7d9;
+      border: 1px solid var(--line);
+    }
+
+    .readable-figure::-webkit-scrollbar-thumb {
+      background: var(--gold);
+      border: 0;
+    }
+
+    .readable-figure::-webkit-scrollbar-thumb:hover {
+      background: var(--gold);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 14px 0;
+      font-size: 0.95rem;
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    th, td {
+      border: 1px solid var(--line);
+      padding: 10px 11px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #ede7d9;
+    }
+
+    .steps {
+      display: grid;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .step {
+      border: 1px solid var(--line);
+      padding: 11px 13px;
+      background: #fbfaf6;
+    }
+
+    .relation-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 16px 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    .relation-card {
+      border: 1px solid var(--line);
+      background: #fbfaf6;
+      padding: 12px;
+    }
+
+    .relation-card strong {
+      color: var(--accent);
+    }
+
+    .exercises {
+      margin: 12px 0 0;
+      padding-left: 24px;
+    }
+
+    .exercises li {
+      margin: 0 0 16px;
+      padding-left: 4px;
+      break-inside: avoid;
+    }
+
+    .work-line {
+      display: block;
+      height: 34px;
+      margin-top: 8px;
+      border-bottom: 1px solid #c9c1b4;
+    }
+
+    footer {
+      margin-top: 32px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    @media (max-width: 900px) {
+      .page {
+        padding: 46px 40px;
+      }
+
+      h1 {
+        font-size: 2.35rem;
+      }
+
+      .cover {
+        grid-template-columns: minmax(0, 1fr) minmax(190px, 210px);
+        gap: 22px;
+      }
+
+      .formula-box {
+        grid-template-columns: 210px 1fr;
+      }
+
+      .readable-figure img {
+        width: clamp(760px, 94vw, 1000px);
+      }
+    }
+
+    @media (max-width: 700px) {
+      html,
+      body {
+        width: 100%;
+        max-width: 100vw;
+      }
+
+      main {
+        width: 100%;
+        max-width: 100vw;
+        margin: 0;
+        padding: 0;
+      }
+
+      .page {
+        width: 100%;
+        max-width: 100vw;
+        overflow-x: hidden;
+        padding: 30px 18px;
+        border: 0;
+        box-shadow: none;
+      }
+
+      .doc-header {
+        width: 100%;
+        max-width: calc(100vw - 36px);
+        padding-left: 18px;
+      }
+
+      section,
+      footer,
+      .cover,
+      .cover > div,
+      h1,
+      h2,
+      p {
+        max-width: 100%;
+        min-width: 0;
+      }
+
+      .subtitle,
+      p,
+      li {
+        width: 260px;
+        max-width: 100%;
+        overflow-wrap: normal;
+        word-break: normal;
+      }
+
+      .cover,
+      .meta,
+      .formula-box,
+      .relation-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .meta {
+        gap: 6px;
+      }
+
+      .scientist-card {
+        width: min(100%, 260px);
+        max-width: 260px;
+        margin-top: 8px;
+      }
+
+      h1 {
+        font-size: 1.9rem;
+      }
+
+      h2 {
+        align-items: flex-start;
+        font-size: 1.22rem;
+      }
+
+      p {
+        font-size: 0.95rem;
+      }
+
+      .subtitle {
+        font-size: 0.98rem;
+      }
+
+      .formula-box {
+        padding: 12px;
+      }
+
+      .formula {
+        min-height: 92px;
+      }
+
+      .figure {
+        padding: 7px;
+        margin-left: -6px;
+        margin-right: -6px;
+      }
+
+      .figure figcaption {
+        font-size: 0.82rem;
+        text-align: left;
+      }
+
+      table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+        font-size: 0.86rem;
+      }
+
+      th, td {
+        padding: 8px 9px;
+      }
+
+      .exercises {
+        padding-left: 20px;
+      }
+    }
+
+    @media print {
+      @page {
+        size: A4;
+        margin: 16mm;
+      }
+
+      body {
+        background: white;
+      }
+
+      main {
+        width: auto;
+        margin: 0;
+        padding: 0;
+      }
+
+      .page {
+        border: 0;
+        box-shadow: none;
+        padding: 0;
+      }
+
+      section, li, .formula-box, .figure, .example, .teacher-note {
+        break-inside: avoid;
+      }
+
+      .readable-figure {
+        overflow: visible;
+      }
+
+      .readable-figure img {
+        width: 100%;
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <article class="page">
+      <header class="doc-header">
+        <div class="cover">
+          <div>
+            <p class="eyebrow">Sistemas Multi Física - Profesor Javier Pereyra</p>
+            <h1>Resistencia eléctrica: longitud, sección y material</h1>
+            <p class="subtitle">Apunte de estudio para comprender por qué algunos conductores se oponen más que otros al movimiento de las cargas eléctricas.</p>
+          </div>
+          <figure class="scientist-card">
+            <img src="../assets/Ohm.webp" alt="Retrato de Georg Simon Ohm">
+            <figcaption>Georg Simon Ohm. Su trabajo fue fundamental para comprender cuantitativamente el comportamiento eléctrico de los conductores.</figcaption>
+          </figure>
+        </div>
+        <div class="meta">
+          <div><strong>Curso:</strong> Secundaria</div>
+          <div><strong>Tema:</strong> Resistencia eléctrica</div>
+          <div><strong>Unidades:</strong> \(\Omega\), \(\Omega\cdot m\), m, \(m^2\)</div>
+        </div>
+      </header>
+
+      <section>
+        <h2><span>1</span> Idea inicial</h2>
+        <p>Cuando las cargas se mueven por un conductor no avanzan libremente como si estuvieran en el vacío. En su camino interactúan con la estructura interna del material: la red de partículas que forma el conductor.</p>
+        <p>La <strong>resistencia eléctrica</strong> representa la oposición que presenta un conductor al movimiento ordenado de las cargas. No todos los cables ofrecen la misma dificultad: importa de qué material están hechos, qué longitud tienen y qué tan grande es su área transversal.</p>
+        <p>Una analogía útil es imaginar estudiantes caminando por un pasillo. Si el pasillo es largo, estrecho o está lleno de obstáculos, el avance se vuelve más difícil. En un conductor ocurre algo parecido: la longitud, el grosor y el material influyen en la resistencia.</p>
+        <div class="definition">
+          <strong>Definición:</strong> la resistencia eléctrica es la oposición que presenta un conductor al paso de las cargas eléctricas.
+        </div>
+      </section>
+
+      <section>
+        <h2><span>2</span> Relación con la clase anterior</h2>
+        <p>En la clase anterior estudiamos la corriente eléctrica como una medida del flujo de cargas. La corriente indica cuánta carga atraviesa una sección del conductor por unidad de tiempo:</p>
+        <div class="formula-box">
+          <div class="formula">\[I=\frac{q}{t}\]</div>
+          <div>
+            <p>\(I\) representa la corriente eléctrica.</p>
+            <p>\(q\) representa la carga eléctrica que atraviesa una sección.</p>
+            <p>\(t\) representa el intervalo de tiempo considerado.</p>
+          </div>
+        </div>
+        <p>En esta clase no calcularemos la corriente usando tensión. Solo estudiaremos qué características del conductor hacen que el paso de cargas sea más fácil o más difícil.</p>
+        <div class="teacher-note">
+          <strong>Nota docente:</strong> no confundir corriente con resistencia. La corriente describe el flujo de cargas; la resistencia describe la oposición que el conductor ofrece a ese flujo.
+        </div>
+      </section>
+
+      <section>
+        <h2><span>3</span> Modelo microscópico de la resistencia</h2>
+        <p>En un metal existen electrones libres que pueden desplazarse por la red metálica. Sin embargo, al moverse interactúan con la red de iones positivos del material.</p>
+        <p>No se trata exactamente de choques simples como pelotitas rígidas. Es una interacción microscópica con la estructura del material. Esas interacciones dificultan el movimiento ordenado de las cargas y parte de la energía asociada al movimiento eléctrico puede transformarse en energía térmica.</p>
+        <p>Por eso algunos conductores o resistencias se calientan cuando circula corriente: el movimiento de las cargas no ocurre en un camino perfectamente libre.</p>
+        <figure class="figure">
+          <img src="../assets/resistencia-conductor.png" alt="Modelo microscópico de la resistencia eléctrica en un conductor metálico">
+          <figcaption>Modelo microscópico de la resistencia: los electrones libres se desplazan por el conductor e interactúan con la red atómica del material.</figcaption>
+        </figure>
+      </section>
+
+      <section>
+        <h2><span>4</span> Fórmula principal de la resistencia de un conductor</h2>
+        <p>Para un conductor uniforme, la resistencia eléctrica puede estudiarse a partir de una relación entre el material y la geometría del conductor:</p>
+        <div class="formula-box">
+          <div class="formula">\[R = \rho \frac{L}{A}\]</div>
+          <div>
+            <p><strong>\(R\):</strong> resistencia eléctrica del conductor.</p>
+            <p><strong>\(\rho\):</strong> resistividad del material.</p>
+            <p><strong>\(L\):</strong> longitud del conductor.</p>
+            <p><strong>\(A\):</strong> área transversal del conductor.</p>
+          </div>
+        </div>
+        <div class="relation-grid">
+          <div class="relation-card"><strong>Más largo:</strong> si \(L\) aumenta, \(R\) aumenta.</div>
+          <div class="relation-card"><strong>Más grueso:</strong> si \(A\) aumenta, \(R\) disminuye.</div>
+          <div class="relation-card"><strong>Otro material:</strong> \(R\) depende de \(\rho\).</div>
+        </div>
+      </section>
+
+      <section>
+        <h2><span>5</span> Sistema de unidades</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Magnitud</th>
+              <th>Símbolo</th>
+              <th>Unidad SI</th>
+              <th>Significado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Resistencia eléctrica</td>
+              <td>\(R\)</td>
+              <td>ohmio \(\Omega\)</td>
+              <td>Oposición total del conductor al paso de las cargas.</td>
+            </tr>
+            <tr>
+              <td>Resistividad</td>
+              <td>\(\rho\)</td>
+              <td>ohm metro \(\Omega\cdot m\)</td>
+              <td>Oposición propia del material.</td>
+            </tr>
+            <tr>
+              <td>Longitud</td>
+              <td>\(L\)</td>
+              <td>metro m</td>
+              <td>Distancia que recorren las cargas en el conductor.</td>
+            </tr>
+            <tr>
+              <td>Área transversal</td>
+              <td>\(A\)</td>
+              <td>metro cuadrado \(m^2\)</td>
+              <td>Superficie disponible para el paso de cargas.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="teacher-note">
+          <strong>Nota:</strong> la resistividad no describe una pieza específica de cable, sino una propiedad del material. La resistencia sí depende de la forma y tamaño del conductor.
+        </div>
+      </section>
+
+      <section>
+        <h2><span>6</span> Variable 1: longitud del conductor</h2>
+        <p>Si el conductor es más largo, las cargas deben atravesar más material. Por eso hay más oposición al movimiento y la resistencia aumenta.</p>
+        <p>Volviendo a la analogía: un pasillo largo ofrece más recorrido que uno corto. Aunque ambos tengan el mismo ancho, caminar por el más largo requiere atravesar más distancia.</p>
+        <figure class="figure">
+          <img src="../assets/conductor-largo-corto.png" alt="Comparación entre un conductor corto y un conductor largo del mismo material y área transversal">
+          <figcaption>A igual material y área transversal, el conductor más largo tiene mayor resistencia.</figcaption>
+        </figure>
+        <div class="definition">
+          <strong>Relación cualitativa:</strong> si \(L\) aumenta, \(R\) aumenta.
+        </div>
+      </section>
+
+      <section>
+        <h2><span>7</span> Variable 2: área transversal</h2>
+        <p>El área transversal representa el "grosor efectivo" del conductor. Si el área es mayor, hay más espacio disponible para el paso de cargas. Entonces la resistencia disminuye.</p>
+        <p>Es más fácil que muchas personas atraviesen una puerta ancha que una puerta angosta. En un conductor, una sección mayor ofrece más caminos posibles para las cargas.</p>
+        <figure class="figure">
+          <img src="../assets/area-transversal.png" alt="Comparación entre un conductor fino y un conductor grueso del mismo material y longitud">
+          <figcaption>A igual material y longitud, un conductor con mayor área transversal presenta menor resistencia.</figcaption>
+        </figure>
+        <div class="definition">
+          <strong>Relación cualitativa:</strong> si \(A\) aumenta, \(R\) disminuye.
+        </div>
+      </section>
+
+      <section>
+        <h2><span>8</span> Variable 3: resistividad del material</h2>
+        <p>La resistividad \(\rho\) mide cuánto se opone un material al movimiento de las cargas. No todos los materiales conducen igual, incluso si tienen la misma forma y tamaño.</p>
+        <p>La idea complementaria es la <strong>conductividad eléctrica</strong>, representada con la letra griega \(\sigma\). Mientras la resistividad indica cuánta oposición presenta un material, la conductividad indica qué tan fácilmente permite el movimiento de las cargas.</p>
+        <div class="formula-box">
+          <div class="formula">\[\sigma=\frac{1}{\rho}\]</div>
+          <div>
+            <p><strong>\(\sigma\):</strong> conductividad eléctrica del material.</p>
+            <p><strong>\(\rho\):</strong> resistividad eléctrica del material.</p>
+            <p>La unidad de conductividad es el <strong>siemens por metro</strong>, \(S/m\).</p>
+          </div>
+        </div>
+        <p>Si un material tiene resistividad baja, su conductividad es alta: deja pasar las cargas con más facilidad. Si tiene resistividad alta, su conductividad es baja: se comporta más como aislante.</p>
+        <div class="teacher-note">
+          <strong>Otra forma útil:</strong> como \(\rho=\frac{1}{\sigma}\), la fórmula \(R=\rho\frac{L}{A}\) también puede escribirse como:
+          \[
+            R=\frac{L}{\sigma A}
+          \]
+          Esta forma muestra que, si aumenta la conductividad del material, la resistencia del conductor disminuye.
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Material</th>
+              <th>Tipo</th>
+              <th>Resistividad relativa</th>
+              <th>Conductividad relativa</th>
+              <th>Uso típico</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Cobre</td>
+              <td>Conductor</td>
+              <td>Baja</td>
+              <td>Alta</td>
+              <td>Cables eléctricos.</td>
+            </tr>
+            <tr>
+              <td>Aluminio</td>
+              <td>Conductor</td>
+              <td>Baja</td>
+              <td>Alta</td>
+              <td>Líneas eléctricas.</td>
+            </tr>
+            <tr>
+              <td>Nicrom</td>
+              <td>Resistivo</td>
+              <td>Alta</td>
+              <td>Baja</td>
+              <td>Resistencias calefactoras.</td>
+            </tr>
+            <tr>
+              <td>Plástico</td>
+              <td>Aislante</td>
+              <td>Muy alta</td>
+              <td>Muy baja</td>
+              <td>Recubrimiento de cables.</td>
+            </tr>
+          </tbody>
+        </table>
+        <figure class="figure">
+          <img src="../assets/resistividad-materiales.png" alt="Escala comparativa de resistividad entre cobre, aluminio, nicrom y plástico">
+          <figcaption>La resistividad depende del material: algunos materiales permiten mejor el movimiento de cargas que otros.</figcaption>
+        </figure>
+      </section>
+
+      <section>
+        <h2><span>9</span> Comparación general de variables</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Variable</th>
+              <th>Si aumenta...</th>
+              <th>¿Qué ocurre con \(R\)?</th>
+              <th>Explicación</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Longitud \(L\)</td>
+              <td>Aumenta</td>
+              <td>\(R\) aumenta</td>
+              <td>Las cargas atraviesan más material.</td>
+            </tr>
+            <tr>
+              <td>Área transversal \(A\)</td>
+              <td>Aumenta</td>
+              <td>\(R\) disminuye</td>
+              <td>Hay más espacio para el paso de cargas.</td>
+            </tr>
+            <tr>
+              <td>Resistividad \(\rho\)</td>
+              <td>Aumenta</td>
+              <td>\(R\) aumenta</td>
+              <td>El material se opone más al movimiento de cargas.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="teacher-note">
+          <strong>Nota docente:</strong> la fórmula \(R=\rho \frac{L}{A}\) permite ver relaciones directas e inversas. \(R\) es directamente proporcional a \(\rho\) y a \(L\), pero inversamente proporcional a \(A\).
+        </div>
+      </section>
+
+      <section>
+        <h2><span>10</span> Ejemplo resuelto 1: comparación por longitud</h2>
+        <div class="example">
+          <p><strong>Problema:</strong> dos cables están hechos del mismo material y tienen la misma área transversal. El cable A mide \(1\,m\) y el cable B mide \(3\,m\). ¿Cuál tiene mayor resistencia?</p>
+          <p><strong>Análisis:</strong> el material y el área son iguales. La única variable que cambia es la longitud.</p>
+          <p><strong>Relación:</strong> si \(L\) aumenta, \(R\) aumenta.</p>
+          <p><strong>Respuesta:</strong> el cable B tiene mayor resistencia porque su longitud es mayor.</p>
+          <p><strong>Interpretación:</strong> si el material y el área son iguales, la resistencia aumenta proporcionalmente con la longitud.</p>
+        </div>
+      </section>
+
+      <section>
+        <h2><span>11</span> Ejemplo resuelto 2: comparación por área</h2>
+        <div class="example">
+          <p><strong>Problema:</strong> dos conductores tienen el mismo material y la misma longitud. Uno tiene área transversal pequeña y el otro tiene área transversal mayor. ¿Cuál tiene menor resistencia?</p>
+          <p><strong>Análisis:</strong> el material y la longitud son iguales. La variable que cambia es el área transversal.</p>
+          <p><strong>Relación:</strong> si \(A\) aumenta, \(R\) disminuye.</p>
+          <p><strong>Respuesta:</strong> el conductor de mayor área transversal tiene menor resistencia.</p>
+          <p><strong>Interpretación:</strong> una sección mayor ofrece más espacio para el movimiento de las cargas.</p>
+        </div>
+      </section>
+
+      <section>
+        <h2><span>12</span> Ejemplo resuelto 3: cálculo simple con fórmula</h2>
+        <div class="example">
+          <p><strong>Problema:</strong> un conductor tiene resistividad \(\rho = 2 \times 10^{-6}\,\Omega\cdot m\), longitud \(L=4\,m\) y área transversal \(A=1 \times 10^{-6}\,m^2\). Calcular su resistencia.</p>
+          <p><strong>Datos:</strong></p>
+          \[
+            \rho = 2 \times 10^{-6}\,\Omega\cdot m
+          \]
+          \[
+            L=4\,m
+          \]
+          \[
+            A=1 \times 10^{-6}\,m^2
+          \]
+          <p><strong>Fórmula:</strong></p>
+          \[
+            R=\rho \frac{L}{A}
+          \]
+          <p><strong>Reemplazo:</strong></p>
+          \[
+            R = \left(2 \times 10^{-6}\right)\frac{4}{1 \times 10^{-6}}
+          \]
+          <p><strong>Resultado:</strong></p>
+          \[
+            R=8\,\Omega
+          \]
+          <p><strong>Interpretación:</strong> el conductor presenta una resistencia de \(8\,\Omega\). Si el área transversal fuera mayor, la resistencia disminuiría.</p>
+        </div>
+      </section>
+
+      <section>
+        <h2><span>13</span> Digresión: cuando la resistencia desaparece</h2>
+        <p>En muchos metales, la resistencia cambia con la temperatura. Al bajar la temperatura, la vibración de la red atómica disminuye y puede reducirse la oposición al movimiento de las cargas.</p>
+        <p>Pero en ciertos materiales ocurre algo mucho más sorprendente: por debajo de una temperatura crítica, la resistencia eléctrica cae abruptamente a cero. Este fenómeno se llama <strong>superconductividad</strong>.</p>
+        <p>Heike Kamerlingh Onnes estudió materiales a temperaturas extremadamente bajas. En 1911 observó que la resistencia eléctrica del mercurio desaparecía al enfriarlo cerca de \(4{,}2\,K\). Este fue el descubrimiento de la superconductividad.</p>
+        <p>En un superconductor ideal, una corriente podría mantenerse sin pérdida de energía por resistencia. La superconductividad tiene aplicaciones en imanes potentes, resonancia magnética, aceleradores de partículas y trenes de levitación magnética.</p>
+        <figure class="figure readable-figure">
+          <img src="../assets/kamerlingh-onnes.png" alt="Retrato de Heike Kamerlingh Onnes y referencia a la superconductividad a bajas temperaturas">
+          <figcaption>Heike Kamerlingh Onnes descubrió la superconductividad al estudiar la resistencia del mercurio a temperaturas cercanas al cero absoluto.</figcaption>
+        </figure>
+        <div class="teacher-note">
+          <strong>Nota docente:</strong> la superconductividad no contradice el estudio de la resistencia. Al contrario: muestra que la resistencia depende del material y de las condiciones físicas, como la temperatura.
+        </div>
+      </section>
+
+      <section>
+        <h2><span>14</span> Actividades</h2>
+        <p>En estas actividades vamos a usar la fórmula de resistencia del conductor y sus despejes. La clave es identificar primero qué dato falta y recién después reemplazar números.</p>
+        <div class="teacher-note">
+          <strong>Despejes útiles:</strong>
+          \[
+            R=\rho \frac{L}{A}
+          \]
+          \[
+            L=\frac{R\cdot A}{\rho}
+          \]
+          \[
+            A=\rho \frac{L}{R}
+          \]
+          \[
+            \rho=R\frac{A}{L}
+          \]
+          <p><strong>Conductividad:</strong> la conductividad eléctrica se simboliza con \(\sigma\) y mide qué tan buen conductor es un material. Se relaciona con la resistividad mediante:</p>
+          \[
+            \sigma=\frac{1}{\rho}
+          \]
+          <p>Si \(\rho\) es alta, \(\sigma\) es baja. Si \(\rho\) es baja, \(\sigma\) es alta.</p>
+        </div>
+        <ol class="exercises">
+          <li>Explica con tus palabras qué significa que un conductor tenga resistencia eléctrica. No uses fórmula todavía: usá la idea microscópica de interacción con el material.<span class="work-line"></span></li>
+          <li>Dos cables son del mismo material y tienen la misma área. Uno mide \(2\,m\) y otro \(6\,m\). ¿Cuál tiene mayor resistencia? Justifica indicando qué variable cambia y cuáles quedan constantes.<span class="work-line"></span></li>
+          <li>Dos cables tienen la misma longitud y material. Uno es más grueso que el otro. ¿Cuál tiene menor resistencia? Justifica usando la relación entre \(A\) y \(R\).<span class="work-line"></span></li>
+          <li><strong>Averiguar la resistencia:</strong> un conductor tiene \(\rho = 3 \times 10^{-6}\,\Omega\cdot m\), \(L=2\,m\) y \(A=1 \times 10^{-6}\,m^2\). Calcula \(R\).<span class="work-line"></span></li>
+          <li><strong>Averiguar la longitud:</strong> un cable tiene \(R=8\,\Omega\), \(A=2 \times 10^{-6}\,m^2\) y \(\rho = 4 \times 10^{-6}\,\Omega\cdot m\). Despeja \(L\) y calcula la longitud del conductor.<span class="work-line"></span></li>
+          <li><strong>Averiguar el área:</strong> un conductor tiene \(R=6\,\Omega\), \(L=3\,m\) y \(\rho = 2 \times 10^{-6}\,\Omega\cdot m\). Despeja \(A\) y calcula el área transversal.<span class="work-line"></span></li>
+          <li><strong>Averiguar la resistividad:</strong> una muestra de material forma un conductor de \(R=5\,\Omega\), \(L=10\,m\) y \(A=2 \times 10^{-6}\,m^2\). Despeja \(\rho\) y determina su resistividad.<span class="work-line"></span></li>
+          <li><strong>Averiguar la conductividad:</strong> un material tiene resistividad \(\rho=2 \times 10^{-8}\,\Omega\cdot m\). Calcula su conductividad usando \(\sigma=\frac{1}{\rho}\). Indica la unidad \(S/m\), llamada siemens por metro.<span class="work-line"></span></li>
+          <li><strong>Otra práctica de resistencia:</strong> un conductor tiene \(\rho = 1{,}5 \times 10^{-6}\,\Omega\cdot m\), \(L=4\,m\) y \(A=3 \times 10^{-6}\,m^2\). Calcula \(R\) e interpreta si el resultado indica mucha o poca oposición al paso de cargas.<span class="work-line"></span></li>
+          <li>Completa la tabla usando \(R=\rho \frac{L}{A}\), el despeje necesario o \(\sigma=\frac{1}{\rho}\).
+            <table>
+              <thead>
+                <tr>
+                  <th>\(\rho\)</th>
+                  <th>\(L\)</th>
+                  <th>\(A\)</th>
+                  <th>\(R\)</th>
+                  <th>\(\sigma\)</th>
+                  <th>Dato que se busca</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>\(2 \times 10^{-6}\,\Omega\cdot m\)</td>
+                  <td>\(5\,m\)</td>
+                  <td>\(1 \times 10^{-6}\,m^2\)</td>
+                  <td>_____</td>
+                  <td>No se pide</td>
+                  <td>\(R\)</td>
+                </tr>
+                <tr>
+                  <td>\(3 \times 10^{-6}\,\Omega\cdot m\)</td>
+                  <td>_____</td>
+                  <td>\(2 \times 10^{-6}\,m^2\)</td>
+                  <td>\(9\,\Omega\)</td>
+                  <td>No se pide</td>
+                  <td>\(L\)</td>
+                </tr>
+                <tr>
+                  <td>_____</td>
+                  <td>\(4\,m\)</td>
+                  <td>\(2 \times 10^{-6}\,m^2\)</td>
+                  <td>\(4\,\Omega\)</td>
+                  <td>No se pide</td>
+                  <td>\(\rho\)</td>
+                </tr>
+                <tr>
+                  <td>\(5 \times 10^{-7}\,\Omega\cdot m\)</td>
+                  <td>No se pide</td>
+                  <td>No se pide</td>
+                  <td>No se pide</td>
+                  <td>_____</td>
+                  <td>\(\sigma\)</td>
+                </tr>
+              </tbody>
+            </table>
+            <span class="work-line"></span>
+          </li>
+          <li>Ordena de menor a mayor resistencia tres conductores del mismo material y área: A mide \(1\,m\), B mide \(3\,m\), C mide \(5\,m\). Después explica cómo cambiaría el orden si todos tuvieran la misma longitud, pero áreas diferentes.<span class="work-line"></span></li>
+          <li>Un estudiante despejó así: \(A=\frac{R}{\rho\cdot L}\). ¿Está bien? Si no está bien, corrige el despeje y explica el error.<span class="work-line"></span></li>
+          <li>Actividad integradora: diseña un cable con \(R=12\,\Omega\). Elegí valores posibles para \(\rho\) y \(A\), despejá \(L\), calculá el resultado e interpretá si el cable sería largo o corto para un uso cotidiano.<span class="work-line"></span></li>
+          <li>¿Qué tiene de sorprendente la superconductividad respecto de la resistencia eléctrica? Respondé relacionando material, temperatura y resistencia.<span class="work-line"></span></li>
+        </ol>
+      </section>
+
+      <section>
+        <h2><span>15</span> Preguntas para pensar</h2>
+        <ul>
+          <li>¿Por qué un cable largo puede tener más resistencia que uno corto?</li>
+          <li>¿Por qué un cable grueso suele tener menor resistencia que uno fino?</li>
+          <li>¿Por qué no alcanza con decir "este material conduce" sin analizar su resistividad?</li>
+          <li>¿Qué diferencia hay entre la resistencia de un objeto y la resistividad de un material?</li>
+          <li>¿Por qué la superconductividad es un fenómeno tan llamativo?</li>
+        </ul>
+      </section>
+
+      <footer>
+        <strong>Sugerencia de trabajo:</strong> en cada ejercicio indicar qué variable cambia, cuáles se mantienen constantes y cómo afecta eso a la resistencia.
+      </footer>
+    </article>
+  </main>
+</body>
+</html>
