@@ -1,0 +1,1120 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Apunte: Ley de Ohm y circuitos simples</title>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["\\(", "\\)"]],
+        displayMath: [["\\[", "\\]"]]
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+  <style>
+    :root {
+      --ink: #15191d;
+      --muted: #5c646c;
+      --paper: #e8e2d6;
+      --page: #fffdf7;
+      --line: #d6c9af;
+      --accent: #1d3557;
+      --accent-soft: #edf3f7;
+      --gold: #f2c230;
+      --warm: #fff6d8;
+      --danger: #b94a37;
+      --green: #2f6b4f;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background:
+        linear-gradient(rgba(21, 25, 29, 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(21, 25, 29, 0.045) 1px, transparent 1px),
+        var(--paper);
+      background-size: 28px 28px;
+      color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.68;
+      overflow-x: hidden;
+    }
+
+    mjx-container {
+      max-width: 100%;
+      overflow-x: auto;
+      overflow-y: hidden;
+    }
+
+    main {
+      width: 100%;
+      max-width: 920px;
+      margin: 28px auto;
+      padding: 0 16px;
+    }
+
+    .page {
+      width: 100%;
+      background:
+        linear-gradient(rgba(29, 53, 87, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(29, 53, 87, 0.035) 1px, transparent 1px),
+        var(--page);
+      background-size: 24px 24px;
+      border: 1px solid #ddd6c8;
+      box-shadow: 0 18px 50px rgba(31, 41, 51, 0.13);
+      padding: 62px 72px;
+    }
+
+    .doc-header {
+      position: relative;
+      border-bottom: 1px solid var(--line);
+      padding: 0 0 24px 24px;
+      margin-bottom: 30px;
+    }
+
+    .doc-header::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 4px;
+      bottom: 26px;
+      width: 8px;
+      background: var(--gold);
+    }
+
+    .cover {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(210px, 230px);
+      gap: 28px;
+      align-items: start;
+    }
+
+    .scientist-card {
+      width: 100%;
+      max-width: 230px;
+      border: 1px solid #2a4a78;
+      background: #fffdf7;
+      padding: 8px;
+      box-shadow: 8px 8px 0 rgba(242, 194, 48, 0.75);
+      font-family: "Segoe UI", Arial, sans-serif;
+      overflow-wrap: break-word;
+    }
+
+    .scientist-card img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      filter: sepia(0.16) contrast(1.04);
+      background: #ede7d9;
+      color: transparent;
+      font-size: 0;
+    }
+
+    .scientist-card figcaption {
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: 0.78rem;
+      line-height: 1.35;
+      text-align: center;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--accent);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      max-width: 720px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 2.75rem;
+      font-weight: 900;
+    }
+
+    .subtitle {
+      max-width: 760px;
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 1.08rem;
+      overflow-wrap: break-word;
+    }
+
+    .meta {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 22px;
+      font-size: 0.9rem;
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    .meta div {
+      border: 1px solid var(--line);
+      padding: 9px 10px;
+      background: #faf8f2;
+    }
+
+    section {
+      margin-top: 30px;
+    }
+
+    h2 {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 10px;
+      font-size: 1.38rem;
+      color: #16252b;
+      font-family: Georgia, "Times New Roman", serif;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 5px;
+    }
+
+    h2 span {
+      color: #111827;
+      background: var(--gold);
+      min-width: 28px;
+      height: 28px;
+      display: inline-grid;
+      place-items: center;
+      font-size: 0.95rem;
+      font-weight: 900;
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    h3 {
+      margin: 18px 0 8px;
+      font-size: 1.05rem;
+    }
+
+    p {
+      margin: 0 0 11px;
+      max-width: 68ch;
+      font-size: 1.02rem;
+      overflow-wrap: break-word;
+    }
+
+    .definition, .example, .teacher-note {
+      margin: 16px 0;
+      border-left: 5px solid var(--gold);
+      background: var(--accent-soft);
+      padding: 14px 16px;
+    }
+
+    .teacher-note {
+      border-left-color: #d29a22;
+      background: var(--warm);
+    }
+
+    .formula-box {
+      display: grid;
+      grid-template-columns: 245px 1fr;
+      gap: 18px;
+      align-items: center;
+      margin: 18px 0;
+      border: 1px solid var(--line);
+      background: #faf8f2;
+      padding: 16px;
+    }
+
+    .formula {
+      display: grid;
+      place-items: center;
+      min-height: 110px;
+      min-width: 0;
+      background: #101820;
+      color: white;
+      font-size: 1.55rem;
+      font-weight: 850;
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    .formula mjx-container {
+      font-size: 135% !important;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 14px 0;
+      font-size: 0.95rem;
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    th, td {
+      border: 1px solid var(--line);
+      padding: 10px 11px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #ede7d9;
+    }
+
+    .relation-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 16px 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    .relation-card {
+      border: 1px solid var(--line);
+      background: #fbfaf6;
+      padding: 12px;
+    }
+
+    .relation-card strong {
+      color: var(--accent);
+    }
+
+    .steps {
+      display: grid;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .step {
+      border: 1px solid var(--line);
+      padding: 11px 13px;
+      background: #fbfaf6;
+    }
+
+    .figure {
+      margin: 18px 0;
+      border: 1px solid var(--line);
+      background: #fbfaf6;
+      padding: 12px;
+    }
+
+    .figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .figure figcaption {
+      margin-top: 9px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      text-align: center;
+      font-style: italic;
+      overflow-wrap: break-word;
+    }
+
+    .circuit-diagram {
+      position: relative;
+      min-height: 250px;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(to right, transparent 31px, rgba(102, 115, 124, 0.10) 32px),
+        linear-gradient(to bottom, transparent 31px, rgba(102, 115, 124, 0.10) 32px),
+        #fffdf7;
+      background-size: 32px 32px;
+      overflow: hidden;
+    }
+
+    .wire {
+      position: absolute;
+      background: #263238;
+    }
+
+    .wire.top { left: 120px; right: 120px; top: 58px; height: 6px; }
+    .wire.bottom { left: 120px; right: 120px; bottom: 58px; height: 6px; }
+    .wire.left { left: 120px; top: 58px; bottom: 58px; width: 6px; }
+    .wire.right { right: 120px; top: 58px; bottom: 58px; width: 6px; }
+
+    .battery {
+      position: absolute;
+      left: 82px;
+      top: 92px;
+      width: 82px;
+      height: 70px;
+      background: #fffdf7;
+    }
+
+    .battery::before,
+    .battery::after {
+      content: "";
+      position: absolute;
+      top: 11px;
+      background: var(--accent);
+    }
+
+    .battery::before {
+      left: 24px;
+      width: 5px;
+      height: 48px;
+    }
+
+    .battery::after {
+      left: 43px;
+      width: 5px;
+      height: 30px;
+      top: 20px;
+    }
+
+    .resistor {
+      position: absolute;
+      right: 66px;
+      top: 91px;
+      width: 108px;
+      height: 72px;
+      border: 4px solid var(--danger);
+      background: #fff6d8;
+      display: grid;
+      place-items: center;
+      font-family: "Segoe UI", Arial, sans-serif;
+      font-weight: 800;
+      color: #70291e;
+    }
+
+    .lamp {
+      position: absolute;
+      left: calc(50% - 34px);
+      top: 25px;
+      width: 68px;
+      height: 68px;
+      border: 4px solid #6a5a2b;
+      border-radius: 50%;
+      background: radial-gradient(circle, #fff9b3 0 34%, #f2c230 36% 48%, #fffdf7 50%);
+    }
+
+    .lamp::before,
+    .lamp::after {
+      content: "";
+      position: absolute;
+      left: 17px;
+      top: 30px;
+      width: 30px;
+      border-top: 3px solid #6a5a2b;
+    }
+
+    .lamp::before { transform: rotate(32deg); }
+    .lamp::after { transform: rotate(-32deg); }
+
+    .arrow-current {
+      position: absolute;
+      left: 240px;
+      bottom: 76px;
+      color: var(--green);
+      font-family: "Segoe UI", Arial, sans-serif;
+      font-weight: 800;
+    }
+
+    .arrow-current::after {
+      content: "";
+      display: inline-block;
+      width: 82px;
+      margin-left: 8px;
+      border-top: 4px solid var(--green);
+      transform: translateY(-3px);
+    }
+
+    .arrow-current::before {
+      content: "";
+      position: absolute;
+      right: -95px;
+      top: 11px;
+      border-left: 12px solid var(--green);
+      border-top: 8px solid transparent;
+      border-bottom: 8px solid transparent;
+    }
+
+    .diagram-label {
+      position: absolute;
+      padding: 4px 7px;
+      border: 1px solid rgba(29, 53, 87, 0.22);
+      background: rgba(255, 253, 247, 0.96);
+      color: var(--accent);
+      font-family: "Segoe UI", Arial, sans-serif;
+      font-size: 0.88rem;
+      font-weight: 800;
+    }
+
+    .label-v { left: 38px; top: 166px; }
+    .label-r { right: 40px; top: 166px; }
+    .label-i { left: 292px; bottom: 103px; }
+
+    .graph-box {
+      position: relative;
+      width: min(100%, 560px);
+      height: 330px;
+      margin: 16px 0 8px;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(to right, transparent 31px, rgba(102, 115, 124, 0.12) 32px),
+        linear-gradient(to bottom, transparent 31px, rgba(102, 115, 124, 0.12) 32px),
+        #fffdf7;
+      background-size: 32px 32px;
+      overflow: hidden;
+    }
+
+    .axis-x,
+    .axis-y {
+      position: absolute;
+      background: #51606c;
+      z-index: 2;
+    }
+
+    .axis-x { left: 70px; top: 270px; width: 440px; height: 3px; }
+    .axis-y { left: 70px; top: 42px; width: 3px; height: 228px; }
+
+    .ohm-line {
+      position: absolute;
+      left: 70px;
+      top: 270px;
+      z-index: 2;
+      width: 440px;
+      border-top: 5px solid var(--accent);
+      transform: rotate(-27.4deg);
+      transform-origin: left center;
+    }
+
+    .graph-point {
+      position: absolute;
+      z-index: 3;
+      width: 13px;
+      height: 13px;
+      border: 4px solid var(--accent);
+      border-radius: 50%;
+      background: #fffdf7;
+      transform: translate(-50%, -50%);
+    }
+
+    .gp0 { left: 70px; top: 270px; }
+    .gp1 { left: 148px; top: 230px; }
+    .gp2 { left: 226px; top: 189px; }
+    .gp3 { left: 304px; top: 149px; }
+    .gp4 { left: 382px; top: 108px; }
+    .gp5 { left: 460px; top: 68px; }
+
+    .axis-label {
+      position: absolute;
+      z-index: 4;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .axis-v { left: 42px; top: 48px; }
+    .axis-i { left: 500px; top: 280px; }
+
+    .graph-note {
+      margin-top: 6px;
+      color: var(--muted);
+      font-family: "Segoe UI", Arial, sans-serif;
+      font-size: 0.88rem;
+      line-height: 1.45;
+    }
+
+    .exercises {
+      margin: 12px 0 0;
+      padding-left: 24px;
+    }
+
+    .exercises li {
+      margin: 0 0 16px;
+      padding-left: 4px;
+      break-inside: avoid;
+    }
+
+    .work-line {
+      display: block;
+      height: 34px;
+      margin-top: 8px;
+      border-bottom: 1px solid #c9c1b4;
+    }
+
+    footer {
+      margin-top: 32px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    @media (max-width: 900px) {
+      .page {
+        padding: 46px 40px;
+      }
+
+      h1 {
+        font-size: 2.35rem;
+      }
+
+      .cover {
+        grid-template-columns: minmax(0, 1fr) minmax(190px, 210px);
+        gap: 22px;
+      }
+
+      .formula-box {
+        grid-template-columns: 210px 1fr;
+      }
+
+      .relation-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 700px) {
+      html,
+      body {
+        width: 100%;
+        max-width: 100vw;
+      }
+
+      main {
+        width: 100%;
+        max-width: 100vw;
+        margin: 0;
+        padding: 0;
+      }
+
+      .page {
+        width: 100%;
+        max-width: 100vw;
+        overflow-x: hidden;
+        padding: 30px clamp(16px, 5vw, 24px);
+        border: 0;
+        box-shadow: none;
+      }
+
+      .doc-header {
+        width: 100%;
+        max-width: calc(100vw - 36px);
+        padding-left: 18px;
+      }
+
+      section,
+      footer,
+      .cover,
+      .cover > div,
+      h1,
+      h2,
+      p {
+        max-width: 100%;
+        min-width: 0;
+      }
+
+      .subtitle,
+      p,
+      li {
+        width: 100%;
+        max-width: 100%;
+        overflow-wrap: break-word;
+        word-break: normal;
+      }
+
+      .cover,
+      .meta,
+      .formula-box,
+      .relation-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .meta {
+        gap: 6px;
+      }
+
+      .scientist-card {
+        width: min(100%, 260px);
+        max-width: 260px;
+        margin-top: 8px;
+      }
+
+      h1 {
+        font-size: 1.9rem;
+      }
+
+      h2 {
+        align-items: flex-start;
+        font-size: 1.22rem;
+      }
+
+      h2 span {
+        flex: 0 0 28px;
+      }
+
+      p {
+        font-size: 0.95rem;
+        line-height: 1.72;
+      }
+
+      .subtitle {
+        font-size: 0.98rem;
+      }
+
+      .formula-box {
+        padding: 12px;
+      }
+
+      .formula {
+        min-height: 92px;
+      }
+
+      .figure {
+        padding: 7px;
+        margin-left: -6px;
+        margin-right: -6px;
+      }
+
+      .figure figcaption {
+        font-size: 0.82rem;
+        text-align: left;
+      }
+
+      table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+        font-size: 0.86rem;
+      }
+
+      th, td {
+        padding: 8px 9px;
+      }
+
+      .exercises {
+        padding-left: 20px;
+      }
+
+      .circuit-diagram {
+        width: 100%;
+        min-height: 232px;
+        transform: none;
+        margin-bottom: 0;
+      }
+
+      .graph-box {
+        width: 100%;
+        height: 232px;
+        transform: none;
+        margin-bottom: 8px;
+      }
+
+      .wire.top { left: 48px; right: 48px; top: 58px; }
+      .wire.bottom { left: 48px; right: 48px; bottom: 58px; }
+      .wire.left { left: 48px; top: 58px; bottom: 58px; }
+      .wire.right { right: 48px; top: 58px; bottom: 58px; }
+
+      .battery {
+        left: 14px;
+        top: 86px;
+        width: 66px;
+        height: 60px;
+      }
+
+      .battery::before {
+        left: 20px;
+        height: 42px;
+      }
+
+      .battery::after {
+        left: 38px;
+        height: 26px;
+        top: 19px;
+      }
+
+      .resistor {
+        right: 14px;
+        top: 88px;
+        width: 76px;
+        height: 56px;
+        border-width: 3px;
+      }
+
+      .lamp {
+        left: calc(50% - 28px);
+        top: 30px;
+        width: 56px;
+        height: 56px;
+        border-width: 3px;
+      }
+
+      .lamp::before,
+      .lamp::after {
+        left: 13px;
+        top: 25px;
+        width: 26px;
+      }
+
+      .arrow-current {
+        left: 82px;
+        bottom: 76px;
+        font-size: 0.88rem;
+      }
+
+      .arrow-current::after {
+        width: min(86px, 32vw);
+      }
+
+      .arrow-current::before {
+        right: calc(-1 * min(99px, 35vw));
+      }
+
+      .diagram-label {
+        font-size: 0.72rem;
+        padding: 3px 5px;
+      }
+
+      .label-v { left: 10px; top: 154px; }
+      .label-r { right: 10px; top: 154px; }
+      .label-i { left: 82px; bottom: 103px; }
+
+      .axis-x { left: 38px; top: 184px; width: calc(100% - 68px); height: 3px; }
+      .axis-y { left: 38px; top: 36px; width: 3px; height: 148px; }
+
+      .ohm-line {
+        left: 38px;
+        top: 184px;
+        width: calc(100% - 64px);
+        transform: rotate(-29deg);
+      }
+
+      .graph-point {
+        width: 11px;
+        height: 11px;
+        border-width: 3px;
+      }
+
+      .gp0 { left: 38px; top: 184px; }
+      .gp1 { left: 22%; top: 154px; }
+      .gp2 { left: 38%; top: 124px; }
+      .gp3 { left: 54%; top: 96px; }
+      .gp4 { left: 70%; top: 68px; }
+      .gp5 { left: calc(100% - 32px); top: 40px; }
+
+      .axis-v { left: 15px; top: 39px; }
+      .axis-i { right: 10px; left: auto; top: 190px; }
+    }
+
+    @media (max-width: 420px) {
+      .eyebrow {
+        font-size: 0.72rem;
+        letter-spacing: 0.08em;
+      }
+
+      h1 {
+        font-size: 1.72rem;
+      }
+
+      h2 {
+        gap: 8px;
+        font-size: 1.14rem;
+      }
+
+      .definition,
+      .example,
+      .teacher-note {
+        padding: 12px 13px;
+      }
+
+      .formula {
+        font-size: 1.26rem;
+      }
+
+      .label-i {
+        display: none;
+      }
+    }
+
+    @media print {
+      @page {
+        size: A4;
+        margin: 16mm;
+      }
+
+      body {
+        background: white;
+      }
+
+      main {
+        width: auto;
+        margin: 0;
+        padding: 0;
+      }
+
+      .page {
+        border: 0;
+        box-shadow: none;
+        padding: 0;
+      }
+
+      section, li, .formula-box, .figure, .example, .teacher-note {
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <article class="page">
+      <header class="doc-header">
+        <div class="cover">
+          <div>
+            <p class="eyebrow">Sistemas Multi Física - Profesor Javier Pereyra</p>
+            <h1>Ley de Ohm y circuitos simples</h1>
+            <p class="subtitle">Apunte de estudio para comprender qué es el voltaje y cómo se relacionan tensión, corriente y resistencia en un circuito eléctrico básico.</p>
+          </div>
+          <figure class="scientist-card">
+            <img src="../assets/Ohm.webp" alt="Retrato de Georg Simon Ohm">
+            <figcaption>Georg Simon Ohm. Sus mediciones permitieron describir la relación entre tensión, corriente y resistencia.</figcaption>
+          </figure>
+        </div>
+        <div class="meta">
+          <div><strong>Curso:</strong> Secundaria</div>
+          <div><strong>Tema:</strong> Ley de Ohm</div>
+          <div><strong>Unidades:</strong> V, A, Ω</div>
+        </div>
+      </header>
+
+      <section>
+        <h2><span>1</span> Idea inicial</h2>
+        <p>En las clases anteriores estudiamos dos ideas importantes: la <strong>corriente eléctrica</strong>, que indica cuánta carga circula por unidad de tiempo, y la <strong>resistencia eléctrica</strong>, que indica cuánta oposición ofrece un conductor al movimiento de esas cargas.</p>
+        <p>Pero falta una pregunta clave: ¿qué "empuja" a las cargas para que se muevan por el circuito? Esa idea se describe con el <strong>voltaje</strong>, también llamado <strong>tensión eléctrica</strong> o <strong>diferencia de potencial</strong>.</p>
+        <div class="definition">
+          <strong>Definición inicial:</strong> el voltaje es una medida de la energía que una fuente entrega a cada unidad de carga para moverla por un circuito.
+        </div>
+      </section>
+
+      <section>
+        <h2><span>2</span> ¿Qué es el voltaje?</h2>
+        <p>Una pila, una batería o una fuente de alimentación mantiene una diferencia eléctrica entre dos puntos: un borne positivo y un borne negativo. Esa diferencia permite que, al cerrar el circuito, las cargas se muevan de manera ordenada.</p>
+        <p>Una analogía útil es pensar en agua a distintas alturas. Si hay una diferencia de altura, el agua puede fluir. En electricidad, la diferencia no es de altura, sino de <strong>potencial eléctrico</strong>. La analogía ayuda, aunque tiene un límite: en un circuito no circula agua, circulan cargas.</p>
+        <div class="formula-box">
+          <div class="formula">\[V=\frac{E}{q}\]</div>
+          <div>
+            <p><strong>\(V\):</strong> voltaje o tensión eléctrica.</p>
+            <p><strong>\(E\):</strong> energía transferida.</p>
+            <p><strong>\(q\):</strong> carga eléctrica.</p>
+            <p>La unidad es el volt: \(1\,V=1\,J/C\).</p>
+          </div>
+        </div>
+        <div class="teacher-note">
+          <strong>Idea docente:</strong> una pila de \(9\,V\) no "tiene 9 amperes". Significa que puede entregar \(9\,J\) de energía por cada coulomb de carga que atraviesa la fuente.
+        </div>
+      </section>
+
+      <section>
+        <h2><span>3</span> Circuito simple</h2>
+        <p>Un circuito simple necesita una fuente de voltaje, conductores y un receptor o resistencia, como una lamparita. Si el circuito está cerrado, puede circular corriente. Si está abierto, no hay camino completo para las cargas.</p>
+        <figure class="figure">
+          <img src="../assets/circuito_simple.png" alt="Diagrama de circuito simple con fuente de voltaje, resistencia y corriente eléctrica">
+          <figcaption>En un circuito cerrado, la fuente aporta tensión, la resistencia se opone al paso de cargas y la corriente circula por el camino conductor.</figcaption>
+        </figure>
+        <p>En este apunte trabajaremos con circuitos simples de una sola resistencia equivalente. Más adelante se puede ampliar a circuitos en serie y en paralelo.</p>
+      </section>
+
+      <section>
+        <h2><span>4</span> Relación con corriente y resistencia</h2>
+        <p>Ahora podemos unir las tres ideas centrales de esta secuencia. La corriente depende del voltaje aplicado y de la resistencia del circuito.</p>
+        <div class="relation-grid">
+          <div class="relation-card"><strong>Voltaje \(V\):</strong> energía por unidad de carga. Es el "empuje" eléctrico de la fuente.</div>
+          <div class="relation-card"><strong>Corriente \(I\):</strong> carga por unidad de tiempo. Es el flujo de cargas.</div>
+          <div class="relation-card"><strong>Resistencia \(R\):</strong> oposición al movimiento de las cargas.</div>
+        </div>
+        <p>Si aumenta el voltaje y la resistencia se mantiene igual, suele circular más corriente. Si aumenta la resistencia y el voltaje se mantiene igual, circula menos corriente.</p>
+      </section>
+
+      <section>
+        <h2><span>5</span> Ley de Ohm</h2>
+        <p>Para muchos conductores metálicos a temperatura aproximadamente constante, la tensión aplicada y la corriente son directamente proporcionales. Esa relación se conoce como <strong>Ley de Ohm</strong>.</p>
+        <div class="formula-box">
+          <div class="formula">\[V=I\cdot R\]</div>
+          <div>
+            <p><strong>\(V\):</strong> tensión o voltaje, medido en volt \(V\).</p>
+            <p><strong>\(I\):</strong> corriente eléctrica, medida en ampere \(A\).</p>
+            <p><strong>\(R\):</strong> resistencia eléctrica, medida en ohmio \(\Omega\).</p>
+            <p>La relación de unidades es: \(1\,V=1\,A\cdot\Omega\).</p>
+          </div>
+        </div>
+        <div class="teacher-note">
+          <strong>Cuidado conceptual:</strong> la Ley de Ohm no reemplaza lo aprendido antes. Lo integra: corriente describe el flujo, resistencia describe la oposición y voltaje describe la energía disponible por unidad de carga.
+        </div>
+      </section>
+
+      <section>
+        <h2><span>6</span> Despejes útiles</h2>
+        <p>Según el dato que falte, se puede reorganizar la fórmula:</p>
+        <div class="steps">
+          <div class="step"><strong>Para averiguar voltaje:</strong> \(\displaystyle V=I\cdot R\)</div>
+          <div class="step"><strong>Para averiguar corriente:</strong> \(\displaystyle I=\frac{V}{R}\)</div>
+          <div class="step"><strong>Para averiguar resistencia:</strong> \(\displaystyle R=\frac{V}{I}\)</div>
+        </div>
+        <div class="teacher-note">
+          <strong>Consejo de resolución:</strong> antes de calcular, verificar que el voltaje esté en volt, la corriente en ampere y la resistencia en ohmios.
+        </div>
+      </section>
+
+      <section>
+        <h2><span>7</span> Sistema de unidades</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Magnitud</th>
+              <th>Símbolo</th>
+              <th>Unidad SI</th>
+              <th>Interpretación</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Voltaje o tensión</td>
+              <td>\(V\)</td>
+              <td>volt \(V\)</td>
+              <td>Energía por unidad de carga: \(1\,V=1\,J/C\).</td>
+            </tr>
+            <tr>
+              <td>Corriente eléctrica</td>
+              <td>\(I\)</td>
+              <td>ampere \(A\)</td>
+              <td>Carga por unidad de tiempo: \(1\,A=1\,C/s\).</td>
+            </tr>
+            <tr>
+              <td>Resistencia eléctrica</td>
+              <td>\(R\)</td>
+              <td>ohmio \(\Omega\)</td>
+              <td>Oposición al movimiento de las cargas.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2><span>8</span> Gráfico \(V(I)\)</h2>
+        <p>Si un conductor cumple la Ley de Ohm, el gráfico de voltaje en función de la corriente es una recta que pasa por el origen. La pendiente de esa recta representa la resistencia.</p>
+        <figure class="figure">
+          <img src="../assets/grafico_ley_de_ohm_v_vs_i.png" alt="Gráfico de voltaje en función de corriente para un conductor óhmico">
+          <figcaption>En un gráfico \(V(I)\), la pendiente de la recta es \(R=\frac{V}{I}\). Una recta más inclinada representa mayor resistencia.</figcaption>
+        </figure>
+        <p class="graph-note">Lectura del gráfico: cada punto relaciona un valor de corriente con un valor de voltaje. Si al duplicar \(I\) también se duplica \(V\), la relación es proporcional.</p>
+        <div class="teacher-note">
+          <strong>Condición importante:</strong> para un conductor óhmico, cada resistencia tiene una pendiente característica en el gráfico \(V(I)\), siempre que la temperatura se mantenga aproximadamente constante. Si la temperatura cambia mucho, la resistencia del material también puede cambiar y la recta puede dejar de representar el mismo valor de \(R\).
+        </div>
+        <figure class="figure">
+          <img src="../assets/resistencias_pendientes.png" alt="Gráfico V versus I para diferentes resistencias con pendientes distintas">
+          <figcaption>Cada recta representa una resistencia diferente a temperatura constante: cuanto mayor es la pendiente, mayor es el valor de \(R\).</figcaption>
+        </figure>
+      </section>
+
+      <section>
+        <h2><span>9</span> Ejemplo resuelto 1: averiguar corriente</h2>
+        <div class="example">
+          <p><strong>Problema:</strong> una lamparita tiene una resistencia de \(6\,\Omega\) y se conecta a una pila de \(12\,V\). ¿Qué corriente circula?</p>
+          <p><strong>Datos:</strong> \(R=6\,\Omega\); \(V=12\,V\); \(I=?\)</p>
+          <p><strong>Fórmula:</strong> \(\displaystyle I=\frac{V}{R}\)</p>
+          <p><strong>Reemplazo:</strong> \(\displaystyle I=\frac{12\,V}{6\,\Omega}=2\,A\)</p>
+          <p><strong>Resultado:</strong> \(I=2\,A\)</p>
+          <p><strong>Interpretación:</strong> por la lamparita circulan \(2\,C\) de carga por segundo.</p>
+        </div>
+      </section>
+
+      <section>
+        <h2><span>10</span> Ejemplo resuelto 2: averiguar voltaje</h2>
+        <div class="example">
+          <p><strong>Problema:</strong> por una resistencia de \(8\,\Omega\) circula una corriente de \(0{,}5\,A\). ¿Qué voltaje se aplicó?</p>
+          <p><strong>Datos:</strong> \(R=8\,\Omega\); \(I=0{,}5\,A\); \(V=?\)</p>
+          <p><strong>Fórmula:</strong> \(\displaystyle V=I\cdot R\)</p>
+          <p><strong>Reemplazo:</strong> \(\displaystyle V=0{,}5\,A\cdot8\,\Omega=4\,V\)</p>
+          <p><strong>Resultado:</strong> \(V=4\,V\)</p>
+          <p><strong>Interpretación:</strong> la fuente entregó \(4\,J\) por cada coulomb de carga.</p>
+        </div>
+      </section>
+
+      <section>
+        <h2><span>11</span> Ejemplo resuelto 3: averiguar resistencia</h2>
+        <div class="example">
+          <p><strong>Problema:</strong> un dispositivo se conecta a \(9\,V\) y circula una corriente de \(0{,}3\,A\). ¿Cuál es su resistencia?</p>
+          <p><strong>Datos:</strong> \(V=9\,V\); \(I=0{,}3\,A\); \(R=?\)</p>
+          <p><strong>Fórmula:</strong> \(\displaystyle R=\frac{V}{I}\)</p>
+          <p><strong>Reemplazo:</strong> \(\displaystyle R=\frac{9\,V}{0{,}3\,A}=30\,\Omega\)</p>
+          <p><strong>Resultado:</strong> \(R=30\,\Omega\)</p>
+          <p><strong>Interpretación:</strong> el dispositivo ofrece una oposición de \(30\,\Omega\) al paso de la corriente.</p>
+        </div>
+      </section>
+
+      <section>
+        <h2><span>12</span> Actividades</h2>
+        <ol class="exercises">
+          <li>Explica con tus palabras qué significa que una pila tenga \(1{,}5\,V\). Usá la idea de energía por unidad de carga.<span class="work-line"></span></li>
+          <li>Una resistencia de \(4\,\Omega\) se conecta a \(12\,V\). Calcula la corriente que circula.<span class="work-line"></span></li>
+          <li>Por una resistencia de \(10\,\Omega\) circula \(0{,}2\,A\). Calcula el voltaje aplicado.<span class="work-line"></span></li>
+          <li>Un dispositivo recibe \(6\,V\) y por él circulan \(0{,}5\,A\). Calcula su resistencia.<span class="work-line"></span></li>
+          <li>Si se mantiene la misma resistencia y se duplica el voltaje, ¿qué ocurre con la corriente? Justifica usando \(I=\frac{V}{R}\).<span class="work-line"></span></li>
+          <li>Si se mantiene el mismo voltaje y se duplica la resistencia, ¿qué ocurre con la corriente? Justifica con una comparación numérica sencilla.<span class="work-line"></span></li>
+          <li>Completa la tabla aplicando la Ley de Ohm.
+            <table>
+              <thead>
+                <tr>
+                  <th>\(V\)</th>
+                  <th>\(I\)</th>
+                  <th>\(R\)</th>
+                  <th>Dato que se busca</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>\(12\,V\)</td>
+                  <td>_____</td>
+                  <td>\(3\,\Omega\)</td>
+                  <td>\(I\)</td>
+                </tr>
+                <tr>
+                  <td>_____</td>
+                  <td>\(2\,A\)</td>
+                  <td>\(5\,\Omega\)</td>
+                  <td>\(V\)</td>
+                </tr>
+                <tr>
+                  <td>\(9\,V\)</td>
+                  <td>\(0{,}3\,A\)</td>
+                  <td>_____</td>
+                  <td>\(R\)</td>
+                </tr>
+              </tbody>
+            </table>
+            <span class="work-line"></span>
+          </li>
+          <li>En un gráfico \(V(I)\), una recta pasa por el punto \(I=2\,A\), \(V=10\,V\). Calcula la resistencia a partir de la pendiente \(R=\frac{V}{I}\).<span class="work-line"></span></li>
+          <li>Un estudiante dice: "si la resistencia es mayor, siempre hay más corriente". ¿Está bien? Corrige la afirmación y explica qué variable debería mantenerse constante para comparar.<span class="work-line"></span></li>
+          <li>Actividad integradora: un cable tiene cierta resistencia y se conecta a una fuente. Explica en un párrafo cómo se relacionan voltaje, corriente y resistencia usando las tres clases: \(I=\frac{q}{t}\), \(R=\rho\frac{L}{A}\) y \(V=I\cdot R\).<span class="work-line"></span></li>
+        </ol>
+      </section>
+
+      <section>
+        <h2><span>13</span> Preguntas para pensar</h2>
+        <ul>
+          <li>¿Por qué no es correcto confundir voltaje con corriente?</li>
+          <li>¿Qué rol cumple la batería en un circuito simple?</li>
+          <li>¿Por qué una resistencia muy alta puede hacer que la corriente sea pequeña aunque exista voltaje?</li>
+          <li>¿Qué representa la pendiente en un gráfico \(V(I)\)?</li>
+          <li>¿Qué condiciones deberían mantenerse constantes para comprobar experimentalmente la Ley de Ohm?</li>
+        </ul>
+      </section>
+
+      <footer>
+        <strong>Sugerencia de trabajo:</strong> pedir que cada resolución incluya datos, fórmula, despeje si corresponde, reemplazo numérico, resultado, unidad e interpretación física.
+      </footer>
+    </article>
+  </main>
+</body>
+</html>
