@@ -1,0 +1,983 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Apunte: potencia y energía eléctrica</title>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["\\(", "\\)"]],
+        displayMath: [["\\[", "\\]"]]
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+  <style>
+    :root {
+      --ink: #15191d;
+      --muted: #5c646c;
+      --paper: #e8e2d6;
+      --page: #fffdf7;
+      --line: #d6c9af;
+      --accent: #1d3557;
+      --accent-soft: #edf3f7;
+      --gold: #f2c230;
+      --warm: #fff6d8;
+      --danger: #b94a37;
+      --green: #2f6b4f;
+      --cool: #e8f4ee;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background:
+        linear-gradient(rgba(21, 25, 29, 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(21, 25, 29, 0.045) 1px, transparent 1px),
+        var(--paper);
+      background-size: 28px 28px;
+      color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.68;
+      overflow-x: hidden;
+    }
+
+    mjx-container {
+      max-width: 100%;
+      overflow-x: auto;
+      overflow-y: hidden;
+    }
+
+    main {
+      width: 100%;
+      max-width: 920px;
+      margin: 28px auto;
+      padding: 0 16px;
+    }
+
+    .page {
+      width: 100%;
+      background:
+        linear-gradient(rgba(29, 53, 87, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(29, 53, 87, 0.035) 1px, transparent 1px),
+        var(--page);
+      background-size: 24px 24px;
+      border: 1px solid #ddd6c8;
+      box-shadow: 0 18px 50px rgba(31, 41, 51, 0.13);
+      padding: 62px 72px;
+    }
+
+    .doc-header {
+      position: relative;
+      border-bottom: 1px solid var(--line);
+      padding: 0 0 24px 24px;
+      margin-bottom: 30px;
+    }
+
+    .doc-header::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 4px;
+      bottom: 26px;
+      width: 8px;
+      background: var(--gold);
+    }
+
+    .cover {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(210px, 230px);
+      gap: 28px;
+      align-items: start;
+    }
+
+    .scientist-card {
+      width: 100%;
+      max-width: 230px;
+      border: 1px solid #2a4a78;
+      background: #fffdf7;
+      padding: 8px;
+      box-shadow: 8px 8px 0 rgba(242, 194, 48, 0.75);
+      font-family: "Segoe UI", Arial, sans-serif;
+      overflow-wrap: break-word;
+    }
+
+    .scientist-card img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      filter: sepia(0.16) contrast(1.04);
+      background: #ede7d9;
+      color: transparent;
+      font-size: 0;
+    }
+
+    .scientist-card figcaption {
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: 0.78rem;
+      line-height: 1.35;
+      text-align: center;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--accent);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      max-width: 720px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 2.68rem;
+      font-weight: 900;
+    }
+
+    .subtitle {
+      max-width: 760px;
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 1.08rem;
+      overflow-wrap: break-word;
+    }
+
+    .meta {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 22px;
+      font-size: 0.9rem;
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    .meta div {
+      border: 1px solid var(--line);
+      padding: 9px 10px;
+      background: #faf8f2;
+    }
+
+    section {
+      margin-top: 30px;
+    }
+
+    h2 {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 10px;
+      font-size: 1.38rem;
+      color: #16252b;
+      font-family: Georgia, "Times New Roman", serif;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 5px;
+    }
+
+    h2 span {
+      color: #111827;
+      background: var(--gold);
+      min-width: 28px;
+      height: 28px;
+      display: inline-grid;
+      place-items: center;
+      font-size: 0.95rem;
+      font-weight: 900;
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    h3 {
+      margin: 18px 0 8px;
+      font-size: 1.05rem;
+    }
+
+    p {
+      margin: 0 0 11px;
+      max-width: 68ch;
+      font-size: 1.02rem;
+      overflow-wrap: break-word;
+    }
+
+    .definition, .example, .teacher-note {
+      margin: 16px 0;
+      border-left: 5px solid var(--gold);
+      background: var(--accent-soft);
+      padding: 14px 16px;
+    }
+
+    .teacher-note {
+      border-left-color: #d29a22;
+      background: var(--warm);
+    }
+
+    .example {
+      border-left-color: var(--green);
+      background: var(--cool);
+    }
+
+    .formula-box {
+      display: grid;
+      grid-template-columns: 245px 1fr;
+      gap: 18px;
+      align-items: center;
+      margin: 18px 0;
+      border: 1px solid var(--line);
+      background: #faf8f2;
+      padding: 16px;
+    }
+
+    .formula {
+      display: grid;
+      place-items: center;
+      min-height: 110px;
+      min-width: 0;
+      background: #101820;
+      color: white;
+      font-size: 1.55rem;
+      font-weight: 850;
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    .formula mjx-container {
+      font-size: 135% !important;
+    }
+
+    .relation-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 16px 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    .relation-card {
+      border: 1px solid var(--line);
+      background: #fbfaf6;
+      padding: 12px;
+    }
+
+    .relation-card strong {
+      color: var(--accent);
+    }
+
+    .unit-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 16px 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    .unit-card {
+      border: 1px solid var(--line);
+      background: #fbfaf6;
+      padding: 12px;
+      min-height: 110px;
+    }
+
+    .unit-card .unit {
+      display: block;
+      color: var(--accent);
+      font-size: 1.35rem;
+      font-weight: 900;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 14px 0;
+      font-size: 0.95rem;
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    th, td {
+      border: 1px solid var(--line);
+      padding: 10px 11px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #ede7d9;
+    }
+
+    .figure {
+      margin: 18px 0;
+      border: 1px solid var(--line);
+      background: #fbfaf6;
+      padding: 12px;
+    }
+
+    .figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .figure figcaption {
+      margin-top: 9px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      text-align: center;
+      font-style: italic;
+      overflow-wrap: break-word;
+    }
+
+    .joule-diagram {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 10px;
+      margin: 16px 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    .joule-step {
+      position: relative;
+      border: 1px solid var(--line);
+      background: #fbfaf6;
+      padding: 14px 12px;
+      min-height: 118px;
+    }
+
+    .joule-step strong {
+      display: block;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+
+    .heat-mark {
+      color: var(--danger);
+      font-weight: 900;
+    }
+
+    .exercises {
+      margin: 12px 0 0;
+      padding-left: 24px;
+    }
+
+    .exercises li {
+      margin: 0 0 16px;
+      padding-left: 4px;
+      break-inside: avoid;
+    }
+
+    .work-line {
+      display: block;
+      height: 34px;
+      margin-top: 8px;
+      border-bottom: 1px solid #c9c1b4;
+    }
+
+    footer {
+      margin-top: 32px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    @media (max-width: 900px) {
+      .page {
+        padding: 46px 40px;
+      }
+
+      h1 {
+        font-size: 2.35rem;
+      }
+
+      .cover {
+        grid-template-columns: minmax(0, 1fr) minmax(190px, 210px);
+        gap: 22px;
+      }
+
+      .formula-box {
+        grid-template-columns: 210px 1fr;
+      }
+
+      .relation-grid,
+      .unit-strip,
+      .joule-diagram {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 700px) {
+      html,
+      body {
+        width: 100%;
+        max-width: 100vw;
+      }
+
+      main {
+        width: 100%;
+        max-width: 100vw;
+        margin: 0;
+        padding: 0;
+      }
+
+      .page {
+        width: 100%;
+        max-width: 100vw;
+        overflow-x: hidden;
+        padding: 30px clamp(16px, 5vw, 24px);
+        border: 0;
+        box-shadow: none;
+      }
+
+      .doc-header {
+        width: 100%;
+        max-width: calc(100vw - 36px);
+        padding-left: 18px;
+      }
+
+      section,
+      footer,
+      .cover,
+      .cover > div,
+      h1,
+      h2,
+      p {
+        max-width: 100%;
+        min-width: 0;
+      }
+
+      .subtitle,
+      p,
+      li {
+        width: 100%;
+        max-width: 100%;
+        overflow-wrap: break-word;
+        word-break: normal;
+      }
+
+      .cover,
+      .meta,
+      .formula-box,
+      .relation-grid,
+      .unit-strip,
+      .joule-diagram {
+        grid-template-columns: 1fr;
+      }
+
+      .meta {
+        gap: 6px;
+      }
+
+      .scientist-card {
+        width: min(100%, 260px);
+        max-width: 260px;
+        margin-top: 8px;
+      }
+
+      h1 {
+        font-size: 1.88rem;
+      }
+
+      h2 {
+        align-items: flex-start;
+        font-size: 1.22rem;
+      }
+
+      h2 span {
+        flex: 0 0 28px;
+      }
+
+      p {
+        font-size: 0.95rem;
+        line-height: 1.72;
+      }
+
+      .subtitle {
+        font-size: 0.98rem;
+      }
+
+      .formula-box {
+        padding: 12px;
+      }
+
+      .formula {
+        min-height: 92px;
+      }
+
+      .figure {
+        padding: 7px;
+        margin-left: -6px;
+        margin-right: -6px;
+      }
+
+      .figure figcaption {
+        font-size: 0.82rem;
+        text-align: left;
+      }
+
+      table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+        font-size: 0.86rem;
+      }
+
+      th, td {
+        padding: 8px 9px;
+      }
+
+      .exercises {
+        padding-left: 20px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .eyebrow {
+        font-size: 0.72rem;
+        letter-spacing: 0.08em;
+      }
+
+      h1 {
+        font-size: 1.68rem;
+      }
+
+      h2 {
+        gap: 8px;
+        font-size: 1.14rem;
+      }
+
+      .definition,
+      .example,
+      .teacher-note {
+        padding: 12px 13px;
+      }
+
+      .formula {
+        font-size: 1.24rem;
+      }
+    }
+
+    @media print {
+      @page {
+        size: A4;
+        margin: 16mm;
+      }
+
+      body {
+        background: white;
+      }
+
+      main {
+        width: auto;
+        margin: 0;
+        padding: 0;
+      }
+
+      .page {
+        border: 0;
+        box-shadow: none;
+        padding: 0;
+      }
+
+      section, li, .formula-box, .figure, .example, .teacher-note {
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <article class="page">
+      <header class="doc-header">
+        <div class="cover">
+          <div>
+            <p class="eyebrow">Sistemas Multi Física - Profesor Javier Pereyra</p>
+            <h1>Potencia eléctrica y energía eléctrica</h1>
+            <p class="subtitle">Apunte de estudio para integrar circuitos simples, Ley de Ohm, watts, kilowatts, kilowatt-hora y efecto Joule.</p>
+          </div>
+          <figure class="scientist-card">
+            <img src="../assets/watt.jpg" alt="Retrato de James Watt">
+            <figcaption>James Watt fue un ingeniero e inventor escocés del siglo XVIII. Sus mejoras a la máquina de vapor fueron clave para la Revolución Industrial; la unidad de potencia, el watt, lleva su apellido.</figcaption>
+          </figure>
+        </div>
+        <div class="meta">
+          <div><strong>Curso:</strong> Secundaria</div>
+          <div><strong>Tema:</strong> Potencia y energía eléctrica</div>
+          <div><strong>Unidades:</strong> W, kW, J, kWh</div>
+        </div>
+      </header>
+
+      <section>
+        <h2><span>1</span> Idea inicial</h2>
+        <p>En las clases anteriores estudiamos corriente, resistencia y tensión. Ahora vamos a mirar el circuito desde otra pregunta: <strong>¿cuánta energía transforma por segundo?</strong></p>
+        <p>Una lamparita, una resistencia, un cargador o un motor reciben energía eléctrica y la transforman en otras formas: luz, calor, movimiento, sonido o energía química almacenada en una batería.</p>
+        <div class="definition">
+          <strong>Definición inicial:</strong> la potencia eléctrica indica la rapidez con que un dispositivo transforma energía eléctrica.
+        </div>
+        <p>Una analogía útil: no es lo mismo llenar un balde gota a gota que con una manguera potente. La energía total puede ser la misma, pero la potencia indica qué tan rápido ocurre el proceso.</p>
+      </section>
+
+      <section>
+        <h2><span>2</span> Circuito simple: lo que ya sabemos</h2>
+        <p>En un circuito simple cerrado, una fuente aporta tensión, circula corriente y el receptor presenta resistencia. Con la Ley de Ohm ya podemos relacionar esas tres magnitudes:</p>
+        <div class="formula-box">
+          <div class="formula">\[V=I\cdot R\]</div>
+          <div>
+            <p><strong>\(V\):</strong> tensión o diferencia de potencial.</p>
+            <p><strong>\(I\):</strong> corriente eléctrica.</p>
+            <p><strong>\(R\):</strong> resistencia eléctrica.</p>
+          </div>
+        </div>
+        <figure class="figure">
+          <img src="../assets/circuito_simple.png" alt="Diagrama de circuito simple con fuente de voltaje, resistencia y corriente eléctrica">
+          <figcaption>En un circuito simple, la fuente entrega energía a las cargas y el receptor transforma esa energía en luz, calor, movimiento u otra forma útil.</figcaption>
+        </figure>
+      </section>
+
+      <section>
+        <h2><span>3</span> Potencia eléctrica</h2>
+        <p>En física, la potencia se define como energía transformada por unidad de tiempo:</p>
+        <div class="formula-box">
+          <div class="formula">\[P=\frac{E}{t}\]</div>
+          <div>
+            <p><strong>\(P\):</strong> potencia.</p>
+            <p><strong>\(E\):</strong> energía transformada.</p>
+            <p><strong>\(t\):</strong> tiempo durante el cual ocurre la transformación.</p>
+          </div>
+        </div>
+        <p>En electricidad, si conocemos la tensión aplicada y la corriente que circula, la potencia se calcula con:</p>
+        <div class="formula-box">
+          <div class="formula">\[P=V\cdot I\]</div>
+          <div>
+            <p>Si el voltaje aumenta y la corriente se mantiene, la potencia aumenta.</p>
+            <p>Si la corriente aumenta y el voltaje se mantiene, también aumenta la potencia.</p>
+            <p>Esta relación permite estimar cuánta energía por segundo transforma un dispositivo eléctrico.</p>
+          </div>
+        </div>
+        <div class="teacher-note">
+          <strong>Nota docente:</strong> en esta clase ya podemos usar Ley de Ohm porque fue trabajada antes. Por eso también aparecerán fórmulas derivadas como \(P=I^2R\) y \(P=\frac{V^2}{R}\).
+        </div>
+      </section>
+
+      <section>
+        <h2><span>4</span> Watt y kilowatt</h2>
+        <p>La unidad de potencia en el Sistema Internacional es el <strong>watt</strong>, cuyo símbolo es \(W\). Un watt equivale a transformar un joule de energía por segundo:</p>
+        <div class="formula-box">
+          <div class="formula">\[1\,W=1\,\frac{J}{s}\]</div>
+          <div>
+            <p>Una potencia pequeña transforma poca energía por segundo.</p>
+            <p>Una potencia grande transforma mucha energía por segundo.</p>
+            <p>Para potencias domésticas se usa mucho el <strong>kilowatt</strong>.</p>
+          </div>
+        </div>
+        <div class="unit-strip">
+          <div class="unit-card">
+            <span class="unit">W</span>
+            <strong>watt</strong>
+            <p>Unidad básica de potencia. Ejemplo: una lámpara LED puede tener \(9\,W\).</p>
+          </div>
+          <div class="unit-card">
+            <span class="unit">kW</span>
+            <strong>kilowatt</strong>
+            <p>\(1\,kW=1000\,W\). Se usa para potencias mayores, como calefactores o motores.</p>
+          </div>
+          <div class="unit-card">
+            <span class="unit">J/s</span>
+            <strong>joule por segundo</strong>
+            <p>Ayuda a recordar que la potencia habla de rapidez de transformación de energía.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2><span>5</span> Energía eléctrica y kilowatt-hora</h2>
+        <p>La energía eléctrica consumida depende de dos cosas: la potencia del dispositivo y el tiempo durante el cual funciona.</p>
+        <div class="formula-box">
+          <div class="formula">\[E=P\cdot t\]</div>
+          <div>
+            <p><strong>Si \(P\) está en watts y \(t\) en segundos:</strong> la energía queda en joules.</p>
+            <p><strong>Si \(P\) está en kilowatts y \(t\) en horas:</strong> la energía queda en kilowatt-hora.</p>
+          </div>
+        </div>
+        <p>El <strong>kilowatt-hora</strong>, escrito \(kWh\), es una unidad práctica para medir energía eléctrica en consumos domiciliarios. No es una unidad de potencia: es una unidad de energía.</p>
+        <div class="formula-box">
+          <div class="formula">\[1\,kWh=3{,}6\times10^6\,J\]</div>
+          <div>
+            <p>Un consumo de \(1\,kWh\) significa usar una potencia de \(1\,kW\) durante \(1\,h\).</p>
+            <p>También puede ser \(0{,}5\,kW\) durante \(2\,h\), o \(2\,kW\) durante \(0{,}5\,h\).</p>
+          </div>
+        </div>
+        <div class="teacher-note">
+          <strong>Cuidado común:</strong> \(kW\) mide potencia; \(kWh\) mide energía. Confundirlos es como confundir velocidad con distancia recorrida.
+        </div>
+      </section>
+
+      <section>
+        <h2><span>6</span> Potencia, resistencia y Ley de Ohm</h2>
+        <p>Como \(P=V\cdot I\) y \(V=I\cdot R\), podemos obtener otras formas útiles de calcular potencia en circuitos simples.</p>
+        <div class="relation-grid">
+          <div class="relation-card">
+            <strong>Con tensión y corriente:</strong>
+            \[
+              P=V\cdot I
+            \]
+          </div>
+          <div class="relation-card">
+            <strong>Con corriente y resistencia:</strong>
+            \[
+              P=I^2\cdot R
+            \]
+          </div>
+          <div class="relation-card">
+            <strong>Con tensión y resistencia:</strong>
+            \[
+              P=\frac{V^2}{R}
+            \]
+          </div>
+        </div>
+        <p>Estas fórmulas describen el mismo fenómeno desde datos distintos. La elección depende de qué información tenga el problema.</p>
+      </section>
+
+      <section>
+        <h2><span>7</span> El efecto Joule</h2>
+        <p>Cuando una corriente atraviesa un conductor con resistencia, parte de la energía eléctrica se transforma en energía térmica. Este fenómeno se conoce como <strong>efecto Joule</strong>.</p>
+        <figure class="figure">
+          <img src="../assets/resistencia-conductor.png" alt="Modelo microscópico de resistencia eléctrica con electrones libres e interacciones en una red metálica">
+          <figcaption>Las interacciones microscópicas entre cargas móviles y material conductor explican por qué una resistencia puede calentarse cuando circula corriente.</figcaption>
+        </figure>
+        <div class="formula-box">
+          <div class="formula">\[P_J=I^2\cdot R\]</div>
+          <div>
+            <p><strong>\(P_J\):</strong> potencia térmica disipada por efecto Joule.</p>
+            <p><strong>\(I\):</strong> corriente que circula.</p>
+            <p><strong>\(R\):</strong> resistencia del elemento.</p>
+          </div>
+        </div>
+        <p>Si esa potencia se mantiene durante un intervalo de tiempo, la energía térmica transformada puede calcularse como:</p>
+        <div class="formula-box">
+          <div class="formula">\[E_J=I^2\cdot R\cdot t\]</div>
+          <div>
+            <p><strong>\(E_J\):</strong> energía transformada en calor por efecto Joule.</p>
+            <p><strong>\(t\):</strong> tiempo de funcionamiento.</p>
+            <p>Con \(P\) en watts y \(t\) en segundos, la energía queda en joules.</p>
+          </div>
+        </div>
+        <div class="joule-diagram">
+          <div class="joule-step">
+            <strong>1. Circula corriente</strong>
+            Las cargas se mueven por el conductor cuando el circuito está cerrado.
+          </div>
+          <div class="joule-step">
+            <strong>2. Hay resistencia</strong>
+            El material se opone al movimiento ordenado de las cargas.
+          </div>
+          <div class="joule-step">
+            <strong>3. Aparece calor</strong>
+            Parte de la energía eléctrica se transforma en energía térmica <span class="heat-mark">\(Q\)</span>.
+          </div>
+        </div>
+        <p>El efecto Joule puede ser útil, por ejemplo en una pava eléctrica, una tostadora o un secador de pelo. Pero también puede ser una pérdida no deseada, como el calentamiento de cables cuando circula demasiada corriente.</p>
+      </section>
+
+      <section>
+        <h2><span>8</span> Sistema de unidades</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Magnitud</th>
+              <th>Símbolo</th>
+              <th>Unidad habitual</th>
+              <th>Relación importante</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Potencia eléctrica</td>
+              <td>\(P\)</td>
+              <td>watt \(W\)</td>
+              <td>\(P=V\cdot I\)</td>
+            </tr>
+            <tr>
+              <td>Potencia grande</td>
+              <td>\(P\)</td>
+              <td>kilowatt \(kW\)</td>
+              <td>\(1\,kW=1000\,W\)</td>
+            </tr>
+            <tr>
+              <td>Energía</td>
+              <td>\(E\)</td>
+              <td>joule \(J\)</td>
+              <td>\(E=P\cdot t\), con \(P\) en \(W\) y \(t\) en \(s\)</td>
+            </tr>
+            <tr>
+              <td>Energía eléctrica domiciliaria</td>
+              <td>\(E\)</td>
+              <td>kilowatt-hora \(kWh\)</td>
+              <td>\(E=P\cdot t\), con \(P\) en \(kW\) y \(t\) en \(h\)</td>
+            </tr>
+            <tr>
+              <td>Tensión</td>
+              <td>\(V\)</td>
+              <td>volt \(V\)</td>
+              <td>energía por unidad de carga</td>
+            </tr>
+            <tr>
+              <td>Corriente</td>
+              <td>\(I\)</td>
+              <td>ampere \(A\)</td>
+              <td>carga por unidad de tiempo</td>
+            </tr>
+            <tr>
+              <td>Resistencia</td>
+              <td>\(R\)</td>
+              <td>ohmio \(\Omega\)</td>
+              <td>oposición al paso de la corriente</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2><span>9</span> Ejemplo resuelto 1: potencia de una lámpara</h2>
+        <div class="example">
+          <p><strong>Problema:</strong> una lámpara funciona con una tensión de \(12\,V\) y por ella circula una corriente de \(0{,}50\,A\). ¿Qué potencia eléctrica transforma?</p>
+          <p><strong>Datos:</strong> \(V=12\,V\), \(I=0{,}50\,A\).</p>
+          <p><strong>Fórmula:</strong> \(P=V\cdot I\).</p>
+          <p><strong>Reemplazo:</strong> \(P=12\,V\cdot0{,}50\,A=6\,W\).</p>
+          <p><strong>Resultado:</strong> la potencia de la lámpara es \(6\,W\).</p>
+          <p><strong>Interpretación:</strong> la lámpara transforma \(6\,J\) de energía eléctrica por cada segundo de funcionamiento.</p>
+        </div>
+      </section>
+
+      <section>
+        <h2><span>10</span> Ejemplo resuelto 2: energía en kWh</h2>
+        <div class="example">
+          <p><strong>Problema:</strong> la lámpara anterior de \(6\,W\) permanece encendida durante \(15\) minutos. ¿Cuánta energía consume en \(kWh\)?</p>
+          <p><strong>Datos:</strong> \(P=6\,W=0{,}006\,kW\), \(t=15\,min=0{,}25\,h\).</p>
+          <p><strong>Fórmula:</strong> \(E=P\cdot t\).</p>
+          <p><strong>Reemplazo:</strong> \(E=0{,}006\,kW\cdot0{,}25\,h=0{,}0015\,kWh\).</p>
+          <p><strong>Resultado:</strong> consume \(0{,}0015\,kWh\).</p>
+          <p><strong>Interpretación:</strong> aunque la lámpara está encendida un rato, su consumo es pequeño porque su potencia también es pequeña.</p>
+        </div>
+      </section>
+
+      <section>
+        <h2><span>11</span> Ejemplo resuelto 3: efecto Joule</h2>
+        <div class="example">
+          <p><strong>Problema:</strong> una resistencia de \(10\,\Omega\) es atravesada por una corriente de \(2\,A\) durante \(30\,s\). ¿Qué potencia disipa por efecto Joule y qué energía térmica entrega?</p>
+          <p><strong>Datos:</strong> \(R=10\,\Omega\), \(I=2\,A\), \(t=30\,s\).</p>
+          <p><strong>Fórmula de potencia:</strong> \(P_J=I^2R\).</p>
+          <p><strong>Reemplazo:</strong> \(P_J=(2\,A)^2\cdot10\,\Omega=40\,W\).</p>
+          <p><strong>Energía:</strong> \(E=P\cdot t=40\,W\cdot30\,s=1200\,J\).</p>
+          <p><strong>Interpretación:</strong> durante esos \(30\,s\), la resistencia transforma \(1200\,J\) de energía eléctrica en energía térmica.</p>
+        </div>
+      </section>
+
+      <section>
+        <h2><span>12</span> Lectura de consumos eléctricos</h2>
+        <p>Para calcular energía en \(kWh\), conviene pasar la potencia a \(kW\) y el tiempo a horas. La tabla muestra algunos ejemplos cotidianos.</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Dispositivo</th>
+              <th>Potencia</th>
+              <th>Tiempo de uso</th>
+              <th>Energía</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Lámpara LED</td>
+              <td>\(10\,W=0{,}010\,kW\)</td>
+              <td>\(5\,h\)</td>
+              <td>\(0{,}050\,kWh\)</td>
+            </tr>
+            <tr>
+              <td>Ventilador</td>
+              <td>\(60\,W=0{,}060\,kW\)</td>
+              <td>\(4\,h\)</td>
+              <td>\(0{,}240\,kWh\)</td>
+            </tr>
+            <tr>
+              <td>Pava eléctrica</td>
+              <td>\(2000\,W=2{,}0\,kW\)</td>
+              <td>\(0{,}1\,h\)</td>
+              <td>\(0{,}20\,kWh\)</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="teacher-note">
+          <strong>Lectura física:</strong> un aparato de mucha potencia puede consumir poca energía si se usa poco tiempo; uno de baja potencia puede consumir bastante si queda encendido muchas horas.
+        </div>
+      </section>
+
+      <section>
+        <h2><span>13</span> Actividades</h2>
+        <ol class="exercises">
+          <li>Un motor funciona con \(24\,V\) y circula por él una corriente de \(3\,A\). Calcula su potencia eléctrica.<span class="work-line"></span></li>
+          <li>Una lámpara de \(40\,W\) está encendida durante \(2\,h\). Calcula la energía consumida en \(Wh\) y en \(kWh\).<span class="work-line"></span></li>
+          <li>Un calefactor tiene una potencia de \(1{,}5\,kW\). ¿Cuánta energía consume si funciona durante \(3\,h\)?<span class="work-line"></span></li>
+          <li>Una resistencia de \(8\,\Omega\) es atravesada por una corriente de \(2\,A\). Calcula la potencia disipada por efecto Joule.<span class="work-line"></span></li>
+          <li>Un dispositivo consume \(0{,}75\,kWh\) en \(3\,h\). ¿Cuál fue su potencia media en \(kW\) y en \(W\)?<span class="work-line"></span></li>
+          <li>Una resistencia está conectada a \(12\,V\) y tiene \(6\,\Omega\). Usa Ley de Ohm para hallar la corriente y luego calcula la potencia.<span class="work-line"></span></li>
+          <li>Completa la tabla usando \(E=P\cdot t\):<br>
+            <table>
+              <thead>
+                <tr>
+                  <th>Potencia</th>
+                  <th>Tiempo</th>
+                  <th>Energía</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>\(0{,}1\,kW\)</td>
+                  <td>\(5\,h\)</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>\(2\,kW\)</td>
+                  <td>\(0{,}25\,h\)</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>\(0{,}06\,kW\)</td>
+                  <td>\(10\,h\)</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </li>
+          <li>Dos lámparas consumen la misma energía total. La primera tiene mayor potencia que la segunda. ¿Cuál estuvo encendida menos tiempo? Justifica sin calcular.<span class="work-line"></span></li>
+          <li>Explica por qué un cable demasiado fino puede calentarse si se conecta a un aparato de mucha potencia.<span class="work-line"></span></li>
+          <li>Una pava eléctrica de \(2\,kW\) se usa \(6\) minutos por día. Calcula el consumo diario en \(kWh\).<span class="work-line"></span></li>
+        </ol>
+      </section>
+
+      <section>
+        <h2><span>14</span> Preguntas para pensar</h2>
+        <ul>
+          <li>¿Por qué \(kWh\) no mide potencia, aunque tenga la palabra kilowatt?</li>
+          <li>¿Puede un aparato de baja potencia consumir más energía que uno de alta potencia? ¿En qué situación?</li>
+          <li>¿Cuándo el efecto Joule es útil y cuándo puede ser peligroso?</li>
+          <li>Si una resistencia se calienta mucho, ¿qué variables del circuito podrían estar influyendo?</li>
+          <li>¿Por qué en las instalaciones eléctricas reales se cuida tanto el grosor de los cables?</li>
+        </ul>
+      </section>
+
+      <footer>
+        <strong>Sugerencia de trabajo:</strong> pedir que cada resolución incluya conversión de unidades, fórmula usada, reemplazo numérico, resultado con unidad e interpretación física.
+      </footer>
+    </article>
+  </main>
+</body>
+</html>
