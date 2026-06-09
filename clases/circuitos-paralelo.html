@@ -1,0 +1,663 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Apunte: circuitos en paralelo</title>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["\\(", "\\)"]],
+        displayMath: [["\\[", "\\]"]]
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+  <style>
+    :root {
+      --ink: #15191d;
+      --muted: #5c646c;
+      --paper: #e8e2d6;
+      --page: #fffdf7;
+      --line: #d6c9af;
+      --accent: #1d3557;
+      --accent-soft: #edf3f7;
+      --gold: #f2c230;
+      --warm: #fff6d8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background:
+        linear-gradient(rgba(21, 25, 29, 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(21, 25, 29, 0.045) 1px, transparent 1px),
+        var(--paper);
+      background-size: 28px 28px;
+      color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.68;
+      overflow-x: hidden;
+    }
+
+    mjx-container {
+      max-width: 100%;
+      overflow-x: auto;
+      overflow-y: hidden;
+    }
+
+    main {
+      width: 100%;
+      max-width: 920px;
+      margin: 28px auto;
+      padding: 0 16px;
+    }
+
+    .page {
+      width: 100%;
+      background:
+        linear-gradient(rgba(29, 53, 87, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(29, 53, 87, 0.035) 1px, transparent 1px),
+        var(--page);
+      background-size: 24px 24px;
+      border: 1px solid #ddd6c8;
+      box-shadow: 0 18px 50px rgba(31, 41, 51, 0.13);
+      padding: 62px 72px;
+    }
+
+    .doc-header {
+      position: relative;
+      border-bottom: 1px solid var(--line);
+      padding: 0 0 24px 24px;
+      margin-bottom: 30px;
+    }
+
+    .doc-header::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 4px;
+      bottom: 26px;
+      width: 8px;
+      background: var(--gold);
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--accent);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      max-width: 720px;
+      font-size: 2.75rem;
+      font-weight: 900;
+    }
+
+    .subtitle {
+      max-width: 760px;
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 1.08rem;
+      overflow-wrap: break-word;
+    }
+
+    .meta {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 22px;
+      font-size: 0.9rem;
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    .meta div {
+      border: 1px solid var(--line);
+      padding: 9px 10px;
+      background: #faf8f2;
+    }
+
+    section {
+      margin-top: 30px;
+    }
+
+    h2 {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 10px;
+      font-size: 1.38rem;
+      color: #16252b;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 5px;
+    }
+
+    h2 span {
+      color: #111827;
+      background: var(--gold);
+      min-width: 28px;
+      height: 28px;
+      display: inline-grid;
+      place-items: center;
+      font-size: 0.95rem;
+      font-weight: 900;
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    p {
+      margin: 0 0 11px;
+      max-width: 68ch;
+      font-size: 1.02rem;
+      overflow-wrap: break-word;
+    }
+
+    ul {
+      margin-top: 10px;
+      padding-left: 24px;
+    }
+
+    li {
+      margin-bottom: 9px;
+    }
+
+    .definition, .example, .teacher-note {
+      margin: 16px 0;
+      border-left: 5px solid var(--gold);
+      background: var(--accent-soft);
+      padding: 14px 16px;
+    }
+
+    .teacher-note {
+      border-left-color: #d29a22;
+      background: var(--warm);
+    }
+
+    .formula-box {
+      display: grid;
+      grid-template-columns: 245px 1fr;
+      gap: 18px;
+      align-items: center;
+      margin: 18px 0;
+      border: 1px solid var(--line);
+      background: #faf8f2;
+      padding: 16px;
+    }
+
+    .formula {
+      display: grid;
+      place-items: center;
+      min-height: 110px;
+      min-width: 0;
+      background: #101820;
+      color: white;
+      font-size: 1.45rem;
+      font-weight: 850;
+    }
+
+    .formula mjx-container {
+      font-size: 130% !important;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 14px 0;
+      font-size: 0.95rem;
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    th, td {
+      border: 1px solid var(--line);
+      padding: 10px 11px;
+      vertical-align: top;
+    }
+
+    th {
+      background: #f4ecd9;
+      color: #172235;
+      text-align: left;
+    }
+
+    .figure {
+      margin: 18px 0;
+      border: 1px solid var(--line);
+      background: #fbfaf6;
+      padding: 12px;
+    }
+
+    .figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .figure figcaption {
+      margin-top: 9px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      text-align: center;
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    .concept-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 16px 0;
+    }
+
+    .concept-card {
+      border: 1px solid var(--line);
+      background: #fbfaf6;
+      padding: 14px;
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    .concept-card strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--accent);
+    }
+
+    .concept-card p {
+      margin: 0;
+      font-size: 0.94rem;
+      line-height: 1.45;
+    }
+
+    .exercises {
+      margin: 12px 0 0;
+      padding-left: 24px;
+    }
+
+    .exercises li {
+      margin: 0 0 16px;
+      padding-left: 4px;
+      break-inside: avoid;
+    }
+
+    .work-line {
+      display: block;
+      min-height: 54px;
+      border-bottom: 1px dashed #b8aa91;
+      margin-top: 8px;
+    }
+
+    footer {
+      margin-top: 32px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    @media (max-width: 900px) {
+      .page {
+        padding: 46px 40px;
+      }
+
+      .formula-box,
+      .concept-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 700px) {
+      html,
+      body {
+        width: 100%;
+        max-width: 100vw;
+      }
+
+      main {
+        margin: 0 auto;
+        padding: 0;
+      }
+
+      .page {
+        border-left: 0;
+        border-right: 0;
+        box-shadow: none;
+        padding: 30px 18px;
+      }
+
+      .doc-header {
+        padding-left: 18px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      h2 {
+        align-items: start;
+        gap: 8px;
+        font-size: 1.18rem;
+      }
+
+      p,
+      li,
+      td,
+      th {
+        font-size: 0.96rem;
+      }
+
+      .meta {
+        grid-template-columns: 1fr;
+      }
+
+      .figure {
+        padding: 7px;
+        margin-left: -6px;
+        margin-right: -6px;
+      }
+
+      .figure figcaption {
+        font-size: 0.82rem;
+        text-align: left;
+      }
+
+      table {
+        display: block;
+        overflow-x: auto;
+        white-space: normal;
+      }
+    }
+
+    @media print {
+      @page {
+        size: A4;
+        margin: 16mm;
+      }
+
+      body {
+        background: white;
+      }
+
+      main {
+        width: auto;
+        margin: 0;
+        padding: 0;
+      }
+
+      .page {
+        border: 0;
+        box-shadow: none;
+        padding: 0;
+      }
+
+      section, li, .formula-box, .figure, .example, .teacher-note {
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <article class="page">
+      <header class="doc-header">
+        <p class="eyebrow">Sistemas Multi Física - Profesor Javier Pereyra</p>
+        <h1>Circuitos eléctricos en paralelo</h1>
+        <p class="subtitle">Apunte de estudio para comprender cómo se conectan ramas eléctricas, por qué la tensión es común, cómo se reparte la corriente y cómo se calcula la resistencia equivalente en paralelo.</p>
+        <div class="meta">
+          <div><strong>Curso:</strong> Secundaria</div>
+          <div><strong>Tema:</strong> Circuitos en paralelo</div>
+          <div><strong>Unidades:</strong> A, V, Ω</div>
+        </div>
+      </header>
+
+      <section>
+        <h2><span>1</span> Idea inicial</h2>
+        <p>Un circuito en paralelo es como una avenida que se divide en varias calles y después vuelve a unirse. Las cargas tienen más de un camino posible para circular.</p>
+        <p>Si conectamos tres lamparitas en paralelo, cada una forma una rama propia. Para los cálculos, cada lamparita puede modelarse como una resistencia eléctrica.</p>
+        <div class="definition">
+          <strong>Definición inicial:</strong> en un circuito en paralelo, los componentes están conectados entre los mismos dos puntos, de modo que cada uno queda en una rama diferente.
+        </div>
+      </section>
+
+      <section>
+        <h2><span>2</span> Esquema del circuito</h2>
+        <p>En el esquema se observa una pila, una llave cerrada y tres lamparitas conectadas en paralelo. Cada lamparita une los mismos dos conductores principales.</p>
+        <figure class="figure">
+          <img src="../assets/paralelo-2.png" alt="Esquema de circuito en paralelo con batería, llave y tres lamparitas">
+          <figcaption>En un circuito en paralelo aparecen ramas. La corriente total se divide en \(I_1\), \(I_2\) e \(I_3\), y cada lamparita queda sometida a la misma tensión de la pila.</figcaption>
+        </figure>
+        <div class="teacher-note">
+          <strong>Lectura guiada:</strong> pedir al curso que identifique los dos nodos comunes: el punto donde la corriente se divide y el punto donde las ramas vuelven a unirse.
+        </div>
+      </section>
+
+      <section>
+        <h2><span>3</span> Imagen realista</h2>
+        <p>En el montaje realista, las tres lamparitas están conectadas entre los mismos cables principales. Por eso, si una rama se interrumpe, las otras ramas pueden seguir funcionando.</p>
+        <figure class="figure">
+          <img src="../assets/paralelo-1.png" alt="Montaje realista de circuito en paralelo con batería, llave y tres lamparitas">
+          <figcaption>Montaje escolar de tres lamparitas en paralelo: cada lamparita ofrece un camino propio para la corriente eléctrica.</figcaption>
+        </figure>
+      </section>
+
+      <section>
+        <h2><span>4</span> Tensión en paralelo</h2>
+        <p>En paralelo, todas las ramas están conectadas a los mismos dos puntos de la fuente. Por eso, la tensión en cada resistencia es la misma que la tensión total.</p>
+        <div class="formula-box">
+          <div class="formula">\[V_T=V_1=V_2=V_3\]</div>
+          <div>
+            <p><strong>\(V_T\):</strong> tensión total entregada por la fuente.</p>
+            <p><strong>\(V_1, V_2, V_3\):</strong> tensión en cada resistencia o rama.</p>
+            <p>Si la batería es de \(12\,V\), cada resistencia conectada en paralelo recibe \(12\,V\).</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2><span>5</span> Corriente en paralelo</h2>
+        <p>La corriente total no atraviesa completa a cada resistencia. Al llegar a una bifurcación, se divide entre las ramas disponibles.</p>
+        <div class="formula-box">
+          <div class="formula">\[I_T=I_1+I_2+I_3\]</div>
+          <div>
+            <p><strong>\(I_T\):</strong> corriente total que entrega la fuente.</p>
+            <p><strong>\(I_1, I_2, I_3\):</strong> corrientes parciales en cada rama.</p>
+            <p>La rama con menor resistencia deja pasar mayor corriente.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2><span>6</span> Resistencia equivalente</h2>
+        <p>Agregar resistencias en paralelo agrega caminos alternativos para la corriente. Por eso, la resistencia equivalente disminuye.</p>
+        <div class="formula-box">
+          <div class="formula">\[\frac{1}{R_{eq}}=\frac{1}{R_1}+\frac{1}{R_2}+\frac{1}{R_3}\]</div>
+          <div>
+            <p><strong>\(R_{eq}\):</strong> resistencia equivalente del conjunto.</p>
+            <p><strong>\(R_1, R_2, R_3\):</strong> resistencias de cada rama.</p>
+            <p>En paralelo, \(R_{eq}\) siempre resulta menor que la menor resistencia individual.</p>
+          </div>
+        </div>
+        <div class="concept-grid">
+          <div class="concept-card">
+            <strong>Varias ramas</strong>
+            <p>La corriente tiene caminos alternativos para volver a la fuente.</p>
+          </div>
+          <div class="concept-card">
+            <strong>Tensión común</strong>
+            <p>Cada rama está conectada a los mismos dos puntos del circuito.</p>
+          </div>
+          <div class="concept-card">
+            <strong>Menor resistencia total</strong>
+            <p>Más ramas disponibles facilitan el paso de la corriente total.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2><span>7</span> Caso especial: resistencias iguales</h2>
+        <p>Cuando varias resistencias iguales se conectan en paralelo, el cálculo se simplifica. Si hay \(n\) resistencias iguales de valor \(R\), la resistencia equivalente es:</p>
+        <div class="formula-box">
+          <div class="formula">\[R_{eq}=\frac{R}{n}\]</div>
+          <div>
+            <p><strong>\(R\):</strong> valor de cada resistencia igual.</p>
+            <p><strong>\(n\):</strong> cantidad de ramas iguales conectadas en paralelo.</p>
+            <p>Por ejemplo, tres resistencias de \(12\,\Omega\) en paralelo equivalen a \(4\,\Omega\).</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2><span>8</span> Sistema de unidades</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Magnitud</th>
+              <th>Símbolo</th>
+              <th>Unidad SI</th>
+              <th>En circuitos en paralelo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Corriente eléctrica</td>
+              <td>\(I\)</td>
+              <td>ampere \(A\)</td>
+              <td>La corriente total se reparte entre las ramas.</td>
+            </tr>
+            <tr>
+              <td>Tensión</td>
+              <td>\(V\)</td>
+              <td>volt \(V\)</td>
+              <td>Es la misma en cada rama.</td>
+            </tr>
+            <tr>
+              <td>Resistencia</td>
+              <td>\(R\)</td>
+              <td>ohmio \(\Omega\)</td>
+              <td>Cada rama puede tener una resistencia diferente.</td>
+            </tr>
+            <tr>
+              <td>Resistencia equivalente</td>
+              <td>\(R_{eq}\)</td>
+              <td>ohmio \(\Omega\)</td>
+              <td>Representa una sola resistencia que reemplaza a todas las ramas.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2><span>9</span> Ejemplo resuelto 1</h2>
+        <div class="example">
+          <p><strong>Problema:</strong> tres resistencias de \(6\,\Omega\), \(12\,\Omega\) y \(4\,\Omega\) se conectan en paralelo a una batería de \(12\,V\). Calcula la resistencia equivalente, la corriente en cada rama y la corriente total.</p>
+          <p><strong>Datos:</strong> \(R_1=6\,\Omega\), \(R_2=12\,\Omega\), \(R_3=4\,\Omega\), \(V_T=12\,V\).</p>
+          <p><strong>Tensión en cada rama:</strong> \(V_1=V_2=V_3=12\,V\).</p>
+          <p><strong>Resistencia equivalente:</strong> \(\frac{1}{R_{eq}}=\frac{1}{6\,\Omega}+\frac{1}{12\,\Omega}+\frac{1}{4\,\Omega}=\frac{6}{12}\), entonces \(R_{eq}=2\,\Omega\).</p>
+          <p><strong>Corrientes parciales:</strong> \(I_1=\frac{12\,V}{6\,\Omega}=2\,A\), \(I_2=\frac{12\,V}{12\,\Omega}=1\,A\), \(I_3=\frac{12\,V}{4\,\Omega}=3\,A\).</p>
+          <p><strong>Corriente total:</strong> \(I_T=2\,A+1\,A+3\,A=6\,A\).</p>
+          <p><strong>Interpretación:</strong> la rama de \(4\,\Omega\) conduce más corriente porque ofrece menor oposición. La resistencia equivalente queda por debajo de \(4\,\Omega\), la menor resistencia individual.</p>
+        </div>
+      </section>
+
+      <section>
+        <h2><span>10</span> Ejemplo resuelto 2</h2>
+        <div class="example">
+          <p><strong>Problema:</strong> dos lámparas iguales de \(24\,\Omega\) se conectan en paralelo a una fuente de \(12\,V\). Calcula \(R_{eq}\), la corriente por cada lámpara y la corriente total.</p>
+          <p><strong>Datos:</strong> \(R_1=R_2=24\,\Omega\), \(V_T=12\,V\), \(n=2\).</p>
+          <p><strong>Resistencia equivalente:</strong> \(R_{eq}=\frac{R}{n}=\frac{24\,\Omega}{2}=12\,\Omega\).</p>
+          <p><strong>Corriente por rama:</strong> \(I_1=I_2=\frac{12\,V}{24\,\Omega}=0{,}50\,A\).</p>
+          <p><strong>Corriente total:</strong> \(I_T=0{,}50\,A+0{,}50\,A=1{,}00\,A\).</p>
+          <p><strong>Interpretación:</strong> las lámparas iguales reciben la misma tensión y conducen la misma corriente. Si una se desconecta, la otra conserva su conexión con la fuente.</p>
+        </div>
+      </section>
+
+      <section>
+        <h2><span>11</span> ¿Qué pasa si se abre una rama?</h2>
+        <p>Si una rama se abre, deja de circular corriente por esa rama, pero las demás pueden seguir funcionando porque todavía tienen un camino cerrado.</p>
+        <p>Esta es una diferencia importante con los circuitos en serie. En las instalaciones domiciliarias, los artefactos se conectan en paralelo para que cada uno reciba la misma tensión y pueda encenderse o apagarse de manera independiente.</p>
+        <div class="teacher-note">
+          <strong>Aplicación cotidiana:</strong> si apagás una lámpara de tu casa, la heladera no debería protestar. Eso ocurre porque no están en serie, sino en ramas paralelas del circuito.
+        </div>
+      </section>
+
+      <section>
+        <h2><span>12</span> Actividades</h2>
+        <ol class="exercises">
+          <li>Observa el esquema de la sección 2. Explica por qué las tres lamparitas están en paralelo y no en serie.<span class="work-line"></span></li>
+          <li>Dos resistencias de \(10\,\Omega\) y \(20\,\Omega\) se conectan en paralelo a una fuente de \(10\,V\). Calcula la corriente en cada rama y la corriente total.<span class="work-line"></span></li>
+          <li>Tres resistencias iguales de \(15\,\Omega\) se conectan en paralelo. Calcula la resistencia equivalente usando \(R_{eq}=\frac{R}{n}\).<span class="work-line"></span></li>
+          <li>Un circuito en paralelo tiene \(R_1=6\,\Omega\), \(R_2=3\,\Omega\) y \(V_T=12\,V\). Calcula \(I_1\), \(I_2\) e \(I_T\).<span class="work-line"></span></li>
+          <li>Completa la tabla para circuitos en paralelo:<br>
+            <table>
+              <thead>
+                <tr>
+                  <th>\(R_1\)</th>
+                  <th>\(R_2\)</th>
+                  <th>\(R_3\)</th>
+                  <th>\(V_T\)</th>
+                  <th>\(I_1\)</th>
+                  <th>\(I_2\)</th>
+                  <th>\(I_3\)</th>
+                  <th>\(I_T\)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>\(4\,\Omega\)</td>
+                  <td>\(6\,\Omega\)</td>
+                  <td>\(12\,\Omega\)</td>
+                  <td>\(12\,V\)</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>\(8\,\Omega\)</td>
+                  <td>\(8\,\Omega\)</td>
+                  <td>\(8\,\Omega\)</td>
+                  <td>\(24\,V\)</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </li>
+          <li>Calcula la resistencia equivalente de \(R_1=12\,\Omega\) y \(R_2=12\,\Omega\) conectadas en paralelo. Luego compara el resultado con una conexión en serie de esas mismas resistencias.<span class="work-line"></span></li>
+          <li>Una fuente entrega \(9\,V\) a tres ramas en paralelo. ¿Qué tensión hay en cada rama? Justifica sin hacer cuentas largas.<span class="work-line"></span></li>
+          <li>En una rama circulan \(0{,}25\,A\), en otra \(0{,}40\,A\) y en una tercera \(0{,}15\,A\). Calcula la corriente total que entrega la fuente.<span class="work-line"></span></li>
+          <li>Si una resistencia de una rama se quema y queda como circuito abierto, ¿qué ocurre con las otras ramas? Compara con el caso de un circuito en serie.<span class="work-line"></span></li>
+          <li>Diseña en tu carpeta un circuito en paralelo con pila, llave y tres lamparitas. Marca \(V_T\), \(I_T\), \(I_1\), \(I_2\) e \(I_3\).<span class="work-line"></span></li>
+        </ol>
+      </section>
+
+      <section>
+        <h2><span>13</span> Preguntas para pensar</h2>
+        <ul>
+          <li>¿Por qué la resistencia equivalente en paralelo puede ser menor que cada resistencia individual?</li>
+          <li>¿Qué significa decir que dos resistencias están conectadas entre los mismos dos puntos?</li>
+          <li>¿Por qué los artefactos de una casa no se conectan todos en serie?</li>
+          <li>Si una rama tiene menor resistencia, ¿qué ocurre con la corriente de esa rama?</li>
+          <li>¿Qué mediciones harías con un multímetro para comprobar que dos lámparas están en paralelo?</li>
+        </ul>
+      </section>
+
+      <footer>
+        <strong>Sugerencia de trabajo:</strong> pedir que cada resolución incluya esquema, identificación de ramas, datos, fórmula, reemplazo numérico, resultado con unidad e interpretación física. En paralelo, insistir en tensión común, corriente repartida y resistencia equivalente menor.
+      </footer>
+    </article>
+  </main>
+</body>
+</html>
