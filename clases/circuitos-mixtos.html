@@ -1,0 +1,687 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Apunte: circuitos mixtos</title>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["\\(", "\\)"]],
+        displayMath: [["\\[", "\\]"]]
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+  <style>
+    :root {
+      --ink: #15191d;
+      --muted: #5c646c;
+      --paper: #e8e2d6;
+      --page: #fffdf7;
+      --line: #d6c9af;
+      --accent: #1d3557;
+      --accent-soft: #edf3f7;
+      --gold: #f2c230;
+      --warm: #fff6d8;
+      --green: #2f6b4f;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background:
+        linear-gradient(rgba(21, 25, 29, 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(21, 25, 29, 0.045) 1px, transparent 1px),
+        var(--paper);
+      background-size: 28px 28px;
+      color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.68;
+      overflow-x: hidden;
+    }
+
+    mjx-container {
+      max-width: 100%;
+      overflow-x: auto;
+      overflow-y: hidden;
+    }
+
+    main {
+      width: 100%;
+      max-width: 920px;
+      margin: 28px auto;
+      padding: 0 16px;
+    }
+
+    .page {
+      width: 100%;
+      background:
+        linear-gradient(rgba(29, 53, 87, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(29, 53, 87, 0.035) 1px, transparent 1px),
+        var(--page);
+      background-size: 24px 24px;
+      border: 1px solid #ddd6c8;
+      box-shadow: 0 18px 50px rgba(31, 41, 51, 0.13);
+      padding: 62px 72px;
+    }
+
+    .doc-header {
+      position: relative;
+      border-bottom: 1px solid var(--line);
+      padding: 0 0 24px 24px;
+      margin-bottom: 30px;
+    }
+
+    .doc-header::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 4px;
+      bottom: 26px;
+      width: 8px;
+      background: var(--gold);
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--accent);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      max-width: 720px;
+      font-size: 2.75rem;
+      font-weight: 900;
+    }
+
+    .subtitle {
+      max-width: 760px;
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 1.08rem;
+      overflow-wrap: break-word;
+    }
+
+    .meta {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 22px;
+      font-size: 0.9rem;
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    .meta div {
+      border: 1px solid var(--line);
+      padding: 9px 10px;
+      background: #faf8f2;
+    }
+
+    section {
+      margin-top: 30px;
+    }
+
+    h2 {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 10px;
+      font-size: 1.38rem;
+      color: #16252b;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 5px;
+    }
+
+    h2 span {
+      color: #111827;
+      background: var(--gold);
+      min-width: 28px;
+      height: 28px;
+      display: inline-grid;
+      place-items: center;
+      font-size: 0.95rem;
+      font-weight: 900;
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    h3 {
+      margin: 18px 0 8px;
+      font-size: 1.05rem;
+    }
+
+    p {
+      margin: 0 0 11px;
+      max-width: 68ch;
+      font-size: 1.02rem;
+      overflow-wrap: break-word;
+    }
+
+    ul {
+      margin-top: 10px;
+      padding-left: 24px;
+    }
+
+    li {
+      margin-bottom: 9px;
+    }
+
+    .definition, .example, .teacher-note {
+      margin: 16px 0;
+      border-left: 5px solid var(--gold);
+      background: var(--accent-soft);
+      padding: 14px 16px;
+    }
+
+    .teacher-note {
+      border-left-color: #d29a22;
+      background: var(--warm);
+    }
+
+    .formula-box {
+      display: grid;
+      grid-template-columns: 245px 1fr;
+      gap: 18px;
+      align-items: center;
+      margin: 18px 0;
+      border: 1px solid var(--line);
+      background: #faf8f2;
+      padding: 16px;
+    }
+
+    .formula {
+      display: grid;
+      place-items: center;
+      min-height: 110px;
+      min-width: 0;
+      background: #101820;
+      color: white;
+      font-size: 1.34rem;
+      font-weight: 850;
+    }
+
+    .formula mjx-container {
+      font-size: 122% !important;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 14px 0;
+      font-size: 0.95rem;
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    th, td {
+      border: 1px solid var(--line);
+      padding: 10px 11px;
+      vertical-align: top;
+    }
+
+    th {
+      background: #f4ecd9;
+      color: #172235;
+      text-align: left;
+    }
+
+    .figure {
+      margin: 18px 0;
+      border: 1px solid var(--line);
+      background: #fbfaf6;
+      padding: 12px;
+    }
+
+    .figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .figure figcaption {
+      margin-top: 9px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      text-align: center;
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    .concept-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 16px 0;
+    }
+
+    .concept-card {
+      border: 1px solid var(--line);
+      background: #fbfaf6;
+      padding: 12px;
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    .concept-card strong {
+      display: block;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .steps {
+      counter-reset: step;
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .steps li {
+      counter-increment: step;
+      position: relative;
+      padding-left: 44px;
+      margin-bottom: 13px;
+    }
+
+    .steps li::before {
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: 1px;
+      width: 28px;
+      height: 28px;
+      display: grid;
+      place-items: center;
+      background: var(--accent);
+      color: white;
+      font-family: "Segoe UI", Arial, sans-serif;
+      font-weight: 800;
+    }
+
+    .exercises {
+      margin: 12px 0 0;
+      padding-left: 24px;
+    }
+
+    .exercises li {
+      margin: 0 0 16px;
+      padding-left: 4px;
+      break-inside: avoid;
+    }
+
+    .work-line {
+      display: block;
+      min-height: 54px;
+      border-bottom: 1px dashed #b8aa91;
+      margin-top: 8px;
+    }
+
+    footer {
+      margin-top: 32px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    @media (max-width: 900px) {
+      .page {
+        padding: 46px 40px;
+      }
+
+      .formula-box,
+      .concept-grid {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 2.35rem;
+      }
+    }
+
+    @media (max-width: 700px) {
+      html,
+      body {
+        width: 100%;
+        max-width: 100vw;
+      }
+
+      main {
+        width: 100%;
+        max-width: 100vw;
+        margin: 0;
+        padding: 0;
+      }
+
+      .page {
+        width: 100%;
+        max-width: 100vw;
+        overflow-x: hidden;
+        min-height: 100vh;
+        padding: 30px 18px;
+        border: 0;
+        box-shadow: none;
+      }
+
+      .doc-header {
+        padding-left: 18px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      h2 {
+        align-items: flex-start;
+        font-size: 1.18rem;
+      }
+
+      .meta {
+        grid-template-columns: 1fr;
+      }
+
+      .formula {
+        font-size: 1.05rem;
+        min-height: 92px;
+      }
+
+      .figure {
+        padding: 7px;
+        margin-left: -6px;
+        margin-right: -6px;
+      }
+
+      .figure figcaption {
+        font-size: 0.82rem;
+        text-align: left;
+      }
+
+      table {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+    }
+
+    @media print {
+      @page {
+        size: A4;
+        margin: 16mm;
+      }
+
+      body {
+        background: white;
+      }
+
+      main {
+        margin: 0;
+        padding: 0;
+        max-width: none;
+      }
+
+      .page {
+        box-shadow: none;
+        border: 0;
+        padding: 0;
+      }
+
+      section, li, .formula-box, .figure, .example, .teacher-note {
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <article class="page">
+      <header class="doc-header">
+        <p class="eyebrow">Sistemas Multi Física - Profesor Javier Pereyra</p>
+        <h1>Circuitos eléctricos mixtos</h1>
+        <p class="subtitle">Clase 7 para aprender a leer circuitos que combinan conexiones en serie y en paralelo, calcular resistencias equivalentes por etapas e interpretar cómo se reparten la tensión y la corriente.</p>
+        <div class="meta">
+          <div><strong>Área:</strong> Física</div>
+          <div><strong>Tema:</strong> Electricidad</div>
+          <div><strong>Nivel:</strong> Secundaria</div>
+        </div>
+      </header>
+
+      <section>
+        <h2><span>1</span> Idea inicial</h2>
+        <p>En las clases anteriores estudiamos dos estilos puros de conexión: serie y paralelo. En un circuito real, muchas veces aparecen mezclados. Por eso hablamos de <strong>circuitos mixtos</strong>.</p>
+        <p>La idea central es simple: una parte del circuito puede obligar a la corriente a pasar por un único camino, mientras otra parte puede ofrecer ramas alternativas. Es como salir del aula por un pasillo único y luego encontrar dos escaleras posibles para bajar.</p>
+        <div class="definition">
+          <strong>Definición:</strong> un circuito mixto combina elementos conectados en serie con elementos conectados en paralelo. Para resolverlo, se simplifica por partes hasta obtener una resistencia equivalente total.
+        </div>
+      </section>
+
+      <section>
+        <h2><span>2</span> Imagen realista del circuito</h2>
+        <p>En el montaje realista se ve una fuente, una llave, una lamparita en serie y luego una bifurcación con dos lamparitas en paralelo. La primera lamparita recibe toda la corriente; después, la corriente se divide entre las dos ramas.</p>
+        <figure class="figure">
+          <img src="../assets/mixto_real.png" alt="Montaje realista de circuito mixto con una lamparita en serie y dos lamparitas en paralelo">
+          <figcaption>Montaje escolar de circuito mixto: una parte funciona como conexión en serie y otra como conexión en paralelo.</figcaption>
+        </figure>
+      </section>
+
+      <section>
+        <h2><span>3</span> Esquema para leer el circuito</h2>
+        <p>El esquema permite ver con claridad la estructura eléctrica. \(R_1\) está en serie con un bloque formado por \(R_2\) y \(R_3\) en paralelo. Los puntos A y B son nodos: allí la corriente se divide y luego vuelve a reunirse.</p>
+        <figure class="figure">
+          <img src="../assets/mixto_esquema.png" alt="Esquema de circuito mixto con R1 en serie y R2 y R3 en paralelo entre dos nodos">
+          <figcaption>Lectura del esquema: \(R_2\) y \(R_3\) comparten los mismos dos nodos, por eso están en paralelo. Ese bloque completo está en serie con \(R_1\).</figcaption>
+        </figure>
+        <div class="teacher-note">
+          <strong>Lectura guiada:</strong> pedir al curso que siga el cable desde el polo positivo. Primero no hay bifurcación: aparece \(R_1\). Luego se llega al nodo A, donde el camino se divide entre \(R_2\) y \(R_3\). En el nodo B las ramas se unen.
+        </div>
+      </section>
+
+      <section>
+        <h2><span>4</span> Cómo reconocer serie y paralelo dentro de un mixto</h2>
+        <div class="concept-grid">
+          <div class="concept-card">
+            <strong>Serie</strong>
+            Elementos uno detrás de otro. La misma corriente atraviesa cada elemento de ese tramo.
+          </div>
+          <div class="concept-card">
+            <strong>Paralelo</strong>
+            Elementos conectados entre los mismos dos nodos. Comparten la misma tensión.
+          </div>
+          <div class="concept-card">
+            <strong>Mixto</strong>
+            Hay que resolver primero los grupos claros y reemplazarlos por resistencias equivalentes.
+          </div>
+        </div>
+        <p>Una pregunta útil para no perderse es: <em>¿estos dos elementos están entre los mismos dos puntos o uno está obligado a pasar después del otro?</em> Si comparten los dos puntos, están en paralelo. Si uno queda a continuación del otro en el único camino, están en serie.</p>
+      </section>
+
+      <section>
+        <h2><span>5</span> Método de resolución por etapas</h2>
+        <p>Los circuitos mixtos se resuelven como si fuéramos plegando el dibujo. Primero simplificamos una parte pequeña, luego usamos ese resultado para simplificar el circuito completo.</p>
+        <ol class="steps">
+          <li>Identificar nodos y ramas. Marcar qué resistencias están claramente en serie o en paralelo.</li>
+          <li>Resolver primero el grupo más interno o más evidente. En nuestro esquema, \(R_2\) y \(R_3\) están en paralelo.</li>
+          <li>Reemplazar ese grupo por una sola resistencia equivalente.</li>
+          <li>Resolver el circuito simplificado usando las reglas de serie, paralelo y Ley de Ohm.</li>
+          <li>Volver al circuito original para calcular corrientes o tensiones parciales si el problema lo pide.</li>
+        </ol>
+      </section>
+
+      <section>
+        <h2><span>6</span> Fórmulas necesarias</h2>
+        <div class="formula-box">
+          <div class="formula">\[R_{serie}=R_1+R_2+\cdots\]</div>
+          <div>
+            <p><strong>En serie:</strong> las resistencias se suman directamente.</p>
+            <p>La corriente es la misma en todos los elementos del tramo en serie.</p>
+          </div>
+        </div>
+        <div class="formula-box">
+          <div class="formula">\[\frac{1}{R_{paralelo}}=\frac{1}{R_1}+\frac{1}{R_2}+\cdots\]</div>
+          <div>
+            <p><strong>En paralelo:</strong> se suman las inversas de las resistencias.</p>
+            <p>La tensión es la misma en todas las ramas del bloque paralelo.</p>
+          </div>
+        </div>
+        <div class="formula-box">
+          <div class="formula">\[V=I\cdot R\]</div>
+          <div>
+            <p><strong>Ley de Ohm:</strong> permite relacionar tensión, corriente y resistencia.</p>
+            <p>En esta clase la usamos después de calcular la resistencia equivalente.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2><span>7</span> Sistema de unidades</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Magnitud</th>
+              <th>Símbolo</th>
+              <th>Unidad SI</th>
+              <th>Se usa para...</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Resistencia</td>
+              <td>\(R\)</td>
+              <td>ohm \((\Omega)\)</td>
+              <td>Medir la oposición al paso de la corriente.</td>
+            </tr>
+            <tr>
+              <td>Tensión</td>
+              <td>\(V\)</td>
+              <td>volt \((V)\)</td>
+              <td>Medir la energía entregada por unidad de carga.</td>
+            </tr>
+            <tr>
+              <td>Corriente</td>
+              <td>\(I\)</td>
+              <td>ampere \((A)\)</td>
+              <td>Medir la carga que circula por unidad de tiempo.</td>
+            </tr>
+            <tr>
+              <td>Potencia</td>
+              <td>\(P\)</td>
+              <td>watt \((W)\)</td>
+              <td>Analizar brillo, consumo o efecto térmico si se pide.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2><span>8</span> Ejemplo resuelto 1: paralelo dentro de serie</h2>
+        <div class="example">
+          <p><strong>Problema:</strong> \(R_1=4\,\Omega\) está en serie con un bloque paralelo formado por \(R_2=6\,\Omega\) y \(R_3=3\,\Omega\). La fuente entrega \(12\,V\). Calcula \(R_{eq}\), la corriente total y la tensión en \(R_1\).</p>
+          <p><strong>Datos:</strong> \(R_1=4\,\Omega\), \(R_2=6\,\Omega\), \(R_3=3\,\Omega\), \(V_T=12\,V\).</p>
+          <p><strong>Bloque paralelo:</strong> \(\frac{1}{R_{23}}=\frac{1}{6\,\Omega}+\frac{1}{3\,\Omega}=\frac{1}{6}+\frac{2}{6}=\frac{3}{6}\). Entonces \(R_{23}=2\,\Omega\).</p>
+          <p><strong>Resistencia equivalente total:</strong> \(R_{eq}=R_1+R_{23}=4\,\Omega+2\,\Omega=6\,\Omega\).</p>
+          <p><strong>Corriente total:</strong> \(I_T=\frac{V_T}{R_{eq}}=\frac{12\,V}{6\,\Omega}=2\,A\).</p>
+          <p><strong>Tensión en \(R_1\):</strong> \(V_1=I_T\cdot R_1=2\,A\cdot4\,\Omega=8\,V\).</p>
+          <p><strong>Interpretación:</strong> el bloque paralelo queda con \(4\,V\), porque la fuente entrega \(12\,V\) y \(R_1\) usa \(8\,V\). Esa tensión de \(4\,V\) es común para \(R_2\) y \(R_3\).</p>
+        </div>
+      </section>
+
+      <section>
+        <h2><span>9</span> Ejemplo resuelto 2: serie dentro de paralelo</h2>
+        <div class="example">
+          <p><strong>Problema:</strong> una rama tiene \(R_1=2\,\Omega\) y \(R_2=4\,\Omega\) en serie. Esa rama está en paralelo con \(R_3=6\,\Omega\). La fuente es de \(12\,V\). Calcula la resistencia equivalente y la corriente total.</p>
+          <p><strong>Datos:</strong> \(R_1=2\,\Omega\), \(R_2=4\,\Omega\), \(R_3=6\,\Omega\), \(V_T=12\,V\).</p>
+          <p><strong>Primera rama:</strong> \(R_{12}=R_1+R_2=2\,\Omega+4\,\Omega=6\,\Omega\).</p>
+          <p><strong>Paralelo final:</strong> \(\frac{1}{R_{eq}}=\frac{1}{R_{12}}+\frac{1}{R_3}=\frac{1}{6\,\Omega}+\frac{1}{6\,\Omega}=\frac{2}{6}\). Entonces \(R_{eq}=3\,\Omega\).</p>
+          <p><strong>Corriente total:</strong> \(I_T=\frac{V_T}{R_{eq}}=\frac{12\,V}{3\,\Omega}=4\,A\).</p>
+          <p><strong>Interpretación:</strong> las dos ramas tienen la misma resistencia equivalente, por eso la corriente total se reparte por igual: \(2\,A\) por cada rama.</p>
+        </div>
+      </section>
+
+      <section>
+        <h2><span>10</span> Errores comunes</h2>
+        <ul>
+          <li><strong>Sumar todo directamente:</strong> solo se puede hacer cuando todo está en serie.</li>
+          <li><strong>Aplicar paralelo a resistencias que no comparten nodos:</strong> para estar en paralelo deben estar conectadas entre los mismos dos puntos.</li>
+          <li><strong>Olvidar volver al circuito original:</strong> \(R_{eq}\) ayuda a calcular \(I_T\), pero las corrientes y tensiones parciales requieren mirar otra vez las ramas.</li>
+          <li><strong>Confundir tensión y corriente:</strong> en serie se conserva la corriente; en paralelo se conserva la tensión.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2><span>11</span> Actividades</h2>
+        <ol class="exercises">
+          <li>Observa el esquema de la sección 3. Explica por qué \(R_2\) y \(R_3\) están en paralelo y por qué ese bloque está en serie con \(R_1\).<span class="work-line"></span></li>
+          <li>Un circuito tiene \(R_1=5\,\Omega\) en serie con un paralelo de \(R_2=10\,\Omega\) y \(R_3=10\,\Omega\). Calcula \(R_{eq}\).<span class="work-line"></span></li>
+          <li>\(R_1=3\,\Omega\) está en serie con un paralelo de \(R_2=6\,\Omega\) y \(R_3=12\,\Omega\). Si \(V_T=14\,V\), calcula \(R_{eq}\) e \(I_T\).<span class="work-line"></span></li>
+          <li>Una rama tiene dos resistencias en serie de \(4\,\Omega\) y \(8\,\Omega\). Esa rama está en paralelo con una resistencia de \(12\,\Omega\). Calcula la resistencia equivalente total.<span class="work-line"></span></li>
+          <li>En el circuito del ejercicio 2, si la fuente es de \(20\,V\), calcula la corriente total y la tensión sobre \(R_1\).<span class="work-line"></span></li>
+          <li>Completa la tabla para un circuito donde \(R_1\) está en serie con \(R_2\parallel R_3\):<br>
+            <table>
+              <thead>
+                <tr>
+                  <th>\(R_1\)</th>
+                  <th>\(R_2\)</th>
+                  <th>\(R_3\)</th>
+                  <th>\(R_{23}\)</th>
+                  <th>\(R_{eq}\)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>\(2\,\Omega\)</td>
+                  <td>\(6\,\Omega\)</td>
+                  <td>\(6\,\Omega\)</td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>\(4\,\Omega\)</td>
+                  <td>\(8\,\Omega\)</td>
+                  <td>\(8\,\Omega\)</td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>\(1\,\Omega\)</td>
+                  <td>\(3\,\Omega\)</td>
+                  <td>\(6\,\Omega\)</td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+            <span class="work-line"></span>
+          </li>
+          <li>Una fuente de \(9\,V\) alimenta \(R_1=1\,\Omega\) en serie con \(R_2=4\,\Omega\) y \(R_3=4\,\Omega\) en paralelo. Calcula \(R_{eq}\), \(I_T\), \(V_1\) y la tensión del bloque paralelo.<span class="work-line"></span></li>
+          <li>En un circuito mixto, \(R_1=6\,\Omega\) y \(R_2=3\,\Omega\) están en serie dentro de una rama. Esa rama está en paralelo con \(R_3=9\,\Omega\). Si \(V_T=18\,V\), calcula \(I_T\).<span class="work-line"></span></li>
+          <li>Explica qué ocurriría con la corriente total si se agrega otra resistencia en paralelo al bloque \(R_2\parallel R_3\), manteniendo la misma fuente. ¿Aumenta, disminuye o queda igual? Justifica.<span class="work-line"></span></li>
+          <li>Dibuja un circuito mixto distinto al de la sección 3. Debe tener una fuente, una llave, al menos tres resistencias y marcas de nodos. Luego indica qué parte resolverías primero.<span class="work-line"></span></li>
+        </ol>
+      </section>
+
+      <section>
+        <h2><span>12</span> Preguntas para pensar</h2>
+        <ul>
+          <li>¿Por qué conviene simplificar un circuito mixto por etapas y no intentar resolver todo de una sola vez?</li>
+          <li>¿Puede una resistencia estar "cerca" de otra en el dibujo y aun así no estar en serie con ella?</li>
+          <li>¿Qué dato del esquema te permite afirmar que dos resistencias están en paralelo?</li>
+          <li>En una casa, ¿por qué sería poco práctico conectar todos los artefactos en serie?</li>
+        </ul>
+      </section>
+
+      <footer>
+        <strong>Sugerencia de trabajo:</strong> pedir que cada resolución incluya dibujo simplificado por etapas, identificación de nodos, cálculo de resistencia equivalente, Ley de Ohm y una interpretación física. En circuitos mixtos, el orden de lectura vale tanto como la cuenta.
+      </footer>
+    </article>
+  </main>
+</body>
+</html>
