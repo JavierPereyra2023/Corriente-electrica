@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Apunte: magnetismo, campo y fuerza magnética</title>
+  <script>
+    window.MathJax = { tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"]] } };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+  <style>
+    :root { --ink:#15191d; --muted:#5c646c; --paper:#e8e2d6; --page:#fffdf7; --line:#d6c9af; --accent:#1d3557; --accent-soft:#edf3f7; --gold:#f2c230; --warm:#fff6d8; --danger:#a33b32; }
+    * { box-sizing:border-box; }
+    body { margin:0; color:var(--ink); font-family:Georgia,"Times New Roman",serif; line-height:1.68; background:linear-gradient(rgba(21,25,29,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(21,25,29,.045) 1px,transparent 1px),var(--paper); background-size:28px 28px; }
+    mjx-container { max-width:100%; overflow-x:auto; overflow-y:hidden; }
+    main { width:min(100%,920px); margin:28px auto; padding:0 16px; }
+    .page { padding:62px 72px; background:linear-gradient(rgba(29,53,87,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(29,53,87,.035) 1px,transparent 1px),var(--page); background-size:24px 24px; border:1px solid #ddd6c8; box-shadow:0 18px 50px rgba(31,41,51,.13); }
+    .doc-header { position:relative; padding:0 0 24px 24px; margin-bottom:30px; border-bottom:1px solid var(--line); }
+    .doc-header::before { content:""; position:absolute; left:0; top:4px; bottom:26px; width:8px; background:var(--gold); }
+    .eyebrow { margin:0 0 10px; color:var(--accent); font:800 .82rem "Segoe UI",Arial,sans-serif; letter-spacing:.12em; text-transform:uppercase; }
+    h1,h2,h3 { margin:0; line-height:1.2; } h1 { font-size:2.65rem; } h3 { margin:18px 0 8px; font-size:1.08rem; color:var(--accent); }
+    .subtitle { margin:14px 0 0; color:var(--muted); font-size:1.08rem; }
+    .meta { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:22px; font: .9rem "Segoe UI",Arial,sans-serif; }
+    .meta div { padding:9px 10px; border:1px solid var(--line); background:#faf8f2; }
+    section { margin-top:30px; }
+    h2 { display:flex; align-items:baseline; gap:10px; margin-bottom:10px; padding-bottom:5px; color:#16252b; font-size:1.38rem; border-bottom:1px solid var(--line); }
+    h2 span { display:inline-grid; place-items:center; min-width:28px; height:28px; color:#111827; background:var(--gold); font:900 .95rem "Segoe UI",Arial,sans-serif; }
+    p { margin:0 0 11px; font-size:1.02rem; }
+    .definition,.example,.teacher-note { margin:16px 0; padding:14px 16px; border-left:5px solid var(--gold); background:var(--accent-soft); }
+    .teacher-note { border-left-color:#d29a22; background:var(--warm); }
+    .formula-box { display:grid; grid-template-columns:245px 1fr; gap:18px; align-items:center; margin:18px 0; padding:16px; border:1px solid var(--line); background:#faf8f2; }
+    .formula { display:grid; place-items:center; min-height:110px; padding:12px; color:white; background:#101820; font-size:1.35rem; font-weight:850; text-align:center; }
+    .figure { margin:18px 0; padding:12px; border:1px solid var(--line); background:#fbfaf6; }
+    .figure img { display:block; width:100%; height:auto; }
+    .figure figcaption { margin-top:9px; color:var(--muted); font-size:.9rem; text-align:center; font-style:italic; }
+    .material-grid,.case-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin:14px 0; }
+    .card { padding:13px 14px; border:1px solid var(--line); background:#fbfaf6; }
+    .card strong { color:var(--accent); }
+    table { width:100%; margin:14px 0; border-collapse:collapse; font:.93rem "Segoe UI",Arial,sans-serif; }
+    th,td { padding:9px 10px; border:1px solid var(--line); text-align:left; vertical-align:top; } th { background:#ede7d9; }
+    .vector-diagram { margin:16px 0; padding:14px; border:1px solid var(--line); background:#fbfaf6; }
+    .vector-diagram svg { display:block; width:100%; height:auto; max-height:310px; }
+    .calculation { margin:14px 0; padding:14px 16px; border:1px solid var(--line); background:#fbfaf6; overflow-x:auto; }
+    .exercises { margin:12px 0 0; padding-left:24px; } .exercises li { margin-bottom:17px; padding-left:4px; break-inside:avoid; }
+    .work-line { display:block; height:34px; margin-top:8px; border-bottom:1px solid #c9c1b4; }
+    footer { margin-top:32px; padding-top:14px; border-top:1px solid var(--line); color:var(--muted); font-size:.88rem; }
+    @media (max-width:760px) { html,body{width:100%;max-width:100vw;overflow-x:hidden}main{width:100%;max-width:100vw;margin:0;padding:0}.page{width:100%;max-width:100vw;overflow-x:hidden;padding:30px 18px;border:0;box-shadow:none}.doc-header{width:100%;max-width:100%;padding-left:18px}.eyebrow{font-size:.72rem;overflow-wrap:anywhere}h1,h2,h3,p,section,footer{max-width:100%;min-width:0;overflow-wrap:break-word}h1{font-size:1.9rem}h2{align-items:flex-start;font-size:1.22rem}.meta,.formula-box,.material-grid,.case-grid{grid-template-columns:minmax(0,1fr)}.figure{max-width:100%;padding:7px;margin-left:-6px;margin-right:-6px}.figure figcaption{text-align:left;font-size:.82rem}table{display:block;max-width:100%;overflow-x:auto;white-space:normal;font-size:.84rem}.formula{min-width:0;min-height:92px}.vector-diagram{max-width:100%;overflow:hidden}.exercises{padding-left:20px} }
+    @media print { @page{size:A4;margin:16mm} body{background:white} main{width:auto;margin:0;padding:0}.page{padding:0;border:0;box-shadow:none}.formula-box,.figure,.example,.teacher-note,.card,li{break-inside:avoid} }
+  </style>
+</head>
+<body>
+  <main><article class="page">
+    <header class="doc-header">
+      <p class="eyebrow">Sistemas Multi Física - Profesor Javier Pereyra</p>
+      <h1>Magnetismo: de los imanes al campo de la Tierra</h1>
+      <p class="subtitle">Polos, materiales magnéticos, campo magnético, geomagnetismo y fuerza sobre cargas en movimiento.</p>
+      <div class="meta"><div><strong>Curso:</strong> Secundaria superior</div><div><strong>Tema:</strong> Magnetismo</div><div><strong>Unidades:</strong> T, N, C, m/s</div></div>
+    </header>
+
+    <section><h2><span>1</span> Idea inicial: una interacción invisible</h2>
+      <p>Un imán puede atraer un clip sin tocarlo y una brújula puede orientarse aunque no veamos qué la guía. Estas observaciones muestran una interacción asociada a <strong>cargas eléctricas en movimiento</strong> y a los <strong>momentos magnéticos</strong> microscópicos de la materia.</p>
+      <div class="definition"><strong>Campo magnético:</strong> la magnitud vectorial \(\vec B\) describe, en cada punto, la intensidad, dirección y sentido de la interacción magnética. En el SI se mide en <strong>tesla (T)</strong>.</div>
+      <p>Las llamadas “líneas de campo” son un modelo: la tangente indica la dirección de \(\vec B\) y una mayor densidad de líneas representa un campo más intenso. No son hilos materiales.</p>
+    </section>
+
+    <section><h2><span>2</span> Imanes, polos y origen microscópico</h2>
+      <p>Todo imán posee dos regiones donde la interacción es más intensa: <strong>polo norte (N)</strong> y <strong>polo sur (S)</strong>. Polos iguales se repelen y polos opuestos se atraen. Fuera del imán, las líneas se dibujan de N hacia S; dentro regresan de S hacia N y forman lazos cerrados.</p>
+      <figure class="figure"><img src="../assets/atraccion-repulsion-imanes.png" alt="Comparación entre la atracción de polos magnéticos opuestos y la repulsión de polos magnéticos iguales"><figcaption><strong>Arriba:</strong> polos diferentes —representados en rojo y azul— se atraen y las fuerzas apuntan uno hacia el otro. <strong>Abajo:</strong> polos iguales —rojo frente a rojo— se repelen y las fuerzas apuntan en sentidos opuestos, alejando los imanes.</figcaption></figure>
+      <p>¿Por qué aparecen polos? Los electrones tienen momento magnético, ligado especialmente a su <em>espín</em>. En materiales ferro y ferrimagnéticos, muchos momentos se organizan en <strong>dominios</strong>. Si esos dominios se compensan, el objeto no actúa como imán permanente; si muchos se orientan de modo semejante, aparece un dipolo macroscópico.</p>
+      <div class="teacher-note"><strong>Al cortar un imán</strong> no se aísla un polo: aparecen imanes más pequeños, cada uno con N y S. Hasta hoy no se observaron monopolos magnéticos. La imagen de “mini brújulas” ayuda, aunque el origen profundo es cuántico.</div>
+      <figure class="figure"><img src="../assets/iman-campo-magnetico.png" alt="Imán de herradura rodeado por limaduras de hierro que revelan el patrón del campo magnético"><figcaption>Las limaduras se orientan según el campo y permiten visualizar su patrón en un plano; no son el campo ni muestran todo su volumen tridimensional.</figcaption></figure>
+    </section>
+
+    <section><h2><span>3</span> ¿Qué materiales son magnéticos?</h2>
+      <p>Toda materia responde de algún modo a un campo, pero muchas respuestas son demasiado débiles para percibirlas con un imán escolar. Por eso “magnético” no significa solamente “atraído con fuerza”.</p>
+      <div class="material-grid">
+        <div class="card"><strong>Diamagnéticos</strong><br>Respuesta inducida débil y opuesta al campo: cobre, bismuto, agua y grafito.</div>
+        <div class="card"><strong>Paramagnéticos</strong><br>Atracción débil mientras actúa el campo: aluminio, magnesio y oxígeno molecular.</div>
+        <div class="card"><strong>Ferromagnéticos</strong><br>Dominios, respuesta intensa y posible imantación remanente: hierro, cobalto, níquel y aleaciones.</div>
+        <div class="card"><strong>Ferrimagnéticos</strong><br>Momentos opuestos desiguales dejan un efecto neto: magnetita y ferritas.</div>
+      </div>
+      <div class="teacher-note"><strong>Ojo cotidiano:</strong> un clip de acero puede ser atraído por inducción aunque antes no fuera un imán. Madera y plástico muestran respuestas extremadamente pequeñas en la experiencia habitual.</div>
+    </section>
+
+    <section><h2><span>4</span> Propiedades del campo magnético</h2>
+      <table><thead><tr><th>Propiedad</th><th>Lectura física</th></tr></thead><tbody>
+        <tr><td>Es vectorial</td><td>En cada punto posee módulo, dirección y sentido.</td></tr>
+        <tr><td>Sus líneas no se cruzan</td><td>Un vector no puede tener dos direcciones distintas en el mismo punto.</td></tr>
+        <tr><td>Forma lazos cerrados</td><td>No comienzan ni terminan en polos magnéticos aislados.</td></tr>
+        <tr><td>Actúa sobre cargas móviles</td><td>La fuerza depende también de la velocidad y de su orientación respecto de \(\vec B\).</td></tr>
+      </tbody></table>
+    </section>
+
+    <section><h2><span>5</span> Geomagnetismo: la Tierra como sistema dinámico</h2>
+      <p>El campo terrestre se aproxima al de un dipolo inclinado, pero no es perfectamente simétrico y cambia con el tiempo. Su origen principal es la <strong>geodinamo</strong>: movimientos del hierro líquido conductor en el núcleo externo, junto con convección y rotación. La Tierra no es simplemente un imán permanente gigante.</p>
+      <figure class="figure"><img src="../assets/polos-geograficos-magneticos.png" alt="Comparación entre el eje geográfico de rotación y el eje magnético terrestre inclinado"><figcaption>El eje geográfico (azul, vertical en el esquema) y el eje magnético (dorado, inclinado) no coinciden. La figura es un modelo y no está a escala.</figcaption></figure>
+      <table><thead><tr><th>Concepto</th><th>Definición</th><th>¿Cambia?</th></tr></thead><tbody>
+        <tr><td>Polos geográficos</td><td>Intersecciones del eje de rotación con la superficie.</td><td>Son prácticamente fijos en la escala escolar.</td></tr>
+        <tr><td>Polos magnéticos</td><td>Zonas donde el campo es aproximadamente vertical.</td><td>Se desplazan y no coinciden con los geográficos.</td></tr>
+      </tbody></table>
+      <div class="teacher-note"><strong>Convención que confunde:</strong> el extremo N de la brújula apunta hacia el norte geográfico. Esa región lo atrae como un polo sur físico, aunque por su ubicación se la denomine “polo norte magnético”. Además, la brújula puede separarse del norte geográfico un ángulo llamado <strong>declinación magnética</strong>.</div>
+    </section>
+
+    <section><h2><span>6</span> Magnetosfera, Van Allen y auroras</h2>
+      <p>El viento solar comprime la magnetosfera del lado diurno y la alarga en una cola nocturna. La magnetosfera desvía y canaliza muchas partículas cargadas. Los <strong>cinturones de Van Allen</strong> son regiones donde quedan atrapadas partículas energéticas: no son una pared sólida ni bloquean toda radiación.</p>
+      <p>La magnetosfera y la atmósfera, trabajando juntas, reducen la radiación que alcanza la superficie y contribuyen a la habitabilidad. Las auroras ocurren cuando partículas energéticas son guiadas hacia regiones polares y excitan átomos y moléculas de la alta atmósfera; al desexcitarse, estos emiten luz.</p>
+      <figure class="figure"><img src="../assets/geomagnetismo-van-allen-auroras.png" alt="Tierra y magnetosfera frente al viento solar, con cinturones de Van Allen y auroras polares"><figcaption>Visualización esquemática: viento solar a la izquierda, magnetosfera comprimida de día y extendida de noche, cinturones de Van Allen alrededor de la Tierra y óvalos aurorales cerca de los polos.</figcaption></figure>
+    </section>
+
+    <section><h2><span>7</span> Fuerza magnética: condición vectorial</h2>
+      <div class="formula-box"><div class="formula">\[\vec F_m=q\,\vec v\times\vec B\]</div><div><p>El símbolo \(\times\) indica un <strong>producto vectorial</strong>. La fuerza resulta perpendicular al plano formado por \(\vec v\) y \(\vec B\).</p><p>Para \(q&gt;0\), su sentido se obtiene con la regla de la mano derecha. Para \(q&lt;0\), se invierte.</p></div></div>
+      <div class="vector-diagram"><svg viewBox="0 0 720 330" role="img" aria-label="Producto vectorial: velocidad hacia la derecha, campo entrando en la hoja y fuerza hacia arriba para una carga positiva">
+        <defs><marker id="arrow-force" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="context-stroke"/></marker></defs>
+        <rect x="1" y="1" width="718" height="328" rx="10" fill="#fffdf7" stroke="#d6c9af"/>
+        <text x="28" y="35" font-family="Arial" font-size="18" font-weight="700" fill="#1d3557">Carga positiva: q &gt; 0</text>
+        <g fill="#5c646c" font-family="Arial" font-size="22"><text x="95" y="92">⊗ B</text><text x="95" y="142">⊗ B</text><text x="95" y="192">⊗ B</text><text x="95" y="242">⊗ B</text></g>
+        <circle cx="338" cy="190" r="22" fill="#f2c230" stroke="#15191d" stroke-width="2"/><text x="338" y="198" text-anchor="middle" font-family="Arial" font-size="24" font-weight="bold">+</text>
+        <line x1="365" y1="190" x2="615" y2="190" stroke="#1d3557" stroke-width="7" marker-end="url(#arrow-force)"/><text x="540" y="167" font-family="Arial" font-size="24" fill="#1d3557">v = +v i</text>
+        <line x1="338" y1="162" x2="338" y2="60" stroke="#a33b32" stroke-width="7" marker-end="url(#arrow-force)"/><text x="355" y="82" font-family="Arial" font-size="24" fill="#a33b32">F = +F j</text>
+        <text x="75" y="285" font-family="Arial" font-size="17" fill="#5c646c">⊗ indica que B entra en la hoja: B = −B k.</text>
+        <text x="75" y="311" font-family="Arial" font-size="17" fill="#5c646c">Si q &lt; 0, el sentido de F se invierte.</text>
+      </svg></div>
+      <h3>Producto vectorial en \(\mathbb{R}^3\)</h3>
+      <p>Tomemos una partícula con velocidad hacia \(+x\) y un campo que entra en la hoja, es decir, hacia \(-z\):</p>
+      <div class="calculation">
+        \[\vec v=(v,0,0)=v\,\mathbf i,\qquad \vec B=(0,0,-B)=-B\,\mathbf k\]
+        \[\vec v\times\vec B=
+        \begin{vmatrix}
+        \mathbf i &amp; \mathbf j &amp; \mathbf k\\
+        v &amp; 0 &amp; 0\\
+        0 &amp; 0 &amp; -B
+        \end{vmatrix}
+        =0\,\mathbf i+vB\,\mathbf j+0\,\mathbf k=(0,vB,0)\]
+        \[\boxed{\vec F_m=q(\vec v\times\vec B)=(0,qvB,0)}\]
+      </div>
+      <p>Primero se calcula \(\vec v\times\vec B\); después se multiplica cada componente por la carga \(q\). Si \(q&gt;0\), la fuerza apunta hacia \(+y\). Si \(q&lt;0\), apunta hacia \(-y\).</p>
+      <div class="case-grid"><div class="card"><strong>\(\vec v\parallel\vec B\)</strong><br>La fuerza es cero.</div><div class="card"><strong>\(\vec v\perp\vec B\)</strong><br>La fuerza tiene módulo máximo.</div><div class="card"><strong>Partícula en reposo</strong><br>La fuerza magnética es cero.</div><div class="card"><strong>Siempre perpendicular</strong><br>Cambia la dirección de \(\vec v\), no su rapidez ni su energía cinética.</div></div>
+    </section>
+
+    <section><h2><span>8</span> Forma escalar y unidades</h2>
+      <div class="formula-box"><div class="formula">\[F_m=|q|\,v\,B\,\sin\theta\]</div><div><p>\(\theta\) es el ángulo entre \(\vec v\) y \(\vec B\). Se usa \(|q|\) porque calculamos el <strong>módulo</strong>; el signo de la carga determina el sentido.</p><p>\(1\,\mathrm T=1\,\mathrm{N\,s/(C\,m)}\).</p></div></div>
+      <table><thead><tr><th>Magnitud</th><th>Símbolo</th><th>Unidad SI</th></tr></thead><tbody><tr><td>Fuerza magnética</td><td>\(F_m\)</td><td>newton (N)</td></tr><tr><td>Carga</td><td>\(q\)</td><td>coulomb (C)</td></tr><tr><td>Velocidad</td><td>\(v\)</td><td>m/s</td></tr><tr><td>Campo magnético</td><td>\(B\)</td><td>tesla (T)</td></tr><tr><td>Ángulo</td><td>\(\theta\)</td><td>grado o radián</td></tr></tbody></table>
+    </section>
+
+    <section><h2><span>9</span> Ejemplo resuelto</h2>
+      <div class="example"><p><strong>Problema:</strong> un protón se mueve a \(3{,}0\times10^6\,\mathrm{m/s}\), perpendicular a un campo de \(0{,}20\,\mathrm T\). Calcular la fuerza magnética.</p><p><strong>Datos:</strong> \(|q|=1{,}60\times10^{-19}\,\mathrm C\), \(v=3{,}0\times10^6\,\mathrm{m/s}\), \(B=0{,}20\,\mathrm T\), \(\theta=90^\circ\).</p><p><strong>Fórmula:</strong> \(F_m=|q|vB\sin\theta\).</p><p><strong>Reemplazo:</strong> \(F_m=(1{,}60\times10^{-19})(3{,}0\times10^6)(0{,}20)\sin90^\circ\).</p><p><strong>Resultado:</strong> \(F_m=9{,}6\times10^{-14}\,\mathrm N\).</p><p><strong>Interpretación:</strong> aunque es pequeña, la fuerza puede curvar la trayectoria. Si \(\vec v\) apunta a la derecha y \(\vec B\) entra en la hoja, el protón se desvía hacia arriba; un electrón, hacia abajo.</p></div>
+      <h3>Aplicación: espectrómetro de masas</h3>
+      <p>Un espectrómetro de masas separa iones según su relación masa/carga. En la región analizadora, un campo magnético perpendicular a la velocidad curva las partículas. Como la fuerza magnética actúa como fuerza centrípeta:</p>
+      <div class="calculation">
+        \[|q|vB=\frac{mv^2}{r}\qquad\Longrightarrow\qquad \boxed{r=\frac{mv}{|q|B}}\]
+      </div>
+      <div class="example"><p><strong>Problema:</strong> un ion de carbono-12 con carga \(q=+e=1{,}60\times10^{-19}\,\mathrm C\), masa \(m=1{,}99\times10^{-26}\,\mathrm{kg}\) y velocidad \(v=2{,}0\times10^5\,\mathrm{m/s}\) entra perpendicularmente en \(B=0{,}50\,\mathrm T\).</p><p><strong>Producto vectorial:</strong> si \(\vec v=(2{,}0\times10^5,0,0)\,\mathrm{m/s}\) y \(\vec B=(0,0,-0{,}50)\,\mathrm T\), entonces \(\vec v\times\vec B=(0,1{,}0\times10^5,0)\). Al multiplicar por \(q\): \(\vec F=(0,1{,}60\times10^{-14},0)\,\mathrm N\).</p><p><strong>Radio:</strong> \(r=\frac{(1{,}99\times10^{-26})(2{,}0\times10^5)}{(1{,}60\times10^{-19})(0{,}50)}=4{,}98\times10^{-2}\,\mathrm m\approx5{,}0\,\mathrm{cm}\).</p><p><strong>Interpretación:</strong> con igual \(q\), \(v\) y \(B\), los iones de mayor masa describen radios mayores. Así pueden separarse isótopos. El campo cambia la dirección de la velocidad, no su módulo.</p></div>
+    </section>
+
+    <section><h2><span>10</span> Actividades</h2>
+      <ol class="exercises">
+        <li>Dibujá las líneas de \(\vec B\) de un imán de barra, con flechas fuera y dentro. Indicá dónde el campo es mayor y explicá por qué las líneas no se cruzan.<span class="work-line"></span></li>
+        <li>Predecí qué ocurre al cortar un imán en tres partes. Dibujá sus polos y refutá la frase “queda un polo norte aislado”.<span class="work-line"></span></li>
+        <li>Clasificá la respuesta esperada de un clip de acero, un alambre de cobre, papel de aluminio, una ferrita y un trozo de madera. ¿Por qué “no atraído visiblemente” no significa “sin respuesta magnética”?<span class="work-line"></span></li>
+        <li>Experiencia: colocá un imán debajo de una hoja y, con supervisión, distribuí pocas limaduras de hierro. Dibujá el patrón, ubicá cuatro brújulas imaginarias y anotá dos límites del modelo. Mantené el imán lejos de dispositivos electrónicos.<span class="work-line"></span></li>
+        <li>Armá un cuadro que compare polos geográficos y magnéticos según definición, origen, movilidad e instrumento de orientación. Explicá por qué una brújula no siempre apunta al norte geográfico exacto.<span class="work-line"></span></li>
+        <li>Observá la imagen de la magnetosfera e identificá viento solar, lado diurno, cola, cinturones y auroras. Corregí: “Los cinturones son una muralla que genera auroras y bloquea toda radiación”.<span class="work-line"></span></li>
+        <li>Una carga positiva se mueve hacia el este y \(\vec B\) apunta verticalmente hacia arriba. Aplicá la mano derecha para hallar \(\vec F_m\). Repetí para un electrón.<span class="work-line"></span></li>
+        <li>Calculá \(F_m\) para \(q=2{,}0\,\mu\mathrm C\), \(v=4{,}0\times10^3\,\mathrm{m/s}\), \(B=0{,}30\,\mathrm T\) y \(\theta=90^\circ\).<span class="work-line"></span></li>
+        <li>Con los datos del ejercicio anterior, calculá \(F_m\) para \(0^\circ\), \(30^\circ\), \(90^\circ\), \(150^\circ\) y \(180^\circ\). Construí un gráfico \(F(\theta)\): eje horizontal, ángulo; eje vertical, fuerza. Señalá ceros y máximo.<span class="work-line"></span></li>
+        <li>Una partícula con \(q=-3{,}2\times10^{-19}\,\mathrm C\) viaja a \(2{,}5\times10^6\,\mathrm{m/s}\) en \(B=0{,}40\,\mathrm T\), con \(\theta=30^\circ\). Calculá el módulo, explicá cómo influye el signo y decidí si cambia su rapidez.<span class="work-line"></span></li>
+      </ol>
+    </section>
+
+    <section><h2><span>11</span> Preguntas para pensar</h2>
+      <p>¿Por qué un imán atrae un clip que inicialmente no era un imán? ¿Por qué una brújula deja de ser confiable cerca de un imán potente? ¿Qué cambiaría en el movimiento de una carga si \(\vec v\) fuera paralela a \(\vec B\)?</p>
+    </section>
+    <footer>Sugerencia docente: combinar predicciones con regla de la mano derecha, observación de imágenes y cálculos; pedir siempre interpretación física, dirección y unidad.</footer>
+  </article></main>
+</body>
+</html>
