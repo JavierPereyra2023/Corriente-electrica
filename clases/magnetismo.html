@@ -39,7 +39,8 @@
     table { width:100%; margin:14px 0; border-collapse:collapse; font:.93rem "Segoe UI",Arial,sans-serif; }
     th,td { padding:9px 10px; border:1px solid var(--line); text-align:left; vertical-align:top; } th { background:#ede7d9; }
     .vector-diagram { margin:16px 0; padding:14px; border:1px solid var(--line); background:#fbfaf6; }
-    .vector-diagram svg { display:block; width:100%; height:auto; max-height:310px; }
+    .vector-diagram svg { display:block; width:100%; height:auto; }
+    .cyclotron-readout { margin:10px 0 0; padding:9px 12px; color:var(--accent); background:var(--accent-soft); font:700 .9rem "Segoe UI",Arial,sans-serif; }
     .calculation { margin:14px 0; padding:14px 16px; border:1px solid var(--line); background:#fbfaf6; overflow-x:auto; }
     .exercises { margin:12px 0 0; padding-left:24px; } .exercises li { margin-bottom:17px; padding-left:4px; break-inside:avoid; }
     .work-line { display:block; height:34px; margin-top:8px; border-bottom:1px solid #c9c1b4; }
@@ -108,48 +109,114 @@
     </section>
 
     <section><h2><span>7</span> Fuerza magnética: condición vectorial</h2>
-      <div class="formula-box"><div class="formula">\[\vec F_m=q\,\vec v\times\vec B\]</div><div><p>El símbolo \(\times\) indica un <strong>producto vectorial</strong>. La fuerza resulta perpendicular al plano formado por \(\vec v\) y \(\vec B\).</p><p>Para \(q&gt;0\), su sentido se obtiene con la regla de la mano derecha. Para \(q&lt;0\), se invierte.</p></div></div>
-      <div class="vector-diagram"><svg viewBox="0 0 720 330" role="img" aria-label="Producto vectorial: velocidad hacia la derecha, campo entrando en la hoja y fuerza hacia arriba para una carga positiva">
-        <defs><marker id="arrow-force" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="context-stroke"/></marker></defs>
-        <rect x="1" y="1" width="718" height="328" rx="10" fill="#fffdf7" stroke="#d6c9af"/>
-        <text x="28" y="35" font-family="Arial" font-size="18" font-weight="700" fill="#1d3557">Carga positiva: q &gt; 0</text>
-        <g fill="#5c646c" font-family="Arial" font-size="22"><text x="95" y="92">⊗ B</text><text x="95" y="142">⊗ B</text><text x="95" y="192">⊗ B</text><text x="95" y="242">⊗ B</text></g>
-        <circle cx="338" cy="190" r="22" fill="#f2c230" stroke="#15191d" stroke-width="2"/><text x="338" y="198" text-anchor="middle" font-family="Arial" font-size="24" font-weight="bold">+</text>
-        <line x1="365" y1="190" x2="615" y2="190" stroke="#1d3557" stroke-width="7" marker-end="url(#arrow-force)"/><text x="540" y="167" font-family="Arial" font-size="24" fill="#1d3557">v = +v i</text>
-        <line x1="338" y1="162" x2="338" y2="60" stroke="#a33b32" stroke-width="7" marker-end="url(#arrow-force)"/><text x="355" y="82" font-family="Arial" font-size="24" fill="#a33b32">F = +F j</text>
-        <text x="75" y="285" font-family="Arial" font-size="17" fill="#5c646c">⊗ indica que B entra en la hoja: B = −B k.</text>
-        <text x="75" y="311" font-family="Arial" font-size="17" fill="#5c646c">Si q &lt; 0, el sentido de F se invierte.</text>
-      </svg></div>
+      <div class="formula-box"><div class="formula">\[\vec F_m=q\,\vec v\times\vec B\]</div><div><p>El símbolo \(\times\) indica un <strong>producto vectorial</strong>. La fuerza resulta perpendicular al plano formado por \(\vec v\) y \(\vec B\).</p><p><strong>Aquí se usa \(q\) con su signo.</strong> Para \(q&gt;0\), el sentido se obtiene con la regla de la mano derecha. Para \(q&lt;0\), todo el vector fuerza se invierte.</p></div></div>
+      <div class="vector-diagram" id="cyclotron-demo">
+        <svg viewBox="0 0 720 360" role="img" aria-labelledby="cyclotron-title cyclotron-desc">
+          <title id="cyclotron-title">Fuerza magnética en un ciclotrón ideal</title>
+          <desc id="cyclotron-desc">Dos cargas, una positiva y otra negativa, recorren órbitas circulares en sentidos opuestos. La velocidad es tangente y la fuerza magnética es radial hacia el centro.</desc>
+          <defs>
+            <marker id="arrow-v" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L0,7 L7,3.5 z" fill="#1d3557"/></marker>
+            <marker id="arrow-f" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L0,7 L7,3.5 z" fill="#a33b32"/></marker>
+            <marker id="arrow-orbit" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#70859d"/></marker>
+          </defs>
+          <rect x="1" y="1" width="718" height="358" rx="10" fill="#fffdf7" stroke="#d6c9af"/>
+          <text x="24" y="30" font-family="Arial" font-size="17" font-weight="700" fill="#1d3557">Ciclotrón ideal: v ⟂ B y Fₘ es centrípeta</text>
+          <line x1="360" y1="48" x2="360" y2="292" stroke="#d6c9af"/>
+
+          <g font-family="Arial">
+            <text x="28" y="62" font-size="15" font-weight="700" fill="#1d3557">Carga positiva, q &gt; 0</text>
+            <g fill="#8b98a6" font-size="15"><text x="48" y="105">⊗</text><text x="162" y="105">⊗</text><text x="276" y="105">⊗</text><text x="48" y="255">⊗</text><text x="162" y="255">⊗</text><text x="276" y="255">⊗</text></g>
+            <circle cx="180" cy="180" r="82" fill="none" stroke="#93a5b8" stroke-width="2.2" stroke-dasharray="7 6"/>
+            <path d="M239 123 A82 82 0 0 0 121 123" fill="none" stroke="#70859d" stroke-width="2" marker-end="url(#arrow-orbit)"/>
+            <circle cx="262" cy="180" r="13" fill="#f2c230" stroke="#15191d" stroke-width="1.6"/>
+            <text x="262" y="185" text-anchor="middle" font-size="17" font-weight="700">+</text>
+            <line x1="262" y1="180" x2="262" y2="116" stroke="#1d3557" stroke-width="3.2" marker-end="url(#arrow-v)"/>
+            <text x="275" y="122" font-size="15" font-weight="700" fill="#1d3557">v</text>
+            <line x1="254" y1="180" x2="198" y2="180" stroke="#a33b32" stroke-width="3.2" marker-end="url(#arrow-f)"/>
+            <text x="215" y="169" font-size="15" font-weight="700" fill="#a33b32">Fₘ</text>
+            <circle cx="180" cy="180" r="3.5" fill="#15191d"/>
+            <text x="118" y="282" font-size="14" fill="#5c646c">giro antihorario</text>
+          </g>
+
+          <g font-family="Arial">
+            <text x="388" y="62" font-size="15" font-weight="700" fill="#1d3557">Carga negativa, q &lt; 0</text>
+            <g fill="#8b98a6" font-size="15"><text x="408" y="105">⊗</text><text x="522" y="105">⊗</text><text x="636" y="105">⊗</text><text x="408" y="255">⊗</text><text x="522" y="255">⊗</text><text x="636" y="255">⊗</text></g>
+            <circle cx="540" cy="180" r="82" fill="none" stroke="#93a5b8" stroke-width="2.2" stroke-dasharray="7 6"/>
+            <path d="M481 123 A82 82 0 0 1 599 123" fill="none" stroke="#70859d" stroke-width="2" marker-end="url(#arrow-orbit)"/>
+            <circle cx="622" cy="180" r="13" fill="#f2c230" stroke="#15191d" stroke-width="1.6"/>
+            <text x="622" y="185" text-anchor="middle" font-size="17" font-weight="700">−</text>
+            <line x1="622" y1="180" x2="622" y2="244" stroke="#1d3557" stroke-width="3.2" marker-end="url(#arrow-v)"/>
+            <text x="635" y="239" font-size="15" font-weight="700" fill="#1d3557">v</text>
+            <line x1="614" y1="180" x2="558" y2="180" stroke="#a33b32" stroke-width="3.2" marker-end="url(#arrow-f)"/>
+            <text x="575" y="169" font-size="15" font-weight="700" fill="#a33b32">Fₘ</text>
+            <circle cx="540" cy="180" r="3.5" fill="#15191d"/>
+            <text x="492" y="282" font-size="14" fill="#5c646c">giro horario</text>
+          </g>
+
+          <text x="24" y="322" font-family="Arial" font-size="14" fill="#5c646c">⊗  B entra en la hoja. En ambos casos: v ⟂ B, Fₘ ⟂ v y Fₘ = Fmáx.</text>
+          <text x="24" y="345" font-family="Arial" font-size="14" fill="#5c646c">El campo magnético curva la trayectoria; el campo eléctrico en la brecha aumenta la rapidez.</text>
+        </svg>
+        <p class="cyclotron-readout">El signo de \(q\) invierte el sentido de giro. Para iguales \(|q|\), \(v\), \(B\) y \(m\), el módulo de la fuerza y el radio son iguales.</p>
+      </div>
+      <div class="teacher-note"><strong>Lectura del modelo:</strong> “central” significa aquí <strong>radial hacia el centro de curvatura</strong>. La fuerza es máxima porque \(\alpha=90^\circ\), no por apuntar al centro. Al cambiar el signo de \(q\), se invierten \(\vec F_m\) y el sentido de giro, pero no el módulo \(F_m\).</div>
       <h3>Producto vectorial en \(\mathbb{R}^3\)</h3>
-      <p>Tomemos una partícula con velocidad hacia \(+x\) y un campo que entra en la hoja, es decir, hacia \(-z\):</p>
+      <p>Usamos valores numéricos desde el comienzo. La velocidad apunta hacia \(+x\) y el campo entra en la hoja, es decir, tiene componente \(z\) negativa:</p>
       <div class="calculation">
-        \[\vec v=(v,0,0)=v\,\mathbf i,\qquad \vec B=(0,0,-B)=-B\,\mathbf k\]
+        \[\vec v=(3{,}0\times10^6,\,0,\,0)\,\mathrm{m/s},\qquad
+        \vec B=(0,\,0,\,-0{,}20)\,\mathrm T\]
         \[\vec v\times\vec B=
         \begin{vmatrix}
         \mathbf i &amp; \mathbf j &amp; \mathbf k\\
-        v &amp; 0 &amp; 0\\
-        0 &amp; 0 &amp; -B
+        3{,}0\times10^6 &amp; 0 &amp; 0\\
+        0 &amp; 0 &amp; -0{,}20
         \end{vmatrix}
-        =0\,\mathbf i+vB\,\mathbf j+0\,\mathbf k=(0,vB,0)\]
-        \[\boxed{\vec F_m=q(\vec v\times\vec B)=(0,qvB,0)}\]
+        =0\,\mathbf i+6{,}0\times10^5\,\mathbf j+0\,\mathbf k\]
+        \[\boxed{\vec v\times\vec B=(0,\,6{,}0\times10^5,\,0)\,(\mathrm{m/s})\,\mathrm T}\]
+        \[q=+e:\quad
+        \vec F_m=(1{,}60\times10^{-19})(0,\,6{,}0\times10^5,\,0)
+        =\boxed{(0,\,9{,}6\times10^{-14},\,0)\,\mathrm N}\]
+        \[q=-e:\quad
+        \vec F_m=(-1{,}60\times10^{-19})(0,\,6{,}0\times10^5,\,0)
+        =\boxed{(0,\,-9{,}6\times10^{-14},\,0)\,\mathrm N}\]
       </div>
-      <p>Primero se calcula \(\vec v\times\vec B\); después se multiplica cada componente por la carga \(q\). Si \(q&gt;0\), la fuerza apunta hacia \(+y\). Si \(q&lt;0\), apunta hacia \(-y\).</p>
+      <p>El producto \(\vec v\times\vec B\) es el mismo para ambas partículas porque \(\vec v\) y \(\vec B\) no cambiaron. El signo de \(q\) aparece recién al calcular \(\vec F_m=q(\vec v\times\vec B)\): para \(q&gt;0\) la fuerza apunta hacia \(+y\), y para \(q&lt;0\) apunta hacia \(-y\).</p>
+      <h3>Segundo ejemplo: vectores con tres componentes</h3>
+      <div class="example"><p><strong>Problema:</strong> sean \(\vec v=(1,2,2)\times10^6\,\mathrm{m/s}\), \(\vec B=(0,0,0{,}50)\,\mathrm T\) y \(q=+e=1{,}60\times10^{-19}\,\mathrm C\). Hallar \(\vec F_m\) y comprobar su módulo con la forma escalar.</p><p><strong>1. Módulos y ángulo:</strong> \(|\vec v|=\sqrt{1^2+2^2+2^2}\times10^6=3{,}00\times10^6\,\mathrm{m/s}\) y \(|\vec B|=0{,}50\,\mathrm T\). Como \(\cos\alpha=\frac{\vec v\cdot\vec B}{|\vec v||\vec B|}=\frac{2}{3}\), resulta \(\sin\alpha=\frac{\sqrt5}{3}\).</p><p><strong>2. Producto vectorial mediante la matriz \(\mathbf i,\mathbf j,\mathbf k\):</strong></p>
+        \[\vec v\times\vec B=
+        \begin{vmatrix}
+        \mathbf i &amp; \mathbf j &amp; \mathbf k\\
+        1{,}0\times10^6 &amp; 2{,}0\times10^6 &amp; 2{,}0\times10^6\\
+        0 &amp; 0 &amp; 0{,}50
+        \end{vmatrix}\]
+        \[=(2{,}0\times10^6\cdot0{,}50)\,\mathbf i-(1{,}0\times10^6\cdot0{,}50)\,\mathbf j+0\,\mathbf k
+        =(1{,}0,-0{,}50,0)\times10^6\,(\mathrm{m/s})\,\mathrm T.\]
+        <p><strong>Atención al signo:</strong> la componente \(\mathbf j\) lleva un signo menos por el desarrollo \(+\mathbf i-\mathbf j+\mathbf k\).</p><p><strong>3. Para \(q=+e\):</strong> \(\vec F_m=q(\vec v\times\vec B)=(1{,}60,-0{,}80,0)\times10^{-13}\,\mathrm N\).</p><p><strong>4. Para \(q=-e\):</strong> \(\vec F_m=(-1{,}60,+0{,}80,0)\times10^{-13}\,\mathrm N\). Se invierten todas las componentes y, por lo tanto, el sentido.</p><p><strong>5. Módulo desde sus componentes:</strong> \(|\vec F_m|=\sqrt{(1{,}60)^2+(-0{,}80)^2}\times10^{-13}=1{,}79\times10^{-13}\,\mathrm N\), tanto para \(q=+e\) como para \(q=-e\).</p><p><strong>6. Comprobación escalar:</strong> \(|q||\vec v||\vec B|\sin\alpha=(1{,}60\times10^{-19})(3{,}00\times10^6)(0{,}50)\frac{\sqrt5}{3}=1{,}79\times10^{-13}\,\mathrm N\).</p></div>
       <div class="case-grid"><div class="card"><strong>\(\vec v\parallel\vec B\)</strong><br>La fuerza es cero.</div><div class="card"><strong>\(\vec v\perp\vec B\)</strong><br>La fuerza tiene módulo máximo.</div><div class="card"><strong>Partícula en reposo</strong><br>La fuerza magnética es cero.</div><div class="card"><strong>Siempre perpendicular</strong><br>Cambia la dirección de \(\vec v\), no su rapidez ni su energía cinética.</div></div>
     </section>
 
     <section><h2><span>8</span> Forma escalar y unidades</h2>
-      <div class="formula-box"><div class="formula">\[F_m=|q|\,v\,B\,\sin\theta\]</div><div><p>\(\theta\) es el ángulo entre \(\vec v\) y \(\vec B\). Se usa \(|q|\) porque calculamos el <strong>módulo</strong>; el signo de la carga determina el sentido.</p><p>\(1\,\mathrm T=1\,\mathrm{N\,s/(C\,m)}\).</p></div></div>
-      <table><thead><tr><th>Magnitud</th><th>Símbolo</th><th>Unidad SI</th></tr></thead><tbody><tr><td>Fuerza magnética</td><td>\(F_m\)</td><td>newton (N)</td></tr><tr><td>Carga</td><td>\(q\)</td><td>coulomb (C)</td></tr><tr><td>Velocidad</td><td>\(v\)</td><td>m/s</td></tr><tr><td>Campo magnético</td><td>\(B\)</td><td>tesla (T)</td></tr><tr><td>Ángulo</td><td>\(\theta\)</td><td>grado o radián</td></tr></tbody></table>
+      <div class="formula-box"><div class="formula">\[|\vec F_m|=|q|\,|\vec v\times\vec B|=|q|\,|\vec v|\,|\vec B|\,\sin\alpha\]</div><div><p>\(\alpha\) es el ángulo entre \(\vec v\) y \(\vec B\), con \(0^\circ\leq\alpha\leq180^\circ\). Se usa \(|q|\) porque calculamos un <strong>módulo</strong>; el signo de la carga determina el sentido del vector.</p><p>Para valores fijos de \(|q|\), \(|\vec v|\) y \(|\vec B|\), \(F_{\max}=|q||\vec v||\vec B|\) cuando \(\alpha=90^\circ\). \(1\,\mathrm T=1\,\mathrm{N\,s/(C\,m)}\).</p></div></div>
+      <div class="teacher-note"><strong>Regla práctica para no confundirse:</strong>
+        <ul>
+          <li>Si se pide el <strong>vector fuerza</strong> —componentes, dirección o sentido—, usar \(\boxed{\vec F_m=q(\vec v\times\vec B)}\) con el signo real de \(q\).</li>
+          <li>Si se pide el <strong>módulo</strong> de la fuerza, usar \(\boxed{|\vec F_m|=|q||\vec v||\vec B|\sin\alpha}\). Un módulo nunca puede ser negativo.</li>
+          <li>Si se calcula el <strong>radio</strong> de la trayectoria, usar \(|q|\): el signo cambia el sentido de giro, pero no el valor del radio.</li>
+        </ul>
+      </div>
+      <table><thead><tr><th>Qué se calcula</th><th>Carga que se usa</th><th>Qué informa el signo</th></tr></thead><tbody><tr><td>Vector \(\vec F_m\)</td><td>\(q\), con signo</td><td>Invierte la dirección y el sentido del vector.</td></tr><tr><td>Módulo \(|\vec F_m|\)</td><td>\(|q|\)</td><td>No aparece: el resultado debe ser \(0\) o positivo.</td></tr><tr><td>Radio \(r\)</td><td>\(|q|\)</td><td>No cambia el radio; sí cambia el sentido de giro.</td></tr></tbody></table>
+      <table><thead><tr><th>Magnitud</th><th>Vector / módulo</th><th>Unidad SI</th></tr></thead><tbody><tr><td>Fuerza magnética</td><td>\(\vec F_m\) / \(|\vec F_m|\)</td><td>newton (N)</td></tr><tr><td>Carga</td><td>\(q\) / \(|q|\)</td><td>coulomb (C)</td></tr><tr><td>Velocidad</td><td>\(\vec v\) / \(|\vec v|\)</td><td>m/s</td></tr><tr><td>Campo magnético</td><td>\(\vec B\) / \(|\vec B|\)</td><td>tesla (T)</td></tr><tr><td>Ángulo entre \(\vec v\) y \(\vec B\)</td><td>\(\alpha\)</td><td>grado o radián</td></tr></tbody></table>
     </section>
 
     <section><h2><span>9</span> Ejemplo resuelto</h2>
-      <div class="example"><p><strong>Problema:</strong> un protón se mueve a \(3{,}0\times10^6\,\mathrm{m/s}\), perpendicular a un campo de \(0{,}20\,\mathrm T\). Calcular la fuerza magnética.</p><p><strong>Datos:</strong> \(|q|=1{,}60\times10^{-19}\,\mathrm C\), \(v=3{,}0\times10^6\,\mathrm{m/s}\), \(B=0{,}20\,\mathrm T\), \(\theta=90^\circ\).</p><p><strong>Fórmula:</strong> \(F_m=|q|vB\sin\theta\).</p><p><strong>Reemplazo:</strong> \(F_m=(1{,}60\times10^{-19})(3{,}0\times10^6)(0{,}20)\sin90^\circ\).</p><p><strong>Resultado:</strong> \(F_m=9{,}6\times10^{-14}\,\mathrm N\).</p><p><strong>Interpretación:</strong> aunque es pequeña, la fuerza puede curvar la trayectoria. Si \(\vec v\) apunta a la derecha y \(\vec B\) entra en la hoja, el protón se desvía hacia arriba; un electrón, hacia abajo.</p></div>
-      <h3>Aplicación: espectrómetro de masas</h3>
-      <p>Un espectrómetro de masas separa iones según su relación masa/carga. En la región analizadora, un campo magnético perpendicular a la velocidad curva las partículas. Como la fuerza magnética actúa como fuerza centrípeta:</p>
+      <div class="example"><p><strong>Problema:</strong> un protón se mueve a \(3{,}0\times10^6\,\mathrm{m/s}\), perpendicular a un campo de \(0{,}20\,\mathrm T\). Calcular la fuerza magnética.</p><p><strong>Datos:</strong> \(|q|=1{,}60\times10^{-19}\,\mathrm C\), \(|\vec v|=3{,}0\times10^6\,\mathrm{m/s}\), \(|\vec B|=0{,}20\,\mathrm T\), \(\alpha=90^\circ\).</p><p><strong>Fórmula:</strong> \(|\vec F_m|=|q||\vec v||\vec B|\sin\alpha\).</p><p><strong>Reemplazo:</strong> \(|\vec F_m|=(1{,}60\times10^{-19})(3{,}0\times10^6)(0{,}20)\sin90^\circ\).</p><p><strong>Resultado:</strong> \(|\vec F_m|=9{,}6\times10^{-14}\,\mathrm N\).</p><p><strong>Interpretación:</strong> aunque es pequeña, la fuerza puede curvar la trayectoria. Si \(\vec v\) apunta a la derecha y \(\vec B\) entra en la hoja, el protón se desvía hacia arriba; un electrón, hacia abajo.</p></div>
+      <h3>Aplicación: ciclotrón</h3>
+      <p>Dentro de cada cavidad en forma de “D”, el campo magnético uniforme es perpendicular a la velocidad y la fuerza magnética actúa como fuerza centrípeta. Por eso la partícula describe una semicircunferencia:</p>
       <div class="calculation">
-        \[|q|vB=\frac{mv^2}{r}\qquad\Longrightarrow\qquad \boxed{r=\frac{mv}{|q|B}}\]
+        \[|q|\,|\vec v|\,|\vec B|=\frac{m|\vec v|^2}{r}
+        \qquad\Longrightarrow\qquad
+        \boxed{r=\frac{m|\vec v|}{|q|\,|\vec B|}}\]
       </div>
-      <div class="example"><p><strong>Problema:</strong> un ion de carbono-12 con carga \(q=+e=1{,}60\times10^{-19}\,\mathrm C\), masa \(m=1{,}99\times10^{-26}\,\mathrm{kg}\) y velocidad \(v=2{,}0\times10^5\,\mathrm{m/s}\) entra perpendicularmente en \(B=0{,}50\,\mathrm T\).</p><p><strong>Producto vectorial:</strong> si \(\vec v=(2{,}0\times10^5,0,0)\,\mathrm{m/s}\) y \(\vec B=(0,0,-0{,}50)\,\mathrm T\), entonces \(\vec v\times\vec B=(0,1{,}0\times10^5,0)\). Al multiplicar por \(q\): \(\vec F=(0,1{,}60\times10^{-14},0)\,\mathrm N\).</p><p><strong>Radio:</strong> \(r=\frac{(1{,}99\times10^{-26})(2{,}0\times10^5)}{(1{,}60\times10^{-19})(0{,}50)}=4{,}98\times10^{-2}\,\mathrm m\approx5{,}0\,\mathrm{cm}\).</p><p><strong>Interpretación:</strong> con igual \(q\), \(v\) y \(B\), los iones de mayor masa describen radios mayores. Así pueden separarse isótopos. El campo cambia la dirección de la velocidad, no su módulo.</p></div>
+      <div class="example"><p><strong>Problema:</strong> un protón con \(m=1{,}67\times10^{-27}\,\mathrm{kg}\), \(q=+e\) y \(v=3{,}0\times10^6\,\mathrm{m/s}\) se mueve perpendicularmente a \(B=0{,}20\,\mathrm T\).</p><p><strong>Radio:</strong> \(r=\frac{(1{,}67\times10^{-27})(3{,}0\times10^6)}{(1{,}60\times10^{-19})(0{,}20)}=1{,}57\times10^{-1}\,\mathrm m\approx15{,}7\,\mathrm{cm}\).</p><p><strong>Interpretación:</strong> el campo magnético curva la trayectoria, pero no aumenta la rapidez. Cada vez que la partícula cruza la brecha entre las “D”, un <strong>campo eléctrico</strong> realiza trabajo y aumenta \(v\); por eso también aumenta el radio. Si la carga fuera negativa, giraría en el sentido opuesto con el mismo radio para iguales \(m\), \(|q|\), \(v\) y \(B\).</p></div>
     </section>
 
     <section><h2><span>10</span> Actividades</h2>
@@ -161,9 +228,9 @@
         <li>Armá un cuadro que compare polos geográficos y magnéticos según definición, origen, movilidad e instrumento de orientación. Explicá por qué una brújula no siempre apunta al norte geográfico exacto.<span class="work-line"></span></li>
         <li>Observá la imagen de la magnetosfera e identificá viento solar, lado diurno, cola, cinturones y auroras. Corregí: “Los cinturones son una muralla que genera auroras y bloquea toda radiación”.<span class="work-line"></span></li>
         <li>Una carga positiva se mueve hacia el este y \(\vec B\) apunta verticalmente hacia arriba. Aplicá la mano derecha para hallar \(\vec F_m\). Repetí para un electrón.<span class="work-line"></span></li>
-        <li>Calculá \(F_m\) para \(q=2{,}0\,\mu\mathrm C\), \(v=4{,}0\times10^3\,\mathrm{m/s}\), \(B=0{,}30\,\mathrm T\) y \(\theta=90^\circ\).<span class="work-line"></span></li>
-        <li>Con los datos del ejercicio anterior, calculá \(F_m\) para \(0^\circ\), \(30^\circ\), \(90^\circ\), \(150^\circ\) y \(180^\circ\). Construí un gráfico \(F(\theta)\): eje horizontal, ángulo; eje vertical, fuerza. Señalá ceros y máximo.<span class="work-line"></span></li>
-        <li>Una partícula con \(q=-3{,}2\times10^{-19}\,\mathrm C\) viaja a \(2{,}5\times10^6\,\mathrm{m/s}\) en \(B=0{,}40\,\mathrm T\), con \(\theta=30^\circ\). Calculá el módulo, explicá cómo influye el signo y decidí si cambia su rapidez.<span class="work-line"></span></li>
+        <li>Calculá \(|\vec F_m|\) para \(|q|=2{,}0\,\mu\mathrm C\), \(|\vec v|=4{,}0\times10^3\,\mathrm{m/s}\), \(|\vec B|=0{,}30\,\mathrm T\) y \(\alpha=90^\circ\).<span class="work-line"></span></li>
+        <li>Con los datos del ejercicio anterior, calculá \(|\vec F_m|\) para \(\alpha=0^\circ\), \(30^\circ\), \(90^\circ\), \(150^\circ\) y \(180^\circ\). Construí un gráfico: eje horizontal, \(\alpha\); eje vertical, módulo \(|\vec F_m|\). Señalá ceros y máximo.<span class="work-line"></span></li>
+        <li>Sean \(\vec v=(2,-1,2)\times10^6\,\mathrm{m/s}\), \(\vec B=(0,0,0{,}30)\,\mathrm T\) y \(q=-e\). Calculá \(|\vec v|\), \(|\vec B|\) y \(\alpha\); obtené luego \(|\vec F_m|\) con la fórmula escalar. Escribí la matriz del producto vectorial con la primera fila \(\mathbf i,\mathbf j,\mathbf k\), desarrollala con el patrón \(+\mathbf i-\mathbf j+\mathbf k\), hallá \(\vec F_m\) y comprobá que su módulo coincide. Repetí únicamente el último paso para \(q=+e\) y compará ambos vectores fuerza.<span class="work-line"></span></li>
       </ol>
     </section>
 
