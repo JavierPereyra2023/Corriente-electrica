@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fuerza magnética escalar: casos y ejercicios</title>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["\\(", "\\)"]],
+        displayMath: [["\\[", "\\]"]],
+        macros: { sen: "\\operatorname{sen}" }
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+  <style>
+    :root{--ink:#15191d;--muted:#5c646c;--paper:#e8e2d6;--page:#fffdf7;--line:#d6c9af;--accent:#1d3557;--soft:#edf3f7;--gold:#f2c230;--warm:#fff6d8;--danger:#a33b32;--success:#28664b}
+    *{box-sizing:border-box}body{margin:0;color:var(--ink);font-family:Georgia,"Times New Roman",serif;line-height:1.68;background:linear-gradient(rgba(21,25,29,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(21,25,29,.045) 1px,transparent 1px),var(--paper);background-size:28px 28px}mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}
+    main{width:min(100%,920px);margin:28px auto;padding:0 16px}.page{padding:62px 72px;background:linear-gradient(rgba(29,53,87,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(29,53,87,.035) 1px,transparent 1px),var(--page);background-size:24px 24px;border:1px solid #ddd6c8;box-shadow:0 18px 50px rgba(31,41,51,.13)}
+    .doc-header{position:relative;padding:0 0 24px 24px;margin-bottom:30px;border-bottom:1px solid var(--line)}.doc-header::before{content:"";position:absolute;left:0;top:4px;bottom:26px;width:8px;background:var(--gold)}.eyebrow{margin:0 0 10px;color:var(--accent);font:800 .82rem "Segoe UI",Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase}
+    h1,h2,h3{margin:0;line-height:1.2}h1{font-size:2.65rem}h3{margin:18px 0 8px;font-size:1.08rem;color:var(--accent)}.subtitle{margin:14px 0 0;color:var(--muted);font-size:1.08rem}.meta{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:22px;font:.9rem "Segoe UI",Arial,sans-serif}.meta div{padding:9px 10px;border:1px solid var(--line);background:#faf8f2}
+    section{margin-top:30px}h2{display:flex;align-items:baseline;gap:10px;margin-bottom:10px;padding-bottom:5px;color:#16252b;font-size:1.38rem;border-bottom:1px solid var(--line)}h2 span{display:inline-grid;place-items:center;min-width:28px;height:28px;color:#111827;background:var(--gold);font:900 .95rem "Segoe UI",Arial,sans-serif}p{margin:0 0 11px;font-size:1.02rem}
+    .definition,.example,.teacher-note,.warning{margin:16px 0;padding:14px 16px;border-left:5px solid var(--gold);background:var(--soft)}.teacher-note{border-left-color:#d29a22;background:var(--warm)}.warning{border-left-color:var(--danger);background:#fff0ed}.formula-box{display:grid;grid-template-columns:245px 1fr;gap:18px;align-items:center;margin:18px 0;padding:16px;border:1px solid var(--line);background:#faf8f2}.formula{display:grid;place-items:center;min-height:110px;padding:12px;color:white;background:#101820;font-size:1.35rem;font-weight:850;text-align:center}
+    .figure{margin:18px 0;padding:12px;border:1px solid var(--line);background:#fbfaf6}.figure img{display:block;width:100%;height:auto}.figure figcaption{margin-top:9px;color:var(--muted);font-size:.9rem;text-align:center;font-style:italic}.case-grid,.step-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:14px 0}.card{padding:13px 14px;border:1px solid var(--line);background:#fbfaf6}.card strong{color:var(--accent)}.case-value{display:block;margin-top:7px;color:var(--success);font:800 .95rem "Segoe UI",Arial,sans-serif}
+    table{width:100%;margin:14px 0;border-collapse:collapse;font:.93rem "Segoe UI",Arial,sans-serif}th,td{padding:9px 10px;border:1px solid var(--line);text-align:left;vertical-align:top}th{background:#ede7d9}.calculation{margin:14px 0;padding:14px 16px;border:1px solid var(--line);background:#fbfaf6;overflow-x:auto}.exercises{margin:12px 0 0;padding-left:24px}.exercises li{margin-bottom:21px;padding-left:4px;break-inside:avoid}.work-line{display:block;height:44px;margin-top:8px;border-bottom:1px solid #c9c1b4}
+    details{margin:18px 0;padding:12px 15px;border:1px solid var(--line);background:#faf8f2}summary{cursor:pointer;color:var(--accent);font:800 .95rem "Segoe UI",Arial,sans-serif}.answers{columns:2;column-gap:32px;margin-bottom:0}.answers li{margin-bottom:7px;break-inside:avoid}footer{margin-top:32px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:.88rem}
+    @media(max-width:760px){html,body{width:100%;max-width:100vw;overflow-x:hidden}main{width:100%;max-width:100vw;margin:0;padding:0}.page{width:100%;max-width:100vw;overflow-x:hidden;padding:30px 18px;border:0;box-shadow:none}.doc-header{padding-left:18px}.eyebrow{font-size:.72rem;overflow-wrap:anywhere}h1,h2,h3,p,section,footer{max-width:100%;min-width:0;overflow-wrap:break-word}h1{font-size:1.9rem}h2{align-items:flex-start;font-size:1.22rem}.meta,.formula-box,.case-grid,.step-grid{grid-template-columns:minmax(0,1fr)}.figure{max-width:100%;padding:7px;margin-left:-6px;margin-right:-6px}.figure figcaption{text-align:left;font-size:.82rem}table{display:block;max-width:100%;overflow-x:auto;font-size:.84rem}.formula{min-width:0;min-height:92px}.exercises{padding-left:20px}.answers{columns:1}}
+    @media print{@page{size:A4;margin:16mm}body{background:white}main{width:auto;margin:0;padding:0}.page{padding:0;border:0;box-shadow:none}.formula-box,.figure,.example,.teacher-note,.warning,.card,li{break-inside:avoid}details{display:none}}
+  </style>
+</head>
+<body>
+  <main><article class="page">
+    <header class="doc-header">
+      <p class="eyebrow">Sistemas Multi Física - Profesor Javier Pereyra</p>
+      <h1>Fuerza magnética en forma escalar</h1>
+      <p class="subtitle">Cómo reconocer el ángulo, elegir el caso correcto y resolver problemas con \(F_m=|q|Bv\,\sen(\alpha)\).</p>
+      <div class="meta"><div><strong>Curso:</strong> Secundaria superior</div><div><strong>Tema:</strong> Fuerza magnética</div><div><strong>Unidades:</strong> N, C, T, m/s</div></div>
+    </header>
+    <section><h2><span>1</span> Idea inicial: no alcanza con moverse</h2>
+      <p>Una carga puede atravesar un campo magnético sin desviarse o experimentar una fuerza máxima. La diferencia no depende solo de la carga, la rapidez y el campo: también importa <strong>cómo está orientada la velocidad respecto del campo</strong>.</p>
+      <div class="definition"><strong>Idea clave:</strong> el campo magnético actúa sobre la parte del movimiento perpendicular a \(\vec B\). El factor \(\sen(\alpha)\) funciona como un “regulador angular” entre 0 y 1.</div>
+    </section>
+    <section><h2><span>2</span> Fórmula del módulo</h2>
+      <div class="formula-box"><div class="formula">\[\boxed{F_m=|q|\,B\,v\,\sen(\alpha)}\]</div><div><p>\(F_m\) es el <strong>módulo</strong> de la fuerza magnética y \(\alpha\) es el ángulo entre \(\vec v\) y \(\vec B\), de \(0^\circ\) a \(180^\circ\).</p><p>Como calculamos un módulo, usamos \(|q|\): el resultado nunca puede ser negativo.</p></div></div>
+      <table><thead><tr><th>Magnitud</th><th>Símbolo</th><th>Unidad SI</th></tr></thead><tbody><tr><td>Fuerza magnética</td><td>\(F_m\)</td><td>newton (N)</td></tr><tr><td>Módulo de la carga</td><td>\(|q|\)</td><td>coulomb (C)</td></tr><tr><td>Campo magnético</td><td>\(B\)</td><td>tesla (T)</td></tr><tr><td>Rapidez</td><td>\(v\)</td><td>metro por segundo (m/s)</td></tr><tr><td>Ángulo entre \(\vec v\) y \(\vec B\)</td><td>\(\alpha\)</td><td>grado (°)</td></tr></tbody></table>
+      <div class="warning"><strong>No confundas módulo con dirección.</strong> En \(\vec F_m=q(\vec v\times\vec B)\), el signo de \(q\) cambia el sentido. En esta clase calculamos solamente \(F_m\), así que usamos \(|q|\). Una carga negativa no produce una “fuerza negativa”.</div>
+    </section>
+    <section><h2><span>3</span> El ángulo decide el caso</h2>
+      <figure class="figure"><img src="../assets/fuerza-magnetica-angulos.png" alt="Tres paneles comparan una velocidad paralela, oblicua y perpendicular a un campo magnético uniforme"><figcaption>De izquierda a derecha: \(\vec v\parallel\vec B\), movimiento oblicuo y \(\vec v\perp\vec B\). La imagen muestra la geometría de los vectores; no representa las trayectorias.</figcaption></figure>
+      <div class="case-grid"><div class="card"><strong>Paralelo: \(\alpha=0^\circ\)</strong><br>\(\sen 0^\circ=0\).<span class="case-value">\(F_m=0\)</span></div><div class="card"><strong>Perpendicular: \(\alpha=90^\circ\)</strong><br>\(\sen 90^\circ=1\).<span class="case-value">\(F_{m,\max}=|q|Bv\)</span></div><div class="card"><strong>Oblicuo</strong><br>Solo interviene \(v_\perp=v\sen\alpha\).<span class="case-value">\(0&lt;F_m&lt;F_{m,\max}\)</span></div><div class="card"><strong>Antiparalelo: \(\alpha=180^\circ\)</strong><br>\(\sen 180^\circ=0\).<span class="case-value">\(F_m=0\)</span></div></div>
+      <table><thead><tr><th>\(\alpha\)</th><th>\(\sen\alpha\)</th><th>Fracción de \(F_{m,\max}\)</th></tr></thead><tbody><tr><td>\(0^\circ\) o \(180^\circ\)</td><td>0</td><td>0 %</td></tr><tr><td>\(30^\circ\) o \(150^\circ\)</td><td>0,50</td><td>50 %</td></tr><tr><td>\(45^\circ\) o \(135^\circ\)</td><td>0,707</td><td>70,7 %</td></tr><tr><td>\(60^\circ\) o \(120^\circ\)</td><td>0,866</td><td>86,6 %</td></tr><tr><td>\(90^\circ\)</td><td>1</td><td>100 %</td></tr></tbody></table>
+      <div class="teacher-note"><strong>Simetría útil:</strong> \(\sen30^\circ=\sen150^\circ\). Con iguales \(|q|\), \(B\) y \(v\), los ángulos suplementarios producen el mismo módulo.</div>
+    </section>
+    <section><h2><span>4</span> Unidades y conversiones</h2>
+      <div class="case-grid"><div class="card"><strong>Microcoulomb</strong><br>\(1\,\mu\mathrm C=10^{-6}\,\mathrm C\)</div><div class="card"><strong>Nanocoulomb</strong><br>\(1\,\mathrm{nC}=10^{-9}\,\mathrm C\)</div><div class="card"><strong>Militesla</strong><br>\(1\,\mathrm{mT}=10^{-3}\,\mathrm T\)</div><div class="card"><strong>Kilómetro por segundo</strong><br>\(1\,\mathrm{km/s}=10^3\,\mathrm{m/s}\)</div></div>
+      <div class="calculation">\[[F_m]=\mathrm C\cdot\mathrm T\cdot\frac{m}{s}=\mathrm N\]</div>
+    </section>
+    <section><h2><span>5</span> Despejes posibles</h2>
+      <div class="case-grid"><div class="card"><strong>Rapidez</strong>\[v=\frac{F_m}{|q|B\sen\alpha}\]</div><div class="card"><strong>Campo</strong>\[B=\frac{F_m}{|q|v\sen\alpha}\]</div><div class="card"><strong>Módulo de la carga</strong>\[|q|=\frac{F_m}{Bv\sen\alpha}\]</div><div class="card"><strong>Ángulo</strong>\[\alpha=\sen^{-1}\!\left(\frac{F_m}{|q|Bv}\right)\]</div></div>
+      <div class="warning"><strong>Control de posibilidad:</strong> al buscar el ángulo, \(F_m/(|q|Bv)\) debe quedar entre 0 y 1. Si supera 1, los datos son incompatibles. Para un mismo seno pueden existir dos ángulos: \(\alpha\) y \(180^\circ-\alpha\).</div>
+    </section>
+    <section><h2><span>6</span> Método de resolución</h2>
+      <div class="step-grid"><div class="card"><strong>1. Datos</strong><br>Identificá \(F_m\), \(|q|\), \(B\), \(v\) y \(\alpha\).</div><div class="card"><strong>2. SI</strong><br>Convertí \(\mu\mathrm C\), nC, mT o km/s.</div><div class="card"><strong>3. Geometría</strong><br>Reconocé si el caso es paralelo, oblicuo o perpendicular.</div><div class="card"><strong>4. Cálculo y lectura</strong><br>Reemplazá, escribí la unidad y explicá si el valor tiene sentido.</div></div>
+    </section>
+    <section><h2><span>7</span> Ejemplos resueltos: cuatro casos</h2>
+      <h3>Caso A: fuerza máxima</h3>
+      <div class="example"><p><strong>Problema:</strong> una carga de \(2{,}0\,\mu\mathrm C\) se mueve a \(4{,}0\times10^5\,\mathrm{m/s}\), perpendicularmente a un campo de \(0{,}30\,\mathrm T\).</p><p><strong>Datos en SI:</strong> \(|q|=2{,}0\times10^{-6}\,\mathrm C\), \(v=4{,}0\times10^5\,\mathrm{m/s}\), \(B=0{,}30\,\mathrm T\), \(\alpha=90^\circ\).</p><p><strong>Reemplazo:</strong> \(F_m=(2{,}0\times10^{-6})(0{,}30)(4{,}0\times10^5)(1)\).</p><p><strong>Resultado:</strong> \(\boxed{F_m=0{,}24\,\mathrm N}\).</p><p><strong>Interpretación:</strong> es el máximo valor posible con esos datos.</p></div>
+      <h3>Caso B: movimiento oblicuo</h3>
+      <div class="example"><p><strong>Problema:</strong> una carga de \(1{,}5\,\mu\mathrm C\) viaja a \(2{,}0\times10^5\,\mathrm{m/s}\) formando \(30^\circ\) con un campo de \(0{,}40\,\mathrm T\).</p><p><strong>Reemplazo:</strong> \(F_m=(1{,}5\times10^{-6})(0{,}40)(2{,}0\times10^5)\sen30^\circ\).</p><p><strong>Resultado:</strong> \(\boxed{F_m=0{,}060\,\mathrm N}\).</p><p><strong>Interpretación:</strong> como \(\sen30^\circ=0{,}5\), la fuerza vale la mitad del máximo.</p></div>
+      <h3>Caso C: fuerza nula</h3>
+      <div class="example"><p><strong>Problema:</strong> una carga se mueve en sentido opuesto al campo, por lo que \(\alpha=180^\circ\).</p><p><strong>Cálculo:</strong> \(F_m=|q|Bv\sen180^\circ=|q|Bv(0)\).</p><p><strong>Resultado:</strong> \(\boxed{F_m=0\,\mathrm N}\).</p><p><strong>Interpretación:</strong> que la carga se mueva no garantiza fuerza magnética; su velocidad debe tener componente perpendicular al campo.</p></div>
+      <h3>Caso D: hallar una incógnita</h3>
+      <div class="example"><p><strong>Problema:</strong> una carga de \(3{,}0\,\mu\mathrm C\) experimenta \(0{,}018\,\mathrm N\) al moverse perpendicularmente en un campo de \(0{,}40\,\mathrm T\). Hallar \(v\).</p><p><strong>Despeje:</strong> \(v=F_m/(|q|B\sen\alpha)\).</p><p><strong>Reemplazo:</strong> \(v=0{,}018/[(3{,}0\times10^{-6})(0{,}40)(1)]\).</p><p><strong>Resultado:</strong> \(\boxed{v=1{,}5\times10^4\,\mathrm{m/s}}\).</p></div>
+    </section>
+    <section><h2><span>8</span> Errores frecuentes y preguntas para pensar</h2>
+      <table><thead><tr><th>Error</th><th>Cómo corregirlo</th></tr></thead><tbody><tr><td>Usar \(q&lt;0\) y obtener un módulo negativo.</td><td>En la forma escalar se reemplaza \(|q|\).</td></tr><tr><td>Tomar el ángulo respecto de una hoja o un eje.</td><td>\(\alpha\) siempre es el ángulo entre \(\vec v\) y \(\vec B\).</td></tr><tr><td>Omitir \(\sen\alpha\).</td><td>Solo vale 1 cuando \(\alpha=90^\circ\).</td></tr><tr><td>Reemplazar \(\mu\mathrm C\) sin convertir.</td><td>Escribir primero la carga en coulomb.</td></tr></tbody></table>
+      <p>¿Por qué duplicar \(v\) duplica la fuerza, pero duplicar el ángulo no necesariamente lo hace? ¿Por qué una fuerza magnética puede cambiar la dirección del movimiento sin aumentar la rapidez? ¿Qué información falta en la fórmula escalar para conocer hacia dónde apunta \(\vec F_m\)?</p>
+    </section>
+    <section><h2><span>9</span> Actividades: 15 ejercicios</h2>
+      <p>Resolvé mostrando datos, conversión al SI, fórmula o despeje, reemplazo, resultado con unidad e interpretación.</p>
+      <ol class="exercises">
+        <li>Una carga de \(2{,}0\,\mu\mathrm C\) se mueve a \(4{,}0\times10^5\,\mathrm{m/s}\), perpendicularmente a un campo de \(0{,}30\,\mathrm T\). Calculá \(F_m\).<span class="work-line"></span></li>
+        <li>Una carga de \(5{,}0\,\mu\mathrm C\) se mueve paralelamente a un campo de \(0{,}20\,\mathrm T\), con rapidez \(3{,}0\times10^4\,\mathrm{m/s}\). Calculá \(F_m\) y justificá sin hacer primero la multiplicación completa.<span class="work-line"></span></li>
+        <li>Una carga de \(1{,}5\,\mu\mathrm C\) se desplaza a \(2{,}0\times10^5\,\mathrm{m/s}\), formando \(30^\circ\) con un campo de \(0{,}40\,\mathrm T\). Calculá \(F_m\).<span class="work-line"></span></li>
+        <li>Una carga de \(8{,}0\,\mu\mathrm C\) se mueve a \(12\,\mathrm{km/s}\), formando \(60^\circ\) con un campo de \(0{,}25\,\mathrm T\). Convertí la rapidez y calculá \(F_m\).<span class="work-line"></span></li>
+        <li>Un electrón viaja perpendicularmente a un campo de \(0{,}15\,\mathrm T\) con rapidez \(2{,}0\times10^6\,\mathrm{m/s}\). Usá \(|q_e|=1{,}602\times10^{-19}\,\mathrm C\) y calculá el módulo.<span class="work-line"></span></li>
+        <li>Un protón se desplaza a \(3{,}0\times10^6\,\mathrm{m/s}\), formando \(45^\circ\) con un campo de \(0{,}50\,\mathrm T\). Usá \(|q_p|=1{,}602\times10^{-19}\,\mathrm C\).<span class="work-line"></span></li>
+        <li>Una carga de \(3{,}0\,\mu\mathrm C\) experimenta \(0{,}018\,\mathrm N\) al moverse perpendicularmente a un campo de \(0{,}40\,\mathrm T\). Hallá su rapidez.<span class="work-line"></span></li>
+        <li>Una carga de \(2{,}0\,\mu\mathrm C\), con rapidez \(2{,}0\times10^4\,\mathrm{m/s}\), forma \(30^\circ\) con el campo y experimenta \(0{,}012\,\mathrm N\). Hallá \(B\).<span class="work-line"></span></li>
+        <li>Una partícula se mueve perpendicularmente a \(0{,}50\,\mathrm T\), con rapidez \(3{,}0\times10^4\,\mathrm{m/s}\), y recibe \(0{,}090\,\mathrm N\). Hallá \(|q|\) en \(\mu\mathrm C\).<span class="work-line"></span></li>
+        <li>Una carga de \(4{,}0\,\mu\mathrm C\) se mueve a \(4{,}0\times10^4\,\mathrm{m/s}\) en \(0{,}50\,\mathrm T\). Si \(F_m=0{,}040\,\mathrm N\), hallá todos los ángulos posibles entre \(0^\circ\) y \(180^\circ\).<span class="work-line"></span></li>
+        <li>Sobre una partícula actúa \(0{,}12\,\mathrm N\) cuando \(\alpha=90^\circ\). ¿Qué fuerza experimentaría, sin cambiar \(|q|\), \(B\) ni \(v\), si \(\alpha=30^\circ\)? Resolvé por proporcionalidad.<span class="work-line"></span></li>
+        <li>Una carga \(q=-2{,}0\,\mu\mathrm C\) se mueve perpendicularmente a \(0{,}30\,\mathrm T\), con rapidez \(5{,}0\times10^4\,\mathrm{m/s}\). Calculá el módulo y explicá el efecto del signo negativo.<span class="work-line"></span></li>
+        <li>Una partícula se mueve en sentido opuesto al campo: \(\alpha=180^\circ\). Si \(|q|=7{,}0\,\mu\mathrm C\), \(B=0{,}80\,\mathrm T\) y \(v=1{,}0\times10^5\,\mathrm{m/s}\), hallá \(F_m\) y justificá.<span class="work-line"></span></li>
+        <li>Para \(|q|=1{,}0\,\mu\mathrm C\), \(B=0{,}20\,\mathrm T\) y \(v=1{,}0\times10^5\,\mathrm{m/s}\), completá una tabla de \(F_m\) para \(0^\circ\), \(30^\circ\), \(45^\circ\), \(60^\circ\) y \(90^\circ\). Graficá \(\alpha\) en el eje horizontal y \(F_m\) en el vertical; señalá ceros y máximo.<span class="work-line"></span></li>
+        <li>Una carga de \(5{,}0\,\mathrm{nC}\) tiene \(v_{\parallel}=3{,}0\times10^5\,\mathrm{m/s}\) y \(v_{\perp}=4{,}0\times10^5\,\mathrm{m/s}\) en \(1{,}2\,\mathrm T\). Calculá la rapidez total y \(F_m\). Explicá por qué para la fuerza alcanza con \(v_{\perp}\).<span class="work-line"></span></li>
+      </ol>
+      <details><summary>Resultados para autocorrección</summary><ol class="answers"><li>\(0{,}24\,\mathrm N\).</li><li>\(0\,\mathrm N\).</li><li>\(0{,}060\,\mathrm N\).</li><li>\(2{,}08\times10^{-2}\,\mathrm N\).</li><li>\(4{,}81\times10^{-14}\,\mathrm N\).</li><li>\(1{,}70\times10^{-13}\,\mathrm N\).</li><li>\(1{,}5\times10^4\,\mathrm{m/s}\).</li><li>\(0{,}60\,\mathrm T\).</li><li>\(6{,}0\,\mu\mathrm C\).</li><li>\(30^\circ\) o \(150^\circ\).</li><li>\(0{,}060\,\mathrm N\).</li><li>\(0{,}030\,\mathrm N\); el signo cambia el sentido, no el módulo.</li><li>\(0\,\mathrm N\).</li><li>\(0\), \(0{,}010\), \(0{,}0141\), \(0{,}0173\) y \(0{,}020\,\mathrm N\).</li><li>\(v=5{,}0\times10^5\,\mathrm{m/s}\); \(F_m=2{,}4\times10^{-3}\,\mathrm N\).</li></ol></details>
+    </section>
+    <footer>Sugerencia docente: antes de usar la calculadora, pedir una predicción —fuerza nula, intermedia o máxima— y contrastarla con el resultado.</footer>
+  </article></main>
+</body>
+</html>
