@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Experiencia de Oersted: corriente y campo magnético</title>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["\\(", "\\)"]],
+        displayMath: [["\\[", "\\]"]]
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+  <style>
+    :root{--ink:#15191d;--muted:#5c646c;--paper:#e8e2d6;--page:#fffdf7;--line:#d6c9af;--accent:#1d3557;--soft:#edf3f7;--gold:#f2c230;--warm:#fff6d8;--danger:#a33b32;--success:#28664b}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);font-family:Georgia,"Times New Roman",serif;line-height:1.68;background:linear-gradient(rgba(21,25,29,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(21,25,29,.045) 1px,transparent 1px),var(--paper);background-size:28px 28px}mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}
+    main{width:min(100%,920px);margin:28px auto;padding:0 16px}.page{padding:62px 72px;background:linear-gradient(rgba(29,53,87,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(29,53,87,.035) 1px,transparent 1px),var(--page);background-size:24px 24px;border:1px solid #ddd6c8;box-shadow:0 18px 50px rgba(31,41,51,.13)}
+    .doc-header{position:relative;padding:0 0 24px 24px;margin-bottom:30px;border-bottom:1px solid var(--line)}.doc-header::before{content:"";position:absolute;left:0;top:4px;bottom:26px;width:8px;background:var(--gold)}.cover{display:grid;grid-template-columns:minmax(0,1fr) minmax(210px,230px);gap:28px;align-items:start}.scientist-card{width:100%;max-width:230px;margin:0;padding:8px;border:1px solid #2a4a78;background:#fffdf7;box-shadow:8px 8px 0 rgba(242,194,48,.75);font-family:"Segoe UI",Arial,sans-serif;overflow-wrap:break-word}.scientist-card img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top;filter:sepia(.12) contrast(1.04);background:#ede7d9}.scientist-card figcaption{margin-top:7px;color:var(--muted);font-size:.78rem;line-height:1.35;text-align:center}.eyebrow{margin:0 0 10px;color:var(--accent);font:800 .82rem "Segoe UI",Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase}
+    h1,h2,h3{margin:0;line-height:1.2}h1{font-size:2.65rem}h3{margin:18px 0 8px;font-size:1.08rem;color:var(--accent)}.subtitle{margin:14px 0 0;color:var(--muted);font-size:1.08rem}.meta{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:22px;font:.9rem "Segoe UI",Arial,sans-serif}.meta div{padding:9px 10px;border:1px solid var(--line);background:#faf8f2}
+    section{margin-top:30px}h2{display:flex;align-items:baseline;gap:10px;margin-bottom:10px;padding-bottom:5px;color:#16252b;font-size:1.38rem;border-bottom:1px solid var(--line)}h2 span{display:inline-grid;place-items:center;min-width:28px;height:28px;color:#111827;background:var(--gold);font:900 .95rem "Segoe UI",Arial,sans-serif}p{margin:0 0 11px;font-size:1.02rem}
+    .definition,.example,.teacher-note,.warning{margin:16px 0;padding:14px 16px;border-left:5px solid var(--gold);background:var(--soft)}.teacher-note{border-left-color:#d29a22;background:var(--warm)}.warning{border-left-color:var(--danger);background:#fff0ed}.formula-box{display:grid;grid-template-columns:245px 1fr;gap:18px;align-items:center;margin:18px 0;padding:16px;border:1px solid var(--line);background:#faf8f2}.formula{display:grid;place-items:center;min-height:110px;padding:12px;color:white;background:#101820;font-size:1.28rem;font-weight:850;text-align:center}
+    .figure{margin:18px 0;padding:12px;border:1px solid var(--line);background:#fbfaf6}.figure img{display:block;width:100%;height:auto}.figure figcaption{margin-top:9px;color:var(--muted);font-size:.9rem;text-align:center;font-style:italic}.card-grid,.step-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:14px 0}.card{padding:13px 14px;border:1px solid var(--line);background:#fbfaf6}.card strong{color:var(--accent)}
+    table{width:100%;margin:14px 0;border-collapse:collapse;font:.93rem "Segoe UI",Arial,sans-serif}th,td{padding:9px 10px;border:1px solid var(--line);text-align:left;vertical-align:top}th{background:#ede7d9}.calculation{margin:14px 0;padding:14px 16px;border:1px solid var(--line);background:#fbfaf6;overflow-x:auto}.exercises{margin:12px 0 0;padding-left:24px}.exercises li{margin-bottom:21px;padding-left:4px;break-inside:avoid}.work-line{display:block;height:46px;margin-top:8px;border-bottom:1px solid #c9c1b4}footer{margin-top:32px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:.88rem}
+    @media(max-width:760px){html,body{width:100%;max-width:100vw;overflow-x:hidden}main{width:100%;max-width:100vw;margin:0;padding:0}.page{width:100%;max-width:100vw;overflow-x:hidden;padding:30px 18px;border:0;box-shadow:none}.doc-header{padding-left:18px}.eyebrow{font-size:.72rem;overflow-wrap:anywhere}h1,h2,h3,p,section,footer{max-width:100%;min-width:0;overflow-wrap:break-word}h1{font-size:1.9rem}h2{align-items:flex-start;font-size:1.22rem}.cover,.meta,.formula-box,.card-grid,.step-grid{grid-template-columns:minmax(0,1fr)}.cover{gap:18px}.scientist-card{width:min(100%,260px);max-width:260px;margin:8px auto 0}.figure{max-width:100%;padding:7px;margin-left:-6px;margin-right:-6px}.figure figcaption{text-align:left;font-size:.82rem}table{display:block;max-width:100%;overflow-x:auto;font-size:.84rem}.formula{min-width:0;min-height:92px}.exercises{padding-left:20px}}
+    @media print{@page{size:A4;margin:16mm}body{background:white}main{width:auto;margin:0;padding:0}.page{padding:0;border:0;box-shadow:none}.scientist-card,.formula-box,.figure,.example,.teacher-note,.warning,.card,li{break-inside:avoid}}
+  </style>
+</head>
+<body>
+  <main><article class="page">
+    <header class="doc-header">
+      <div class="cover">
+        <div>
+          <p class="eyebrow">Sistemas Multi Física - Profesor Javier Pereyra</p>
+          <h1>Corriente eléctrica y campo magnético</h1>
+          <p class="subtitle">La experiencia de Oersted: una corriente desvía una brújula y revela el vínculo entre electricidad y magnetismo.</p>
+        </div>
+        <figure class="scientist-card">
+          <img src="../assets/hans-christian-oersted.png" alt="Recreación histórica de Hans Christian Ørsted, físico y químico danés">
+          <figcaption>Hans Christian Ørsted. En 1820 mostró experimentalmente la relación entre corriente eléctrica y campo magnético. Recreación visual basada en retratos históricos.</figcaption>
+        </figure>
+      </div>
+      <div class="meta"><div><strong>Curso:</strong> Secundaria superior</div><div><strong>Tema:</strong> Experiencia de Oersted</div><div><strong>Unidades:</strong> A, m, T</div></div>
+    </header>
+
+    <section><h2><span>1</span> Objetivos de aprendizaje</h2>
+      <div class="card-grid">
+        <div class="card"><strong>Observar y explicar</strong><br>Reconocer que una corriente eléctrica produce un campo magnético.</div>
+        <div class="card"><strong>Representar</strong><br>Dibujar las líneas de campo alrededor de un conductor recto.</div>
+        <div class="card"><strong>Predecir</strong><br>Aplicar la regla de la mano derecha y anticipar qué cambia al invertir la corriente.</div>
+        <div class="card"><strong>Investigar</strong><br>Modificar una variable por vez y registrar evidencias con seguridad.</div>
+      </div>
+    </section>
+
+    <section><h2><span>2</span> Una brújula que no apunta al norte</h2>
+      <p>Una brújula se orienta aproximadamente con el campo magnético terrestre. Sin embargo, cuando circula corriente por un cable cercano, la aguja cambia de dirección. En 1820, Hans Christian Oersted observó este efecto y aportó una evidencia decisiva: <strong>electricidad y magnetismo no son fenómenos independientes</strong>.</p>
+      <div class="definition"><strong>Idea clave:</strong> toda corriente eléctrica genera un campo magnético en el espacio que la rodea. La brújula no recibe una “fuerza de la pila”: responde al campo resultante del cable y de la Tierra.</div>
+    </section>
+
+    <section><h2><span>3</span> El montaje de Oersted</h2>
+      <figure class="figure">
+        <img src="../assets/oersted-cable-brujula.png" alt="Montaje fotorrealista de Oersted con una pila, un pulsador, un cable recto sobre una brújula y líneas circulares de campo magnético">
+        <figcaption>La flecha amarilla representa la corriente convencional. Las curvas azules son una representación del campo invisible: rodean al conductor en planos perpendiculares al cable.</figcaption>
+      </figure>
+      <div class="step-grid">
+        <div class="card"><strong>Circuito abierto</strong><br>No circula corriente y la brújula se orienta principalmente con el campo terrestre.</div>
+        <div class="card"><strong>Circuito cerrado</strong><br>La corriente crea otro campo y la aguja se orienta según la combinación de ambos.</div>
+        <div class="card"><strong>Corriente invertida</strong><br>Al intercambiar los bornes de la pila, se invierte el campo del cable y cambia el sentido de la desviación.</div>
+        <div class="card"><strong>Mayor distancia</strong><br>Al alejar la brújula, el campo del cable disminuye y su efecto se vuelve menos evidente.</div>
+      </div>
+    </section>
+
+    <section><h2><span>4</span> Dirección del campo: regla de la mano derecha</h2>
+      <p>Rodeá mentalmente el conductor con la mano derecha. El pulgar señala la <strong>corriente convencional</strong> y los dedos curvados indican el sentido de las líneas de \(\vec B\).</p>
+      <div class="warning"><strong>Corriente y electrones no apuntan igual.</strong> En un metal, los electrones se desplazan en sentido opuesto a la corriente convencional. Para aplicar esta regla usamos el sentido de la corriente, desde el terminal positivo hacia el negativo por el circuito externo.</div>
+      <div class="teacher-note"><strong>Representación tridimensional:</strong> las líneas son circunferencias en planos perpendiculares al cable. En una fotografía oblicua se ven como elipses. No son objetos materiales ni órbitas de electrones.</div>
+    </section>
+
+    <section><h2><span>5</span> Campo de un conductor recto largo</h2>
+      <div class="formula-box">
+        <div class="formula">\[\boxed{B=\frac{\mu_0 I}{2\pi r}}\]</div>
+        <div><p>Esta expresión modela el campo a una distancia \(r\) de un conductor <strong>recto, muy largo y delgado</strong>, en aire o vacío.</p><p>Usamos \(\mu_0\approx1{,}26\times10^{-6}\,\mathrm{T\,m/A}\).</p></div>
+      </div>
+      <table><thead><tr><th>Magnitud</th><th>Símbolo</th><th>Unidad SI</th><th>Lectura física</th></tr></thead><tbody>
+        <tr><td>Campo magnético</td><td>\(B\)</td><td>tesla (T)</td><td>Intensidad del campo en el punto estudiado.</td></tr>
+        <tr><td>Corriente</td><td>\(I\)</td><td>ampere (A)</td><td>Si se duplica, \(B\) se duplica.</td></tr>
+        <tr><td>Distancia al eje del cable</td><td>\(r\)</td><td>metro (m)</td><td>Si se duplica, \(B\) se reduce a la mitad.</td></tr>
+        <tr><td>Permeabilidad magnética del vacío</td><td>\(\mu_0\)</td><td>\(\mathrm{T\,m/A}\)</td><td>Constante aproximada usada en el modelo.</td></tr>
+      </tbody></table>
+      <div class="calculation">\[B\propto I \qquad\text{y}\qquad B\propto\frac{1}{r}\]</div>
+    </section>
+
+    <section><h2><span>6</span> Ejemplo resuelto</h2>
+      <div class="example">
+        <p><strong>Problema:</strong> por un conductor recto largo circula una corriente de \(5{,}0\,\mathrm A\). Calculá el campo a \(2{,}0\,\mathrm{cm}\) de su eje.</p>
+        <p><strong>Datos en SI:</strong> \(I=5{,}0\,\mathrm A\), \(r=2{,}0\times10^{-2}\,\mathrm m\).</p>
+        <p><strong>Fórmula:</strong> \(B=\mu_0 I/(2\pi r)\).</p>
+        <p><strong>Reemplazo:</strong> \(B=(1{,}26\times10^{-6})(5{,}0)/[2\pi(2{,}0\times10^{-2})]\).</p>
+        <p><strong>Resultado:</strong> \(\boxed{B\approx5{,}0\times10^{-5}\,\mathrm T=50\,\mu\mathrm T}\).</p>
+        <p><strong>Interpretación:</strong> el valor es del mismo orden de magnitud que el campo terrestre. La orientación observada por la brújula depende de la suma vectorial de ambos campos.</p>
+      </div>
+    </section>
+
+    <section><h2><span>7</span> Del cable al electroimán</h2>
+      <p>Si enrollamos el conductor, los campos de las distintas espiras se refuerzan en el interior de la bobina. Un clavo de hierro dentro de ella concentra todavía más el campo y se transforma temporalmente en un <strong>electroimán</strong>.</p>
+      <figure class="figure">
+        <img src="../assets/electroiman-clavo-imancito.png" alt="Electroimán escolar fotorrealista construido con un clavo bobinado, una pila AA, un pulsador, una resistencia y un pequeño imán suspendido">
+        <figcaption>El imancito está suspendido para poder girar sin tocar el clavo. Las líneas azules son una representación didáctica del campo; forman curvas cerradas alrededor del electroimán.</figcaption>
+      </figure>
+      <div class="definition"><strong>Importante:</strong> el clavo bobinado no es el montaje original de Oersted, sino una aplicación del mismo principio. Un imancito apoyado sobre la mesa no funciona como indicador de dirección: debe poder girar libremente.</div>
+    </section>
+
+    <section><h2><span>8</span> Trabajo experimental seguro</h2>
+      <h3>Materiales</h3>
+      <p>Un clavo de hierro, 80 a 120 vueltas de alambre de cobre esmaltado, una pila AA de \(1{,}5\,\mathrm V\) con portapila, pulsador momentáneo, resistencia de \(10\,\Omega\) y \(1\,\mathrm W\), cables, brújula o imán pequeño suspendido, clips y lija para los extremos del alambre.</p>
+      <h3>Procedimiento</h3>
+      <ol>
+        <li>Enrollá el alambre prolijamente y lijá <strong>solo sus dos extremos</strong>.</li>
+        <li>Armá el circuito con la pila, el pulsador y la resistencia en serie, sin cerrarlo todavía.</li>
+        <li>Registrá la orientación inicial de la brújula o del imancito.</li>
+        <li>Presioná durante 2 o 3 segundos, observá y soltá. Dejá enfriar antes de repetir.</li>
+        <li>Invertí los bornes de la pila y compará la nueva orientación.</li>
+        <li>Probá luego si el clavo atrae clips mientras circula corriente y después de abrir el circuito.</li>
+      </ol>
+      <div class="warning"><strong>Seguridad:</strong> actividad con supervisión docente. No conectes cable desnudo directamente a la pila, no mantengas cerrado el circuito, no uses una batería rectangular de 9 V y controlá la temperatura antes de tocar. Alejá imanes de celulares, tarjetas, dispositivos médicos y objetos que puedan pellizcar.</div>
+      <table><thead><tr><th>Tipo</th><th>Variable</th><th>Cómo se trabaja</th></tr></thead><tbody>
+        <tr><td>Independiente principal</td><td>Sentido de la corriente</td><td>Se invierten los bornes de la pila.</td></tr>
+        <tr><td>Dependiente</td><td>Sentido o ángulo de giro</td><td>Se observa o mide la orientación del indicador.</td></tr>
+        <tr><td>Controladas</td><td>Distancia, posición, pila y montaje</td><td>Se mantienen iguales durante la comparación.</td></tr>
+      </tbody></table>
+    </section>
+
+    <section><h2><span>9</span> Actividades</h2>
+      <ol class="exercises">
+        <li>Dibujá un cable recto con corriente hacia la derecha y representá, mediante la regla de la mano derecha, el sentido de \(\vec B\) por encima y por debajo del cable.<span class="work-line"></span></li>
+        <li>Explicá por qué la desviación de la brújula cambia cuando se invierten los bornes de la pila.<span class="work-line"></span></li>
+        <li>Si la corriente pasa de \(2{,}0\,\mathrm A\) a \(4{,}0\,\mathrm A\) sin cambiar \(r\), ¿cómo cambia \(B\)? Justificá por proporcionalidad.<span class="work-line"></span></li>
+        <li>Si una brújula pasa de estar a \(1{,}0\,\mathrm{cm}\) a \(3{,}0\,\mathrm{cm}\) del mismo conductor, ¿qué fracción del campo inicial recibe según el modelo?<span class="work-line"></span></li>
+        <li>Calculá \(B\) a \(5{,}0\,\mathrm{cm}\) de un conductor largo recorrido por \(I=8{,}0\,\mathrm A\).<span class="work-line"></span></li>
+        <li>En cierto punto, un cable produce \(30\,\mu\mathrm T\) con \(I=3{,}0\,\mathrm A\). ¿Qué campo produciría allí con \(I=7{,}5\,\mathrm A\)?<span class="work-line"></span></li>
+        <li>Completá una tabla para \(I=4{,}0\,\mathrm A\) y \(r=1, 2, 4, 8\,\mathrm{cm}\). Graficá \(r\) en el eje horizontal y \(B\) en el vertical. ¿La relación es lineal?<span class="work-line"></span></li>
+        <li>Compará el montaje de Oersted y el electroimán: materiales, evidencia observada y pregunta científica que permite responder cada uno.<span class="work-line"></span></li>
+        <li>Diseñá un registro de datos para estudiar cómo cambia el ángulo de la brújula al variar la distancia. Indicá qué variables controlarías.<span class="work-line"></span></li>
+        <li>Un clavo atrae débilmente un imán incluso con el circuito abierto. Explicá por qué esa observación, por sí sola, no demuestra que esté circulando corriente y proponé un control experimental.<span class="work-line"></span></li>
+      </ol>
+    </section>
+
+    <section><h2><span>10</span> Preguntas para pensar</h2>
+      <p>¿Por qué una brújula cercana no necesariamente apunta exactamente en la dirección del campo creado por el cable? ¿Qué evidencia permite distinguir un electroimán de un imán permanente? ¿Por qué aumentar el número de vueltas suele intensificar el efecto? ¿Qué límites tiene usar un clavo real para calcular el campo como si fuera un solenoide ideal?</p>
+      <div class="teacher-note"><strong>Próxima conexión:</strong> una corriente produce campo magnético. En la clase siguiente veremos la idea complementaria: un campo magnético puede ejercer fuerza sobre un conductor recorrido por corriente.</div>
+    </section>
+
+    <footer>Sugerencia docente: pedir siempre una predicción antes de cerrar el circuito y registrar también observaciones negativas. Que la aguja se desvíe poco puede ser un dato sobre la distancia, la corriente o la orientación del montaje.</footer>
+  </article></main>
+</body>
+</html>
