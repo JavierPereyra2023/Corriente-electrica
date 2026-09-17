@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 760" role="img" aria-labelledby="title desc">
+  <title id="title">Patrón estático de una onda transversal</title>
+  <desc id="desc">Una onda azul sobre una línea de equilibrio punteada, con dos ciclos visibles y sin etiquetas.</desc>
+  <rect width="1600" height="760" fill="#fffdf7"/>
+  <rect x="44" y="42" width="1512" height="650" rx="24" fill="#f9fbfa" stroke="#d6c9af" stroke-width="3"/>
+  <line x1="118" y1="370" x2="1482" y2="370" stroke="#aab9be" stroke-width="4" stroke-dasharray="16 14"/>
+  <path d="M120 370 C170 150 290 150 340 370 S510 590 560 370 S730 150 780 370 S950 590 1000 370 S1170 150 1220 370 S1390 590 1440 370" fill="none" stroke="#2d6fa8" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="230" cy="205" r="9" fill="#d85a2a"/>
+  <circle cx="450" cy="535" r="9" fill="#087a80"/>
+  <circle cx="670" cy="205" r="9" fill="#d85a2a"/>
+  <circle cx="890" cy="535" r="9" fill="#087a80"/>
+  <circle cx="1110" cy="205" r="9" fill="#d85a2a"/>
+  <text x="112" y="112" fill="#18374a" font-family="Arial, sans-serif" font-size="36" font-weight="700">Onda transversal: observá el patrón</text>
+  <text x="112" y="642" fill="#526772" font-family="Arial, sans-serif" font-size="28">La animación siguiente ubica cada nombre sobre este mismo modelo.</text>
+</svg>

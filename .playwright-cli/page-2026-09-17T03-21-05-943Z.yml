@@ -1,0 +1,347 @@
+- main [ref=e2]:
+  - article [ref=e3]:
+    - generic [ref=e4]:
+      - paragraph [ref=e5]: Sistemas Multi Física - Profesor Javier Pereyra
+      - heading "Propagación de ondas mecánicas" [level=1] [ref=e6]
+      - paragraph [ref=e7]: "Una vibración puede trasladar energía de un lugar a otro. Antes de estudiar las ondas electromagnéticas de Maxwell, aprendemos a describir el caso más cercano: una soga, el agua y el sonido."
+      - generic [ref=e8]:
+        - generic [ref=e9]:
+          - strong [ref=e10]: "Curso:"
+          - text: Secundaria superior
+        - generic [ref=e11]:
+          - strong [ref=e12]: "Tema:"
+          - text: Ondas mecánicas
+        - generic [ref=e13]:
+          - strong [ref=e14]: "Unidades:"
+          - text: m, s, Hz, m/s
+    - generic [ref=e15]:
+      - heading "1 Objetivos de aprendizaje" [level=2] [ref=e16]:
+        - generic [ref=e17]: "1"
+        - text: Objetivos de aprendizaje
+      - generic [ref=e18]:
+        - generic [ref=e19]:
+          - strong [ref=e20]: Explicar
+          - text: Distinguir una onda mecánica de un desplazamiento de materia.
+        - generic [ref=e21]:
+          - strong [ref=e22]: Reconocer
+          - text: Amplitud, longitud de onda, período, frecuencia y velocidad.
+        - generic [ref=e23]:
+          - strong [ref=e24]: Calcular
+          - text: Resolver problemas con (f=1/T), (v=lambda f) y (v=lambda/T).
+        - generic [ref=e25]:
+          - strong [ref=e26]: Interpretar
+          - text: Predecir reflexión, refracción, difracción e interferencia.
+    - generic [ref=e27]:
+      - 'heading "2 Idea inicial: una vibración que se propaga" [level=2] [ref=e28]':
+        - generic [ref=e29]: "2"
+        - text: "Idea inicial: una vibración que se propaga"
+      - paragraph [ref=e30]:
+        - text: "Si sacudimos el extremo de una soga, cada pequeña porción de la soga se mueve alrededor de su posición de equilibrio. Sin embargo, el “pulso” llega al otro extremo:"
+        - strong [ref=e31]: se propagó una perturbación
+        - text: .
+      - generic [ref=e32]:
+        - strong [ref=e33]: "Onda mecánica:"
+        - text: perturbación que se propaga en un medio material y transporta energía e información, sin trasladar el medio entero junto con ella. El medio puede ser una soga, agua, aire, un resorte o el suelo.
+      - paragraph [ref=e34]: "Una buena analogía es la “ola” de una tribuna: las personas no recorren el estadio, pero el patrón de levantarse y sentarse sí lo hace. La analogía tiene un límite: en una onda física hay fuerzas entre las partes del medio."
+      - figure "En una onda transversal de soga, las partes del medio oscilan perpendicularmente a la dirección de propagación." [ref=e35]:
+        - img "Esquema de una onda transversal que se propaga por una soga, con las partes del medio oscilando verticalmente." [ref=e37]:
+          - generic [ref=e40]: propagación
+          - generic [ref=e41]: La partícula marcada oscila arriba y abajo; la onda avanza hacia la derecha.
+          - generic [ref=e42]: posición de equilibrio
+    - generic [ref=e44]:
+      - heading "3 Dos formas de oscilación" [level=2] [ref=e45]:
+        - generic [ref=e46]: "3"
+        - text: Dos formas de oscilación
+      - generic [ref=e47]:
+        - generic [ref=e48]:
+          - strong [ref=e49]: Onda transversal
+          - text: "La oscilación es perpendicular a la propagación. Ejemplos: una soga tensa o muchas ondas en la superficie del agua. Se reconocen crestas y valles."
+        - generic [ref=e50]:
+          - strong [ref=e51]: Onda longitudinal
+          - text: La oscilación es paralela a la propagación. Se alternan compresiones y rarefacciones. El sonido en el aire es el ejemplo central.
+      - generic [ref=e52]:
+        - strong [ref=e53]: "Cuidado con la idea de “onda dibujada”:"
+        - text: la curva senoidal no significa que el aire suba y baje cuando escuchamos un sonido. Para el sonido, el dibujo útil muestra zonas donde el aire está un poco más comprimido y otras más separado.
+    - generic [ref=e54]:
+      - heading "4 Características de una onda" [level=2] [ref=e55]:
+        - generic [ref=e56]: "4"
+        - text: Características de una onda
+      - paragraph [ref=e57]: Para describir una onda periódica elegimos una porción del medio y observamos cómo se repite el movimiento.
+      - figure "La amplitud se mide desde el equilibrio hasta una cresta o un valle; (lambda) es la distancia entre dos puntos consecutivos que vibran en la misma fase." [ref=e58]:
+        - img "Onda transversal señalando amplitud A, longitud de onda lambda, cresta, valle y posición de equilibrio." [ref=e60]:
+          - generic [ref=e63]: "A: amplitud"
+          - generic [ref=e64]: "λ: longitud de onda"
+          - generic [ref=e66]: cresta
+          - generic [ref=e68]: valle
+          - generic [ref=e69]: equilibrio
+      - table [ref=e71]:
+        - rowgroup [ref=e72]:
+          - row [ref=e73]:
+            - columnheader "Magnitud" [ref=e74]
+            - columnheader "Símbolo" [ref=e75]
+            - columnheader "Unidad SI" [ref=e76]
+            - columnheader "Qué expresa" [ref=e77]
+        - rowgroup [ref=e78]:
+          - row [ref=e79]:
+            - cell "Amplitud" [ref=e80]
+            - cell "(A)" [ref=e81]
+            - cell "metro (m)" [ref=e82]
+            - cell "Máxima separación respecto del equilibrio. En una misma soga, mayor amplitud suele implicar más energía transportada." [ref=e83]
+          - row [ref=e84]:
+            - cell "Longitud de onda" [ref=e85]
+            - cell "(lambda)" [ref=e86]
+            - cell "metro (m)" [ref=e87]
+            - cell "Distancia espacial de una repetición completa." [ref=e88]
+          - row [ref=e89]:
+            - cell "Período" [ref=e90]
+            - cell "(T)" [ref=e91]
+            - cell "segundo (s)" [ref=e92]
+            - cell "Tiempo que tarda un punto del medio en completar una oscilación." [ref=e93]
+          - row [ref=e94]:
+            - cell "Frecuencia" [ref=e95]
+            - cell "(f)" [ref=e96]
+            - cell "hertz (Hz)" [ref=e97]
+            - 'cell "Oscilaciones completas por segundo. (1,mathrm{Hz}=1,mathrm{s^{-1}})." [ref=e98]'
+          - row [ref=e99]:
+            - cell "Velocidad de propagación" [ref=e100]
+            - cell "(v)" [ref=e101]
+            - cell "metro por segundo (m/s)" [ref=e102]
+            - cell "Rapidez con que avanza un frente de onda por el medio." [ref=e103]
+    - generic [ref=e104]:
+      - heading "5 Ecuaciones que conectan espacio y tiempo" [level=2] [ref=e105]:
+        - generic [ref=e106]: "5"
+        - text: Ecuaciones que conectan espacio y tiempo
+      - generic [ref=e107]:
+        - generic [ref=e109]:
+          - generic [ref=e115]:
+            - generic [ref=e116]: f
+            - generic [ref=e118]: =
+            - generic [ref=e121]:
+              - generic [ref=e122]: "1"
+              - generic [ref=e125]: T
+          - math [ref=e133]:
+            - generic [ref=e137]:
+              - generic [ref=e138]: f
+              - generic [ref=e139]: =
+              - generic [ref=e140]:
+                - generic [ref=e141]: "1"
+                - generic [ref=e142]: T
+        - generic [ref=e143]:
+          - paragraph [ref=e144]: "Frecuencia y período son inversos: si una oscilación tarda menos, ocurren más oscilaciones por segundo."
+          - paragraph [ref=e145]: "Ejemplo breve: si (T=0{,}20,mathrm s), entonces (f=1/0{,}20=5{,}0,mathrm{Hz})."
+      - generic [ref=e146]:
+        - generic [ref=e148]:
+          - generic [ref=e154]:
+            - generic [ref=e155]: v
+            - generic [ref=e157]: =
+            - generic [ref=e159]: λ
+            - generic [ref=e161]: f
+            - generic [ref=e163]: =
+            - generic [ref=e166]:
+              - generic [ref=e167]: λ
+              - generic [ref=e170]: T
+          - math [ref=e178]:
+            - generic [ref=e182]:
+              - generic [ref=e183]: v
+              - generic [ref=e184]: =
+              - generic [ref=e185]: λ
+              - generic [ref=e186]: f
+              - generic [ref=e187]: =
+              - generic [ref=e188]:
+                - generic [ref=e189]: λ
+                - generic [ref=e190]: T
+        - generic [ref=e191]:
+          - paragraph [ref=e192]: En un período, una cresta avanza exactamente una longitud de onda. Por eso, distancia recorrida (lambda) dividida por tiempo (T) da la velocidad.
+          - paragraph [ref=e193]:
+            - strong [ref=e194]: "Regla física importante:"
+            - text: en un medio dado, la rapidez depende de las propiedades del medio. La fuente determina la frecuencia; al cambiar (f), cambia (lambda) para que se conserve (v=lambda f).
+      - generic [ref=e195]:
+        - strong [ref=e196]: "No confundir:"
+        - text: la velocidad de propagación (v) no es la velocidad con que se mueve “hacia arriba” una porción de la soga. (v) mide el avance del patrón de la onda.
+    - generic [ref=e197]:
+      - heading "6 Ejemplos resueltos" [level=2] [ref=e198]:
+        - generic [ref=e199]: "6"
+        - text: Ejemplos resueltos
+      - generic [ref=e200]:
+        - paragraph [ref=e201]:
+          - strong [ref=e202]: "Problema 1:"
+          - text: "en una soga, una onda tiene (lambda=2{,}0,mathrm m) y (f=3{,}0,mathrm{Hz}). Hallá su velocidad."
+        - paragraph [ref=e203]:
+          - strong [ref=e204]: "Fórmula:"
+          - text: (v=lambda f).
+        - paragraph [ref=e205]:
+          - strong [ref=e206]: "Reemplazo:"
+          - text: "(v=(2{,}0,mathrm m)(3{,}0,mathrm{s^{-1}}))."
+        - paragraph [ref=e207]:
+          - strong [ref=e208]: "Resultado:"
+          - text: "(\boxed{v=6{,}0,mathrm{m/s}})."
+        - paragraph [ref=e209]:
+          - strong [ref=e210]: "Interpretación:"
+          - text: "cada segundo pasan tres longitudes de (2{,}0,mathrm m): el patrón avanza (6{,}0,mathrm m)."
+      - generic [ref=e211]:
+        - paragraph [ref=e212]:
+          - strong [ref=e213]: "Problema 2: sonido."
+          - text: "Una nota de (680,mathrm{Hz}) viaja en aire a (340,mathrm{m/s}). Calculá su longitud de onda."
+        - paragraph [ref=e214]:
+          - strong [ref=e215]: "Despeje:"
+          - text: (lambda=v/f).
+        - paragraph [ref=e216]:
+          - strong [ref=e217]: "Reemplazo:"
+          - text: "(lambda=340,mathrm{m/s}\\div680,mathrm{s^{-1}})."
+        - paragraph [ref=e218]:
+          - strong [ref=e219]: "Resultado:"
+          - text: "(\boxed{lambda=0{,}50,mathrm m})."
+        - paragraph [ref=e220]:
+          - strong [ref=e221]: "Interpretación:"
+          - text: las compresiones de aire se repiten cada medio metro. Si la nota fuera más aguda (mayor (f)) en el mismo aire, su (lambda) sería menor.
+      - generic [ref=e222]:
+        - paragraph [ref=e223]:
+          - strong [ref=e224]: "Problema 3:"
+          - text: "una onda tiene período (T=0{,}25,mathrm s) y (lambda=1{,}5,mathrm m). Calculá frecuencia y velocidad."
+        - paragraph [ref=e225]:
+          - strong [ref=e226]: "Frecuencia:"
+          - text: "(f=1/T=1/0{,}25=\boxed{4{,}0,mathrm{Hz}})."
+        - paragraph [ref=e227]:
+          - strong [ref=e228]: "Velocidad:"
+          - text: "(v=lambda/T=1{,}5,mathrm m\\div0{,}25,mathrm s=\boxed{6{,}0,mathrm{m/s}})."
+    - generic [ref=e229]:
+      - 'heading "7 Infografía dinámica: mirar, pausar y explicar" [level=2] [ref=e230]':
+        - generic [ref=e231]: "7"
+        - text: "Infografía dinámica: mirar, pausar y explicar"
+      - paragraph [ref=e232]: "La animación acompaña la lectura: muestra una onda transversal, las magnitudes, el sonido como onda longitudinal y la superposición de ondas. Los rótulos son parte del modelo, no reemplazan la observación experimental."
+      - 'figure "Infografía animada original: 24 s. En la sección final, el cambio entre constructiva y destructiva se produce al invertir la fase de una de las ondas." [ref=e233]':
+        - generic "Infografía animada sobre ondas mecánicas y sonido" [ref=e234]: Tu navegador no puede reproducir este video.
+      - paragraph [ref=e236]:
+        - text: "Fuente editable:"
+        - link "composición Remotion de ondas" [ref=e237] [cursor=pointer]:
+          - /url: ../animaciones/potencia-energia/src/ondas.jsx
+        - text: .
+    - generic [ref=e238]:
+      - heading "8 Fenómenos de las ondas" [level=2] [ref=e239]:
+        - generic [ref=e240]: "8"
+        - text: Fenómenos de las ondas
+      - 'figure "Los dibujos simplifican el fenómeno: el rasgo común es que una onda puede superponerse o cambiar al encontrar una frontera, una abertura u otra onda." [ref=e241]':
+        - 'img "Cuatro esquemas de fenómenos ondulatorios: reflexión, refracción, difracción e interferencia constructiva y destructiva." [ref=e243]':
+          - generic [ref=e245]: A. Reflexión
+          - generic [ref=e249]: La onda rebota en un límite.
+          - generic [ref=e251]: B. Refracción
+          - generic [ref=e256]: Al pasar a otro medio cambian (v) y (lambda).
+          - generic [ref=e258]: C. Difracción
+          - generic [ref=e263]: La onda se abre al pasar por una abertura.
+          - generic [ref=e265]: D. Interferencia
+          - generic [ref=e269]: "En fase: constructiva. En oposición: destructiva."
+      - generic [ref=e271]:
+        - generic [ref=e272]:
+          - strong [ref=e273]: Reflexión
+          - text: "Una onda cambia de dirección al encontrar un límite. Ejemplo: eco del sonido o pulso que rebota en el extremo de una soga."
+        - generic [ref=e274]:
+          - strong [ref=e275]: Refracción
+          - text: "Al pasar de un medio a otro cambia la rapidez y, con la misma frecuencia, cambia (lambda). Ejemplo: olas al llegar a una zona menos profunda."
+        - generic [ref=e276]:
+          - strong [ref=e277]: Difracción
+          - text: "La onda se curva y se abre al atravesar una abertura o rodear un obstáculo. Ejemplo: escuchar una voz detrás de una puerta entreabierta."
+        - generic [ref=e278]:
+          - strong [ref=e279]: Interferencia constructiva y destructiva
+          - text: Dos ondas se superponen. Si sus desplazamientos se refuerzan, aumenta la amplitud; si se oponen, disminuye o puede anularse localmente.
+    - generic [ref=e280]:
+      - 'heading "9 Sonido: del parlante al oído" [level=2] [ref=e281]':
+        - generic [ref=e282]: "9"
+        - text: "Sonido: del parlante al oído"
+      - paragraph [ref=e283]: Un parlante tiene una membrana que vibra gracias a un sistema electromagnético. Al avanzar, comprime el aire; al retroceder, lo rareface. Esas variaciones de presión se propagan como sonido y hacen vibrar el tímpano.
+      - generic [ref=e284]:
+        - generic [ref=e286]:
+          - generic [ref=e292]:
+            - generic [ref=e293]: λ
+            - generic [ref=e295]: =
+            - generic [ref=e298]:
+              - generic [ref=e299]: v
+              - generic [ref=e302]: f
+          - math [ref=e310]:
+            - generic [ref=e314]:
+              - generic [ref=e315]: λ
+              - generic [ref=e316]: =
+              - generic [ref=e317]:
+                - generic [ref=e318]: v
+                - generic [ref=e319]: f
+        - generic [ref=e320]:
+          - paragraph [ref=e321]: "En aire a (20,^circmathrm C), podemos usar aproximadamente (v=343,mathrm{m/s}). Una frecuencia mayor se percibe, en general, como un sonido más agudo; no significa que viaje más rápido en el mismo aire."
+          - paragraph [ref=e322]: La amplitud se relaciona con la intensidad percibida, aunque la sensación de volumen también depende de la frecuencia y de la respuesta del oído.
+      - generic [ref=e323]:
+        - strong [ref=e324]: "Puente hacia Maxwell:"
+        - text: "sonido y olas necesitan un medio material: son ondas mecánicas. Más adelante estudiaremos que las ondas electromagnéticas pueden propagarse en el vacío y que un parlante o una antena son dispositivos que conectan fenómenos eléctricos, magnéticos y ondulatorios."
+    - generic [ref=e325]:
+      - 'heading "10 Experiencia escolar: frecuencia en una soga" [level=2] [ref=e326]':
+        - generic [ref=e327]: "10"
+        - text: "Experiencia escolar: frecuencia en una soga"
+      - heading "Materiales" [level=3] [ref=e328]
+      - paragraph [ref=e329]: Soga liviana de 3 a 5 m, cinta métrica, cronómetro y un punto fijo o compañero/a que sostenga un extremo. No usar sogas cerca de ventiladores, escaleras o zonas de paso.
+      - heading "Procedimiento" [level=3] [ref=e330]
+      - list [ref=e331]:
+        - listitem [ref=e332]: Marcá dos puntos separados (2,mathrm m) y mantené la soga con una tensión aproximadamente constante.
+        - listitem [ref=e333]: Producí oscilaciones regulares durante (10,mathrm s); contá (N) oscilaciones.
+        - listitem [ref=e334]: Calculá (f=N/t) y (T=1/f). Medí la distancia entre dos crestas para estimar (lambda).
+        - listitem [ref=e335]: Calculá (v=lambda f). Repetí cambiando la frecuencia sin cambiar demasiado la tensión.
+      - table [ref=e336]:
+        - rowgroup [ref=e337]:
+          - row [ref=e338]:
+            - columnheader "Ensayo" [ref=e339]
+            - columnheader "Oscilaciones (N)" [ref=e340]
+            - columnheader "Tiempo (t) (s)" [ref=e341]
+            - columnheader "(f=N/t) (Hz)" [ref=e342]
+            - columnheader "(lambda) (m)" [ref=e343]
+            - columnheader "(v=lambda f) (m/s)" [ref=e344]
+        - rowgroup [ref=e345]:
+          - row [ref=e346]:
+            - cell "1" [ref=e347]
+            - cell [ref=e348]
+            - cell "10" [ref=e349]
+            - cell [ref=e350]
+            - cell [ref=e351]
+            - cell [ref=e352]
+          - row [ref=e353]:
+            - cell "2" [ref=e354]
+            - cell [ref=e355]
+            - cell "10" [ref=e356]
+            - cell [ref=e357]
+            - cell [ref=e358]
+            - cell [ref=e359]
+          - row [ref=e360]:
+            - cell "3" [ref=e361]
+            - cell [ref=e362]
+            - cell "10" [ref=e363]
+            - cell [ref=e364]
+            - cell [ref=e365]
+            - cell [ref=e366]
+      - generic [ref=e367]:
+        - strong [ref=e368]: "Predicción para discutir:"
+        - text: con tensión y soga aproximadamente constantes, la velocidad suele mantenerse parecida; al aumentar (f), (lambda) disminuye. Las diferencias reales aparecen por la tensión cambiante y por la dificultad de producir una onda uniforme.
+    - generic [ref=e369]:
+      - heading "11 Actividades" [level=2] [ref=e370]:
+        - generic [ref=e371]: "11"
+        - text: Actividades
+      - paragraph [ref=e372]: En los ejercicios numéricos escribí datos, ecuación, reemplazo, unidad e interpretación física.
+      - list [ref=e373]:
+        - listitem [ref=e374]: Explicá con tus palabras por qué una onda en una soga transporta energía sin trasladar toda la soga.
+        - listitem [ref=e376]: "Clasificá como mecánica o no mecánica: sonido, onda en el agua, luz de una linterna, onda sísmica. Justificá qué medio necesitan."
+        - listitem [ref=e378]: Una fuente realiza 24 oscilaciones en 6,0 s. Calculá (f) y (T).
+        - listitem [ref=e380]: "Una onda tiene (T=0{,}40,mathrm s). Hallá su frecuencia."
+        - listitem [ref=e382]: "En una soga, (lambda=0{,}80,mathrm m) y (f=5{,}0,mathrm{Hz}). Calculá (v)."
+        - listitem [ref=e384]: "Un sonido de (440,mathrm{Hz}) viaja en aire a (343,mathrm{m/s}). Hallá (lambda)."
+        - listitem [ref=e386]: "Dos sonidos viajan por el mismo aire: uno tiene (250,mathrm{Hz}) y el otro (500,mathrm{Hz}). Compará sus velocidades y longitudes de onda."
+        - listitem [ref=e388]: Una onda pasa de una cuerda a otra diferente. Indicá qué magnitud conserva la fuente y qué magnitudes pueden cambiar. Explicá la refracción.
+        - listitem [ref=e390]: "Completá la tabla: para (v=12,mathrm{m/s}), calculá (lambda) si (f) vale 2 Hz, 3 Hz y 6 Hz. Graficá (lambda) en función de (f) y describí la relación."
+        - listitem [ref=e392]: Dos parlantes emiten el mismo tono. En un punto se escucha muy poco. Proponé una explicación mediante interferencia destructiva y aclará por qué no desaparece la energía del sistema.
+    - generic [ref=e394]:
+      - heading "12 Preguntas para pensar" [level=2] [ref=e395]:
+        - generic [ref=e396]: "12"
+        - text: Preguntas para pensar
+      - generic [ref=e397]:
+        - strong [ref=e398]: ¿Qué cambia si sacudo una soga más rápido?
+        - text: La frecuencia aumenta. Si la tensión no cambia mucho, la rapidez se mantiene aproximadamente y la longitud de onda disminuye.
+      - generic [ref=e399]:
+        - strong [ref=e400]: ¿Por qué a veces escuchamos detrás de una puerta?
+        - text: "Porque el sonido se difracta: los frentes de onda se abren al atravesar la abertura. Es una buena oportunidad para distinguir “ver” de “oír” una fuente escondida."
+      - generic [ref=e401]:
+        - strong [ref=e402]: "Error frecuente:"
+        - text: “Una amplitud mayor hace que la onda vaya más rápido”. En el modelo escolar usual de una soga lineal, la rapidez depende principalmente del medio y de la tensión, no de la amplitud. Amplitud y velocidad son magnitudes diferentes.
+    - generic [ref=e403]: "Sugerencia docente: cerrar la clase con una tabla de comparación “onda mecánica / futura onda electromagnética”: ¿necesita medio?, ¿qué oscila?, ¿qué transporta?, ¿cómo se produce? Así la transición hacia Maxwell no aparece como un tema aislado."

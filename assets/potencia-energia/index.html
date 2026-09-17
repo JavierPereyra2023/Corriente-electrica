@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="es-AR">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Tablero animado e interactivo con dos pilas, llave y lamparita. Potencia, energía y consumo en kWh.">
+<title>Potencia y energía · Tablero de dos pilas</title>
+<style>
+:root{--ink:#18374a;--teal:#087a80;--paper:#f6f2e8;--line:#d8d2c4}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,sans-serif}button,a,input{touch-action:manipulation}button{font:inherit;cursor:pointer;border:1px solid var(--line);border-radius:8px;background:#fffdf7;color:var(--ink);padding:11px 16px}button:hover{background:#e9efe9}button[aria-pressed=true],button.primary{background:var(--ink);color:#fff}button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #b37915;outline-offset:3px}a{color:var(--teal)}.toolbar{max-width:1600px;margin:auto;display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:14px 24px}.toolbar>a:first-child{margin-right:auto;font-size:14px}.frame{max-width:1720px;margin:auto;line-height:0}.frame svg{width:100%;height:auto}.controls{max-width:1540px;margin:0 auto;padding:16px 24px 25px;border-bottom:1px solid var(--line)}.transport{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.transport input{flex:1;min-width:160px;accent-color:var(--teal)}.time{font-variant-numeric:tabular-nums}.chapters{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.chapters button{font-size:14px}.mode-note{font-size:14px;color:#526772;margin:16px 0 0;line-height:1.5}.guide{max-width:1140px;margin:45px auto;padding:0 24px 60px;line-height:1.65}.guide h1{font-family:Georgia,serif;font-size:36px}.guide h2{font-family:Georgia,serif;font-size:25px;margin-top:35px}.guide .lead{font-size:20px}.guide ol li{padding:5px 0}.guide p,.guide li{max-width:900px}.equations{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.equation{background:#fffdf7;border:1px solid var(--line);border-radius:12px;padding:20px;font-size:17px}.equation b{display:block;font-size:27px;margin-bottom:8px}.note{padding:18px 22px;background:#eee5ce;border-radius:12px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}table{border-collapse:collapse;width:100%;background:#fffdf7}th,td{padding:12px;text-align:left;border-bottom:1px solid var(--line)}th{background:#e9efe9}details{margin-top:18px}summary{cursor:pointer;font-weight:bold}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0)}.free-tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center}.free-tools[hidden]{display:none}.credit{font-size:14px;border-top:1px solid var(--line);padding-top:22px}.frame:fullscreen{background:var(--paper);display:grid;place-items:center;max-width:none}.frame:fullscreen svg{width:100%;height:100%;object-fit:contain}
+@media(max-width:760px){.toolbar{padding:12px 16px}.toolbar button{font-size:13px;padding:9px}.toolbar>a:first-child{width:100%;margin-bottom:5px}.controls{padding:12px 16px 20px}.guide{margin-top:25px;padding:0 20px 40px}.guide h1{font-size:29px}.equations,.grid{grid-template-columns:1fr}.transport input{order:4;flex-basis:100%}.chapters{display:grid;grid-template-columns:1fr 1fr}.chapters button{text-align:left;font-size:13px;padding:10px}.frame svg{display:block}.guide table{font-size:14px}td,th{padding:8px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@page{size:A4;margin:12mm}@media print{.toolbar,.controls,.no-print{display:none}.frame{break-inside:avoid}.guide{margin:0;padding:0;font-size:10pt}.guide h1{font-size:22pt}.guide h2{font-size:16pt}.guide .lead{font-size:12pt}.equations{grid-template-columns:repeat(3,1fr)}.equation{font-size:10pt;padding:10px}.equation b{font-size:16pt}.grid{grid-template-columns:1fr 1fr}table,.equations,.note{break-inside:avoid}.guide h2{break-after:avoid}}
+</style></head>
+<body>
+<nav class="toolbar" aria-label="Recursos de la clase">
+<a href="../../clases/potencia-electrica.html">← Volver al apunte de potencia y energía</a>
+<a href="#guia">Guía para armar</a><button id="full">Pantalla completa</button><button id="print">Imprimir guía</button>
+</nav>
+<main>
+<div id="stage" class="frame" aria-label="Infografía animada de potencia y energía"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" role="img" aria-label="01 · El tablero: circuito de dos pilas, llave móvil y lamparita; explicación de potencia y energía" font-family="Arial, sans-serif" shape-rendering="geometricPrecision">
+    <defs>
+    <linearGradient id="wood" x2="0" y2="1"><stop stop-color="#efe5ce"/><stop offset=".5" stop-color="#e7d8b9"/><stop offset="1" stop-color="#f0e5cf"/></linearGradient>
+    <linearGradient id="cell"><stop stop-color="#283d4b"/><stop offset=".45" stop-color="#526a76"/><stop offset=".75" stop-color="#283d4b"/><stop offset="1" stop-color="#162934"/></linearGradient>
+    <linearGradient id="copper"><stop stop-color="#986032"/><stop offset=".45" stop-color="#ecbc7e"/><stop offset=".8" stop-color="#b47d44"/><stop offset="1" stop-color="#825132"/></linearGradient>
+    <linearGradient id="metal"><stop stop-color="#66747a"/><stop offset=".45" stop-color="#e4e8e6"/><stop offset=".65" stop-color="#b2bcbe"/><stop offset="1" stop-color="#5c6e76"/></linearGradient>
+    <radialGradient id="halo"><stop stop-color="#ffd35f" stop-opacity=".8"/><stop offset=".45" stop-color="#ffc344" stop-opacity=".3"/><stop offset="1" stop-color="#ffb126" stop-opacity="0"/></radialGradient>
+  </defs><rect x="0" y="0" width="1920" height="1080" rx="0" fill="#f6f2e8" stroke="none"/><rect x="0" y="0" width="1920" height="9" rx="0" fill="#087a80" stroke="none"/>
+    <text x="80" y="72" font-size="27" fill="#087a80" font-weight="700" >FÍSICA EN EL TABLERO</text><text x="80" y="155" font-size="76" fill="#18374a" font-weight="700" >Potencia y energía</text><text x="82" y="206" font-size="31" fill="#526772" font-weight="400" >Dos pilas. Una llave. Una transformación que podemos medir.</text><text x="1835" y="89" font-size="54" fill="#c49335" font-weight="500" text-anchor="end">01</text><text x="1835" y="135" font-size="22" fill="#526772" font-weight="600" text-anchor="end">LABORATORIO ESCOLAR</text>
+    <g transform="translate(80 250)"><g id="board">
+    <rect x="0" y="0" width="1080" height="650" rx="24" fill="url(#wood)" stroke="#cab997"/>
+    <path d="M20 175 Q360 160 1050 175 M20 390 Q510 405 1060 390 M20 570 Q520 560 1060 575" stroke="#9e7d45" stroke-opacity=".09" fill="none" stroke-width="2"/>
+    <circle cx="24" cy="24" r="12" fill="url(#metal)" stroke="#4c5960" stroke-width="2"/><path d="M18,30 l12,-12" stroke="#49565e" stroke-width="3"/><circle cx="1056" cy="24" r="12" fill="url(#metal)" stroke="#4c5960" stroke-width="2"/><path d="M1050,30 l12,-12" stroke="#49565e" stroke-width="3"/><circle cx="24" cy="626" r="12" fill="url(#metal)" stroke="#4c5960" stroke-width="2"/><path d="M18,632 l12,-12" stroke="#49565e" stroke-width="3"/><circle cx="1056" cy="626" r="12" fill="url(#metal)" stroke="#4c5960" stroke-width="2"/><path d="M1050,632 l12,-12" stroke="#49565e" stroke-width="3"/>
+    <text x="40" y="58" font-size="27" fill="#18374a" font-weight="700" >TABLERO DE BAJA TENSIÓN</text>
+    <rect x="746" y="26" width="290" height="49" rx="24" fill="#e6e2d9" stroke="none"/>
+    <circle cx="771" cy="50" r="7" fill="#7c837f"/>
+    <text x="790" y="59" font-size="20" fill="#18374a" font-weight="700" >CIRCUITO ABIERTO</text>
+    <path d="M210 190 L210 130 L620 130 L620 330 L715 330" fill="none" stroke="#000" stroke-opacity=".12" stroke-width="17" transform="translate(0 4)"/><path d="M210 190 L210 130 L620 130 L620 330 L715 330" fill="none" stroke="#bb3e33" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/><path d="M210 190 L210 130 L620 130 L620 330 L715 330" fill="none" stroke="#fff" stroke-opacity=".24" stroke-width="3" stroke-linecap="round" transform="translate(-1 -2)"/><path d="M865 330 L1020 330 L1020 495 L660 495" fill="none" stroke="#000" stroke-opacity=".12" stroke-width="17" transform="translate(0 4)"/><path d="M865 330 L1020 330 L1020 495 L660 495" fill="none" stroke="#344653" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/><path d="M865 330 L1020 330 L1020 495 L660 495" fill="none" stroke="#fff" stroke-opacity=".24" stroke-width="3" stroke-linecap="round" transform="translate(-1 -2)"/><path d="M535 495 L410 495 L410 190 L306 190" fill="none" stroke="#000" stroke-opacity=".12" stroke-width="17" transform="translate(0 4)"/><path d="M535 495 L410 495 L410 190 L306 190" fill="none" stroke="#344653" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/><path d="M535 495 L410 495 L410 190 L306 190" fill="none" stroke="#fff" stroke-opacity=".24" stroke-width="3" stroke-linecap="round" transform="translate(-1 -2)"/>
+    <rect x="139" y="177" width="235" height="307" rx="20" fill="#00000018" stroke="none"/>
+    <rect x="133" y="170" width="235" height="307" rx="18" fill="#24323c" stroke="#111e27"/>
+    <rect x="148" y="186" width="205" height="272" rx="9" fill="#13232c" stroke="none"/>
+    <g>
+      <rect x="175" y="217" width="70" height="215" rx="11" fill="url(#cell)" stroke="none"/>
+      <rect x="175" y="217" width="70" height="77" rx="9" fill="url(#copper)" stroke="none"/>
+      <rect x="184" y="207" width="52" height="10" rx="3" fill="url(#metal)" stroke="none"/>
+      <path d="M185 201 l10 -5 l-10 -5 l10 -5" fill="none" stroke="#afb7b6" stroke-width="3"/>
+      <path d="M185 450 l10 -5 l-10 -5 l10 -5" fill="none" stroke="#afb7b6" stroke-width="3"/>
+      <text x="210" y="250" font-size="31" fill="#31190c" font-weight="700" text-anchor="middle">+</text>
+      <text x="210" y="395" font-size="31" fill="#fff" font-weight="700" text-anchor="middle">−</text>
+      <text x="210" y="320" font-size="24" fill="#fff" font-weight="700" text-anchor="middle">1,5 V</text>
+      <text x="210" y="350" font-size="20" fill="#d7dfdf" font-weight="400" text-anchor="middle">AA</text>
+      <path d="M210 190 V217 M210 432 V463" stroke="#c2c6c4" stroke-width="7"/>
+    </g><g>
+      <rect x="271" y="217" width="70" height="215" rx="11" fill="url(#cell)" stroke="none"/>
+      <rect x="271" y="355" width="70" height="77" rx="9" fill="url(#copper)" stroke="none"/>
+      <rect x="280" y="427" width="52" height="10" rx="3" fill="url(#metal)" stroke="none"/>
+      <path d="M281 201 l10 -5 l-10 -5 l10 -5" fill="none" stroke="#afb7b6" stroke-width="3"/>
+      <path d="M281 450 l10 -5 l-10 -5 l10 -5" fill="none" stroke="#afb7b6" stroke-width="3"/>
+      <text x="306" y="250" font-size="31" fill="#fff" font-weight="700" text-anchor="middle">−</text>
+      <text x="306" y="395" font-size="31" fill="#31190c" font-weight="700" text-anchor="middle">+</text>
+      <text x="306" y="320" font-size="24" fill="#fff" font-weight="700" text-anchor="middle">1,5 V</text>
+      <text x="306" y="350" font-size="20" fill="#d7dfdf" font-weight="400" text-anchor="middle">AA</text>
+      <path d="M306 190 V217 M306 432 V463" stroke="#c2c6c4" stroke-width="7"/>
+    </g>
+    <path d="M210 442 V463 H306 V442" fill="none" stroke="#c1bfab" stroke-width="6"/>
+    <text x="182" y="172" font-size="29" fill="#a33028" font-weight="700" >+</text><text x="320" y="174" font-size="29" fill="#18374a" font-weight="700" >−</text>
+    <path d="M172 484 V513 H88" fill="none" stroke="#526772" stroke-width="2"/>
+    <circle cx="61" cy="544" r="20" fill="#18374a"/><text x="61" y="552" font-size="24" fill="#fff" font-weight="700" text-anchor="middle">1</text><text x="92" y="551" font-size="27" fill="#18374a" font-weight="700" >PORTAPILAS</text>
+    <text x="92" y="587" font-size="29" fill="#18374a" font-weight="600" >1,5 V + 1,5 V = 3 V</text>
+    <text x="92" y="620" font-size="22" fill="#526772" font-weight="400" >Pilas en serie · tensión nominal</text>
+    <circle cx="790" cy="225" r="145" fill="url(#halo)" opacity="0"/>
+    <path d="M0 0 q4 -5 8 0 t8 0 t8 0" transform="translate(723.4260438593393 203.36881039375368) rotate(-162)" fill="none" stroke="#d85a2a" stroke-width="4" opacity="0"/><path d="M0 0 q4 -5 8 0 t8 0 t8 0" transform="translate(736.3874090191308 176.7270062555395) rotate(-137.99999999999997)" fill="none" stroke="#d85a2a" stroke-width="4" opacity="0"/><path d="M0 0 q4 -5 8 0 t8 0 t8 0" transform="translate(759.7852779429405 157.13662314654965) rotate(-114)" fill="none" stroke="#d85a2a" stroke-width="4" opacity="0"/><path d="M0 0 q4 -5 8 0 t8 0 t8 0" transform="translate(790 148.57142857142856) rotate(-90)" fill="none" stroke="#d85a2a" stroke-width="4" opacity="0"/><path d="M0 0 q4 -5 8 0 t8 0 t8 0" transform="translate(821.9578790988129 153.22142832808134) rotate(-66)" fill="none" stroke="#d85a2a" stroke-width="4" opacity="0"/><path d="M0 0 q4 -5 8 0 t8 0 t8 0" transform="translate(849.9824037706754 170.99160105817788) rotate(-42)" fill="none" stroke="#d85a2a" stroke-width="4" opacity="0"/><path d="M0 0 q4 -5 8 0 t8 0 t8 0" transform="translate(868.8018256358841 199.3957347517901) rotate(-18)" fill="none" stroke="#d85a2a" stroke-width="4" opacity="0"/>
+    <rect x="693" y="301" width="200" height="82" rx="30" fill="#00000018" stroke="none"/>
+    <rect x="689" y="290" width="200" height="82" rx="30" fill="#ede7d6" stroke="#a9a28f"/>
+    <ellipse cx="790" cy="328" rx="56" ry="25" fill="#323b40"/>
+    <path d="M756 273 L824 273 L817 320 Q790 335 763 320 Z" fill="url(#metal)" stroke="#5e686c" stroke-width="2"/>
+    <path d="M760 285 H821 M762 298 H819 M763 309 H817" stroke="#616c72" stroke-width="3"/>
+    <path d="M764 278 C766 260 731 254 731 218 C731 146 849 146 849 218 C849 254 814 260 816 278 Z" fill="#e6f0ec" fill-opacity=".77" stroke="#ac9a70" stroke-width="3"/>
+    <path d="M751 220 Q743 188 773 180" stroke="#fff" stroke-width="6" fill="none" stroke-linecap="round" opacity=".8"/>
+    <path d="M778 276 L768 228 L778 234 L786 223 L794 234 L802 223 L812 229 L801 276" fill="none" stroke="#687174" stroke-width="2.5"/>
+    <path d="M768 228 L778 234 L786 223 L794 234 L802 223 L812 229" fill="none" stroke="#fff" stroke-width="2" opacity="0"/>
+    <circle cx="715" cy="330" r="12" fill="url(#metal)" stroke="#4c5960" stroke-width="2"/><path d="M709,336 l12,-12" stroke="#49565e" stroke-width="3"/><circle cx="865" cy="330" r="12" fill="url(#metal)" stroke="#4c5960" stroke-width="2"/><path d="M859,336 l12,-12" stroke="#49565e" stroke-width="3"/>
+    <circle cx="720" cy="412" r="20" fill="#18374a"/><text x="720" y="420" font-size="24" fill="#fff" font-weight="700" text-anchor="middle">3</text><text x="751" y="420" font-size="28" fill="#18374a" font-weight="700" >LAMPARITA · 3 V</text>
+    <text x="750" y="452" font-size="24" fill="#526772" font-weight="400" >Incandescente</text>
+    <rect x="495" y="465" width="205" height="62" rx="9" fill="#efe6d0" stroke="#a18e6b"/>
+    <path d="M522 495 H548 M650 495 H676" stroke="#9b7337" stroke-width="15" stroke-linecap="round"/>
+    <g id="switch-blade" transform="rotate(-48 535 495)">
+      <path d="M535 495 H660" stroke="#00000020" stroke-width="17" stroke-linecap="round"/>
+      <path d="M535 491 H660" stroke="url(#metal)" stroke-width="12" stroke-linecap="round"/>
+      <rect x="566" y="479" width="55" height="24" rx="6" fill="#ad4b30" stroke="#75331f"/>
+    </g>
+    <circle cx="535" cy="495" r="12" fill="url(#metal)" stroke="#4c5960" stroke-width="2"/><path d="M529,501 l12,-12" stroke="#49565e" stroke-width="3"/><circle cx="660" cy="495" r="12" fill="url(#metal)" stroke="#4c5960" stroke-width="2"/><path d="M654,501 l12,-12" stroke="#49565e" stroke-width="3"/>
+    <circle cx="536" cy="565" r="20" fill="#18374a"/><text x="536" y="573" font-size="24" fill="#fff" font-weight="700" text-anchor="middle">2</text><text x="568" y="573" font-size="28" fill="#18374a" font-weight="700" >LLAVE MÓVIL</text>
+    <text x="568" y="610" font-size="23" fill="#526772" font-weight="400" >Une o separa los contactos</text>
+    
+    <text x="433" y="111" font-size="28" fill="#526772" font-weight="700" >I = 0 A</text>
+    
+  </g></g>
+    <g transform="translate(1190 250)"><g id="explanation"><rect x="0" y="0" width="660" height="650" rx="22" fill="#fffdf7" stroke="#d8d2c4"/><text x="32" y="42" font-size="22" fill="#087a80" font-weight="700" >PASO 1 / 6</text><text x="30" y="104" font-size="47" fill="#18374a" font-weight="700" >Armamos el circuito</text><text x="32" y="148" font-size="27" fill="#526772" font-weight="400" >Un único recorrido para la corriente.</text><circle cx="51" cy="211" r="20" fill="#18374a"/><text x="51" y="219" font-size="24" fill="#fff" font-weight="700" text-anchor="middle">1</text><text x="88" y="218" font-size="30" fill="#18374a" font-weight="600" >Dos pilas en un portapilas</text><text x="88" y="258" font-size="30" fill="#18374a" font-weight="600" >3 V nominales en total</text>
+    <circle cx="51" cy="325" r="20" fill="#18374a"/><text x="51" y="333" font-size="24" fill="#fff" font-weight="700" text-anchor="middle">2</text><text x="88" y="332" font-size="30" fill="#18374a" font-weight="600" >Llave con mango aislante</text><text x="88" y="372" font-size="30" fill="#18374a" font-weight="600" >Abre o cierra el recorrido</text>
+    <circle cx="51" cy="439" r="20" fill="#18374a"/><text x="51" y="447" font-size="24" fill="#fff" font-weight="700" text-anchor="middle">3</text><text x="88" y="446" font-size="30" fill="#18374a" font-weight="600" >Foquito de 3 V y su base</text><text x="88" y="486" font-size="30" fill="#18374a" font-weight="600" >Transforma energía en luz</text><text x="88" y="526" font-size="30" fill="#18374a" font-weight="600" >y energía térmica</text>
+    <rect x="30" y="560" width="600" height="65" rx="12" fill="#f3e8ce" stroke="none"/><text x="50" y="601" font-size="27" fill="#18374a" font-weight="600" >Antes de armar: retirar las pilas.</text></g></g>
+    
+    <g transform="translate(80 948)"><path d="M0 0 H43 m-10 -6 l10 6 l-10 6" fill="none" stroke="#087a80" stroke-width="3"/><text x="58" y="8" font-size="26" fill="#18374a" font-weight="600" >Corriente convencional</text><path d="M405 0 q7 -9 14 0 t14 0 t14 0" fill="none" stroke="#d85a2a" stroke-width="3"/><text x="463" y="8" font-size="25" fill="#18374a" font-weight="400" >Radiación infrarroja: invisible, aquí representada</text><text x="1760" y="8" font-size="25" fill="#087a80" font-weight="700" text-anchor="end">01 · El tablero</text><text x="0" y="52" font-size="24" fill="#526772" font-weight="400" >Brillo pulsante ilustrativo. Modelo ideal: tensión y potencia constantes durante el encendido.</text><text x="1760" y="89" font-size="23" fill="#18374a" font-weight="500" text-anchor="end">Sistemas Multi Física · Profesor Javier Pereyra</text></g><rect x="0" y="1073" width="1920" height="7" rx="0" fill="#ddd8cb" stroke="none"/><rect x="0" y="1073" width="0" height="7" rx="0" fill="#c49335" stroke="none"/>
+  </svg></div>
+<section class="controls" aria-label="Controles de la infografía">
+<div class="transport"><button id="play" class="primary">Reproducir</button><button id="restart">Reiniciar</button><label class="sr-only" for="seek">Tiempo de la animación</label><input id="seek" type="range" min="0" max="2159" step="1" value="0"><output id="clock" class="time">0:00 / 1:12</output><button id="free" aria-pressed="false">Probar la llave</button></div>
+<div id="chapters" class="chapters" aria-label="Saltar a un tema"></div>
+<div id="free-tools" class="free-tools" hidden><button id="switch" aria-pressed="false">Cerrar llave</button><button id="reset-meter">Poner contador en cero</button><label for="speed">Reloj:</label><select id="speed"><option value="1">Tiempo real</option><option value="60">Acelerado ×60</option></select><output id="meter" aria-live="off">P = 0 W · E = 0 J</output></div>
+<p id="mode-note" class="mode-note">La animación dura 72 segundos. Podés pausarla en cualquier momento o elegir un tema. El reloj se acelera únicamente cuando se indica en pantalla.</p>
+</section>
+<article id="guia" class="guide">
+<h1>Un circuito que vamos a construir</h1>
+<p class="lead">La potencia cuenta cuánta energía se transforma cada segundo. La energía acumulada depende de cuánto tiempo estuvo encendida la lamparita.</p>
+<div class="equations">
+<div class="equation"><b>P = V × I</b>Potencia eléctrica recibida.<br>V: tensión en volt (V).<br>I: corriente en ampere (A).<br>P: potencia en watt (W).</div>
+<div class="equation"><b>P = E / t</b>Rapidez media de transformación.<br>1 W = 1 J/s.<br>E: energía en joule (J).<br>t: tiempo en segundo (s).</div>
+<div class="equation"><b>E = P × t</b>Para potencia constante.<br>W × s = J<br>W × h = Wh<br>kW × h = kWh</div>
+</div>
+<h2>1. Referencias del tablero</h2>
+<p><strong>① Portapilas:</strong> dos pilas AA alcalinas de 1,5 V en serie, 3 V nominales en total. El puente metálico une el positivo de una con el negativo de la otra. Los dos extremos libres alimentan el circuito.</p>
+<p><strong>② Llave:</strong> el brazo metálico con mango aislante cierra el contacto. Al separarlo, se interrumpe la corriente. <strong>③ Lamparita:</strong> incandescente para 3 V, con portalámparas compatible. Los cables completan el recorrido.</p>
+<p><strong>Flechas sobre los cables:</strong> corriente convencional del positivo al negativo por el circuito externo; no representan electrones. <strong>Ondas naranjas:</strong> radiación infrarroja (IR), que no vemos. También hay transferencia de energía por conducción y convección, omitidas en el dibujo.</p>
+<p class="note">El suave pulso luminoso ayuda a localizar el foquito. Es un recurso gráfico: una lámpara alimentada con pilas y contactos firmes se mantiene encendida. Las cargas no se consumen al atravesarla.</p>
+<h2>2. Materiales y armado</h2>
+<div class="grid"><div><strong>Materiales por grupo</strong><ul><li>Base aislante de madera o cartón rígido.</li><li>Portapilas para 2 AA y dos pilas nuevas del mismo tipo.</li><li>Lamparita incandescente de 3 V y portalámparas.</li><li>Llave didáctica con mango aislante.</li><li>Cables aislados y bornes o pinzas adecuadas.</li></ul></div><div><strong>Orden de conexión</strong><ol><li>Con las pilas retiradas, fijá las piezas a la base.</li><li>Uní el positivo del portapilas a un borne del portalámparas.</li><li>Conectá el otro borne a la llave.</li><li>Uní el otro contacto de la llave al negativo del portapilas.</li><li>Pedí al docente que revise las conexiones; colocá las pilas con la llave abierta y luego cerrala.</li></ol></div></div>
+<p class="note"><strong>Solo baja tensión:</strong> nunca conectar este tablero a la red domiciliaria. No unir directamente los bornes del portapilas. No tocar el bulbo caliente. Abrir la llave si se calientan pilas o cables; retirar las pilas al guardar. No recargar pilas alcalinas.</p>
+<h2>3. El ejemplo completo</h2>
+<p>Suponemos una tensión de <strong>3 V</strong> en la lámpara y una corriente estable de <strong>0,20 A</strong>. La corriente es un dato del ejemplo, no un resultado garantizado por usar dos pilas. Despreciamos pérdidas en cables y fuente.</p>
+<p><strong>P = 3 V × 0,20 A = 0,60 W.</strong> La lámpara transforma 0,60 J cada segundo. Esta potencia incluye la energía que sale como luz y la asociada al calentamiento; no es solamente potencia luminosa.</p>
+<table><caption>Energía transformada a potencia constante de 0,60 W</caption><thead><tr><th>Tiempo encendida</th><th>Cálculo</th><th>Energía</th></tr></thead><tbody><tr><td>1 s</td><td>0,60 W × 1 s</td><td>0,60 J</td></tr><tr><td>5 s</td><td>0,60 W × 5 s</td><td>3 J</td></tr><tr><td>10 s</td><td>0,60 W × 10 s</td><td>6 J</td></tr><tr><td>1 h = 3600 s</td><td>0,60 W × 3600 s</td><td>2160 J</td></tr></tbody></table>
+<p>Para calcular en kilowatt-hora: <strong>0,60 W ÷ 1000 = 0,00060 kW</strong>. Entonces, en 1 h:<br><strong>E = 0,00060 kW × 1 h = 0,00060 kWh = 0,60 Wh = 2160 J.</strong></p>
+<p><strong>1 Wh = 3600 J. &nbsp; 1 kWh = 3 600 000 J.</strong> Se escribe kWh (kilowatt-hora): potencia multiplicada por tiempo. El kW mide potencia y el kWh mide energía.</p>
+<p>En la animación comenzamos una medición al llegar al paso 4: primero transcurren 10 segundos a velocidad real; luego aceleramos el reloj hasta completar una hora. Es una predicción ideal: las pilas reales se descargan y la resistencia del filamento varía con su temperatura.</p>
+<h2>4. Probá, registrá y explicá</h2>
+<ol><li>Antes de cerrar la llave, anticipá qué valores tendrán I y P. Comprobalo.</li><li>En «Probar la llave», dejá el foquito encendido 10 s y luego abrí la llave. ¿Qué valor de energía queda registrado?</li><li>Volvé a cerrar durante otros 10 s. ¿Qué cambia y qué se mantiene?</li><li>Calculá la energía para 30 s y para 2 h de encendido. Expresá el segundo resultado en Wh y kWh.</li><li>¿Por qué el contador no vuelve a cero al abrir la llave? ¿Está guardando energía el foquito?</li><li>En el tablero real, dibujá el recorrido y señalá los dos contactos que deben unirse para encender.</li></ol>
+<details><summary>Orientaciones para el docente</summary><p>Llave abierta: I = 0 A y P = 0 W en el modelo. A los 10 s, E = 6 J; tras otros 10 s encendida, E = 12 J. Para 30 s: 18 J. Para 2 h: 1,20 Wh = 0,00120 kWh. El contador conserva el registro de lo transformado: no mide energía almacenada en el bulbo. Evaluar si el grupo distingue circuito/corriente y potencia/energía, interpreta las unidades y justifica su predicción.</p><p>En el circuito real puede persistir emisión térmica brevemente después de abrir. No interpretamos el encendido como una resistencia constante: el ejemplo numérico corresponde al funcionamiento estable. Una medición de corriente requiere amperímetro en serie y supervisión docente; no conectarlo directamente entre los bornes de las pilas.</p></details>
+<h2>5. Referencia de estudio</h2><p>Esta infografía acompaña el <a href="../../clases/potencia-electrica.html">apunte «Potencia eléctrica y energía eléctrica»</a>, especialmente las secciones de potencia, unidades y energía. Los valores del tablero son un ejemplo didáctico declarado, no mediciones experimentales.</p>
+<p class="credit">Sistemas Multi Física · Profesor Javier Pereyra<br>Ilustración vectorial original. Animación realizada con Remotion. Reproductor y guía disponibles sin conexión.</p>
+</article></main>
+<script>
+// Shared, deterministic artwork for Remotion and the offline classroom player.
+// Text remains editable; all artwork is original vector geometry.
+const FPS = 30;
+const DURATION = 72;
+const CHAPTERS = [
+  {at: 0, title: '01 · El tablero'},
+  {at: 9, title: '02 · Cerrar la llave'},
+  {at: 20, title: '03 · Potencia'},
+  {at: 30, title: '04 · Energía en J'},
+  {at: 44, title: '05 · Energía en kWh'},
+  {at: 60, title: '06 · Abrir y pensar'},
+];
+const C = {ink:'#18374a',muted:'#526772',teal:'#087a80',gold:'#c49335',heat:'#d85a2a',paper:'#f6f2e8',line:'#d8d2c4'};
+const clamp = (n,min=0,max=1) => Math.max(min,Math.min(max,n));
+const smooth = n => {const t=clamp(n); return t*t*(3-2*t);};
+const esc = s => String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;');
+const decimal = (n,d=2) => n.toFixed(d).replace('.',',');
+function model(frame, manual = null) {
+  const sec=frame/FPS;
+  const closing=smooth((sec-10)/1);
+  const opening=smooth((sec-60)/0.8);
+  const contact=closing*(1-opening);
+  const on=sec>=11 && sec<=60;
+  // A fresh measurement begins at chapter 4. Its first ten seconds are real time.
+  const elapsed=sec<30?0:sec<40?sec-30:sec<44?10:sec<56?10+(sec-44)/12*3590:3600;
+  const chapter=CHAPTERS.reduce((v,c,i)=>sec>=c.at?i:v,0);
+  return {sec,chapter,contact,on,elapsed,power:on?0.6:0,current:on?0.2:0,
+    energy:elapsed*0.6, ...manual};
+}
+function text(x,y,s,size=30,fill=C.ink,weight=400,extra='') {
+  return `<text x="${x}" y="${y}" font-size="${size}" fill="${fill}" font-weight="${weight}" ${extra}>${esc(s)}</text>`;
+}
+function lines(x,y,items,size=30,gap=40,fill=C.ink,weight=400) {
+  return items.map((s,i)=>text(x,y+i*gap,s,size,fill,weight)).join('');
+}
+function rect(x,y,w,h,fill,rx=16,stroke='none') {
+  return `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${rx}" fill="${fill}" stroke="${stroke}"/>`;
+}
+function number(x,y,n) {
+  return `<circle cx="${x}" cy="${y}" r="20" fill="${C.ink}"/>${text(x,y+8,n,24,'#fff',700,'text-anchor="middle"')}`;
+}
+function screw(x,y) {
+  return `<circle cx="${x}" cy="${y}" r="12" fill="url(#metal)" stroke="#4c5960" stroke-width="2"/><path d="M${x-6},${y+6} l12,-12" stroke="#49565e" stroke-width="3"/>`;
+}
+function wire(d,color) {
+  return `<path d="${d}" fill="none" stroke="#000" stroke-opacity=".12" stroke-width="17" transform="translate(0 4)"/><path d="${d}" fill="none" stroke="${color}" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/><path d="${d}" fill="none" stroke="#fff" stroke-opacity=".24" stroke-width="3" stroke-linecap="round" transform="translate(-1 -2)"/>`;
+}
+function arrows(points,frame,on) {
+  if(!on)return '';
+  const segments=points.slice(1).map((p,i)=>({a:points[i],b:p,len:Math.hypot(p[0]-points[i][0],p[1]-points[i][1])}));
+  const total=segments.reduce((s,p)=>s+p.len,0);
+  const count=Math.floor(total/120);
+  return Array.from({length:count},(_,i)=>{
+    let dist=(i*total/count+frame*2.4)%total;
+    let segment=segments[segments.length-1];
+    for(const candidate of segments){if(dist<=candidate.len){segment=candidate;break;}dist-=candidate.len;}
+    const ratio=dist/segment.len;
+    const x=segment.a[0]+(segment.b[0]-segment.a[0])*ratio;
+    const y=segment.a[1]+(segment.b[1]-segment.a[1])*ratio;
+    const angle=Math.atan2(segment.b[1]-segment.a[1],segment.b[0]-segment.a[0])*180/Math.PI;
+    return `<path d="M-7,-6 L1,0 L-7,6" transform="translate(${x} ${y}) rotate(${angle})" fill="none" stroke="#d9ffff" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round"/>`;
+  }).join('');
+}
+function board(s,frame) {
+  const glow=s.on?0.96+0.04*Math.sin(frame/FPS*Math.PI):Math.max(0,1-(s.sec-60)*2)*(s.sec>=60?1:0);
+  const angle=-48*(1-s.contact);
+  const red='M210 190 L210 130 L620 130 L620 330 L715 330';
+  const dark='M865 330 L1020 330 L1020 495 L660 495';
+  const back='M535 495 L410 495 L410 190 L306 190';
+  const current=arrows([[210,190],[210,130],[620,130],[620,330],[715,330]],frame,s.on)+
+    arrows([[865,330],[1020,330],[1020,495],[660,495]],frame,s.on)+
+    arrows([[660,495],[535,495],[410,495],[410,190],[306,190]],frame,s.on);
+  const radiant=Array.from({length:7},(_,i)=>{
+    const a=(-162+i*24)*Math.PI/180;
+    const phase=(frame/48+i/7)%1;
+    const radius=70+phase*15;
+    const x=790+Math.cos(a)*radius,y=225+Math.sin(a)*radius;
+    return `<path d="M0 0 q4 -5 8 0 t8 0 t8 0" transform="translate(${x} ${y}) rotate(${a*180/Math.PI})" fill="none" stroke="${C.heat}" stroke-width="4" opacity="${glow*(1-phase)*.9}"/>`;
+  }).join('');
+  return `<g id="board">
+    ${rect(0,0,1080,650,'url(#wood)',24,'#cab997')}
+    <path d="M20 175 Q360 160 1050 175 M20 390 Q510 405 1060 390 M20 570 Q520 560 1060 575" stroke="#9e7d45" stroke-opacity=".09" fill="none" stroke-width="2"/>
+    ${[ [24,24],[1056,24],[24,626],[1056,626] ].map(p=>screw(...p)).join('')}
+    ${text(40,58,'TABLERO DE BAJA TENSIÓN',27,C.ink,700)}
+    ${rect(746,26,290,49,s.on?'#d9ebe2':'#e6e2d9',24)}
+    <circle cx="771" cy="50" r="7" fill="${s.on?C.teal:'#7c837f'}"/>
+    ${text(790,59,s.on?'CIRCUITO CERRADO':'CIRCUITO ABIERTO',20,C.ink,700)}
+    ${wire(red,'#bb3e33')}${wire(dark,'#344653')}${wire(back,'#344653')}
+    ${rect(139,177,235,307,'#00000018',20)}
+    ${rect(133,170,235,307,'#24323c',18,'#111e27')}
+    ${rect(148,186,205,272,'#13232c',9)}
+    ${[210,306].map((x,i)=>`<g>
+      ${rect(x-35,217,70,215,'url(#cell)',11)}
+      ${rect(x-35,i===0?217:355,70,77,'url(#copper)',9)}
+      ${rect(x-26,i===0?207:427,52,10,'url(#metal)',3)}
+      <path d="M${x-25} 201 l10 -5 l-10 -5 l10 -5" fill="none" stroke="#afb7b6" stroke-width="3"/>
+      <path d="M${x-25} 450 l10 -5 l-10 -5 l10 -5" fill="none" stroke="#afb7b6" stroke-width="3"/>
+      ${text(x,250,i===0?'+':'−',31,i===0?'#31190c':'#fff',700,'text-anchor="middle"')}
+      ${text(x,395,i===0?'−':'+',31,i===0?'#fff':'#31190c',700,'text-anchor="middle"')}
+      ${text(x,320,'1,5 V',24,'#fff',700,'text-anchor="middle"')}
+      ${text(x,350,'AA',20,'#d7dfdf',400,'text-anchor="middle"')}
+      <path d="M${x} 190 V217 M${x} 432 V463" stroke="#c2c6c4" stroke-width="7"/>
+    </g>`).join('')}
+    <path d="M210 442 V463 H306 V442" fill="none" stroke="#c1bfab" stroke-width="6"/>
+    ${text(182,172,'+',29,'#a33028',700)}${text(320,174,'−',29,C.ink,700)}
+    <path d="M172 484 V513 H88" fill="none" stroke="${C.muted}" stroke-width="2"/>
+    ${number(61,544,1)}${text(92,551,'PORTAPILAS',27,C.ink,700)}
+    ${text(92,587,'1,5 V + 1,5 V = 3 V',29,C.ink,600)}
+    ${text(92,620,'Pilas en serie · tensión nominal',22,C.muted)}
+    <circle cx="790" cy="225" r="145" fill="url(#halo)" opacity="${glow}"/>
+    ${radiant}
+    ${rect(693,301,200,82,'#00000018',30)}
+    ${rect(689,290,200,82,'#ede7d6',30,'#a9a28f')}
+    <ellipse cx="790" cy="328" rx="56" ry="25" fill="#323b40"/>
+    <path d="M756 273 L824 273 L817 320 Q790 335 763 320 Z" fill="url(#metal)" stroke="#5e686c" stroke-width="2"/>
+    <path d="M760 285 H821 M762 298 H819 M763 309 H817" stroke="#616c72" stroke-width="3"/>
+    <path d="M764 278 C766 260 731 254 731 218 C731 146 849 146 849 218 C849 254 814 260 816 278 Z" fill="${s.on?'#fff0a5':'#e6f0ec'}" fill-opacity=".77" stroke="#ac9a70" stroke-width="3"/>
+    <path d="M751 220 Q743 188 773 180" stroke="#fff" stroke-width="6" fill="none" stroke-linecap="round" opacity=".8"/>
+    <path d="M778 276 L768 228 L778 234 L786 223 L794 234 L802 223 L812 229 L801 276" fill="none" stroke="${s.on?'#ffb226':'#687174'}" stroke-width="${s.on?4.5:2.5}"/>
+    <path d="M768 228 L778 234 L786 223 L794 234 L802 223 L812 229" fill="none" stroke="#fff" stroke-width="2" opacity="${glow}"/>
+    ${screw(715,330)}${screw(865,330)}
+    ${number(720,412,3)}${text(751,420,'LAMPARITA · 3 V',28,C.ink,700)}
+    ${text(750,452,'Incandescente',24,C.muted)}
+    ${rect(495,465,205,62,'#efe6d0',9,'#a18e6b')}
+    <path d="M522 495 H548 M650 495 H676" stroke="#9b7337" stroke-width="15" stroke-linecap="round"/>
+    <g id="switch-blade" transform="rotate(${angle} 535 495)">
+      <path d="M535 495 H660" stroke="#00000020" stroke-width="17" stroke-linecap="round"/>
+      <path d="M535 491 H660" stroke="url(#metal)" stroke-width="12" stroke-linecap="round"/>
+      ${rect(566,479,55,24,'#ad4b30',6,'#75331f')}
+    </g>
+    ${screw(535,495)}${screw(660,495)}
+    ${number(536,565,2)}${text(568,573,'LLAVE MÓVIL',28,C.ink,700)}
+    ${text(568,610,'Une o separa los contactos',23,C.muted)}
+    ${current}
+    ${text(433,111,s.on?'I = 0,20 A →':'I = 0 A',28,s.on?C.teal:C.muted,700)}
+    ${s.on?`${text(720,105,'Luz + radiación IR',23,C.heat,600)}`:''}
+  </g>`;
+}
+function formula(y,main,sub) {
+  return `${rect(30,y,600,106,'#e9efe9',14)}${text(50,y+47,main,43,C.ink,600)}${text(50,y+82,sub,24,C.muted)}`;
+}
+function panel(s) {
+  const head=(n,title,subtitle)=>`${text(32,42,`PASO ${n} / 6`,22,C.teal,700)}${text(30,104,title,47,C.ink,700)}${text(32,148,subtitle,27,C.muted)}`;
+  let content='';
+  if(s.chapter===0)content=head('1','Armamos el circuito','Un único recorrido para la corriente.')+
+    `${number(51,211,1)}${lines(88,218,['Dos pilas en un portapilas','3 V nominales en total'],30,40,C.ink,600)}
+    ${number(51,325,2)}${lines(88,332,['Llave con mango aislante','Abre o cierra el recorrido'],30,40,C.ink,600)}
+    ${number(51,439,3)}${lines(88,446,['Foquito de 3 V y su base','Transforma energía en luz','y energía térmica'],30,40,C.ink,600)}
+    ${rect(30,560,600,65,'#f3e8ce',12)}${text(50,601,'Antes de armar: retirar las pilas.',27,C.ink,600)}`;
+  if(s.chapter===1)content=head('2','La llave hace contacto','El recorrido queda cerrado.')+
+    `${rect(30,181,600,86,'#e9efe9',14)}${text(52,236,'+  →  lámpara  →  llave  →  −',33,C.teal,700)}
+    ${lines(32,316,['Las flechas indican el sentido','de la corriente convencional.'],31,42)}
+    ${lines(32,424,['Las cargas circulan por todo','el circuito. En la lámpara','se transforma energía.'],31,42)}
+    ${rect(30,561,600,65,'#f3e8ce',12)}${text(50,602,'El circuito debe estar completo.',28,C.ink,600)}`;
+  if(s.chapter===2)content=head('3','¿Cuánta por segundo?','La potencia mide esa rapidez.')+
+    formula(181,'P = V × I','P: potencia · V: tensión · I: corriente')+
+    `${text(32,347,'3 V × 0,20 A = 0,60 W',41,C.ink,600)}
+    ${rect(30,389,600,127,'#18374a',16)}${text(54,441,'0,60 W = 0,60 J/s',40,'#fff',600)}${text(54,484,'Cada segundo transforma 0,60 J.',28,'#dde9e8')}
+    ${lines(32,570,['Ejemplo: suponemos I = 0,20 A.','La corriente real depende del foquito.'],26,36,C.muted)}`;
+  if(s.chapter===3)content=head('4','La energía se acumula','Comienza una nueva medición: t = 0.')+
+    formula(181,'E = P × t','Potencia constante · W × s = J')+
+    `${text(32,343,`0,60 W × ${decimal(s.elapsed,1)} s`,40,C.ink,600)}
+    ${rect(30,373,600,122,'#18374a',16)}${text(52,425,`${decimal(s.energy)} J`,52,'#fff',700)}${text(54,468,'Energía eléctrica transformada',27,'#dce8e7')}
+    ${rect(32,522,596,12,'#d9ded5',6)}${rect(32,522,596*clamp(s.elapsed/10),12,C.teal,6)}
+    ${lines(32,579,['1 s → 0,60 J  ·  5 s → 3 J',s.sec>=40?'10 s → 6 J  ·  Pausa para leer':'10 s → 6 J'],29,40,C.ink,600)}`;
+  if(s.chapter===4){const hours=s.elapsed/3600;content=head('5','La misma energía, en kWh','Usamos kilowatts y horas.')+
+    formula(181,'0,60 W ÷ 1000 = 0,00060 kW','Conversión de potencia: 1 kW = 1000 W')+
+    `${text(32,333,`t = ${decimal(hours,2)} h`,39,C.ink,600)}${text(32,384,'E = 0,00060 kW × t',38,C.ink,600)}
+    ${rect(30,409,600,106,'#18374a',16)}${text(50,457,`${decimal(0.0006*hours,5)} kWh`,45,'#fff',700)}${text(52,495,`${decimal(0.6*hours)} Wh = ${Math.round(s.energy)} J`,27,'#dce8e7')}
+    ${rect(30,540,600,40,'#f3e8ce',8)}${text(49,568,s.sec<56?'RELOJ ACELERADO · llegamos a 1 h':'PAUSA PARA LEER · 1 h de encendido',23,C.ink,700)}
+    ${text(32,625,'kW: potencia.  kWh: energía.',30,C.teal,700)}`;}
+  if(s.chapter===5)content=head('6','Abrimos la llave','La corriente se interrumpe.')+
+    formula(181,'I = 0 A     P = 0 W','La lámpara deja de recibir energía eléctrica.')+
+    `${rect(30,312,600,106,'#18374a',16)}${text(52,358,'E = 0,00060 kWh',40,'#fff',700)}${text(52,396,'Lo ya transformado permanece registrado.',24,'#dce8e7')}
+    ${lines(32,466,['Para pensar antes de armar:'],30,40,C.teal,700)}
+    ${lines(32,516,['¿Qué pasa con E si duplicamos','el tiempo con la misma potencia?'],30,41)}
+    ${text(32,621,'Más tiempo encendido → más energía.',27,C.ink,700)}`;
+  if(s.free) content=head('—','Probá la llave','El tiempo cuenta solo al estar encendida.')+
+    formula(181,`P = ${decimal(s.power)} W     I = ${decimal(s.current)} A`,'V nominal = 3 V · modelo ideal')+
+    `${text(32,338,`Tiempo encendida: ${decimal(s.elapsed,1)} s`,35,C.ink,600)}
+    ${text(32,391,'E = 0,60 W × tiempo encendida',32,C.ink,600)}
+    ${rect(30,421,600,106,'#18374a',16)}${text(52,468,`${decimal(s.energy)} J`,45,'#fff',700)}${text(52,507,`${decimal(s.energy/3600000,7)} kWh acumulados`,27,'#dce8e7')}
+    ${lines(32,576,[s.on?'La energía acumulada aumenta.':'La energía acumulada se conserva.', 'Abrí y cerrá la llave para comprobarlo.'],27,39,C.teal,600)}`;
+  if(s.free) content=head('—','Probá la llave','El tiempo cuenta solo al estar encendida.')+
+    formula(181,`P = ${decimal(s.power)} W     I = ${decimal(s.current)} A`,'V nominal = 3 V · modelo ideal')+
+    `${text(32,338,`Tiempo encendida: ${decimal(s.elapsed,1)} s`,35,C.ink,600)}
+    ${text(32,391,'E = 0,60 W × tiempo encendida',32,C.ink,600)}
+    ${rect(30,421,600,106,'#18374a',16)}${text(52,468,`${decimal(s.energy)} J`,45,'#fff',700)}${text(52,507,`${decimal(s.energy/3600000,7)} kWh acumulados`,27,'#dce8e7')}
+    ${lines(32,576,[s.on?'La energía acumulada aumenta.':'La energía acumulada se conserva.', 'Abrí y cerrá la llave para comprobarlo.'],27,39,C.teal,600)}`;
+  return `<g id="explanation">${rect(0,0,660,650,'#fffdf7',22,C.line)}${content}</g>`;
+}
+function definitions() {
+  return `<defs>
+    <linearGradient id="wood" x2="0" y2="1"><stop stop-color="#efe5ce"/><stop offset=".5" stop-color="#e7d8b9"/><stop offset="1" stop-color="#f0e5cf"/></linearGradient>
+    <linearGradient id="cell"><stop stop-color="#283d4b"/><stop offset=".45" stop-color="#526a76"/><stop offset=".75" stop-color="#283d4b"/><stop offset="1" stop-color="#162934"/></linearGradient>
+    <linearGradient id="copper"><stop stop-color="#986032"/><stop offset=".45" stop-color="#ecbc7e"/><stop offset=".8" stop-color="#b47d44"/><stop offset="1" stop-color="#825132"/></linearGradient>
+    <linearGradient id="metal"><stop stop-color="#66747a"/><stop offset=".45" stop-color="#e4e8e6"/><stop offset=".65" stop-color="#b2bcbe"/><stop offset="1" stop-color="#5c6e76"/></linearGradient>
+    <radialGradient id="halo"><stop stop-color="#ffd35f" stop-opacity=".8"/><stop offset=".45" stop-color="#ffc344" stop-opacity=".3"/><stop offset="1" stop-color="#ffb126" stop-opacity="0"/></radialGradient>
+  </defs>`;
+}
+function renderSVG(frame,format='wide',manual=null) {
+  const s=model(frame,manual);
+  // Freeze the drawing as well as the clock during the two reading pauses.
+  const boardFrame=manual?frame:s.sec>=40&&s.sec<44?1200:s.sec>=56&&s.sec<60?1680:frame;
+  const vertical=format==='vertical';
+  const width=vertical?1080:1920,height=vertical?1920:1080;
+  const chapter=CHAPTERS[s.chapter];
+  const progress=clamp(s.sec/DURATION);
+  const header=vertical?
+    `${text(60,68,'FÍSICA EN EL TABLERO',24,C.teal,700)}${text(60,133,'Potencia y energía',64,C.ink,700)}${text(60,184,'Dos pilas. Una llave. Una transformación.',28,C.muted)}`:
+    `${text(80,72,'FÍSICA EN EL TABLERO',27,C.teal,700)}${text(80,155,'Potencia y energía',76,C.ink,700)}${text(82,206,'Dos pilas. Una llave. Una transformación que podemos medir.',31,C.muted)}${text(1835,89,'01',54,C.gold,500,'text-anchor="end"')}${text(1835,135,'LABORATORIO ESCOLAR',22,C.muted,600,'text-anchor="end"')}`;
+  const legend=vertical?
+    `<g transform="translate(60 1740)">${lines(0,0,['→ Corriente convencional   ∿ Radiación infrarroja','IR invisible: ondas simbólicas. Brillo pulsante ilustrativo.','Modelo ideal: tensión y potencia constantes al encender.'],24,34,C.muted)}${text(0,122,'Sistemas Multi Física · Profesor Javier Pereyra',23,C.ink,600)}</g>`:
+    `<g transform="translate(80 948)"><path d="M0 0 H43 m-10 -6 l10 6 l-10 6" fill="none" stroke="${C.teal}" stroke-width="3"/>${text(58,8,'Corriente convencional',26,C.ink,600)}<path d="M405 0 q7 -9 14 0 t14 0 t14 0" fill="none" stroke="${C.heat}" stroke-width="3"/>${text(463,8,'Radiación infrarroja: invisible, aquí representada',25,C.ink)}${text(1760,8,chapter.title,25,C.teal,700,'text-anchor="end"')}${text(0,52,'Brillo pulsante ilustrativo. Modelo ideal: tensión y potencia constantes durante el encendido.',24,C.muted)}${text(1760,89,'Sistemas Multi Física · Profesor Javier Pereyra',23,C.ink,500,'text-anchor="end"')}</g>`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" role="img" aria-label="${esc(chapter.title)}: circuito de dos pilas, llave móvil y lamparita; explicación de potencia y energía" font-family="Arial, sans-serif" shape-rendering="geometricPrecision">
+    ${definitions()}${rect(0,0,width,height,C.paper,0)}${rect(0,0,width,9,C.teal,0)}
+    ${header}
+    <g transform="${vertical?'translate(38 227) scale(.93)':'translate(80 250)'}">${board(s,boardFrame)}</g>
+    <g transform="${vertical?'translate(210 876)':'translate(1190 250)'}">${panel(s)}</g>
+    ${vertical?`${text(60,1591,'P = E / t      E = P × t',38,C.ink,600)}${text(60,1640,'1 W = 1 J/s      1 kWh = 3 600 000 J',30,C.muted)}`:''}
+    ${legend}${rect(0,height-7,width,7,'#ddd8cb',0)}${rect(0,height-7,width*progress,7,C.gold,0)}
+  </svg>`;
+}
+
+const stage=document.getElementById('stage'),seek=document.getElementById('seek'),clock=document.getElementById('clock'),play=document.getElementById('play');
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+let frame=0,playing=false,last=0,free=false,closed=false,contact=0,elapsed=0,freeFrame=600;
+const portrait=()=>innerWidth<760;
+const buttons=CHAPTERS.map(c=>{const b=document.createElement('button');b.textContent=c.title;b.onclick=()=>{exitFree();frame=c.at*FPS;playing=false;draw();};document.getElementById('chapters').append(b);return b;});
+function draw(){
+ const manual=free?{free:true,chapter:3,on:closed&&contact>=.999,contact,elapsed,energy:elapsed*.6,current:closed&&contact>=.999?.2:0,power:closed&&contact>=.999?.6:0}:null;
+ stage.innerHTML=renderSVG(free?freeFrame:frame,portrait()?'vertical':'wide',manual);
+ seek.value=Math.floor(frame);const t=Math.floor(frame/FPS);clock.textContent=Math.floor(t/60)+':'+String(t%60).padStart(2,'0')+' / 1:12';
+ play.textContent=playing?'Pausar':'Reproducir';buttons.forEach((b,i)=>b.setAttribute('aria-pressed',String(!free&&model(frame).chapter===i)));
+ if(free) document.getElementById('meter').textContent='P = '+decimal(manual.power)+' W · E = '+decimal(manual.energy)+' J';
+}
+function exitFree(){free=false;document.getElementById('free').setAttribute('aria-pressed','false');document.getElementById('free-tools').hidden=true;document.getElementById('chapters').hidden=false;document.getElementById('mode-note').textContent='Elegí un tema o reproducí la secuencia. El contador de la medición comienza en el paso 4.';seek.disabled=false;}
+play.onclick=()=>{exitFree();if(frame>=DURATION*FPS-1)frame=0;playing=!playing;draw();};
+document.getElementById('restart').onclick=()=>{exitFree();frame=0;playing=false;draw();};
+seek.oninput=()=>{exitFree();frame=Number(seek.value);playing=false;draw();};
+document.getElementById('free').onclick=()=>{if(free){exitFree();draw();return;}free=true;playing=false;closed=false;contact=0;elapsed=0;freeFrame=600;document.getElementById('free').setAttribute('aria-pressed','true');document.getElementById('free-tools').hidden=false;document.getElementById('chapters').hidden=true;document.getElementById('switch').textContent='Cerrar llave';document.getElementById('switch').setAttribute('aria-pressed','false');document.getElementById('mode-note').textContent='Tablero libre: accioná la llave. El contador suma únicamente el tiempo encendida y conserva el resultado al abrir. El selector permite acelerar el reloj ×60.';seek.disabled=true;draw();};
+document.getElementById('switch').onclick=()=>{closed=!closed;document.getElementById('switch').textContent=closed?'Abrir llave':'Cerrar llave';document.getElementById('switch').setAttribute('aria-pressed',String(closed));draw();};
+document.getElementById('reset-meter').onclick=()=>{elapsed=0;draw();};
+document.getElementById('full').onclick=()=>{if(document.fullscreenElement)document.exitFullscreen();else stage.requestFullscreen?.();};
+document.getElementById('print').onclick=()=>window.print();
+window.addEventListener('resize',draw);
+window.addEventListener('beforeprint',()=>{stage.innerHTML=renderSVG(1680,'wide');});
+window.addEventListener('afterprint',draw);
+document.addEventListener('visibilitychange',()=>{last=0;});
+function tick(now){const dt=last?Math.min((now-last)/1000,.1):0;last=now;
+ if(free){const prior=contact;contact=clamp(contact+(closed?1:-1)*dt*2);if(closed&&prior>=.999)elapsed+=dt*Number(document.getElementById('speed').value);if(!reduce)freeFrame+=dt*FPS;draw();}
+ else if(playing){frame=Math.min(DURATION*FPS-1,frame+dt*FPS);if(frame>=DURATION*FPS-1)playing=false;draw();}
+ requestAnimationFrame(tick);
+}
+// Diagnostic snapshot and seeking are also useful to the teacher during preview.
+window.tablero={getState:()=>({frame,playing,free,closed,contact,elapsed,energy:elapsed*.6}),seekTo:seconds=>{exitFree();frame=clamp(seconds,0,DURATION-1/FPS)*FPS;playing=false;draw();}};
+draw();requestAnimationFrame(tick);
+</script></body></html>

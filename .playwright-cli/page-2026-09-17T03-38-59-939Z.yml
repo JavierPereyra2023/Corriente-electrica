@@ -1,0 +1,131 @@
+- main [ref=f1e2]:
+  - article [ref=f1e3]:
+    - generic [ref=f1e4]:
+      - paragraph [ref=f1e5]: Sistemas Multi Física · Profesor Javier Pereyra
+      - heading "Propagación de ondas mecánicas" [level=1] [ref=f1e6]
+      - paragraph [ref=f1e7]: De la soga y el sonido a los fenómenos que preparan el estudio de Maxwell.
+      - generic [ref=f1e8]:
+        - generic [ref=f1e9]: "Curso: Secundaria superior"
+        - generic [ref=f1e10]: "Tema: Ondas mecánicas"
+        - generic [ref=f1e11]: "Unidades: m, s, Hz, m/s"
+    - generic [ref=f1e12]:
+      - heading "1 Idea inicial" [level=2] [ref=f1e13]:
+        - generic [ref=f1e14]: "1"
+        - text: Idea inicial
+      - paragraph [ref=f1e15]: "Una onda mecánica es una perturbación que se propaga en un medio material: soga, agua, aire, resorte o suelo. Transporta energía e información, pero no traslada todo el medio de un lugar a otro."
+      - figure "Cada punto de la soga oscila cerca de su equilibrio mientras el pulso avanza." [ref=f1e16]:
+        - paragraph [ref=f1e17]: Animación 1 · propagación
+        - generic "Onda transversal y propagación" [ref=f1e18]
+      - generic [ref=f1e20]:
+        - generic [ref=f1e21]: "TransversalLa oscilación es perpendicular al avance. Ejemplo: soga tensa."
+        - generic [ref=f1e22]: "LongitudinalLa oscilación es paralela al avance. Ejemplo: sonido en el aire."
+    - generic [ref=f1e23]:
+      - heading "2 Magnitudes y ecuaciones" [level=2] [ref=f1e24]:
+        - generic [ref=f1e25]: "2"
+        - text: Magnitudes y ecuaciones
+      - paragraph [ref=f1e26]: "Amplitud A: máximo alejamiento del equilibrio. Longitud de onda λ: distancia entre dos crestas consecutivas. Período T: tiempo de una oscilación. Frecuencia f: oscilaciones por segundo. Velocidad v: rapidez de propagación."
+      - figure "Ubicá el equilibrio para medir A y una repetición completa para medir λ." [ref=f1e27]:
+        - paragraph [ref=f1e28]: Animación 2 · magnitudes
+        - generic "Amplitud y longitud de onda" [ref=f1e29]
+      - generic [ref=f1e31]: f = 1 / T
+      - generic [ref=f1e32]: v = λ · f = λ / T
+      - table [ref=f1e33]:
+        - rowgroup [ref=f1e34]:
+          - row [ref=f1e35]:
+            - columnheader "Magnitud" [ref=f1e36]
+            - columnheader "Unidad SI" [ref=f1e37]
+            - columnheader "Interpretación" [ref=f1e38]
+        - rowgroup [ref=f1e39]:
+          - row [ref=f1e40]:
+            - cell "A" [ref=f1e41]
+            - cell "m" [ref=f1e42]
+            - cell "Máximo desplazamiento." [ref=f1e43]
+          - row [ref=f1e44]:
+            - cell "λ" [ref=f1e45]
+            - cell "m" [ref=f1e46]
+            - cell "Repetición espacial." [ref=f1e47]
+          - row [ref=f1e48]:
+            - cell "T" [ref=f1e49]
+            - cell "s" [ref=f1e50]
+            - cell "Una oscilación completa." [ref=f1e51]
+          - row [ref=f1e52]:
+            - cell "f" [ref=f1e53]
+            - cell "Hz" [ref=f1e54]
+            - cell "Oscilaciones por segundo." [ref=f1e55]
+          - row [ref=f1e56]:
+            - cell "v" [ref=f1e57]
+            - cell "m/s" [ref=f1e58]
+            - cell "Avance del patrón." [ref=f1e59]
+    - generic [ref=f1e60]:
+      - heading "3 Problemas resueltos" [level=2] [ref=f1e61]:
+        - generic [ref=f1e62]: "3"
+        - text: Problemas resueltos
+      - generic [ref=f1e63]: "1. Soga: λ = 2,0 m y f = 3,0 Hz. Entonces v = λ·f = 2,0 m · 3,0 Hz = 6,0 m/s."
+      - generic [ref=f1e64]: "2. Sonido: f = 680 Hz y v = 340 m/s. Entonces λ = v/f = 340/680 = 0,50 m. En el mismo aire, una frecuencia mayor produce menor λ."
+    - generic [ref=f1e65]:
+      - 'heading "4 Sonido: compresiones y rarefacciones" [level=2] [ref=f1e66]':
+        - generic [ref=f1e67]: "4"
+        - text: "Sonido: compresiones y rarefacciones"
+      - paragraph [ref=f1e68]: "La membrana de un parlante vibra: comprime el aire al avanzar y lo rareface al retroceder. El sonido necesita medio material; será una diferencia fundamental con las ondas electromagnéticas."
+      - 'figure "Compresión: aire más junto. Rarefacción: aire más separado." [ref=f1e69]':
+        - paragraph [ref=f1e70]: Animación 3 · sonido longitudinal
+        - generic "Parlante y onda longitudinal" [ref=f1e71]
+    - generic [ref=f1e73]:
+      - 'heading "5 Reflexión: la onda rebota" [level=2] [ref=f1e74]':
+        - generic [ref=f1e75]: "5"
+        - text: "Reflexión: la onda rebota"
+      - paragraph [ref=f1e76]: "La onda encuentra un límite y vuelve por el mismo medio: cambia su dirección. Ejemplos: eco y pulso en el extremo de una soga."
+      - 'figure "Azul: onda incidente. Naranja: onda reflejada." [ref=f1e77]':
+        - paragraph [ref=f1e78]: Animación 4 · reflexión
+        - generic "Onda incidente y reflejada" [ref=f1e79]
+    - generic [ref=f1e81]:
+      - 'heading "6 Refracción: cambia el medio" [level=2] [ref=f1e82]':
+        - generic [ref=f1e83]: "6"
+        - text: "Refracción: cambia el medio"
+      - paragraph [ref=f1e84]: Una onda pasa de un medio a otro. La fuente sigue vibrando con la misma frecuencia; cambian la velocidad y la longitud de onda. En agua menos profunda las olas viajan más lento y sus frentes quedan más juntos.
+      - 'figure "Leé de izquierda a derecha: misma f; menor v y menor λ en el agua poco profunda." [ref=f1e85]':
+        - paragraph [ref=f1e86]: Animación 5 · refracción
+        - generic "Refracción entre agua profunda y poco profunda" [ref=f1e87]
+      - generic [ref=f1e89]: "Refracción ≠ reflexión: no rebota; atraviesa una frontera entre dos medios."
+    - generic [ref=f1e90]:
+      - 'heading "7 Difracción: pasa por una abertura" [level=2] [ref=f1e91]':
+        - generic [ref=f1e92]: "7"
+        - text: "Difracción: pasa por una abertura"
+      - paragraph [ref=f1e93]: La onda no cambia de medio. Al pasar por un hueco o bordear un obstáculo, sus frentes se curvan y se expanden. Por eso escuchamos una voz detrás de una puerta entreabierta.
+      - 'figure "Antes: frentes rectos. Después: la abertura se comporta como nueva fuente de frentes circulares." [ref=f1e94]':
+        - paragraph [ref=f1e95]: Animación 6 · difracción
+        - generic "Frentes rectos que pasan por una abertura y se vuelven circulares" [ref=f1e96]
+      - generic [ref=f1e98]: "Difracción ≠ refracción: aquí no cambió el medio; cambió la geometría del paso disponible."
+    - generic [ref=f1e99]:
+      - 'heading "8 Interferencia constructiva: encuentro de pulsos" [level=2] [ref=f1e100]':
+        - generic [ref=f1e101]: "8"
+        - text: "Interferencia constructiva: encuentro de pulsos"
+      - paragraph [ref=f1e102]: Esta situación se estudia aparte de reflexión, refracción y difracción. Cuando dos pulsos ocupan el mismo lugar al mismo instante, se superponen.
+      - generic [ref=f1e103]: y resultante = y₁ + y₂
+      - paragraph [ref=f1e104]: "Si ambos desplazan el medio hacia el mismo lado, sus amplitudes se suman: durante ese instante la amplitud resultante aumenta. Después del cruce, los pulsos siguen su camino con su forma original."
+      - figure "La curva dorada es el resultado instantáneo; los pulsos azul y naranja no se detienen ni quedan unidos." [ref=f1e105]:
+        - paragraph [ref=f1e106]: Animación 7 · interferencia constructiva
+        - generic "Dos pulsos que se suman durante un encuentro y después continúan" [ref=f1e107]
+      - generic [ref=f1e109]: "Lectura correcta: “en ese instante aumenta la amplitud resultante”. No aparece una onda permanente nueva."
+    - generic [ref=f1e110]:
+      - heading "9 Actividades" [level=2] [ref=f1e111]:
+        - generic [ref=f1e112]: "9"
+        - text: Actividades
+      - list [ref=f1e113]:
+        - listitem [ref=f1e114]: Explicá por qué una onda transporta energía sin trasladar todo el medio.
+        - listitem [ref=f1e116]: "Clasificá como mecánica o electromagnética: sonido, luz, onda en agua y onda sísmica."
+        - listitem [ref=f1e118]: Una fuente hace 24 oscilaciones en 6,0 s. Calculá f y T.
+        - listitem [ref=f1e120]: Para T = 0,40 s, hallá f.
+        - listitem [ref=f1e122]: Para λ = 0,80 m y f = 5,0 Hz, hallá v.
+        - listitem [ref=f1e124]: Un sonido de 440 Hz viaja a 343 m/s. Hallá λ.
+        - listitem [ref=f1e126]: Compará las longitudes de onda de sonidos de 250 Hz y 500 Hz en el mismo aire.
+        - listitem [ref=f1e128]: Dibujá una reflexión en el extremo de una soga.
+        - listitem [ref=f1e130]: Explicá la refracción de olas al llegar a agua poco profunda.
+        - listitem [ref=f1e132]: Explicá la difracción de una voz detrás de una puerta.
+    - generic [ref=f1e134]:
+      - heading "10 Preguntas para pensar" [level=2] [ref=f1e135]:
+        - generic [ref=f1e136]: "10"
+        - text: Preguntas para pensar
+      - generic [ref=f1e137]: "Clasificá antes de explicar: ¿vuelve al mismo medio? reflexión. ¿pasa a otro medio? refracción. ¿pasa por un hueco? difracción. ¿dos pulsos ocupan el mismo lugar? interferencia."
+      - generic [ref=f1e138]: "Error frecuente: la interferencia constructiva aumenta la amplitud solo mientras los pulsos se superponen; después continúan propagándose."
+    - generic [ref=f1e139]: "Sugerencia docente: pausá cada animación y pedí al grupo una lectura en tres pasos: antes, durante y después del fenómeno."
