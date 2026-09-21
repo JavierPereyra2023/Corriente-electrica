@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ondas de luz: de Newton y Huygens a Young</title>
+  <link rel="icon" href="data:,">
+  <script>
+    window.MathJax = { tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"]] } };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+  <style>
+    :root { --ink:#15191d; --muted:#56616a; --paper:#e8e2d6; --page:#fffdf7; --line:#d6c9af; --accent:#1d3557; --soft:#edf3f7; --gold:#f2c230; --warm:#fff6d8; --red:#a33b32; --blue:#2273a6; }
+    * { box-sizing:border-box; }
+    body { margin:0; color:var(--ink); font-family:Georgia,"Times New Roman",serif; line-height:1.65; background:linear-gradient(rgba(21,25,29,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(21,25,29,.045) 1px,transparent 1px),var(--paper); background-size:28px 28px; }
+    main { width:min(100%,920px); margin:28px auto; padding:0 16px; }
+    .page { padding:62px 72px; background:linear-gradient(rgba(29,53,87,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(29,53,87,.035) 1px,transparent 1px),var(--page); background-size:24px 24px; border:1px solid #ddd6c8; box-shadow:0 18px 50px rgba(31,41,51,.13); }
+    .doc-header { position:relative; padding:0 0 24px 24px; margin-bottom:30px; border-bottom:1px solid var(--line); }
+    .doc-header::before { content:""; position:absolute; left:0; top:4px; bottom:26px; width:8px; background:var(--gold); }
+    .eyebrow { margin:0 0 10px; color:var(--accent); font:800 .82rem Arial,sans-serif; letter-spacing:.12em; text-transform:uppercase; }
+    h1,h2,h3,p { margin:0; } h1,h2,h3 { line-height:1.2; color:var(--accent); } h1 { font-size:2.65rem; } h3 { margin:2px 0 6px; font-size:1.06rem; }
+    .subtitle { margin-top:14px; color:var(--muted); font-size:1.08rem; }.meta,.grid { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; }.meta { grid-template-columns:repeat(3,1fr); margin-top:22px; font:.9rem Arial,sans-serif; }.meta div,.card { padding:12px; border:1px solid var(--line); background:#fbfaf6; }
+    section { margin-top:32px; } h2 { display:flex; align-items:baseline; gap:10px; margin-bottom:12px; padding-bottom:5px; font-size:1.42rem; border-bottom:1px solid var(--line); } h2 span { display:inline-grid; place-items:center; min-width:28px; height:28px; color:#111827; background:var(--gold); font:900 .95rem Arial,sans-serif; } p { margin-bottom:11px; font-size:1.02rem; }
+    .box,.note,.warning,.example { margin:16px 0; padding:14px 16px; border-left:5px solid var(--gold); background:var(--soft); }.note { border-left-color:#d29a22; background:var(--warm); }.warning { border-left-color:var(--red); background:#fff0ed; }.formula { margin:16px 0; padding:17px; overflow-x:auto; color:#fff; background:#101820; text-align:center; font:700 1.35rem Arial,sans-serif; }.formula mjx-container { margin:0 !important; }
+    .figure { margin:18px 0; padding:12px; border:1px solid var(--line); background:#fbfaf6; }.figure img,.figure svg,.figure video { display:block; width:100%; height:auto; }.figure video { background:#101820; }.video-shell { position:relative; background:#101820; }.video-shell video { cursor:pointer; }.video-shell video:focus-visible { outline:4px solid var(--gold); outline-offset:3px; }.video-hint { position:absolute; right:10px; bottom:10px; padding:5px 9px; border-radius:999px; color:#fff; background:rgba(16,24,32,.78); font:700 .7rem Arial,sans-serif; letter-spacing:.02em; pointer-events:none; }.figure figcaption { margin-top:9px; color:var(--muted); font-size:.9rem; text-align:center; font-style:italic; }.portrait { display:grid; grid-template-columns:190px 1fr; gap:18px; align-items:center; }.portrait img { aspect-ratio:3 / 4; object-fit:cover; border:1px solid var(--line); }.label { display:inline-block; margin:0 0 5px; padding:5px 9px; color:var(--accent); background:#eaf3f3; font:800 .73rem Arial,sans-serif; letter-spacing:.05em; text-transform:uppercase; }
+    table { width:100%; border-collapse:collapse; font:.9rem Arial,sans-serif; } th,td { padding:9px; border:1px solid var(--line); text-align:left; vertical-align:top; } th { background:#ede7d9; }.compact td { padding:7px; }.exercises { padding-left:24px; }.exercises li { margin:18px 0; }.work-line { display:block; height:36px; border-bottom:1px solid #c9c1b4; }.source-list { padding-left:20px; font-size:.92rem; }.source-list li { margin:8px 0; }.source-list a { color:var(--accent); }
+    .compare { display:grid; grid-template-columns:1fr 1fr; gap:16px; }.model { overflow:hidden; border:1px solid var(--line); background:#fbfaf6; }.model h3 { padding:13px 15px 5px; }.model p { padding:0 15px 6px; }.model .model-tag { display:inline-block; margin:0 15px 12px; padding:4px 8px; color:#fff; background:var(--accent); font:700 .76rem Arial,sans-serif; }.model.huygens .model-tag { background:#5c3c8d; }.model img { display:block; width:100%; aspect-ratio:3 / 4; object-fit:cover; object-position:50% 12%; }
+    footer { margin-top:32px; padding-top:14px; border-top:1px solid var(--line); color:var(--muted); font-size:.88rem; }
+    @media (max-width:760px) { html,body { max-width:100vw; overflow-x:hidden; } main { width:100%; margin:0; padding:0; }.page { padding:30px 18px; border:0; box-shadow:none; }.meta,.grid,.compare,.portrait { grid-template-columns:1fr; } h1 { font-size:1.9rem; } h2 { font-size:1.2rem; }.portrait img { width:min(220px,100%); margin:auto; }.figure { margin-left:-6px; margin-right:-6px; padding:7px; } #polarizacion-pasos { overflow-x:auto; scrollbar-color:var(--gold) #e6dfd1; } #polarizacion-pasos .video-shell { width:720px; max-width:none; } table { display:block; overflow-x:auto; } }
+    @media print { @page { size:A4; margin:16mm; } body { background:#fff; } main { width:auto; margin:0; padding:0; }.page { padding:0; border:0; box-shadow:none; }.figure,.box,.note,.warning,.example,.model { break-inside:avoid; }.video-hint { display:none; } }
+  </style>
+</head>
+<body>
+  <main><article class="page">
+    <header class="doc-header">
+      <p class="eyebrow">Sistemas Multi Física · Profesor Javier Pereyra</p>
+      <h1>Ondas de luz: de Newton y Huygens a Young</h1>
+      <p class="subtitle">¿La luz viaja como corpúsculos o como onda? Usaremos reflexión, refracción, polarización e interferencia para poner a prueba los modelos.</p>
+      <div class="meta"><div><b>Curso:</b> Secundaria superior</div><div><b>Clase:</b> 14 · Óptica</div><div><b>Unidades:</b> m/s, nm, Hz, grados</div></div>
+    </header>
+
+    <section>
+      <h2><span>1</span> Punto de partida: luz no es sonido</h2>
+      <p>En la clase anterior, el sonido nos permitió estudiar una <b>onda mecánica</b>: en el aire se propaga por compresiones y rarefacciones y necesita materia. La luz, en cambio, es una <b>onda electromagnética transversal</b>. Puede viajar en el vacío: desde el Sol hasta la Tierra no hay aire que vibre.</p>
+      <div class="grid">
+        <div class="card"><h3>Sonido en el aire</h3><b>Mecánica y longitudinal.</b> Las moléculas de aire oscilan aproximadamente en la misma dirección en que avanza el sonido. Sin medio material, no se propaga.</div>
+        <div class="card"><h3>Luz visible</h3><b>Electromagnética y transversal.</b> Cambian los campos eléctrico \(\vec E\) y magnético \(\vec B\), perpendiculares entre sí y a la dirección de avance. Se propaga en el vacío a \(c\).</div>
+      </div>
+      <div class="formula">\[c = 299\,792\,458\ \text{m/s} \qquad \text{(velocidad de la luz en el vacío)}\]</div>
+      <div class="note"><b>Puente conceptual:</b> la luz también cumple \(v=f\lambda\), pero su velocidad no es la misma en todos los medios. Esa diferencia será la clave de la refracción.</div>
+      <figure class="figure"><p class="label">Experimento fotorealista · prisma</p><img src="../assets/prisma-dispersion-experimento.png" alt="Montaje de laboratorio con un prisma de vidrio que descompone un haz de luz blanca en un espectro continuo tenue"><figcaption>Un prisma separa la luz blanca en un espectro continuo. En el experimento real la proyección suele ser tenue: se observa mejor en una sala oscurecida.</figcaption></figure>
+      <figure class="figure"><p class="label">Animación 1 · prisma y dispersión</p><video autoplay loop muted playsinline preload="metadata" poster="../assets/luz/prisma-apagado.png" aria-label="Lámpara apagada y soporte vacío; se enciende la luz blanca, se coloca el prisma y aparece el espectro"><source src="../assets/luz/prisma-dispersion.mp4?v=secuencia-2" type="video/mp4"></video><figcaption>Primero, la lámpara está apagada y el soporte no tiene prisma. Al encenderla, el haz sigue recto y forma una mancha blanca. Luego se coloca el prisma: la luz cambia de dirección y aparece el espectro de colores. Recreación didáctica animada; el movimiento del prisma se muestra lentamente para poder seguirlo.</figcaption></figure>
+    </section>
+
+    <section>
+      <h2><span>2</span> Dos modelos históricos para una misma pregunta</h2>
+      <p>En el siglo XVII no se sabía qué era la luz. Newton y Huygens no discutían por capricho: cada uno propuso un modelo para explicar fenómenos observables. Los dos aportaron ideas importantes, pero ninguno es la explicación actual completa.</p>
+      <div class="compare">
+        <article class="model">
+          <img src="../assets/isaac-newton-luz.png" alt="Recreación visual de Isaac Newton junto a un prisma que dispersa un haz de luz">
+          <h3>Isaac Newton (1642–1727)</h3><span class="model-tag">Modelo corpuscular</span>
+          <p>Asoció la luz con corpúsculos que viajan en línea recta. El modelo ayudaba a imaginar sombras nítidas, reflexión y refracción, aunque predecía incorrectamente que la luz debería ir más rápido en medios más densos.</p>
+        </article>
+        <article class="model huygens">
+          <img src="../assets/christiaan-huygens-luz.png" alt="Recreación visual de Christiaan Huygens dibujando frentes de onda sobre una mesa de trabajo">
+          <h3>Christiaan Huygens (1629–1695)</h3><span class="model-tag">Modelo ondulatorio</span>
+          <p>Propuso que la luz se propaga como una perturbación. Su principio permite construir frentes de onda y explicar geométricamente reflexión y refracción.</p>
+        </article>
+      </div>
+      <p class="figure figcaption"><i>Las imágenes son recreaciones didácticas generadas para esta clase, no fotografías históricas.</i></p>
+      <h3>2.1. Newton: el experimento crucial sobre los colores</h3>
+      <p><b>Pregunta:</b> ¿el prisma produce los colores o separa componentes de la luz blanca? La dispersión con un solo prisma, mostrada en el video inicial, plantea el problema; el <i>experimentum crucis</i> va más allá.</p>
+      <ol>
+        <li>Un primer prisma dispersa la luz solar.</li>
+        <li>Dos pantallas con pequeños orificios delimitan el recorrido. Al girar el primer prisma, se seleccionan sucesivamente distintas partes del espectro.</li>
+        <li>Un segundo prisma, fijo, refracta esa luz: los distintos colores presentan desviaciones diferentes aun con la misma dirección de incidencia.</li>
+      </ol>
+      <div class="box"><b>Conclusión:</b> la luz blanca contiene componentes con distinta refrangibilidad. El prisma las separa. Este resultado fundamenta la teoría de los colores, pero no demuestra por sí solo que la luz esté formada por corpúsculos. <a href="https://newtonproject.ox.ac.uk/view/texts/normalized/NATP00006">Fuente: Newton, comunicación de 1672.</a></div>
+      <p><b>Para pensar:</b> ¿qué permite comprobar el segundo prisma que no permite concluir la simple observación de un espectro?</p>
+      <div class="note"><b>Dos preguntas diferentes:</b> Newton investiga la composición de la luz blanca y los colores; Young aporta evidencia del comportamiento ondulatorio mediante la interferencia.</div>
+      <div class="box"><b>Idea de Huygens:</b> cada punto alcanzado por un frente de onda puede comportarse como fuente de pequeñas ondas secundarias. La envolvente de todas ellas determina el nuevo frente.</div>
+    </section>
+
+    <section>
+      <h2><span>3</span> Reflexión: cambiar de dirección sin cambiar de medio</h2>
+      <p>Cuando un rayo llega a una superficie reflectante y permanece en el mismo medio, se produce <b>reflexión</b>. El ángulo se mide siempre respecto de la <b>normal</b>, una recta perpendicular a la superficie; no respecto de la superficie.</p>
+      <figure class="figure"><p class="label">Animación 2 · reflexión y refracción</p><video autoplay loop muted playsinline preload="metadata" aria-label="Animación que compara reflexión en un espejo y refracción de aire a agua"><source src="../assets/luz/reflexion-refraccion.mp4?v=haz-2" type="video/mp4"></video><figcaption>Primero: reflexión, con ángulos iguales. Después: refracción aire → agua, donde la luz cambia su dirección y velocidad.</figcaption></figure>
+      <figure class="figure">
+        <svg viewBox="0 0 760 430" role="img" aria-labelledby="refl-title refl-desc" style="font-family:Arial,sans-serif">
+          <title id="refl-title">Láser rojo: reflexión especular en un espejo plano</title>
+          <desc id="refl-desc">Un puntero láser incide sobre un espejo a unos 49 grados de la normal; el rayo reflejado sale al mismo ángulo del otro lado de la normal.</desc>
+          <defs>
+            <linearGradient id="refl-mirror" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#eef3f6"/><stop offset=".42" stop-color="#aebcc4"/><stop offset=".5" stop-color="#fbfdfe"/><stop offset=".58" stop-color="#aebcc4"/><stop offset="1" stop-color="#57646d"/></linearGradient>
+            <linearGradient id="refl-metal" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#65717b"/><stop offset=".35" stop-color="#d4dce2"/><stop offset=".65" stop-color="#56636e"/><stop offset="1" stop-color="#202f3a"/></linearGradient>
+            <filter id="refl-glow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="2.4"/></filter>
+            <pattern id="refl-hatch" width="12" height="12" patternTransform="rotate(45)" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="0" y2="12" stroke="#93a0a8" stroke-width="3"/></pattern>
+          </defs>
+          <rect width="760" height="430" rx="12" fill="#fbf9f2"/>
+          <text x="42" y="45" fill="#334d60" font-size="18">Puntero láser</text>
+          <text x="586" y="320" fill="#567482" font-size="16">espejo plano</text>
+          <rect x="40" y="300" width="680" height="24" fill="url(#refl-hatch)"/>
+          <rect x="40" y="291" width="680" height="11" rx="2" fill="url(#refl-mirror)" stroke="#3d4952" stroke-width="1.4"/>
+          <line x1="380" y1="55" x2="380" y2="300" stroke="#73818b" stroke-width="1.4" stroke-dasharray="6 7"/>
+          <text x="393" y="70" fill="#56636e" font-size="18">normal</text>
+          <g transform="translate(165 110) rotate(41)">
+            <rect x="-79" y="-12" width="78" height="24" rx="6" fill="url(#refl-metal)" stroke="#32414d" stroke-width="1"/>
+            <path d="M-66 -11 V11 M-61 -11 V11 M-56 -11 V11" stroke="#71818b" stroke-width="1"/>
+            <rect x="-12" y="-13" width="12" height="26" rx="2" fill="#243949"/>
+            <ellipse cx="0" cy="0" rx="2.5" ry="1.5" fill="#de6b35"/>
+            <rect x="-36" y="-13" width="13" height="4" rx="2" fill="#1c2d38"/>
+          </g>
+          <path d="M165 110 L380 300" fill="none" stroke="#de6b35" stroke-width="6" opacity=".25" filter="url(#refl-glow)"/>
+          <path d="M165 110 L380 300" fill="none" stroke="#de6b35" stroke-width="3" stroke-linecap="round"/>
+          <path d="M380 300 L595 110" fill="none" stroke="#de6b35" stroke-width="6" opacity=".25" filter="url(#refl-glow)"/>
+          <path d="M380 300 L595 110" fill="none" stroke="#de6b35" stroke-width="3" stroke-linecap="round"/>
+          <polygon points="578,115 595,110 588,126" fill="#de6b35"/>
+          <circle cx="380" cy="300" r="3.2" fill="#ffe1c9" stroke="#de6b35" stroke-width="1"/>
+          <path d="M380 220 A80 80 0 0 0 320 247" fill="none" stroke="#b5832a" stroke-width="1.5"/>
+          <path d="M380 220 A80 80 0 0 1 440 247" fill="none" stroke="#b5832a" stroke-width="1.5"/>
+          <text x="294" y="238" fill="#916419" font-size="19">θᵢ</text>
+          <text x="450" y="238" fill="#916419" font-size="19">θᵣ</text>
+          <text x="120" y="185" fill="#9e4925" font-size="18">rayo incidente</text>
+          <text x="558" y="90" fill="#9e4925" font-size="18">rayo reflejado</text>
+          <text x="42" y="407" fill="#536976" font-size="15">Modelo geométrico · el brillo del haz se realza para facilitar su lectura.</text>
+        </svg>
+        <figcaption>La ley de reflexión se resume como \(\theta_i=\theta_r\). La abertura del puntero y el núcleo del haz tienen el mismo grosor; el halo exterior es solo un realce visual. La dirección cambia; en el mismo medio se conservan \(v\), \(f\), \(T\) y \(\lambda\).</figcaption>
+      </figure>
+      <div class="formula">\[\theta_i = \theta_r\]</div>
+      <p><b>Rango angular:</b> medidos desde la normal, \(0^\circ\leq\theta_i\leq90^\circ\). A \(0^\circ\) la incidencia es perpendicular; a \(90^\circ\) el rayo llega rasante a la superficie.</p>
+      <div class="warning"><b>Error frecuente:</b> si el rayo forma \(25^\circ\) con la superficie, forma \(65^\circ\) con la normal. El ángulo de incidencia es \(65^\circ\).</div>
+    </section>
+
+    <section>
+      <h2><span>4</span> Refracción: ¿qué cambia al pasar de un medio a otro?</h2>
+      <p>Al pasar de aire a agua o vidrio, una parte de la luz normalmente se refleja y otra se transmite. La transmitida cambia de velocidad porque interactúa de manera diferente con el medio. Si llega oblicuamente, también cambia de dirección: eso es <b>refracción</b>.</p>
+      <figure class="figure">
+        <svg viewBox="0 0 760 460" role="img" aria-labelledby="refr-title refr-desc" style="font-family:Arial,sans-serif">
+          <title id="refr-title">Láser azul: refracción del aire al agua</title>
+          <desc id="refr-desc">Un puntero dirige un haz azul a 45 grados de la normal. Al entrar al agua, el haz se acerca a ella con un ángulo aproximado de 32 grados. Es un modelo geométrico con índices redondeados.</desc>
+          <defs>
+            <linearGradient id="refr-water" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#e6f5fb"/><stop offset="1" stop-color="#c4e2ed"/></linearGradient>
+            <linearGradient id="refr-metal" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#65717b"/><stop offset=".35" stop-color="#d4dce2"/><stop offset=".65" stop-color="#56636e"/><stop offset="1" stop-color="#202f3a"/></linearGradient>
+            <filter id="refr-glow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="2.2"/></filter>
+            <marker id="refr-direction" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#147bcb"/></marker>
+          </defs>
+          <rect width="760" height="460" rx="12" fill="#fbf9f2"/>
+          <path d="M0 230 H760 V460 H0Z" fill="url(#refr-water)"/>
+          <line x1="0" y1="230" x2="760" y2="230" stroke="#79a9bc" stroke-width="1.5"/>
+          <text x="42" y="173" fill="#334d60" font-size="22">Aire · n ≈ 1,000</text>
+          <text x="42" y="382" fill="#255a74" font-size="22">Agua · n ≈ 1,333</text>
+          <text x="574" y="215" fill="#567482" font-size="16">superficie</text>
+          <line x1="380" y1="48" x2="380" y2="422" stroke="#73818b" stroke-width="1.4" stroke-dasharray="6 7"/>
+          <text x="393" y="62" fill="#56636e" font-size="18">normal</text>
+          <g transform="translate(240 90) rotate(45)">
+            <rect x="-79" y="-12" width="78" height="24" rx="6" fill="url(#refr-metal)" stroke="#32414d" stroke-width="1"/>
+            <path d="M-66 -11 V11 M-61 -11 V11 M-56 -11 V11" stroke="#71818b" stroke-width="1"/>
+            <rect x="-12" y="-13" width="12" height="26" rx="2" fill="#243949"/>
+            <ellipse cx="0" cy="0" rx="2.5" ry="1.5" fill="#309fe7"/>
+            <rect x="-36" y="-13" width="13" height="4" rx="2" fill="#1c2d38"/>
+          </g>
+          <text x="42" y="45" fill="#334d60" font-size="18">Puntero láser azul</text>
+          <path d="M240 90 L380 230 L480 390" fill="none" stroke="#2c9fff" stroke-width="6" opacity=".25" filter="url(#refr-glow)"/>
+          <path d="M240 90 L380 230 L480 390" fill="none" stroke="#147bcb" stroke-width="3" stroke-linecap="round" marker-end="url(#refr-direction)"/>
+          <circle cx="380" cy="230" r="3.2" fill="#a6dcff" stroke="#147bcb" stroke-width="1"/>
+          <path d="M380 150 A80 80 0 0 0 323.43 173.43" fill="none" stroke="#b5832a" stroke-width="1.5"/>
+          <text x="293" y="137" fill="#916419" font-size="19">θ₁ = 45°</text>
+          <path d="M380 310 A80 80 0 0 0 422.4 297.84" fill="none" stroke="#b5832a" stroke-width="1.5"/>
+          <text x="432" y="297" fill="#916419" font-size="19">θ₂ ≈ 32°</text>
+          <text x="516" y="350" fill="#255a74" font-size="18"><tspan x="516">El haz se acerca</tspan><tspan x="516" dy="25">a la normal.</tspan></text>
+          <text x="42" y="435" fill="#536976" font-size="15">Modelo geométrico · brillo del haz realzado para facilitar su lectura.</text>
+        </svg>
+        <figcaption>El haz azul llega a 45° y se refracta a unos 32°, usando los índices redondeados indicados. Los ángulos se miden desde la normal. El trazo representa la dirección de propagación; su brillo se realza y se omite la reflexión parcial. Un haz no suele verse de costado en aire limpio: se hace visible por dispersión hacia el observador. Con incidencia perpendicular no cambia la dirección, pero sí \(v\) y \(\lambda\).</figcaption>
+      </figure>
+      <div class="formula">\[n=\frac{c}{v} \qquad\qquad n_1\sin\theta_1=n_2\sin\theta_2\]</div>
+      <p>El índice \(n\) compara la velocidad en el vacío \(c\) con la velocidad en el medio \(v\). Un índice mayor significa menor velocidad. La ley de Snell relaciona los ángulos con los índices de los dos medios.</p>
+      <h3>Cuadro de consulta: índices de refracción</h3>
+      <p>Valores aproximados para luz de longitud de onda en el vacío de <b>589 nm</b> (amarilla). El índice \(n\) <b>no tiene unidad</b>. Usá el valor del medio de origen como \(n_1\) y el del medio de destino como \(n_2\).</p>
+      <table class="compact"><caption>Medios habituales para aplicar la ley de Snell</caption><thead><tr><th scope="col">Medio (referencia)</th><th scope="col">Índice \(n\)</th><th scope="col">Velocidad \(v=c/n\)</th><th scope="col">Lectura</th></tr></thead><tbody>
+        <tr><td>Vacío</td><td>1 exacto</td><td>299 792 458 m/s</td><td>Velocidad máxima de la luz.</td></tr>
+        <tr><td>Aire (0 °C, 1 atm)</td><td>1,000293</td><td>\(2,997\times10^8\) m/s</td><td>Casi igual que en el vacío.</td></tr>
+        <tr><td>Dióxido de carbono (0 °C, 1 atm)</td><td>1,00045</td><td>\(3,00\times10^8\) m/s</td><td>Muy próximo al aire; la velocidad está redondeada.</td></tr>
+        <tr><td>Hielo (0 °C)</td><td>1,309</td><td>\(2,29\times10^8\) m/s</td><td>Índice menor que el agua líquida.</td></tr>
+        <tr><td>Agua dulce (20 °C)</td><td>1,333</td><td>\(2,25\times10^8\) m/s</td><td>La luz viaja más lentamente.</td></tr>
+        <tr><td>Etanol (20 °C)</td><td>1,361</td><td>\(2,20\times10^8\) m/s</td><td>Índice mayor que el agua.</td></tr>
+        <tr><td>Fluorita (20 °C)</td><td>1,434</td><td>\(2,09\times10^8\) m/s</td><td>Material usado en óptica.</td></tr>
+        <tr><td>Sílice fundida (20 °C)</td><td>1,458</td><td>\(2,06\times10^8\) m/s</td><td>También llamada cuarzo fundido.</td></tr>
+        <tr><td>Glicerina (20 °C)</td><td>1,473</td><td>\(2,04\times10^8\) m/s</td><td>Permite comparar líquidos transparentes.</td></tr>
+        <tr><td>Poliestireno (20 °C)</td><td>1,49</td><td>\(2,01\times10^8\) m/s</td><td>Valor para material transparente compacto.</td></tr>
+        <tr><td>Vidrio crown</td><td>1,520</td><td>\(1,97\times10^8\) m/s</td><td>Usado como valor escolar de referencia.</td></tr>
+        <tr><td>Cloruro de sodio cristalino (20 °C)</td><td>1,544</td><td>\(1,94\times10^8\) m/s</td><td>Sal en cristal; no agua salada.</td></tr>
+        <tr><td>Vidrio flint (20 °C)</td><td>1,66</td><td>\(1,81\times10^8\) m/s</td><td>Mayor índice que el vidrio crown de referencia.</td></tr>
+        <tr><td>Diamante</td><td>2,419</td><td>\(1,24\times10^8\) m/s</td><td>Índice alto: gran desviación y brillo.</td></tr>
+      </tbody></table>
+      <div class="note"><b>Datos de referencia:</b> valores a 20 °C, salvo indicación diferente. El índice depende de la longitud de onda, la temperatura, la composición y —en los gases— de la presión. Los distintos vidrios no tienen todos el mismo índice. Las velocidades están calculadas con \(v=c/n\) y redondeadas. En los ejercicios podemos aproximar \(n_\text{aire}=1,000\). <a href="https://openstax.org/books/university-physics-volume-3/pages/1-1-the-propagation-of-light">Fuente: OpenStax, tabla 1.1.</a></div>
+      <table class="compact"><thead><tr><th>Parámetro al cruzar una frontera estacionaria</th><th>¿Cambia?</th><th>Por qué</th></tr></thead><tbody>
+        <tr><td>Frecuencia \(f\)</td><td><b>No</b></td><td>La fuente fija el ritmo de oscilación.</td></tr><tr><td>Período \(T=1/f\)</td><td><b>No</b></td><td>Si \(f\) no cambia, \(T\) tampoco.</td></tr><tr><td>Velocidad \(v=c/n\)</td><td><b>Sí</b></td><td>Depende del medio.</td></tr><tr><td>Longitud de onda \(\lambda=v/f\)</td><td><b>Sí</b></td><td>Con la misma \(f\), sigue el cambio de \(v\).</td></tr><tr><td>Dirección</td><td>Puede cambiar</td><td>Solo si la incidencia es oblicua y los índices son distintos.</td></tr><tr><td>Intensidad</td><td>Puede cambiar</td><td>Puede haber reflexión parcial, transmisión y absorción.</td></tr>
+      </tbody></table>
+    </section>
+
+    <section>
+      <h2><span>5</span> El ángulo crítico: el “ángulo máximo” de la refracción</h2>
+      <p>Cuando la luz intenta salir de un medio de <b>mayor índice</b> a otro de <b>menor índice</b>, se aleja de la normal. Hay un límite: el <b>ángulo crítico</b> \(\theta_c\). Es el ángulo de incidencia para el cual el rayo refractado sale rasante a la superficie, es decir, a \(90^\circ\) de la normal.</p>
+      <div class="formula">\[\theta_c=\sin^{-1}\left(\frac{n_2}{n_1}\right) \qquad \text{solo si } n_1>n_2\]</div>
+      <figure class="figure"><p class="label">Animación 3 · ángulo crítico</p><video autoplay loop muted playsinline preload="metadata" aria-label="Animación de refracción, rayo rasante y reflexión interna total al pasar de agua a aire"><source src="../assets/luz/angulo-critico.mp4?v=direccion-2" type="video/mp4"></video><figcaption>Compará los tres casos: \(\theta_i&lt;\theta_c\), \(\theta_i=\theta_c\) y \(\theta_i&gt;\theta_c\). Tocá el video si necesitás detenerlo en una etapa.</figcaption></figure>
+      <figure class="figure">
+        <svg viewBox="0 0 760 340" role="img" aria-labelledby="crit-title crit-desc" style="font-family:Arial,sans-serif">
+          <title id="crit-title">Tres casos al pasar de agua a aire</title>
+          <desc id="crit-desc">Rayos con ángulo menor, igual y mayor que el ángulo crítico; el último se refleja internamente en el agua.</desc>
+          <defs>
+            <linearGradient id="crit-water" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#e6f5fb"/><stop offset="1" stop-color="#c4e2ed"/></linearGradient>
+            <filter id="crit-glow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="1.8"/></filter>
+            <marker id="crit-arrow-b" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#147bcb"/></marker>
+            <marker id="crit-arrow-a" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#b5832a"/></marker>
+            <marker id="crit-arrow-r" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#a33b32"/></marker>
+          </defs>
+          <rect width="760" height="340" rx="12" fill="#fbf9f2"/>
+          <rect x="0" y="10" width="760" height="150" fill="#f8f6ef"/>
+          <rect x="0" y="160" width="760" height="170" fill="url(#crit-water)"/>
+          <rect x="515" y="10" width="245" height="320" fill="#e3ae32" opacity=".08"/>
+          <line x1="0" y1="160" x2="760" y2="160" stroke="#5c8ea3" stroke-width="2"/>
+          <g font-size="18" fill="#334155" font-weight="700"><text x="84" y="52">θᵢ &lt; θc</text><text x="318" y="52">θᵢ = θc</text><text x="556" y="52">θᵢ &gt; θc</text></g>
+          <g font-size="16" fill="#56707e"><text x="14" y="90">aire</text><text x="14" y="310">agua</text></g>
+          <g stroke="#8a97a0" stroke-width="1.6" stroke-dasharray="6 6"><line x1="145" y1="72" x2="145" y2="312"/><line x1="380" y1="72" x2="380" y2="312"/><line x1="615" y1="72" x2="615" y2="312"/></g>
+          <g stroke-width="7" opacity=".22" filter="url(#crit-glow)" fill="none"><path d="M72 295 L145 160" stroke="#147bcb"/><path d="M307 295 L380 160" stroke="#b5832a"/><path d="M542 295 L615 160" stroke="#a33b32"/><path d="M145 160 L246 88" stroke="#147bcb"/><path d="M380 160 L480 160" stroke="#b5832a"/><path d="M615 160 L688 295" stroke="#a33b32"/></g>
+          <path d="M72 295 L145 160" fill="none" stroke="#147bcb" stroke-width="3"/>
+          <path d="M307 295 L380 160" fill="none" stroke="#b5832a" stroke-width="3"/>
+          <path d="M542 295 L615 160" fill="none" stroke="#a33b32" stroke-width="3"/>
+          <path d="M145 160 L246 88" fill="none" stroke="#147bcb" stroke-width="3" marker-end="url(#crit-arrow-b)"/>
+          <path d="M380 160 L480 160" fill="none" stroke="#b5832a" stroke-width="3" marker-end="url(#crit-arrow-a)"/>
+          <path d="M615 160 L688 295" fill="none" stroke="#a33b32" stroke-width="3" marker-end="url(#crit-arrow-r)"/>
+          <circle cx="145" cy="160" r="3" fill="#fff" stroke="#3d5560" stroke-width="1"/><circle cx="380" cy="160" r="3" fill="#fff" stroke="#3d5560" stroke-width="1"/><circle cx="615" cy="160" r="3" fill="#fff" stroke="#3d5560" stroke-width="1"/>
+          <g font-size="16" font-weight="700"><text x="193" y="82" fill="#147bcb">refracta</text><text x="403" y="150" fill="#b5832a">sale rasante</text><text x="622" y="255" fill="#a33b32">reflexión total</text></g>
+          <text x="380" y="327" text-anchor="middle" fill="#536976" font-size="14">La luz viaja de agua (abajo) hacia aire (arriba); los tres paneles comparten el mismo ángulo crítico θc.</text>
+        </svg>
+        <figcaption>Para \(\theta_i&gt;\theta_c\) hay reflexión interna total: idealmente no aparece rayo transmitido en el segundo medio. Es la base de las fibras ópticas.</figcaption>
+      </figure>
+      <div class="grid"><div class="card"><b>Agua → aire</b><br>\(\theta_c=\sin^{-1}(1,000/1,333)\approx48,6^\circ\).</div><div class="card"><b>Vidrio crown → aire</b><br>\(\theta_c=\sin^{-1}(1,000/1,520)\approx41,1^\circ\).</div></div>
+      <div class="warning"><b>No siempre existe:</b> de aire a agua o de aire a vidrio no existe ángulo crítico, porque se pasa hacia un índice mayor. No hay “reflexión interna” al intentar entrar desde el aire.</div>
+    </section>
+
+    <section>
+      <h2><span>6</span> Polarización: una firma de las ondas transversales</h2>
+      <p>La dirección de polarización se define por la oscilación del campo eléctrico \(\vec E\). La luz de una lámpara suele ser no polarizada: contiene muchas direcciones de oscilación transversales. Un filtro <b>Polaroid</b> transmite preferentemente la componente paralela a su eje de transmisión.</p>
+      <figure class="figure"><p class="label">Giro de un Polaroid · recreación fotorealista</p><img src="../assets/luz/polaroid-secuencia-corregida.png" alt="Tres vistas de una tablet fija con una mano sujetando un Polaroid rectangular: vertical, diagonal y horizontal; en la tercera, toda la pantalla cubierta por la lámina queda oscura y la franja inferior descubierta conserva sus colores"><figcaption>De izquierda a derecha: ejes aproximadamente paralelos (0°), oblicuos (45°) y cruzados (90°). La pantalla LCD ya emite luz polarizada; giramos la lámina externa. En la tercera imagen, <b>toda la zona de pantalla cubierta por el Polaroid se oscurece</b>, mientras la franja inferior descubierta sigue iluminada. El formato rectangular permite reconocer el giro. Recreación cualitativa: los brillos no constituyen una medición de intensidad.</figcaption></figure>
+      <figure class="figure"><p class="label">Animación 4A · el oscurecimiento ocurre solo bajo la lámina</p><video autoplay loop muted playsinline preload="metadata" aria-label="Animación fotorealista de un segundo Polaroid que gira y oscurece solo la zona de la pantalla que cubre"><source src="../assets/luz/polaroid-realista.mp4?v=card-2" type="video/mp4"></video><figcaption>Observá la diferencia: el fondo permanece igual; solo la zona cubierta por el segundo Polaroid pierde intensidad.</figcaption></figure>
+      <figure class="figure" id="polarizacion-pasos"><p class="label">Animación 4B · polarización paso a paso</p><video autoplay loop muted playsinline preload="metadata" aria-label="Secuencia de luz no polarizada, un primer Polaroid vertical, luz polarizada y un segundo Polaroid cruzado"><source src="../assets/luz/polarizacion-filtros.mp4?v=pasos-2" type="video/mp4"></video><figcaption>Seguí las cuatro etapas: muchas direcciones de \(\vec E\), selección vertical, salida polarizada y bloqueo ideal con el analizador cruzado a (90^\circ). Young se presenta por separado en la sección siguiente.</figcaption></figure>
+      <figure class="figure">
+        <img src="../assets/luz/polarizacion-filtros-cruzados.png" alt="Dos filtros polarizadores: el primero transmite el campo eléctrico vertical y el segundo, con eje horizontal a 90 grados, bloquea idealmente esa luz">
+        <figcaption>Leé de izquierda a derecha. El pequeño disco con flechas representa las posibles direcciones transversales del campo eléctrico de la luz no polarizada: no es un tercer filtro. El primer Polaroid transmite la componente vertical. El segundo, llamado analizador, tiene su eje perpendicular y la bloquea idealmente. Las flechas doradas indican ejes de transmisión; la curva roja representa el campo eléctrico, no la trayectoria de la luz. Ilustración conceptual generada.</figcaption>
+      </figure>
+      <div class="box"><b>Dos filtros:</b> paralelos → máxima transmisión. Cruzados a \(90^\circ\) → transmisión ideal nula. Para luz ya polarizada que llega al segundo filtro: \(I=I_0\cos^2\varphi\) (ley de Malus).</div>
+    </section>
+
+    <section>
+      <h2><span>7</span> Young: doble rendija e interferencia</h2>
+      <p>En 1801, Thomas Young presentó evidencia de que la luz puede interferir. En la versión escolar, una luz coherente llega a dos rendijas cercanas. Cada rendija actúa como fuente de ondas; en la pantalla se observan franjas claras y oscuras alternadas.</p>
+      <figure class="figure">
+        <p class="label">Animación · Young: de las ondas a las franjas</p>
+        <video autoplay loop muted playsinline preload="metadata" poster="../assets/luz/young-doble-rendija.png" aria-label="Frentes de onda desde dos rendijas que forman franjas, con ejemplos de suma constructiva y destructiva de los campos">
+          <source src="../assets/luz/young-doble-rendija.mp4" type="video/mp4">
+        </video>
+        <figcaption>Los arcos representan frentes de onda; los segmentos rectos señalan los caminos hasta el punto elegido. En el centro, las ondas llegan en fase y se refuerzan. En el mínimo señalado, la diferencia de caminos es media longitud de onda y se cancelan idealmente. Los gráficos laterales muestran el campo eléctrico en función del tiempo: horizontal = tiempo; vertical = campo eléctrico con signo. No representan trayectorias. Máximos: \(\Delta=m\lambda\). Mínimos: \(\Delta=(m+1/2)\lambda\), con \(m=0,1,2,\ldots\). Modelo de igual amplitud, sin envolvente de difracción.</figcaption>
+      </figure>
+      <div class="note"><b>Conclusión histórica cuidadosa:</b> Young aportó evidencia muy fuerte contra un modelo de trayectorias corpusculares simples y a favor del comportamiento ondulatorio. Hoy sabemos que la luz es electromagnética y que su detección es cuantizada en fotones: no hay que concluir que «la luz es solo onda».</div>
+    </section>
+
+    <section>
+      <h2 id="colores-del-cielo"><span>8</span> La luz en la naturaleza: arcoíris y colores del cielo</h2>
+      <h3>8.1. ¿Cómo se forma el arcoíris?</h3>
+      <figure class="figure">
+        <img src="../assets/luz/arcoiris-pampa.png" loading="lazy" alt="Recreación de un arcoíris primario sobre una llanura después de la lluvia, con rojo por fuera y violeta por dentro">
+        <figcaption>Buscá el arcoíris con el Sol a tu espalda y las gotas de lluvia delante. El arco primario presenta rojo en el borde exterior y violeta en el interior. Imagen generada: recreación ilustrativa, no registro meteorológico.</figcaption>
+      </figure>
+      <p>Cada gota desvía la luz solar. Como el índice del agua depende del color, las distintas componentes no salen en la misma dirección. Para el <b>arco primario</b>, el recorrido es:</p>
+      <ol>
+        <li><b>Entrada:</b> la luz se refracta y comienza a separarse en colores.</li>
+        <li><b>Interior:</b> una parte se refleja en la cara posterior de la gota.</li>
+        <li><b>Salida:</b> se refracta nuevamente; ciertos rayos llegan al observador.</li>
+      </ol>
+      <p>Muchas gotas situadas en las direcciones adecuadas forman el arco aparente. El rojo se observa a unos <b>42° respecto de la dirección opuesta al Sol</b>; no es el ángulo crítico del agua. Un arco secundario implica dos reflexiones internas y muestra los colores invertidos. <a href="https://www.weather.gov/fgz/Rainbow">Fuente: NOAA/National Weather Service.</a></p>
+      <div class="note"><b>Conexión con Snell:</b> la gota actúa de forma parecida a un prisma al separar colores, pero además interviene la reflexión interna. En el arcoíris primario esa reflexión es parcial: no debe confundirse con la reflexión interna total de la sección 5.</div>
+
+      <h3>8.2. ¿Por qué el cielo es azul y el atardecer rojizo?</h3>
+      <figure class="figure">
+        <img src="../assets/luz/cielo-dia-atardecer.png" loading="lazy" alt="Comparación de un cielo azul diurno con nubes blancas y un cielo anaranjado y rojizo al atardecer sobre una llanura">
+        <figcaption>Izquierda: cielo diurno. Derecha: atardecer, cuando la luz solar recorre más atmósfera. Recreaciones generadas para comparar los colores; no son mediciones ni fotografías de una misma jornada.</figcaption>
+      </figure>
+      <figure class="figure">
+        <p class="label">Infografía animada · dispersión de Rayleigh</p>
+        <video autoplay loop muted playsinline preload="metadata" poster="../assets/luz/rayleigh-dispersion.png" aria-label="Infografía animada: por qué el cielo es azul y el atardecer rojo. Compara el camino corto de la luz al mediodía con el camino largo al atardecer, y muestra cuánto se dispersa cada color según su longitud de onda">
+          <source src="../assets/luz/rayleigh-dispersion.mp4" type="video/mp4">
+        </video>
+        <figcaption>Camino corto (mediodía): poca atmósfera, se desvía poco azul y el cielo se ve celeste. Camino largo (horizonte): la luz cruza unas 38 veces más aire, el azul se dispersa lejos de tu línea de visión y queda la gama de rojos. El gráfico de barras compara cuánto se dispersa cada color relativo al rojo, según \(I\propto1/\lambda^4\).</figcaption>
+      </figure>
+      <div class="grid">
+        <div class="card"><h3>Durante el día</h3>Las moléculas del aire dispersan la luz hacia distintas direcciones. Las longitudes de onda cortas, como el azul, se dispersan más eficazmente que el rojo: parte de esa luz llega a nuestros ojos desde el cielo. Es la <b>dispersión de Rayleigh</b>.</div>
+        <div class="card"><h3>Al amanecer y al atardecer</h3>Con el Sol bajo, su luz atraviesa un trayecto atmosférico más largo. Se desvía fuera del haz directo una mayor proporción de azul; en la luz que continúa hacia nosotros predominan tonos amarillos, anaranjados y rojos.</div>
+      </div>
+      <div class="formula">\[I_{disp}\ \propto\ \frac{1}{\lambda^4}\]</div>
+      <p><b>Ley de Rayleigh:</b> vale para partículas mucho más pequeñas que \(\lambda\), como las moléculas del aire. La intensidad dispersada crece fuertemente al disminuir la longitud de onda. Comparando violeta (\(\approx400\ \text{nm}\)) con rojo (\(\approx700\ \text{nm}\)): \((700/400)^4\approx9,4\); el violeta se dispersa casi 10 veces más que el rojo. Esta ley requiere partículas pequeñas frente a \(\lambda\): no describe la dispersión en gotas de nube, mucho más grandes, donde el mecanismo dominante es distinto (dispersión de Mie) y por eso las nubes se ven blancas.</p>
+      <p><b>¿Por qué no violeta?</b> También se dispersa mucho, pero intervienen el espectro solar y la sensibilidad de nuestros ojos, mayor al azul que al violeta. <b>¿Y las nubes blancas?</b> Sus gotas y cristales dispersan un amplio conjunto de colores; al mezclarse, los percibimos blancos. Las nubes espesas pueden verse grises porque llega menos luz desde su interior. <a href="https://www.weather.gov/fgz/SkyBlue">Fuente: NWS, cielo azul</a>; <a href="https://spaceplace.nasa.gov/blue-sky/en/">NASA Space Place, luz y atmósfera</a>.</p>
+      <div class="box"><b>No confundamos dos usos de «dispersión»:</b> en el prisma y el arcoíris, los colores se separan porque se refractan de modo diferente; en el cielo, la luz se redistribuye en distintas direcciones al interactuar con el aire. El cielo azul no es un reflejo del océano.</div>
+      <div class="example">
+        <p><b>Para observar y explicar:</b> mirá las imágenes y respondé: ¿dónde está el Sol respecto del observador del arcoíris? ¿Por qué el cielo puede ser azul lejos del mar? ¿Por qué el atardecer cambia de color aunque la fuente siga siendo el Sol?</p>
+        <p><b>Experiencia breve:</b> iluminá de costado un recipiente transparente con agua usando una linterna LED blanca. Compará la luz lateral y la transmitida; agregá unas gotas de leche y repetí. Las partículas permiten ver luz dispersada. Es una analogía cualitativa: las partículas de leche no son moléculas de aire y no reproducen exactamente la atmósfera. No uses un láser ni mires directamente al Sol.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2><span>9</span> Ejemplos resueltos</h2>
+      <div class="example"><p><b>A. Aire → agua:</b> un rayo llega desde el aire con \(\theta_1=45,0^\circ\). Tomamos \(n_\text{aire}=1,000\) y \(n_\text{agua}=1,333\).</p><p><b>Fórmula:</b> \(n_1\sin\theta_1=n_2\sin\theta_2\).</p><p><b>Reemplazo:</b> \(\sin\theta_2=(1,000/1,333)\sin45,0^\circ=0,530\).</p><p><b>Resultado:</b> \(\theta_2\approx32,0^\circ\). Se acerca a la normal porque entra a un medio de índice mayor.</p></div>
+      <div class="example"><p><b>B. Ángulo crítico vidrio → aire:</b> \(n_1=1,520\), \(n_2=1,000\).</p><p><b>Fórmula:</b> \(\theta_c=\sin^{-1}(n_2/n_1)\).</p><p><b>Resultado:</b> \(\theta_c=\sin^{-1}(1,000/1,520)\approx41,1^\circ\). Para una incidencia de \(50^\circ\), hay reflexión interna total.</p></div>
+      <div class="example"><p><b>C. Longitud de onda:</b> una luz de \(600\ \text{nm}\) en aire entra al agua. \(f\approx c/\lambda=5,00\times10^{14}\ \text{Hz}\).</p><p><b>En agua:</b> \(\lambda=v/f=(2,25\times10^8)/(5,00\times10^{14})=4,50\times10^{-7}\ \text{m}=450\ \text{nm}\). La frecuencia no cambia; la longitud de onda disminuye.</p></div>
+    </section>
+
+    <section>
+      <h2><span>10</span> Actividades y problemas</h2>
+      <ol class="exercises">
+        <li>Un rayo incide sobre un espejo a \(37^\circ\) respecto de la normal. Hallá \(\theta_r\).<span class="work-line"></span></li>
+        <li>Un rayo forma \(25^\circ\) con la superficie de un espejo. Hallá el ángulo de incidencia y el de reflexión.<span class="work-line"></span></li>
+        <li>Explicá dos diferencias entre el sonido en el aire y la luz. Incluí qué tipo de onda es cada una y si puede viajar en el vacío.<span class="work-line"></span></li>
+        <li>Usá Snell para aire → agua con \(\theta_1=45^\circ\) y \(n_\text{agua}=1,333\). Calculá \(\theta_2\).<span class="work-line"></span></li>
+        <li>Un rayo pasa de agua (\(n=1,333\)) a vidrio crown (\(n=1,520\)) con \(\theta_1=30^\circ\). Calculá \(\theta_2\) y decidí si se acerca o se aleja de la normal.<span class="work-line"></span></li>
+        <li>Calculá la velocidad de la luz en etanol, \(n=1,361\).<span class="work-line"></span></li>
+        <li>Luz de \(600\ \text{nm}\) en aire entra al agua. Calculá \(f\) y \(\lambda\) en el agua. ¿Qué magnitud no cambió?<span class="work-line"></span></li>
+        <li>Calculá el ángulo crítico agua → aire. Indicá qué ocurre a \(40^\circ\), \(48,6^\circ\) y \(55^\circ\).<span class="work-line"></span></li>
+        <li>¿Existe ángulo crítico para aire → vidrio? Justificá usando los índices y el sentido del paso.<span class="work-line"></span></li>
+        <li>Llega luz no polarizada de intensidad \(I\) a un Polaroid y luego a un segundo Polaroid colocado a \(60^\circ\). Idealmente, ¿qué intensidad queda después del primer filtro y cuál después del segundo?<span class="work-line"></span></li>
+      </ol>
+    </section>
+
+    <section>
+      <h2><span>11</span> Preguntas para afianzar</h2>
+      <div class="note"><b>Para argumentar:</b><br>1. ¿Por qué un lápiz dentro de un vaso con agua parece “quebrado”?<br>2. Si frecuencia y período no cambian al refractarse, ¿por qué cambia la longitud de onda?<br>3. ¿Qué observación del experimento de Young no espera un modelo corpuscular simple?<br>4. ¿Por qué la polarización ayuda a reconocer que la luz es una onda transversal?<br>5. ¿Qué afirmación es más precisa: «la luz se frena» o «la luz se propaga con menor velocidad de fase en el medio»? Explicá con tus palabras.</div>
+    </section>
+
+    <section>
+      <h2><span>12</span> Fuentes para seguir investigando</h2>
+      <ul class="source-list">
+        <li><a href="https://newtonproject.ox.ac.uk/view/texts/normalized/NATP00006">The Newton Project: comunicación original sobre luz y colores y el <i>experimentum crucis</i> (1672)</a>.</li>
+        <li><a href="https://www.bbc.com/mundo/noticias-53412005">BBC Mundo: lectura complementaria propuesta por el docente sobre Newton y los colores</a>.</li>
+        <li><a href="https://www.loc.gov/item/46039060/">Biblioteca del Congreso: <i>Opticks</i> de Newton (1704)</a>.</li>
+        <li><a href="https://library.si.edu/digital-library/book/traiteydelalumi00huyg">Smithsonian Libraries: <i>Traité de la lumière</i> de Huygens (1690)</a>.</li>
+        <li><a href="https://doi.org/10.1098/rstl.1802.0004">Royal Society: Bakerian Lecture de Thomas Young (1802)</a>.</li>
+        <li><a href="https://physics.nist.gov/cuu/Constants/Value/c.html">NIST: valor exacto de la velocidad de la luz en el vacío</a>.</li>
+        <li><a href="https://openstax.org/books/physics/pages/16-2-refraction">OpenStax: refracción, índices y reflexión interna total</a> y <a href="https://openstax.org/books/university-physics-volume-3/pages/1-7-polarization">polarización</a>.</li>
+        <li>Alonso, M. y Finn, E. J. <i>Física, Volumen II: Campos y ondas</i>. Fondo Educativo Interamericano (referencia clásica en cursos universitarios de física de Argentina y la región; capítulos de óptica geométrica y ondulatoria).</li>
+        <li><a href="http://materias.df.uba.ar/eyoa2022v/files/2020/08/Lab_EyO_Snell.pdf">Departamento de Física, FCEN-UBA: guía de laboratorio sobre reflexión, refracción y la ley de Snell</a>.</li>
+        <li><a href="https://www.weather.gov/fgz/Rainbow">NOAA/NWS: formación del arcoíris</a> y <a href="https://spaceplace.nasa.gov/blue-sky/sp/">NASA Space Place (en español): por qué el cielo es azul</a>.</li>
+      </ul>
+    </section>
+    <footer>Sugerencia docente: antes de resolver con Snell, hacé que el curso prediga si el rayo se acerca o se aleja de la normal. Después, contrasten la predicción con el cálculo y con un lápiz en agua.</footer>
+  </article></main>
+  <script>
+    (() => {
+      const videos = [...document.querySelectorAll("video")];
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      const updateHint = (video) => {
+        const hint = video.parentElement.querySelector(".video-hint");
+        if (!hint) return;
+        hint.textContent = video.paused ? "▶ Tocar para reproducir" : "Ⅱ Tocar para pausar";
+      };
+
+      videos.forEach((video) => {
+        const shell = document.createElement("div");
+        shell.className = "video-shell";
+        video.before(shell);
+        shell.append(video);
+
+        const hint = document.createElement("span");
+        hint.className = "video-hint";
+        hint.setAttribute("aria-hidden", "true");
+        shell.append(hint);
+
+        video.tabIndex = 0;
+        video.setAttribute("role", "button");
+        video.dataset.userPaused = "false";
+        video.pause();
+
+        const toggle = () => {
+          if (video.paused) {
+            video.dataset.userPaused = "false";
+            video.play().catch(() => updateHint(video));
+          } else {
+            video.dataset.userPaused = "true";
+            video.pause();
+          }
+          updateHint(video);
+        };
+
+        video.addEventListener("click", toggle);
+        video.addEventListener("keydown", (event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            toggle();
+          }
+        });
+        video.addEventListener("play", () => updateHint(video));
+        video.addEventListener("pause", () => updateHint(video));
+        updateHint(video);
+      });
+
+      if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            const video = entry.target;
+            video.dataset.visible = entry.isIntersecting ? "true" : "false";
+            if (entry.isIntersecting && !reduceMotion && video.dataset.userPaused !== "true") {
+              video.play().catch(() => updateHint(video));
+            } else {
+              video.pause();
+            }
+          });
+        }, {threshold: 0.35});
+        videos.forEach((video) => observer.observe(video));
+      } else if (!reduceMotion) {
+        videos[0]?.play().catch(() => updateHint(videos[0]));
+      }
+
+      document.addEventListener("visibilitychange", () => {
+        videos.forEach((video) => {
+          if (document.hidden) video.pause();
+          else if (video.dataset.visible === "true" && !reduceMotion && video.dataset.userPaused !== "true") video.play().catch(() => updateHint(video));
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
