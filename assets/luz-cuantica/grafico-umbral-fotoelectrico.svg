@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 510" role="img" aria-labelledby="title desc">
+  <title id="title">Energía cinética máxima en función de la frecuencia</title>
+  <desc id="desc">Para un metal con función trabajo de 2,20 electronvoltios, por debajo de 5,32 por diez a la catorce hercios no hay fotoelectrones. Por encima, la energía cinética máxima crece linealmente con la frecuencia.</desc>
+  <defs>
+    <marker id="axis" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 10 5 0 10Z" fill="#263f53"/></marker>
+    <pattern id="grid" width="80" height="65" patternUnits="userSpaceOnUse"><path d="M80 0H0V65" fill="none" stroke="#e4ddd0" stroke-width="1"/></pattern>
+  </defs>
+  <rect width="900" height="510" rx="18" fill="#fffdf7" stroke="#d6c9af"/>
+  <text x="38" y="47" fill="#1d3557" font-family="Arial,sans-serif" font-size="27" font-weight="700">El umbral depende del metal</text>
+  <text x="38" y="76" fill="#56616a" font-family="Arial,sans-serif" font-size="16">Ejemplo: función trabajo W = 2,20 eV</text>
+  <rect x="119" y="110" width="660" height="293" fill="url(#grid)"/>
+  <path d="M119 110V403H805" fill="none" stroke="#263f53" stroke-width="2.5" marker-end="url(#axis)"/>
+  <path d="M387 110V403" stroke="#c79628" stroke-width="2" stroke-dasharray="8 6"/>
+  <path d="M387 403L787 137" fill="none" stroke="#2273a6" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="603" cy="259" r="9" fill="#b34f41" stroke="#fff" stroke-width="3"/>
+  <path d="M603 259V403" stroke="#b34f41" stroke-width="1.5" stroke-dasharray="5 5"/>
+  <path d="M119 403H386" stroke="#b34f41" stroke-width="7" opacity=".17"/>
+  <g font-family="Arial,sans-serif">
+    <text x="26" y="126" fill="#1d3557" font-size="18" font-weight="700">Kₘₐₓ (eV)</text>
+    <text x="128" y="431" fill="#56616a" font-size="16">3,65</text>
+    <text x="322" y="431" fill="#8c6519" font-size="17" font-weight="700">f₀ = 5,32</text>
+    <text x="559" y="431" fill="#a23e35" font-size="17" font-weight="700">6,67</text>
+    <text x="733" y="431" fill="#56616a" font-size="16">7,8</text>
+    <text x="685" y="468" fill="#1d3557" font-size="18" font-weight="700">f (10¹⁴ Hz) →</text>
+    <text x="133" y="344" fill="#a23e35" font-size="19" font-weight="700">No hay emisión</text>
+    <text x="500" y="194" fill="#2273a6" font-size="19" font-weight="700">Kₘₐₓ = hf − W</text>
+    <text x="622" y="262" fill="#a23e35" font-size="16">450 nm</text>
+    <text x="622" y="284" fill="#a23e35" font-size="16">Kₘₐₓ ≈ 0,56 eV</text>
+    <text x="37" y="497" fill="#56616a" font-size="15">Cada punto representa el máximo de energía de los electrones emitidos para una frecuencia.</text>
+  </g>
+</svg>

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" role="img" aria-labelledby="title desc">
+  <title id="title">Dos proyecciones de una onda electromagnética</title>
+  <desc id="desc">El campo eléctrico oscila en el eje vertical y el magnético en un eje perpendicular. Ambas ondas avanzan hacia la derecha y oscilan en fase.</desc>
+  <defs>
+    <linearGradient id="paper" x2="0" y2="1"><stop stop-color="#fffdf7"/><stop offset="1" stop-color="#f3eee3"/></linearGradient>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 10 5 0 10Z" fill="#314658"/></marker>
+    <marker id="blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 10 5 0 10Z" fill="#2273a6"/></marker>
+    <marker id="red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 10 5 0 10Z" fill="#b34f41"/></marker>
+  </defs>
+  <rect width="900" height="520" rx="18" fill="url(#paper)" stroke="#d6c9af"/>
+  <text x="36" y="47" fill="#1d3557" font-family="Arial,sans-serif" font-size="28" font-weight="700">La onda avanza; los campos oscilan</text>
+  <text x="36" y="76" fill="#56616a" font-family="Arial,sans-serif" font-size="16">Dos vistas del mismo fenómeno, no dos ondas independientes.</text>
+  <rect x="32" y="104" width="836" height="154" rx="12" fill="#eef5f9" stroke="#cfdae0"/>
+  <rect x="32" y="275" width="836" height="154" rx="12" fill="#f9f0ed" stroke="#e5d5d0"/>
+  <g stroke="#c5cdd0" stroke-width="1"><path d="M126 134V406M286 134V406M446 134V406M606 134V406M766 134V406" stroke-dasharray="4 6"/></g>
+  <path d="M110 183H824" stroke="#8e9ca5" stroke-width="1.5" marker-end="url(#arr)"/>
+  <path d="M110 354H824" stroke="#9b9794" stroke-width="1.5" marker-end="url(#arr)"/>
+  <path d="M120 183 C160 118 200 118 240 183 S320 248 360 183 S440 118 480 183 S560 248 600 183 S680 118 720 183 S800 248 840 183" fill="none" stroke="#2273a6" stroke-width="5" stroke-linecap="round"/>
+  <path d="M120 354 C160 289 200 289 240 354 S320 419 360 354 S440 289 480 354 S560 419 600 354 S680 289 720 354 S800 419 840 354" fill="none" stroke="#b34f41" stroke-width="5" stroke-linecap="round"/>
+  <path d="M170 182V125" stroke="#2273a6" stroke-width="2.5" marker-end="url(#blue)"/>
+  <path d="M170 353V296" stroke="#b34f41" stroke-width="2.5" marker-end="url(#red)"/>
+  <g font-family="Arial,sans-serif" font-weight="700">
+    <text x="46" y="142" fill="#2273a6" font-size="20">E</text><text x="46" y="164" fill="#56616a" font-size="14">eje y</text>
+    <text x="46" y="313" fill="#b34f41" font-size="20">B</text><text x="46" y="335" fill="#56616a" font-size="14">eje z</text>
+    <text x="686" y="175" fill="#1d3557" font-size="17">avance x →</text>
+    <text x="686" y="345" fill="#1d3557" font-size="17">avance x →</text>
+  </g>
+  <path d="M445 450h240" stroke="#314658" stroke-width="2.4" marker-end="url(#arr)"/>
+  <text x="36" y="470" fill="#1d3557" font-family="Arial,sans-serif" font-size="20" font-weight="700">E ⟂ B ⟂ avance</text>
+  <text x="36" y="497" fill="#56616a" font-family="Arial,sans-serif" font-size="16">Los senos dibujados son proyecciones de valores del campo; no son trayectorias de partículas.</text>
+</svg>
