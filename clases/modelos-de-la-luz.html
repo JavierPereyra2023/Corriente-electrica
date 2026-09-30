@@ -31,16 +31,36 @@
     .formula-box { margin:16px 0; padding:12px; border:1px solid #bbcdd8; background:#f5f9fb; }.formula { margin:10px 0; padding:16px; overflow-x:auto; color:#fff; background:#101820; text-align:center; font:700 1.2rem Arial,sans-serif; }.formula mjx-container { margin:0 !important; }
     .figure { margin:18px 0; padding:12px; border:1px solid var(--line); background:#fbfaf6; }.figure img,.figure video { display:block; width:100%; height:auto; }.figure video { background:#101820; }.figure figcaption { margin-top:9px; color:var(--muted); font-size:.9rem; text-align:center; font-style:italic; }
     .label { display:inline-block; margin:0 0 7px; padding:5px 9px; color:var(--accent); background:#eaf3f3; font:800 .73rem Arial,sans-serif; letter-spacing:.05em; text-transform:uppercase; }
-    .diagram-scroll,.video-scroll { width:100%; }.print-only,.arrow-mobile { display:none !important; }
+    .diagram-scroll,.video-scroll { width:100%; }.print-only { display:none !important; }
     .timeline { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin:16px 0; }.timeline article { padding:13px; border-top:5px solid var(--gold); background:#fbfaf6; border-left:1px solid var(--line); border-right:1px solid var(--line); border-bottom:1px solid var(--line); }.timeline strong { display:block; color:var(--accent); font:800 .9rem Arial,sans-serif; }.timeline p { font-size:.89rem; margin:6px 0 0; }
     .spectrum { display:grid; grid-template-columns:repeat(7,1fr); gap:3px; margin:14px 0 8px; font:700 .72rem Arial,sans-serif; text-align:center; }.spectrum span { min-height:54px; display:grid; place-items:center; padding:4px; border:1px solid #c9c0ad; }.spectrum span:nth-child(1) { background:#ebebf1; }.spectrum span:nth-child(2) { background:#eee7d8; }.spectrum span:nth-child(3) { background:#ffe3b8; }.spectrum span:nth-child(4) { color:#fff; background:linear-gradient(90deg,#6b47a2,#2273a6,#4a9e76,#dbb643,#d77246); }.spectrum span:nth-child(5) { background:#e8e4f5; }.spectrum span:nth-child(6) { background:#dce4f1; }.spectrum span:nth-child(7) { background:#e7e4ed; }
     table { width:100%; border-collapse:collapse; font:.9rem Arial,sans-serif; } th,td { padding:9px; border:1px solid var(--line); text-align:left; vertical-align:top; } th { background:#ede7d9; } caption { margin:0 0 7px; text-align:left; color:var(--muted); font-style:italic; }.table-scroll { overflow-x:auto; }.table-scroll table { min-width:600px; }
     .exercises { padding-left:24px; }.exercises li { margin:18px 0; }.work-line { display:block; height:38px; border-bottom:1px solid #c9c1b4; }.work-line.tall { height:65px; }
-    .sim { margin:18px 0; padding:18px; border:1px solid #b7cbd6; background:#f3f8fa; }.sim-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }.sim label { display:block; font:700 .9rem Arial,sans-serif; color:var(--accent); }.sim input[type=range] { display:block; width:100%; margin:10px 0; accent-color:var(--blue); }.sim output { font-weight:700; }.sim-result { margin-top:14px; padding:14px; border-left:5px solid var(--blue); background:#fff; font: .95rem Arial,sans-serif; }.sim-result p { font:inherit; margin:0 0 8px; }.sim-result strong { color:var(--accent); }.sim-lane { display:grid; grid-template-columns:1fr auto 1fr; gap:12px; align-items:center; padding:18px 10px; margin:13px 0; border-radius:8px; background:#142336; color:#fff; font:700 .83rem Arial,sans-serif; text-align:center; }.sim-lane .plate { padding:12px 7px; border:2px solid #e7bd70; background:#795a36; }.sim-dots { display:flex; justify-content:center; flex-wrap:wrap; gap:7px; min-height:26px; }.sim-dots span { display:block; width:13px; height:13px; border-radius:50%; background:#a579ff; box-shadow:0 0 10px #8b61ff; }.sim-dots.electrons span { background:#5bd3f5; box-shadow:0 0 10px #5bd3f5; }.sim-help { font-size:.85rem; color:var(--muted); }.sim [data-state="off"] { border-left-color:var(--red); }
+    .sim-help { font-size:.85rem; color:var(--muted); }.photoelectric-animation video { display:block; width:100%; max-width:100%; height:auto; border-radius:8px; background:#17394c; }
     .source-list { padding-left:20px; font-size:.92rem; }.source-list li { margin:8px 0; }.source-list a,.back-link { color:var(--accent); }
     footer { margin-top:32px; padding-top:14px; border-top:1px solid var(--line); color:var(--muted); font-size:.88rem; }
-    @media (max-width:760px) { html,body { max-width:100vw; overflow-x:hidden; } main { width:100%; margin:0; padding:0; }.page { padding:30px 18px; border:0; box-shadow:none; }.meta,.grid,.sim-grid { grid-template-columns:1fr; }.timeline { grid-template-columns:repeat(2,1fr); } h1 { font-size:1.9rem; } h2 { font-size:1.2rem; }.figure { margin-left:-6px; margin-right:-6px; padding:7px; }.diagram-scroll,.video-scroll { overflow-x:auto; scrollbar-color:var(--gold) #e6dfd1; }.diagram-scroll img { width:760px; max-width:none; }.video-scroll video { width:720px; max-width:none; }.spectrum { grid-template-columns:repeat(4,1fr); }.sim-lane { grid-template-columns:1fr; }.sim-lane .plate { max-width:110px; margin:auto; }.arrow-horizontal { display:none; }.arrow-mobile { display:inline !important; } }
-    @media print { @page { size:A4; margin:16mm; } body { background:#fff; } main { width:auto; margin:0; padding:0; }.page { padding:0; border:0; box-shadow:none; }.figure,.definition,.note,.warning,.example,.teacher-note,.sim,.timeline article { break-inside:avoid; }.screen-only { display:none !important; }.print-only { display:block !important; }.sim { padding:10px; }.diagram-scroll { overflow:visible; }.diagram-scroll img { max-width:100%; }.spectrum { print-color-adjust:exact; -webkit-print-color-adjust:exact; } }
+    @media (max-width:760px) { html,body { max-width:100vw; overflow-x:hidden; } main { width:100%; margin:0; padding:0; }.page { padding:30px 18px; border:0; box-shadow:none; }.meta,.grid { grid-template-columns:1fr; }.timeline { grid-template-columns:repeat(2,1fr); } h1 { font-size:1.9rem; } h2 { font-size:1.2rem; }.figure { margin-left:-6px; margin-right:-6px; padding:7px; }.diagram-scroll,.video-scroll { overflow-x:auto; scrollbar-color:var(--gold) #e6dfd1; }.diagram-scroll img { width:100%; max-width:100%; }.video-scroll video { width:100%; max-width:100%; }.spectrum { grid-template-columns:repeat(4,1fr); }}
+    @media print { @page { size:A4; margin:16mm; } body { background:#fff; } main { width:auto; margin:0; padding:0; }.page { padding:0; border:0; box-shadow:none; }.figure,.definition,.note,.warning,.example,.teacher-note,.timeline article { break-inside:avoid; }.screen-only { display:none !important; }.print-only { display:block !important; }.diagram-scroll { overflow:visible; }.diagram-scroll img { max-width:100%; }.spectrum { print-color-adjust:exact; -webkit-print-color-adjust:exact; } }
+    .section-cover { display:grid; grid-template-columns:minmax(0,1fr) 160px; gap:22px; align-items:start; margin-bottom:22px; }
+    .section-cover > div { min-width:0; }
+    .scientist-card { width:100%; max-width:160px; margin:0; padding:8px; border:1px solid #2a4a78; background:var(--page); box-shadow:8px 8px 0 rgba(242,194,48,.75); font-family:Arial,sans-serif; }
+    .scientist-card img { display:block; width:100%; max-width:100%; height:auto; aspect-ratio:3 / 4; object-fit:cover; background:#ede7d9; }
+    .scientist-card figcaption { margin-top:8px; color:var(--muted); font-size:.78rem; line-height:1.4; text-align:center; }
+    .scientist-card strong { display:block; color:var(--accent); margin-bottom:4px; }
+    @media (max-width:760px) { .section-cover { grid-template-columns:1fr; gap:14px; }.scientist-card { width:128px; max-width:100%; justify-self:center; margin-bottom:8px; } }
+    @media print { .section-cover { grid-template-columns:minmax(0,1fr) 38mm; gap:6mm; break-inside:avoid; }.scientist-card { width:38mm; max-width:100%; box-shadow:none; break-inside:avoid; } }
+    .figure { max-width:560px; margin:18px auto; }
+    .figure img,.diagram-scroll img { width:auto; max-width:100%; max-height:360px; height:auto; margin:0 auto; object-fit:contain; }
+    .scientist-card img { height:auto; max-height:180px; object-fit:contain; }
+    .em-lab { margin:18px auto; max-width:640px; padding:16px; border:1px solid var(--line); background:#fffdf8; border-radius:10px; font-family:Arial,sans-serif; }
+    .em-lab h3 { margin-bottom:14px; }.em-controls { display:flex; flex-wrap:wrap; align-items:center; gap:12px; margin:12px 0; }
+    .em-control { display:flex; flex:1 1 250px; align-items:center; gap:9px; font-size:.86rem; }.em-control input { min-width:60px; flex:1; accent-color:var(--blue); }
+    .em-lab button { padding:8px 14px; border:1px solid var(--accent); border-radius:6px; background:var(--accent); color:#fff; cursor:pointer; font:700 .9rem Arial,sans-serif; }
+    .em-lab label { color:var(--accent); }.em-toggle { font-size:.88rem; }.em-lab canvas { display:block; width:100%; height:260px; background:#f6f8f6; border:1px solid #dae1dd; border-radius:8px; }
+    .em-lab canvas + canvas { margin-top:14px; }.em-meters { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; margin:12px 0; }.em-meter { padding:10px; background:#edf3f3; border-radius:6px; }.em-meter small { display:block; font-size:.78rem; color:var(--muted); }.em-meter output { font-size:1.15rem; color:var(--accent); font-weight:700; }
+    .em-status,.em-reading { font-size:.83rem; color:var(--muted); }.em-status { display:block; }.em-reading { margin-top:12px; line-height:1.6; }.em-lab #em-radiation { height:240px; }
+    @media (max-width:760px) { .figure { margin:18px auto; }.figure img,.diagram-scroll img { width:auto; max-height:280px; }.em-lab { padding:10px; }.em-control { flex-basis:100%; flex-wrap:wrap; }.em-control label { flex-basis:100%; } }
+    @media print { .figure { max-width:none; }.figure img,.diagram-scroll img { width:100%; max-height:none; }.scientist-card img { max-height:none; } }
   </style>
 </head>
 <body>
@@ -65,30 +85,90 @@
   </section>
 
   <section>
+    <div class="section-cover">
+    <div>
     <h2><span>2</span> Maxwell: una onda de campos</h2>
     <p>Oersted mostró que una corriente eléctrica produce campo magnético; Faraday estudió cómo un campo magnético variable puede inducir efectos eléctricos. Maxwell reunió y amplió estas relaciones en una teoría de campos: sus ecuaciones admiten <b>ondas electromagnéticas</b> que se propagan incluso donde no hay materia.</p>
     <p>En una onda luminosa que avanza en el vacío, el campo eléctrico \(\vec E\) y el campo magnético \(\vec B\) oscilan <b>perpendicularmente entre sí y a la dirección de avance</b>. El dibujo representa sus valores en dos proyecciones: las curvas no son caminos recorridos por electrones ni por fotones.</p>
-    <figure class="figure"><p class="label">Esquema 1 · qué oscila en la luz</p><div class="diagram-scroll"><img src="../assets/luz-cuantica/onda-electromagnetica.svg" alt="Dos proyecciones de una onda electromagnética: el campo eléctrico y el magnético oscilan en direcciones perpendiculares mientras avanzan hacia la derecha"></div><figcaption>Deslizá el esquema en el celular para leer los rótulos. \(E\), \(B\) y la propagación son mutuamente perpendiculares; los dos campos oscilan en fase en una onda plana ideal.</figcaption></figure>
+    </div>
+    <figure class="scientist-card" title="Retrato generado con Imagegen: recreación histórica, no fotografía de archivo">
+      <img src="../assets/luz-cuantica/james-clerk-maxwell.png" alt="Retrato recreado de James Clerk Maxwell, con barba y vestimenta del siglo XIX" width="142" height="189" style="width:100%;height:auto;max-height:180px;object-fit:contain">
+      <figcaption><strong>James Clerk Maxwell</strong>Unificó electricidad y magnetismo: la luz es una onda de campos eléctricos y magnéticos.</figcaption>
+    </figure>
+    </div>
+    <div class="em-lab screen-only" id="em-lab">
+      <h3>2.1. De una carga que oscila a una onda electromagnética</h3>
+      <div class="em-controls">
+        <div class="em-control"><label for="em-frequency">Frecuencia de la animación</label><input id="em-frequency" type="range" min="0.5" max="2" step="0.1" value="1"><output id="em-frequency-value" for="em-frequency">1,0 ciclos/s</output></div>
+        <div class="em-control"><label for="em-amplitude">Amplitud del dibujo</label><input id="em-amplitude" type="range" min="20" max="65" step="1" value="45"></div>
+      </div>
+      <div class="em-controls"><button type="button" id="em-pause" aria-pressed="false">Pausar</button><label class="em-toggle"><input type="checkbox" id="em-show-e" checked> Campo E</label><label class="em-toggle"><input type="checkbox" id="em-show-b" checked> Campo B</label></div>
+      <p class="em-status" id="em-wavelength">Velocidad del dibujo constante; λ = v/f.</p>
+      <canvas id="em-fields" role="img" aria-label="Onda electromagnética: campo eléctrico vertical y campo magnético en profundidad, ambos perpendiculares al avance">Representación dinámica de campos E y B; consultá el esquema impreso si no se admite canvas.</canvas>
+      <div class="em-meters">
+        <div class="em-meter"><small>E/E₀ en la sonda</small><output id="em-e">0,00</output></div>
+        <div class="em-meter"><small>B/B₀ en la sonda</small><output id="em-b">0,00</output></div>
+        <div class="em-meter"><small>d(E/E₀)/dt (s⁻¹)</small><output id="em-de">0,00</output></div>
+        <div class="em-meter"><small>d(B/B₀)/dt (s⁻¹)</small><output id="em-db">0,00</output></div>
+      </div>
+      <canvas id="em-radiation" role="img" aria-label="Carga que oscila verticalmente y frentes de fase de su radiación: mayor emisión hacia los lados, nula sobre el eje vertical en el campo lejano">Una carga acelerada emite radiación electromagnética.</canvas>
+      <p class="em-reading"><b>Cómo leerlo:</b> abajo, la carga oscila y se acelera; los arcos dorados representan frentes de fase que se alejan. No son líneas de campo ni caminos de fotones. Arriba se muestra una onda plana ideal, como aproximación local lejos de la fuente. La sonda permanece fija y permite comparar los campos y sus variaciones temporales. Las curvas E/E₀ y B/B₀ están normalizadas: en el vacío, las amplitudes físicas cumplen (E_0=cB_0), pero tienen unidades diferentes.</p>
+      <p class="em-reading"><b>Escala didáctica:</b> la frecuencia está ralentizada para verla; la velocidad y la longitud de onda se expresan en unidades del dibujo. La amplitud del control modifica el tamaño visual. La intensidad angular del dipolo es máxima en direcciones perpendiculares a la oscilación y nula sobre su eje en el campo lejano. No se representan los campos completos próximos a la carga.</p>
+    </div>
+    <p><b>Exploración:</b> pausá cerca de un máximo de E. ¿Cómo es B en ese instante? ¿Qué ocurre con las derivadas? Luego aumentá la frecuencia y compará la longitud de onda. Las ecuaciones de Maxwell conectan variaciones espaciales y temporales de los campos; una derivada temporal aislada no explica toda la propagación.</p>
+    <figure class="figure print-only"><p class="label">Esquema 1 · qué oscila en la luz</p><div class="diagram-scroll"><img src="../assets/luz-cuantica/onda-electromagnetica.svg" alt="Dos proyecciones de una onda electromagnética: el campo eléctrico y el magnético oscilan en direcciones perpendiculares mientras avanzan hacia la derecha"></div><figcaption>Las dos proyecciones muestran el mismo fenómeno. \(E\), \(B\) y la propagación son mutuamente perpendiculares; los dos campos oscilan en fase en una onda plana ideal.</figcaption></figure>
     <div class="formula-box"><p><b>Una misma relación para todas las ondas electromagnéticas en el vacío:</b></p><div class="formula">\[c=\lambda f \qquad c\approx3,00\times10^8\ \text{m/s}\]</div><p>\(c\): rapidez de la luz en el vacío; \(\lambda\): longitud de onda en metros; \(f\): frecuencia en hercios. La frecuencia la fija la fuente. A mayor \(f\), menor \(\lambda\) en el vacío.</p></div>
     <div class="note"><b>Puente con las clases anteriores:</b> la onda luminosa no necesita que las moléculas del aire oscilen, como sí ocurre con el sonido. Tampoco es correcto imaginar que un campo “aparece de la nada”: el modelo de Maxwell relaciona espacial y temporalmente ambos campos.</div>
-    <h3>2.1. El visible es una pequeña parte del espectro</h3>
+    <h3>2.2. El visible es una pequeña parte del espectro</h3>
     <div class="spectrum" role="img" aria-label="Espectro electromagnético de menor a mayor frecuencia: radio, microondas, infrarrojo, visible, ultravioleta, rayos X y rayos gamma"><span>Radio</span><span>Microondas</span><span>Infrarrojo</span><span>Visible</span><span>Ultravioleta</span><span>Rayos X</span><span>Gamma</span></div>
     <p class="sim-help">Hacia la derecha aumenta la frecuencia y disminuye la longitud de onda en el vacío. La luz visible ocupa aproximadamente \(400\) a \(700\ \text{nm}\); los límites son graduales.</p>
     <div class="example"><p><b>Ejemplo resuelto:</b> luz de \(500\ \text{nm}\) en el vacío. Primero, \(500\ \text{nm}=5,00\times10^{-7}\ \text{m}\).</p><p><b>Fórmula:</b> \(f=c/\lambda\).</p><p><b>Reemplazo:</b> \(f=(3,00\times10^8\ \text{m/s})/(5,00\times10^{-7}\ \text{m})\).</p><p><b>Resultado:</b> \(f=6,00\times10^{14}\ \text{Hz}\). La luz visible oscila a frecuencias enormes aunque a nuestros ojos parezca continua.</p></div>
   </section>
 
   <section>
-    <h2><span>3</span> Una pista nueva: la radiación térmica</h2>
-    <p>Todo cuerpo caliente emite radiación electromagnética. Un metal calentado puede pasar de un brillo rojizo a uno más claro; su espectro cambia con la temperatura. El modelo clásico de campos describe la propagación, pero aplicado junto con ideas clásicas sobre el intercambio de energía no reproducía correctamente el espectro de un cuerpo negro.</p>
+    <div class="section-cover">
+      <div>
+        <h2><span>3</span> Planck: la radiación del cuerpo negro</h2>
+        <p>Todo cuerpo a una temperatura mayor que el cero absoluto emite radiación térmica. A temperatura ambiente, gran parte está en el infrarrojo y no la vemos. Un metal muy caliente puede pasar de un brillo rojizo a uno más claro; su espectro cambia con la temperatura.</p>
+        <p>El modelo clásico de campos describe la propagación, pero, combinado con ideas clásicas sobre el intercambio de energía, no reproducía correctamente el espectro de un cuerpo negro.</p>
+      </div>
+      <figure class="scientist-card" title="Retrato generado con Imagegen: recreación histórica, no fotografía de archivo">
+        <img src="../assets/luz-cuantica/max-planck.png" width="142" height="189" style="width:100%;height:auto;max-height:180px;object-fit:contain" alt="Retrato generado en estilo sepia de Max Planck, con anteojos redondos, bigote y traje">
+        <figcaption><strong>Max Planck</strong>Propuso intercambios de energía en cuantos para explicar el espectro de la radiación térmica.</figcaption>
+      </figure>
+    </div>
+    <div class="definition"><b>¿Qué es un cuerpo negro?</b> Es un modelo ideal que absorbe toda la radiación que recibe. El pequeño orificio de una cavidad opaca se aproxima a ese comportamiento: la luz que entra encuentra muchas paredes y tiene una gran probabilidad de ser absorbida. “Negro” describe la absorción; una cavidad caliente también emite radiación.</div>
+    <figure class="figure photoelectric-animation">
+      <video class="screen-only" controls playsinline preload="metadata" width="1200" height="1200" poster="../assets/luz-cuantica/cavidad-cuerpo-negro.png" aria-label="Animación de una cavidad de cuerpo negro: entrada de luz, absorción, emisión térmica y espectros">
+        <source src="../assets/luz-cuantica/cavidad-cuerpo-negro.mp4" type="video/mp4">
+        <a href="../assets/luz-cuantica/cavidad-cuerpo-negro.mp4">Abrí la animación de la cavidad.</a>
+      </video>
+      <img class="print-only" src="../assets/luz-cuantica/cavidad-cuerpo-negro.png" width="1200" height="1200" alt="Cavidad caliente en corte: sus paredes emiten radiación y parte sale por un pequeño orificio">
+      <figcaption>Infografía Remotion de 24 segundos: primero ingresa un haz y se refleja dentro de la cavidad; luego se muestra la emisión propia de las paredes calientes; por último, se comparan dos espectros calculados con la ley de Planck. Los rayos son esquemáticos y no representan una medición realizada en la institución.</figcaption>
+    </figure>
+    <div class="note"><b>Lectura guiada:</b> 1) Seguí el haz que entra: en cada encuentro con una pared disminuye su intensidad porque parte es absorbida. Esto no significa que un fotón individual pierda energía de a poco. 2) Observá la cavidad caliente: emite radiación propia aun sin luz incidente; no es simplemente el mismo rayo que entra y sale con otro color. 3) Compará los espectros: el eje horizontal muestra la longitud de onda y el vertical la radiación emitida por intervalo de longitud de onda, en una escala relativa común.</div>
+    <figure class="figure">
+      <img src="../assets/luz-cuantica/espectro-cuerpo-negro.png" width="1200" height="1200" alt="Curvas de radiación de cuerpo negro a 3000 kelvin y 5000 kelvin con la misma escala vertical">
+      <figcaption>A 3000 K, el máximo está cerca de 0,966 µm (966 nm); a 5000 K, cerca de 0,580 µm (580 nm). Al aumentar la temperatura crece la emisión total y el máximo se desplaza hacia longitudes de onda menores. Ambas curvas se dividen por el mismo valor de referencia: el máximo a 5000 K. La escala vertical no es una lectura de un instrumento.</figcaption>
+    </figure>
+    <p><b>Para pensar sin instrumental:</b> ¿por qué un orificio pequeño favorece la absorción? ¿Por qué una cavidad caliente puede emitir aunque no lancemos luz hacia ella? ¿Qué curva tiene su máximo a menor longitud de onda? Justificá con la animación y el gráfico.</p>
     <p>Planck introdujo una regla nueva para los osciladores que intercambian energía con la radiación: la energía intercambiada aparece en <b>paquetes de tamaño proporcional a la frecuencia</b>. Esta idea permitió describir la radiación térmica y abrió el camino a la física cuántica.</p>
     <div class="formula">\[E_{\text{cuanto}}=hf\]</div>
     <p>La constante de Planck vale \(h=6,626\,070\,15\times10^{-34}\ \text{J·s}\). En esta etapa, hablar de <b>cuantos de intercambio de energía</b> evita atribuirle a Planck, sin matices, el modelo posterior de fotones viajando por el espacio.</p>
   </section>
 
   <section>
+    <div class="section-cover">
+    <div>
     <h2><span>4</span> Einstein: cuando la luz arranca electrones</h2>
     <p>En el <b>efecto fotoeléctrico externo</b>, la luz que incide sobre una superficie metálica puede expulsar electrones. En un montaje de laboratorio, una placa iluminada (cátodo) y un electrodo colector (ánodo) se colocan en una celda evacuada. Si se liberan electrones y se recogen, el instrumento puede registrar corriente.</p>
-    <figure class="figure"><p class="label">Recreación didáctica · celda fotoeléctrica</p><img src="../assets/luz-cuantica/celda-fotoelectrica-laboratorio.png" alt="Recreación de laboratorio de una lámpara violeta que ilumina una placa metálica dentro de una celda de vidrio, conectada a una fuente y a un instrumento de corriente"><figcaption>La fotografía generada representa los elementos principales del montaje. No muestra un experimento histórico ni una lectura cuantitativa real: la emisión se estudia con el esquema, la simulación y las ecuaciones de esta clase.</figcaption></figure>
+    </div>
+    <figure class="scientist-card" title="Retrato generado con Imagegen: recreación histórica, no fotografía de archivo">
+      <img src="../assets/luz-cuantica/albert-einstein.png" alt="Retrato recreado de Albert Einstein, con cabello blanco y bigote" width="142" height="189" style="width:100%;height:auto;max-height:180px;object-fit:contain">
+      <figcaption><strong>Albert Einstein</strong>Relacionó la energía de cada fotón con su frecuencia y explicó el umbral fotoeléctrico.</figcaption>
+    </figure>
+    </div>
+    <figure class="figure"><p class="label">Recreación didáctica · celda fotoeléctrica</p><img src="../assets/luz-cuantica/celda-fotoelectrica-laboratorio.png" alt="Recreación de laboratorio de una lámpara violeta que ilumina una placa metálica dentro de una celda de vidrio, conectada a una fuente y a un instrumento de corriente"><figcaption>La fotografía generada representa los elementos principales del montaje. No muestra un experimento histórico ni una lectura cuantitativa real: la emisión se estudia con el esquema, la animación y las ecuaciones de esta clase.</figcaption></figure>
     <div class="grid">
       <div class="card"><h3>Si la frecuencia está por debajo del umbral</h3><p>No se expulsan electrones aunque aumentemos la intensidad de esa luz, dentro del modelo de absorción de un fotón por electrón.</p></div>
       <div class="card"><h3>Si la frecuencia supera el umbral</h3><p>Puede haber emisión. A frecuencia fija, más intensidad significa más fotones por segundo y, con colección adecuada, más electrones por segundo.</p></div>
@@ -104,7 +184,7 @@
   <section>
     <h2><span>5</span> Infografía dinámica: del campo al fotón</h2>
     <p>Mirá las escenas en este orden: (1) onda electromagnética de Maxwell; (2) luz por debajo y por encima del umbral; (3) cambio de intensidad manteniendo la frecuencia. Pausá el video en cada comparación y justificá lo que ocurre antes de leer el rótulo.</p>
-    <figure class="figure"><p class="label">Animación Remotion · 18 segundos</p><div class="video-scroll"><video class="screen-only" controls playsinline preload="metadata" poster="../assets/luz-cuantica/modelos-luz-maxwell-foton.png?v=neutro-2" aria-label="Infografía animada de onda electromagnética, umbral fotoeléctrico e intensidad de luz"><source src="../assets/luz-cuantica/modelos-luz-maxwell-foton.mp4?v=neutro-2" type="video/mp4">Tu navegador no admite video MP4.</video></div><img class="print-only" src="../assets/luz-cuantica/modelos-luz-maxwell-foton.png?v=neutro-2" alt="Póster de la infografía sobre los modelos electromagnético y cuántico de la luz"><figcaption>Modelo vectorial editable en el proyecto Remotion del repositorio. En celular, deslizá horizontalmente para ver cada escena. Esquemas conceptuales: los puntos no están a escala.</figcaption></figure>
+    <figure class="figure"><p class="label">Animación Remotion · 24 segundos</p><div class="video-scroll"><video class="screen-only" controls playsinline preload="metadata" width="1200" height="1200" poster="../assets/luz-cuantica/modelos-luz-maxwell-foton.png?v=visual-3" aria-label="Infografía animada de onda electromagnética, umbral fotoeléctrico e intensidad de luz"><source src="../assets/luz-cuantica/modelos-luz-maxwell-foton.mp4?v=visual-3" type="video/mp4">Tu navegador no admite video MP4.</video></div><img class="print-only" src="../assets/luz-cuantica/modelos-luz-maxwell-foton.png?v=visual-3" alt="Póster de la infografía sobre los modelos electromagnético y cuántico de la luz"><figcaption>Animación creada en JavaScript con Remotion. Compará los casos de arriba y abajo: la frecuencia cambia la energía por fotón; la intensidad cambia cuántos llegan por segundo. En celular, usá pantalla completa para ampliar los rótulos. Las trayectorias y cantidades son esquemáticas.</figcaption></figure>
     <div class="note"><b>Lectura guiada:</b> ¿qué permanece igual al subir solo la intensidad? ¿Qué cambia al acortar \(\lambda\) y, por lo tanto, aumentar \(f\)? La respuesta debe incluir <i>energía por fotón</i> y <i>cantidad de fotones</i>.</div>
   </section>
 
@@ -124,18 +204,19 @@
   </section>
 
   <section>
-    <h2><span>8</span> Laboratorio virtual local: separar frecuencia e intensidad</h2>
-    <p>El simulador usa el mismo material hipotético de los ejemplos. Cambiá una variable por vez. Los puntos representan fotones y electrones <b>de forma cualitativa</b>; no predicen la corriente real ni la eficiencia de emisión. Funciona sin conexión y no exige exponer al curso a radiación ultravioleta.</p>
-    <div class="sim" id="simulador">
-      <div class="sim-grid">
-        <label for="longitud">Longitud de onda en el vacío: <output id="valor-longitud" for="longitud">650 nm</output><input id="longitud" type="range" min="350" max="700" step="10" value="650"></label>
-        <label for="intensidad">Intensidad relativa: <output id="valor-intensidad" for="intensidad">2/5</output><input id="intensidad" type="range" min="1" max="5" step="1" value="2"></label>
-      </div>
-      <div class="sim-lane" aria-hidden="true"><div><div id="fotones" class="sim-dots"></div><span>Fotones incidentes <span class="arrow-horizontal">→</span><span class="arrow-mobile">↓</span></span></div><div class="plate">Metal<br>W = 2,20 eV</div><div><div id="electrones" class="sim-dots electrons"></div><span>Electrones emitidos <span class="arrow-horizontal">→</span><span class="arrow-mobile">↓</span></span></div></div>
-      <div class="sim-result" id="resultado-sim" role="status" aria-live="polite"><p><strong>Energía por fotón:</strong> <span id="energia-sim">1,91 eV</span> · <strong>Umbral:</strong> 2,20 eV (\(\lambda_0\approx564\ \text{nm}\))</p><p id="lectura-sim">Por debajo del umbral: no hay emisión.</p></div>
-      <p class="sim-help">Probá \(650\ \text{nm}\) con intensidad 1 y 5; después \(450\ \text{nm}\) con intensidad 1 y 5. Compará cantidad de electrones y \(K_{\max}\). Para imprimir, usá la tabla de la sección 6.</p>
-    </div>
-    <div class="table-scroll"><table><caption>Registro de observaciones para completar durante la actividad</caption><thead><tr><th>\(\lambda\) (nm)</th><th>Intensidad relativa</th><th>\(E_{\text{fotón}}\) (eV)</th><th>¿Emisión?</th><th>\(K_{\max}\) (eV)</th></tr></thead><tbody><tr><td>650</td><td>1</td><td></td><td></td><td></td></tr><tr><td>650</td><td>5</td><td></td><td></td><td></td></tr><tr><td>450</td><td>1</td><td></td><td></td><td></td></tr><tr><td>450</td><td>5</td><td></td><td></td><td></td></tr></tbody></table></div>
+    <h2><span>8</span> Actividad con modelo: separar frecuencia e intensidad</h2>
+    <p>Esta actividad se resuelve con la animación, el apunte y una calculadora; no requiere una celda fotoeléctrica ni un instrumento de medición. Observá cuatro situaciones con el mismo metal hipotético: luz de 650 nm y de 450 nm, cada una con intensidad baja y alta. Pausá la animación para comparar energía por fotón, emisión y energía cinética máxima.</p>
+    <figure class="figure photoelectric-animation">
+      <video class="screen-only" controls playsinline preload="metadata" width="1200" height="1200" poster="../assets/luz-cuantica/laboratorio-fotoelectrico.png" aria-label="Efecto fotoeléctrico: cuatro casos de longitud de onda e intensidad">
+        <source src="../assets/luz-cuantica/laboratorio-fotoelectrico.mp4" type="video/mp4">
+        <a href="../assets/luz-cuantica/laboratorio-fotoelectrico.mp4">Abrí la animación en MP4.</a>
+      </video>
+      <img class="print-only" src="../assets/luz-cuantica/laboratorio-fotoelectrico.png" width="1200" height="1200" alt="Resumen: 650 nm no produce emisión; 450 nm produce electrones con energía cinética máxima de 0,56 eV tanto con intensidad baja como alta">
+      <figcaption>Animación Remotion de 24 segundos. Con 650 nm, cada fotón tiene 1,91 eV y no alcanza el umbral de 2,20 eV. Con 450 nm, tiene 2,76 eV y puede liberar un electrón con \(K_{\max}\approx0,56\ \text{eV}\). Una mayor intensidad aumenta las emisiones, sin cambiar esa energía máxima.</figcaption>
+    </figure>
+    <p class="sim-help">Símbolos, trayectorias y cantidades esquemáticos: no representan una corriente medida ni la eficiencia de emisión. Se usa el modelo de absorción de un fotón. La tabla reúne predicciones teóricas, no mediciones realizadas en la institución. Para imprimir, consultá el resumen de la imagen.</p>
+    <div class="note"><b>Cómo completar la tabla:</b> calculá \(E_{\text{fotón}}\approx1240/\lambda\), con \(\lambda\) en nm y energía en eV. Compará con \(W=2,20\ \text{eV}\). Si la energía es menor que \(W\), escribí “no” en emisión y “no corresponde” en \(K_{\max}\). Si es mayor, calculá \(K_{\max}=E_{\text{fotón}}-W\). Repetí el resultado para las dos intensidades: a igual longitud de onda, la energía por fotón y la energía cinética máxima no cambian. Los niveles 1 y 5 son relativos; no son una intensidad medida en W/m².</div>
+    <div class="table-scroll"><table><caption>Predicciones del modelo para completar mediante cálculos</caption><thead><tr><th>\(\lambda\) (nm)</th><th>Intensidad relativa</th><th>\(E_{\text{fotón}}\) (eV)</th><th>¿Se predice emisión?</th><th>\(K_{\max}\) (eV)</th></tr></thead><tbody><tr><td>650</td><td>1</td><td></td><td></td><td></td></tr><tr><td>650</td><td>5</td><td></td><td></td><td></td></tr><tr><td>450</td><td>1</td><td></td><td></td><td></td></tr><tr><td>450</td><td>5</td><td></td><td></td><td></td></tr></tbody></table></div>
   </section>
 
   <section>
@@ -153,7 +234,7 @@
       <li>Para una superficie con \(W=2,20\ \text{eV}\), calculá la energía de fotones de \(620\ \text{nm}\). ¿Habrá emisión? Justificá.<span class="work-line"></span></li>
       <li>Con la misma superficie, calculá \(K_{\max}\) para \(400\ \text{nm}\). Expresá el resultado en eV y en J.<span class="work-line"></span></li>
       <li>Calculá \(\lambda_0\) y \(f_0\) para \(W=2,20\ \text{eV}\). Indicá qué ocurre si \(\lambda\) es ligeramente mayor que \(\lambda_0\).<span class="work-line"></span></li>
-      <li>Usá el simulador y completá la tabla de la sección 8. ¿Qué variable cambia el número de puntos emitidos? ¿Cuál cambia \(K_{\max}\)?<span class="work-line tall"></span></li>
+      <li>Calculá las predicciones de la tabla de la sección 8 y comparalas con la animación. ¿Qué variable cambia la cantidad de electrones emitidos? ¿Cuál cambia \(K_{\max}\)?<span class="work-line tall"></span></li>
       <li>En el gráfico de la sección 6, identificá los ejes, el punto umbral y el tramo sin emisión. Explicá qué representa la pendiente y por qué no hay puntos experimentales de \(K_{\max}\) antes de \(f_0\).<span class="work-line tall"></span></li>
       <li>Un compañero afirma: “si aumento mucho la intensidad de la luz roja, cada fotón tendrá más energía”. Detectá el error y proponé una frase correcta.<span class="work-line tall"></span></li>
       <li>Relacioná cada observación con un modelo: franjas de Young, propagación en el vacío, espectro térmico y umbral fotoeléctrico. Justificá qué aporta cada modelo.<span class="work-line tall"></span></li>
@@ -169,49 +250,131 @@
   <section>
     <h2><span>12</span> Fuentes y continuidad</h2>
     <ul class="source-list">
+      <li><a href="https://openstax.org/books/university-physics-volume-2/pages/16-2-plane-electromagnetic-waves">OpenStax, ondas electromagnéticas planas</a>: perpendicularidad y relación entre amplitudes de E y B.</li>
+      <li><a href="https://farside.ph.utexas.edu/teaching/em/lectures/node95.html">University of Texas, radiación de dipolo eléctrico</a>: patrón angular del campo lejano.</li>
+      <li><a href="https://openstax.org/books/f%C3%ADsica-universitaria-volumen-3/pages/6-1-radiacion-de-cuerpo-negro">OpenStax, radiación de cuerpo negro</a>: cavidad, emisión térmica e hipótesis de Planck.</li>
       <li><a href="https://openstax.org/books/f%C3%ADsica-universitaria-volumen-3/pages/6-2-efecto-fotoelectrico">OpenStax, <i>Física universitaria</i>, efecto fotoeléctrico</a>: umbral, función trabajo y ecuación de Einstein.</li>
       <li><a href="https://physics.nist.gov/cuu/pdf/wall_2022.pdf">NIST/CODATA, constantes fundamentales</a>: valores de \(c\), \(h\) y carga elemental usados en los cálculos.</li>
       <li><a href="https://www.nobelprize.org/prizes/physics/1921/ceremony-speech/">Nobel Prize, presentación del premio a Einstein</a>: contexto histórico del efecto fotoeléctrico.</li>
     </ul>
     <p><b>Próximo paso:</b> cómo emiten y absorben luz los átomos: espectros de líneas y niveles de energía.</p>
   </section>
-  <footer>Sugerencia docente: pedí primero una predicción sobre frecuencia e intensidad; luego usá el simulador y el gráfico para confrontarla con la evidencia. El valor \(W=2,20\ \text{eV}\) se eligió como ejemplo de cálculo para una superficie hipotética.</footer>
+  <footer>Sugerencia docente: pedí primero una predicción sobre frecuencia e intensidad; luego contrastala con los cálculos, la animación y el gráfico del modelo. Esta actividad no constituye una comprobación experimental; para medir el efecto se requiere equipamiento específico. El valor \(W=2,20\ \text{eV}\) se eligió como ejemplo de cálculo para una superficie hipotética.</footer>
 </article></main>
 <script>
-  (() => {
-    const wavelength = document.getElementById("longitud");
-    const intensity = document.getElementById("intensidad");
-    const wavelengthOutput = document.getElementById("valor-longitud");
-    const intensityOutput = document.getElementById("valor-intensidad");
-    const energyOutput = document.getElementById("energia-sim");
-    const reading = document.getElementById("lectura-sim");
-    const result = document.getElementById("resultado-sim");
-    const photons = document.getElementById("fotones");
-    const electrons = document.getElementById("electrones");
-    const format = (number) => number.toFixed(2).replace(".", ",");
-    const dots = (container, count) => {
-      container.replaceChildren();
-      for (let i = 0; i < count; i += 1) container.append(document.createElement("span"));
+(() => {
+  const get = id => document.getElementById(id);
+  const root = get('em-lab'), field = get('em-fields'), radiation = get('em-radiation');
+  const freq = get('em-frequency'), amp = get('em-amplitude');
+  const showE = get('em-show-e'), showB = get('em-show-b'), pause = get('em-pause');
+  const ctx = field.getContext('2d'), rad = radiation.getContext('2d');
+  if (!ctx || !rad) return;
+  const TAU = 2 * Math.PI, speed = 240, spanUnits = 600;
+  const CE = '#d86b32', CB = '#168c9e', ink = '#19394a', muted = '#64777f';
+  let width = 0, time = 0, last = null, visible = true, dirty = true;
+  let playing = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const value = () => Number(freq.value);
+  const format = n => (Math.abs(n) < .005 ? 0 : n).toFixed(2).replace('.', ',');
+  const buttonState = () => {
+    pause.textContent = playing ? 'Pausar' : 'Reanudar';
+    pause.setAttribute('aria-pressed', String(!playing));
+  };
+  const text = (context, message, x, y, color = muted, align = 'left') => {
+    context.fillStyle = color; context.font = '12px Arial, sans-serif';
+    context.textAlign = align; context.fillText(message, x, y);
+  };
+  const size = () => {
+    const next = Math.max(1, field.clientWidth);
+    const ratio = Math.min(2, window.devicePixelRatio || 1);
+    width = next;
+    [[field,ctx,260],[radiation,rad,240]].forEach(([canvas,context,height]) => {
+      canvas.width = Math.round(width * ratio); canvas.height = Math.round(height * ratio);
+      context.setTransform(ratio,0,0,ratio,0,0);
+    });
+    dirty = true;
+  };
+  const line = (context,x1,y1,x2,y2) => {
+    context.beginPath(); context.moveTo(x1,y1); context.lineTo(x2,y2); context.stroke();
+  };
+  const drawFields = () => {
+    const fr = value(), A = Number(amp.value), origin = 36, end = width - 36;
+    const span = Math.max(1,end-origin), centerY = 148;
+    const phase = x => TAU * fr * (time - ((x-origin)/span*spanUnits)/speed);
+    ctx.clearRect(0,0,width,260);
+    ctx.strokeStyle = '#9aaeb4'; ctx.lineWidth = 1;
+    line(ctx,origin,centerY,end+18,centerY);
+    line(ctx,end+18,centerY,end+11,centerY-4); line(ctx,end+18,centerY,end+11,centerY+4);
+    const plot = magnetic => {
+      ctx.save(); ctx.strokeStyle = magnetic ? CB : CE;
+      ctx.lineWidth = 1; ctx.globalAlpha = .3;
+      for(let x=origin;x<=end;x+=Math.max(12,span/30)) {
+        const s=Math.sin(phase(x));
+        line(ctx,x,centerY,magnetic ? x+.4*A*s : x,magnetic ? centerY+.5*A*s : centerY-A*s);
+      }
+      ctx.globalAlpha=1; ctx.lineWidth=3; ctx.beginPath();
+      for(let x=origin;x<=end;x+=2) {
+        const s=Math.sin(phase(x)),px=magnetic?x+.4*A*s:x,py=magnetic?centerY+.5*A*s:centerY-A*s;
+        if(x===origin)ctx.moveTo(px,py);else ctx.lineTo(px,py);
+      }
+      ctx.stroke();ctx.restore();
     };
-    const update = () => {
-      const nm = Number(wavelength.value);
-      const level = Number(intensity.value);
-      const energy = 1240 / nm;
-      const emitted = energy >= 2.20;
-      wavelengthOutput.textContent = nm + " nm";
-      intensityOutput.textContent = level + "/5";
-      energyOutput.textContent = format(energy) + " eV";
-      dots(photons, level);
-      dots(electrons, emitted ? level : 0);
-      result.dataset.state = emitted ? "on" : "off";
-      reading.textContent = emitted
-        ? "Hay emisión: Kₘₐₓ ≈ " + format(energy - 2.20) + " eV. Al subir solo la intensidad, llegan más fotones y pueden salir más electrones, sin cambiar este máximo."
-        : "No hay emisión: cada fotón tiene menos de 2,20 eV. Más intensidad suma fotones, pero no aumenta la energía de cada uno.";
-    };
-    wavelength.addEventListener("input", update);
-    intensity.addEventListener("input", update);
-    update();
-  })();
+    if(showB.checked)plot(true);
+    if(showE.checked)plot(false);
+    const probe=(origin+end)/2, s=Math.sin(phase(probe)), derivative=TAU*fr*Math.cos(phase(probe));
+    ctx.strokeStyle='#91a6ae';ctx.setLineDash([4,5]);line(ctx,probe,65,probe,218);ctx.setLineDash([]);
+    [[showE.checked,probe,centerY-A*s,CE],[showB.checked,probe+.4*A*s,centerY+.5*A*s,CB]].forEach(([show,x,y,color])=>{
+      if(!show)return;ctx.fillStyle=color;ctx.beginPath();ctx.arc(x,y,5,0,TAU);ctx.fill();
+    });
+    text(ctx,'E: eje vertical',12,20,CE);
+    text(ctx,'B: eje en profundidad (vista oblicua)',12,39,CB);
+    text(ctx,'Sonda fija',probe,60,ink,'center');
+    text(ctx,'Propagación →',width-12,237,ink,'right');
+    get('em-e').textContent=format(s);get('em-b').textContent=format(s);
+    get('em-de').textContent=format(derivative);get('em-db').textContent=format(derivative);
+    get('em-frequency-value').textContent=fr.toFixed(1).replace('.',',')+' ciclos/s';
+    get('em-wavelength').textContent='Velocidad visual: 240 u/s · λ = v/f = '+(speed/fr).toFixed(0)+' u (unidades del dibujo)';
+  };
+  const drawRadiation = () => {
+    const fr=value(),lambda=speed/fr,cx=width/2,cy=132,scale=Math.min(width,240)/600;
+    const maximum=Math.hypot(width/2,120),fraction=(fr*time)%1;
+    rad.clearRect(0,0,width,240);
+    // La opacidad representa intensidad angular cos²(theta), theta desde la horizontal.
+    // Los arcos son frentes de fase del campo lejano, no campos electrostáticos cercanos.
+    for(let k=0;k<15;k++)for(let half=0;half<2;half++) {
+      const radius=lambda*(k+fraction+half/2)*scale;
+      if(radius<23 || radius>maximum)continue;
+      const fade=Math.max(0,1-radius/maximum);
+      rad.lineWidth=half?2:3;rad.setLineDash(half?[3,5]:[]);
+      for(let angle=0;angle<TAU;angle+=.09) {
+        const intensity=Math.cos(angle)**2;
+        rad.strokeStyle='rgba(177,124,38,'+(fade*intensity*(half?.45:.9))+')';
+        rad.beginPath();rad.arc(cx,cy,radius,angle,angle+.095);rad.stroke();
+      }
+    }
+    rad.setLineDash([]);rad.strokeStyle='#92a7ad';rad.lineWidth=2;line(rad,cx,cy-28,cx,cy+28);
+    const offset=-14*(Number(amp.value)/45)*Math.sin(TAU*fr*time);
+    rad.fillStyle=CE;rad.beginPath();rad.arc(cx,cy+offset,8,0,TAU);rad.fill();
+    text(rad,'Carga oscilante: fuente de radiación',12,20,ink);
+    text(rad,'Oscilación vertical ↕',cx,48,muted,'center');
+    text(rad,'Mayor emisión hacia los lados',cx,207,ink,'center');
+    text(rad,'Arcos: frentes de fase, no trayectorias',cx,227,muted,'center');
+  };
+  const draw = () => {drawFields();drawRadiation();dirty=false;};
+  const tick = timestamp => {
+    if(last===null)last=timestamp;
+    const dt=Math.min(.05,(timestamp-last)/1000);last=timestamp;
+    if(visible) {
+      if(playing){time+=dt;draw();}else if(dirty)draw();
+    }
+    requestAnimationFrame(tick);
+  };
+  [freq,amp,showE,showB].forEach(control=>control.addEventListener('input',()=>{dirty=true;}));
+  pause.addEventListener('click',()=>{playing=!playing;dirty=true;buttonState();});
+  new ResizeObserver(size).observe(field);
+  new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;dirty=true;}).observe(root);
+  window.addEventListener('beforeprint',()=>{dirty=true;});
+  size();buttonState();draw();requestAnimationFrame(tick);
+})();
 </script>
 </body>
 </html>

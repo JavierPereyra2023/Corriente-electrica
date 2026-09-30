@@ -8,7 +8,9 @@ import {OndaTransversal,MagnitudesOnda,EtiquetasOnda,SonidoLongitudinal,Reflexio
 import {PrismaDispersion,ReflexionRefraccionLuz,AnguloCriticoLuz,PolaroidRealista} from './luz-secciones.jsx';
 import {PolarizacionFiltros} from './polarizacion-filtros.jsx';
 import {RayleighDispersion} from './rayleigh-dispersion.jsx';
-import {ModelosLuzCuantica} from './modelos-luz-cuantica.jsx';
+import {ModelosLuzCuantica} from './modelos-luz-visual.jsx';
+import {LaboratorioFotoelectrico} from './laboratorio-fotoelectrico.jsx';
+import {CavidadCuerpoNegro} from './cavidad-cuerpo-negro.jsx';
 
 function PotenciaEnergia({format = 'wide'}) {
   const frame = useCurrentFrame();
@@ -18,7 +20,9 @@ function PotenciaEnergia({format = 'wide'}) {
 }
 function Root() {
   return <>
-    <Composition id="ModelosLuzCuantica" component={ModelosLuzCuantica} durationInFrames={540} fps={30} width={1920} height={1080}/>
+    <Composition id="CavidadCuerpoNegro" component={CavidadCuerpoNegro} durationInFrames={720} fps={30} width={1200} height={1200}/>
+    <Composition id="LaboratorioFotoelectrico" component={LaboratorioFotoelectrico} durationInFrames={720} fps={30} width={1200} height={1200}/>
+    <Composition id="ModelosLuzCuantica" component={ModelosLuzCuantica} durationInFrames={720} fps={30} width={1200} height={1200}/>
     <Composition id="YoungDobleRendija" component={YoungDobleRendija} durationInFrames={480} fps={30} width={1920} height={1080}/>
     <Composition id="RayleighSecuencia" component={RayleighSecuencia} durationInFrames={420} fps={30} width={1920} height={1080}/>
     <Composition id="InfografiaPotenciaEnergia" component={Infografia} durationInFrames={600} fps={30} width={1920} height={1080}/>
