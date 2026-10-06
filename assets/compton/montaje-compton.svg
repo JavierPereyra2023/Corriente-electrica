@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500" role="img" aria-labelledby="title desc">
+  <title id="title">Montaje de dispersión Compton a noventa grados</title>
+  <desc id="desc">Una fuente emite rayos X que atraviesan un colimador y llegan a un blanco de grafito. El detector observa fotones dispersados a noventa grados respecto del haz incidente. La longitud de onda cambia de 0,071 a 0,073426 nanómetros. Las flechas indican direcciones, no ondas ni haces visibles.</desc>
+  <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#1d3557"/></marker></defs>
+  <style>text{font-family:Arial,sans-serif;fill:#1d3557;font-size:23px} .small{font-size:20px} .title{font-size:27px;font-weight:bold} .bold{font-weight:bold} @media print{svg{print-color-adjust:exact;-webkit-print-color-adjust:exact}}</style>
+  <rect width="900" height="500" fill="#fffdf7"/>
+  <rect x="24" y="23" width="8" height="31" fill="#b58a17"/>
+  <text x="46" y="49" class="title">MONTAJE · DETECTAR EL FOTÓN DISPERSADO</text>
+  <rect x="44" y="265" width="139" height="70" rx="7" fill="#f3ebd5" stroke="#1d3557" stroke-width="2"/>
+  <text x="60" y="292" class="bold">Fuente de</text><text x="72" y="320">rayos X</text>
+  <text x="222" y="370">Colimador</text>
+  <rect x="256" y="259" width="43" height="27" fill="#d8e1e5" stroke="#1d3557" stroke-width="2"/>
+  <rect x="256" y="314" width="43" height="27" fill="#d8e1e5" stroke="#1d3557" stroke-width="2"/>
+  <line x1="185" y1="300" x2="466" y2="300" stroke="#1d3557" stroke-width="4" marker-end="url(#arrow)"/>
+  <text x="320" y="264" class="small">λ = 0,071 nm</text>
+  <text x="345" y="344" class="small">Haz incidente</text>
+  <circle cx="502" cy="300" r="26" fill="#eed9a3" stroke="#1d3557" stroke-width="3"/>
+  <text x="470" y="372" class="bold">Grafito</text><text x="449" y="399" class="small">blanco dispersor</text>
+  <rect x="454" y="97" width="96" height="49" rx="6" fill="#d8e1e5" stroke="#1d3557" stroke-width="2"/>
+  <text x="434" y="85" class="bold">Detector a 90°</text>
+  <line x1="502" y1="272" x2="502" y2="156" stroke="#1d3557" stroke-width="4" marker-end="url(#arrow)"/>
+  <text x="579" y="186">Fotón dispersado</text><text x="579" y="217">λ′ = 0,073426 nm</text>
+  <line x1="531" y1="300" x2="725" y2="300" stroke="#657986" stroke-width="2" stroke-dasharray="8 7"/>
+  <path d="M566 300A64 64 0 0 0 502 236" fill="none" stroke="#9a7213" stroke-width="3"/>
+  <text x="575" y="272" class="bold">θ = 90°</text><text x="578" y="333" class="small">Dirección incidente prolongada</text>
+  <line x1="42" y1="430" x2="858" y2="430" stroke="#c9b78f" stroke-width="1"/>
+  <text x="42" y="463" class="small">θ compara las direcciones de ambos fotones. Rayos y montaje esquemáticos.</text>
+  <text x="42" y="490" class="small">Los rayos X son invisibles; las líneas rectas representan su dirección.</text>
+</svg>

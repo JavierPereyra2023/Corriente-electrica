@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="510" viewBox="0 0 900 510" role="img" aria-labelledby="title desc">
+  <title id="title">Intercambio de energía en la dispersión Compton</title>
+  <desc id="desc">Antes de la interacción, un fotón de 17,463 kilo electronvoltios llega a un electrón inicialmente en reposo. Después, el fotón se dispersa a noventa grados con energía 16,886 kilo electronvoltios; el electrón retrocede hacia abajo y a la derecha, a unos cuarenta y cuatro grados, con energía cinética 0,577 kilo electronvoltios. El ángulo theta corresponde al fotón y phi al electrón.</desc>
+  <defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0 0L9 4.5L0 9Z" fill="#1d3557"/></marker><marker id="electron-arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0 0L9 4.5L0 9Z" fill="#886510"/></marker></defs>
+  <style>text{font-family:Arial,sans-serif;fill:#1d3557;font-size:23px}.small{font-size:20px}.title{font-size:27px;font-weight:bold}.bold{font-weight:bold} @media print{svg{print-color-adjust:exact;-webkit-print-color-adjust:exact}}</style>
+  <rect width="900" height="510" fill="#fffdf7"/>
+  <rect x="24" y="23" width="8" height="31" fill="#b58a17"/>
+  <text x="46" y="49" class="title">COMPTON · ENERGÍA Y DIRECCIONES</text>
+  <line x1="440" y1="78" x2="440" y2="423" stroke="#c9b78f" stroke-width="2"/>
+  <text x="53" y="90" class="bold">ANTES</text><text x="471" y="90" class="bold">DESPUÉS</text>
+  <text x="57" y="169" class="bold">Fotón incidente</text>
+  <line x1="67" y1="221" x2="246" y2="221" stroke="#1d3557" stroke-width="4" marker-end="url(#arrow)"/>
+  <circle cx="130" cy="221" r="7" fill="#1d3557"/>
+  <circle cx="324" cy="221" r="17" fill="#eed9a3" stroke="#886510" stroke-width="3"/>
+  <text x="315" y="229" class="small">e⁻</text>
+  <text x="58" y="278">E = 17,463 keV</text>
+  <text x="58" y="343" class="bold">Electrón inicialmente en reposo</text>
+  <text x="58" y="376">K inicial = 0</text>
+  <circle cx="570" cy="235" r="6" fill="#1d3557"/>
+  <line x1="570" y1="229" x2="570" y2="118" stroke="#1d3557" stroke-width="4" marker-end="url(#arrow)"/>
+  <text x="616" y="126" class="bold">Fotón dispersado</text><text x="616" y="156">E′ = 16,886 keV</text>
+  <line x1="576" y1="235" x2="795" y2="235" stroke="#657986" stroke-width="2" stroke-dasharray="8 7"/>
+  <path d="M627 235A57 57 0 0 0 570 178" fill="none" stroke="#1d3557" stroke-width="2"/>
+  <text x="636" y="210" class="small">θ = 90°</text>
+  <line x1="575" y1="240" x2="751" y2="410" stroke="#886510" stroke-width="4" marker-end="url(#electron-arrow)"/>
+  <circle cx="678" cy="340" r="15" fill="#eed9a3" stroke="#886510" stroke-width="2"/>
+  <text x="668" y="347" class="small">e⁻</text>
+  <path d="M645 235A75 75 0 0 1 624 287" fill="none" stroke="#886510" stroke-width="2"/>
+  <text x="656" y="284" class="small">φ ≈ 44°</text>
+  <text x="472" y="378" class="small">Electrón de retroceso</text>
+  <text x="472" y="407">K = 0,577 keV</text>
+  <line x1="42" y1="437" x2="858" y2="437" stroke="#c9b78f" stroke-width="1"/>
+  <text x="42" y="469" class="bold">E = E′ + K → 17,463 = 16,886 + 0,577 keV</text>
+  <text x="42" y="499" class="small">Flechas: direcciones; longitudes esquemáticas. No se dibujan ondas ni órbitas.</text>
+</svg>
