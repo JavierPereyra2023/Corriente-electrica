@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Clase 16: modelo de Bohr, espectros, Kirchhoff y líneas del hidrógeno. Laboratorios interactivos, ejemplos y actividades.">
+  <title>Clase 16 · Modelo de Bohr y espectros atómicos</title>
+  <link rel="icon" href="data:,">
+  <script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]}};</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+  <style>
+:root { --ink:#15191d; --muted:#56616a; --paper:#e8e2d6; --page:#fffdf7; --line:#d6c9af; --accent:#1d3557; --soft:#edf3f7; --gold:#f2c230; --warm:#fff6d8; --red:#a33b32; --blue:#2273a6; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; color:var(--ink); font-family:Georgia,"Times New Roman",serif; line-height:1.65; background:linear-gradient(rgba(21,25,29,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(21,25,29,.045) 1px,transparent 1px),var(--paper); background-size:28px 28px; }
+    main { width:min(100%,920px); margin:28px auto; padding:0 16px; }
+    .page { padding:62px 72px; background:linear-gradient(rgba(29,53,87,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(29,53,87,.035) 1px,transparent 1px),var(--page); background-size:24px 24px; border:1px solid #ddd6c8; box-shadow:0 18px 50px rgba(31,41,51,.13); }
+    .doc-header { position:relative; padding:0 0 24px 24px; margin-bottom:30px; border-bottom:1px solid var(--line); }
+    .doc-header::before { content:""; position:absolute; left:0; top:4px; bottom:26px; width:8px; background:var(--gold); }
+    .eyebrow { margin:0 0 10px; color:var(--accent); font:800 .82rem Arial,sans-serif; letter-spacing:.12em; text-transform:uppercase; }
+    h1,h2,h3,p { margin:0; } h1,h2,h3 { line-height:1.2; color:var(--accent); } h1 { font-size:2.55rem; } h3 { margin:2px 0 8px; font-size:1.07rem; }
+    .subtitle { margin-top:14px; color:var(--muted); font-size:1.08rem; }
+    .meta,.grid { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; }
+    .meta { grid-template-columns:repeat(3,1fr); margin-top:22px; font:.9rem Arial,sans-serif; }
+    .meta div,.card { padding:12px; border:1px solid var(--line); background:#fbfaf6; }
+    section { margin-top:34px; } h2 { display:flex; align-items:baseline; gap:10px; margin-bottom:12px; padding-bottom:6px; font-size:1.42rem; border-bottom:1px solid var(--line); } h2 span { display:inline-grid; place-items:center; flex:none; min-width:28px; height:28px; color:#111827; background:var(--gold); font:900 .95rem Arial,sans-serif; }
+    p { margin-bottom:11px; font-size:1.02rem; } ul,ol { padding-left:24px; } li { margin:7px 0; }
+    .definition,.note,.warning,.example,.teacher-note { margin:16px 0; padding:14px 16px; border-left:5px solid var(--gold); background:var(--soft); }
+    .note,.teacher-note { border-left-color:#d29a22; background:var(--warm); }.warning { border-left-color:var(--red); background:#fff0ed; }
+    .formula-box { margin:16px 0; padding:12px; border:1px solid #bbcdd8; background:#f5f9fb; }.formula { margin:10px 0; padding:16px; overflow-x:auto; color:#fff; background:#101820; text-align:center; font:700 1.2rem Arial,sans-serif; }.formula mjx-container { margin:0 !important; }
+    .figure { margin:18px 0; padding:12px; border:1px solid var(--line); background:#fbfaf6; }.figure img,.figure video { display:block; width:100%; height:auto; }.figure video { background:#101820; }.figure figcaption { margin-top:9px; color:var(--muted); font-size:.9rem; text-align:center; font-style:italic; }
+    .label { display:inline-block; margin:0 0 7px; padding:5px 9px; color:var(--accent); background:#eaf3f3; font:800 .73rem Arial,sans-serif; letter-spacing:.05em; text-transform:uppercase; }
+    .diagram-scroll,.video-scroll { width:100%; }.print-only { display:none !important; }
+    .timeline { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin:16px 0; }.timeline article { padding:13px; border-top:5px solid var(--gold); background:#fbfaf6; border-left:1px solid var(--line); border-right:1px solid var(--line); border-bottom:1px solid var(--line); }.timeline strong { display:block; color:var(--accent); font:800 .9rem Arial,sans-serif; }.timeline p { font-size:.89rem; margin:6px 0 0; }
+    .spectrum { display:grid; grid-template-columns:repeat(7,1fr); gap:3px; margin:14px 0 8px; font:700 .72rem Arial,sans-serif; text-align:center; }.spectrum span { min-height:54px; display:grid; place-items:center; padding:4px; border:1px solid #c9c0ad; }.spectrum span:nth-child(1) { background:#ebebf1; }.spectrum span:nth-child(2) { background:#eee7d8; }.spectrum span:nth-child(3) { background:#ffe3b8; }.spectrum span:nth-child(4) { color:#fff; background:linear-gradient(90deg,#6b47a2,#2273a6,#4a9e76,#dbb643,#d77246); }.spectrum span:nth-child(5) { background:#e8e4f5; }.spectrum span:nth-child(6) { background:#dce4f1; }.spectrum span:nth-child(7) { background:#e7e4ed; }
+    table { width:100%; border-collapse:collapse; font:.9rem Arial,sans-serif; } th,td { padding:9px; border:1px solid var(--line); text-align:left; vertical-align:top; } th { background:#ede7d9; } caption { margin:0 0 7px; text-align:left; color:var(--muted); font-style:italic; }.table-scroll { overflow-x:auto; }.table-scroll table { min-width:600px; }
+    .exercises { padding-left:24px; }.exercises li { margin:18px 0; }.work-line { display:block; height:38px; border-bottom:1px solid #c9c1b4; }.work-line.tall { height:65px; }
+    .sim-help { font-size:.85rem; color:var(--muted); }.photoelectric-animation video { display:block; width:100%; max-width:100%; height:auto; border-radius:8px; background:#17394c; }
+    .source-list { padding-left:20px; font-size:.92rem; }.source-list li { margin:8px 0; }.source-list a,.back-link { color:var(--accent); }
+    footer { margin-top:32px; padding-top:14px; border-top:1px solid var(--line); color:var(--muted); font-size:.88rem; }
+    @media (max-width:760px) { html,body { max-width:100vw; overflow-x:hidden; } main { width:100%; margin:0; padding:0; }.page { padding:30px 18px; border:0; box-shadow:none; }.meta,.grid { grid-template-columns:1fr; }.timeline { grid-template-columns:repeat(2,1fr); } h1 { font-size:1.9rem; } h2 { font-size:1.2rem; }.figure { margin-left:-6px; margin-right:-6px; padding:7px; }.diagram-scroll,.video-scroll { overflow-x:auto; scrollbar-color:var(--gold) #e6dfd1; }.diagram-scroll img { width:100%; max-width:100%; }.video-scroll video { width:100%; max-width:100%; }.spectrum { grid-template-columns:repeat(4,1fr); }}
+    @media print { @page { size:A4; margin:16mm; } body { background:#fff; } main { width:auto; margin:0; padding:0; }.page { padding:0; border:0; box-shadow:none; }.figure,.definition,.note,.warning,.example,.teacher-note,.timeline article { break-inside:avoid; }.screen-only { display:none !important; }.print-only { display:block !important; }.diagram-scroll { overflow:visible; }.diagram-scroll img { max-width:100%; }.spectrum { print-color-adjust:exact; -webkit-print-color-adjust:exact; } }
+    .section-cover { display:grid; grid-template-columns:minmax(0,1fr) 160px; gap:22px; align-items:start; margin-bottom:22px; }
+    .section-cover > div { min-width:0; }
+    .scientist-card { width:100%; max-width:160px; margin:0; padding:8px; border:1px solid #2a4a78; background:var(--page); box-shadow:8px 8px 0 rgba(242,194,48,.75); font-family:Arial,sans-serif; }
+    .scientist-card img { display:block; width:100%; max-width:100%; height:auto; aspect-ratio:3 / 4; object-fit:cover; background:#ede7d9; }
+    .scientist-card figcaption { margin-top:8px; color:var(--muted); font-size:.78rem; line-height:1.4; text-align:center; }
+    .scientist-card strong { display:block; color:var(--accent); margin-bottom:4px; }
+    @media (max-width:760px) { .section-cover { grid-template-columns:1fr; gap:14px; }.scientist-card { width:128px; max-width:100%; justify-self:center; margin-bottom:8px; } }
+    @media print { .section-cover { grid-template-columns:minmax(0,1fr) 38mm; gap:6mm; break-inside:avoid; }.scientist-card { width:38mm; max-width:100%; box-shadow:none; break-inside:avoid; } }
+    .figure { max-width:560px; margin:18px auto; }
+    .figure img,.diagram-scroll img { width:auto; max-width:100%; max-height:360px; height:auto; margin:0 auto; object-fit:contain; }
+    .scientist-card img { height:auto; max-height:180px; object-fit:contain; }
+    .em-lab { margin:18px auto; max-width:640px; padding:16px; border:1px solid var(--line); background:#fffdf8; border-radius:10px; font-family:Arial,sans-serif; }
+    .em-lab h3 { margin-bottom:14px; }.em-controls { display:flex; flex-wrap:wrap; align-items:center; gap:12px; margin:12px 0; }
+    .em-control { display:flex; flex:1 1 250px; align-items:center; gap:9px; font-size:.86rem; }.em-control input { min-width:60px; flex:1; accent-color:var(--blue); }
+    .em-lab button { padding:8px 14px; border:1px solid var(--accent); border-radius:6px; background:var(--accent); color:#fff; cursor:pointer; font:700 .9rem Arial,sans-serif; }
+    .em-lab label { color:var(--accent); }.em-toggle { font-size:.88rem; }.em-lab canvas { display:block; width:100%; height:260px; background:#f6f8f6; border:1px solid #dae1dd; border-radius:8px; }
+    .em-lab canvas + canvas { margin-top:14px; }.em-meters { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; margin:12px 0; }.em-meter { padding:10px; background:#edf3f3; border-radius:6px; }.em-meter small { display:block; font-size:.78rem; color:var(--muted); }.em-meter output { font-size:1.15rem; color:var(--accent); font-weight:700; }
+    .em-status,.em-reading { font-size:.83rem; color:var(--muted); }.em-status { display:block; }.em-reading { margin-top:12px; line-height:1.6; }.em-lab #em-radiation { height:240px; }
+    @media (max-width:760px) { .figure { margin:18px auto; }.figure img,.diagram-scroll img { width:auto; max-height:280px; }.em-lab { padding:10px; }.em-control { flex-basis:100%; flex-wrap:wrap; }.em-control label { flex-basis:100%; } }
+    @media print { .figure { max-width:none; }.figure img,.diagram-scroll img { width:100%; max-height:none; }.scientist-card img { max-height:none; } }
+    .chapter-nav {display:flex;flex-wrap:wrap;gap:12px;margin-bottom:24px;font:.88rem Arial,sans-serif;}
+    .chapter-nav a,.inline-link {color:var(--accent);text-underline-offset:4px;}
+    .cover {max-width:none;padding:0;border:0;background:none;}.cover img {width:100%;max-height:none;aspect-ratio:3/2;object-fit:cover;}
+    .roadmap {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:20px 0;}
+    .roadmap div {padding:14px;border-top:4px solid var(--gold);background:#edf3f7;}.roadmap b {display:block;color:var(--accent);font:800 .9rem Arial,sans-serif;}
+    .roadmap p {margin:6px 0 0;font-size:.92rem;}.figure.diagram {max-width:none;}
+    .diagram-scroll {overflow-x:auto;}.diagram-scroll img {width:100%;min-width:600px;max-height:none;}
+    .scroll-hint {display:none;color:var(--muted);font:.8rem Arial,sans-serif;margin-bottom:8px;}
+    .lab {padding:20px;margin:20px 0;border:1px solid var(--line);background:#f5f8f9;font-family:Arial,sans-serif;}
+    .lab h3 {font-family:Georgia,serif;font-size:1.2rem;}.lab label {display:block;color:var(--accent);font-weight:bold;font-size:.9rem;}
+    .controls {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:16px 0;}
+    select,button {font:inherit;max-width:100%;}select {width:100%;padding:10px;margin-top:7px;color:var(--ink);border:1px solid #a5b6c1;background:white;border-radius:4px;}
+    button {padding:10px 16px;color:white;background:var(--accent);border:1px solid var(--accent);border-radius:4px;cursor:pointer;}
+    button:hover {background:#2c527f;}button:disabled {opacity:.55;cursor:default;}button:focus-visible,select:focus-visible,summary:focus-visible,a:focus-visible {outline:3px solid #c18c16;outline-offset:3px;}
+    .lab-diagram {overflow-x:auto;background:var(--page);border:1px solid #dce3e8;}.lab-diagram svg {display:block;width:100%;min-width:580px;height:auto;}
+    .meters {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:14px 0;}.meter {padding:12px;background:#fffdf7;border-bottom:3px solid var(--gold);}
+    .meter small {display:block;color:var(--muted);font-size:.77rem;}.meter output {display:block;margin-top:5px;color:var(--accent);font-weight:800;font-size:1.15rem;}
+    .lab p {font-size:.91rem;}.lab-status {min-height:3em;margin-top:12px;}
+    .spectral-view {overflow-x:auto;margin:14px 0;}.spectral-view svg {display:block;width:100%;min-width:560px;background:#fffdf7;}
+    .spectral-lines {display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;font:.82rem Arial,sans-serif;}.spectral-lines li {padding:5px 8px;background:white;border:1px solid var(--line);}
+    details {padding:14px;border:1px solid var(--line);margin:14px 0;background:#fbfaf6;}summary {cursor:pointer;color:var(--accent);font-weight:bold;}details p,details ol {margin-top:14px;}
+    .source-list {font-size:.85rem;}.source-list a {overflow-wrap:anywhere;}.mini-table table {min-width:460px;}.quiz-result {font-weight:bold;color:var(--accent);}.print-lab {display:none;}.extra {font-size:.93rem;}
+    .scientist-intro {margin:24px 0 32px;padding:18px;border:1px solid var(--line);background:#f7f4ec;}.scientist-intro h3 {font-size:1.22rem;}.scientist-intro p:last-child {margin-bottom:0;}
+    .scientist-card .recreation {display:block;margin-top:6px;font-size:.7rem;color:var(--muted);}.quantum-animation {max-width:none;}.quantum-video {overflow-x:auto;}.quantum-video video {display:block;width:100%;min-width:720px;max-width:none;height:auto;background:#f6f2e8;}
+    .animation-guide {font-size:.92rem;}.animation-guide li {margin:8px 0;}
+    @media(max-width:760px) {.scientist-intro {padding:14px;}.scientist-intro .scientist-card {width:150px;}.scientist-card img {max-height:220px;}}
+    @media print {.scientist-intro {padding:4mm;break-inside:avoid;}.quantum-video {display:none!important;}}
+    @media(max-width:760px) {html {scroll-behavior:auto;}.roadmap,.controls {grid-template-columns:1fr;}.roadmap {gap:8px;}.lab {padding:12px;}.scroll-hint {display:block;}.chapter-nav {font-size:.82rem;}.cover img {width:100%;max-height:none;}.meters {grid-template-columns:repeat(2,minmax(0,1fr));}.meters .meter:last-child {grid-column:1/-1;}.timeline {grid-template-columns:1fr;}}
+    @media(prefers-reduced-motion:reduce) {html {scroll-behavior:auto;}}
+    @media print {.chapter-nav,.screen-only,.scroll-hint {display:none!important;}.print-lab {display:block;}.page {background:white;}.cover img {max-height:80mm;object-fit:cover;}.diagram-scroll,.spectral-view {overflow:visible;}.diagram-scroll img {min-width:0;width:100%;max-height:90mm;}.roadmap {break-inside:avoid;grid-template-columns:repeat(3,1fr);}.table-scroll {overflow:visible;}.table-scroll table {min-width:0;}.figure,.roadmap {print-color-adjust:exact;-webkit-print-color-adjust:exact;}details {display:none;}h2,h3 {break-after:avoid;}.work-line {height:13mm;}a {color:inherit;}}
+  </style>
+</head>
+<body>
+<main><article class="page">
+  <nav class="chapter-nav" aria-label="Navegación de clases"><a href="../index.html">← Todas las clases</a><a href="modelos-de-la-luz.html">← Clase 15: fotones</a><a href="#laboratorio">Laboratorio de transiciones ↓</a></nav>
+  <header class="doc-header">
+    <p class="eyebrow">Sistemas Multi Física · Profesor Javier Pereyra</p>
+    <h1>Modelo de Bohr y espectros atómicos</h1>
+    <p class="subtitle">Del fotón al átomo: por qué el hidrógeno emite ciertos colores y cómo la luz nos cuenta de qué están hechas las estrellas.</p>
+    <div class="meta"><div><b>Curso:</b> Secundaria superior</div><div><b>Clase:</b> 16 · Física atómica</div><div><b>Unidades:</b> J, eV, Hz, nm</div></div>
+  </header>
+  <aside class="section-cover scientist-intro" aria-label="Breve reseña de Niels Bohr">
+    <div>
+      <p class="label">El científico y su aporte</p>
+      <h3>Niels Bohr · 1885–1962</h3>
+      <p>Este físico danés propuso en <b>1913</b> un modelo con estados de energía permitidos para el hidrógeno. En un estado estacionario, el átomo no emite radiación; al cambiar de estado, absorbe o emite un fotón cuya energía coincide con la diferencia entre los niveles. Así relacionó la estructura atómica con las líneas del espectro del hidrógeno. Recibió el <b>Premio Nobel de Física en 1922</b>.</p>
+    </div>
+    <figure class="scientist-card">
+      <img src="../assets/bohr/niels-bohr.png" width="768" height="1024" alt="Retrato recreado de Niels Bohr con traje, rostro ancho y cabello peinado hacia atrás">
+      <figcaption><strong>Niels Bohr</strong>Estados de energía cuantizados para explicar el hidrógeno.<small class="recreation">Recreación histórica con IA.</small></figcaption>
+    </figure>
+  </aside>
+  <figure class="figure cover">
+    <!-- Recreación generada con Imagegen; no es una medición experimental. -->
+    <img src="../assets/bohr/laboratorio-espectros.png" width="1536" height="1024" alt="Recreación de un laboratorio con tubo luminoso de hidrógeno, espectroscopio y cuatro líneas de colores sobre una pantalla oscura">
+    <figcaption>Un gas excitado puede emitir luz que, al separarse con un espectroscopio, revela líneas características. Recreación didáctica generada con IA; los datos cuantitativos están en los diagramas y tablas.</figcaption>
+  </figure>
+
+  <section id="pregunta">
+    <h2><span>1</span> Una pregunta que dejó la clase de fotones</h2>
+    <p>En la <a class="inline-link" href="modelos-de-la-luz.html">clase anterior</a> usamos \(E=hf\): la frecuencia determina la energía de un fotón. Ahora observamos un tubo de hidrógeno excitado y separamos su luz. Aparecen líneas de colores, con zonas oscuras entre ellas. <b>¿Por qué el átomo entrega algunas energías y no cualquier valor?</b></p>
+    <div class="definition"><b>Objetivos:</b> distinguir espectros continuos, de emisión y de absorción; interpretar las leyes espectroscópicas de Kirchhoff; relacionar niveles con fotones; calcular transiciones del hidrógeno; reconocer qué explica Bohr y qué requiere un modelo posterior.</div>
+    <div class="roadmap"><div><b>OBSERVAR</b><p>La luz contiene patrones de líneas.</p></div><div><b>EXPLICAR</b><p>Las diferencias de energía fijan los fotones posibles.</p></div><div><b>INVESTIGAR</b><p>Comparamos patrones para identificar elementos.</p></div></div>
+    <p><b>Analogía inicial:</b> si los estados del átomo fueran peldaños, no podríamos elegir cualquier altura para detenernos. Sirve para pensar energías permitidas; <b>el electrón no es una persona que sube escalones</b> y los niveles no están separados por intervalos iguales.</p>
+  </section>
+
+  <section>
+    <h2><span>2</span> Espectro: separar para conocer</h2>
+    <p>Un <b>espectro</b> muestra cómo se distribuye la radiación según su longitud de onda o frecuencia. El espectroscopio permite separar sus componentes. El color global de una lámpara mezcla esas componentes: fuentes que se ven parecidas pueden tener espectros distintos.</p>
+    <p>Un prisma separa colores por dispersión; una red de difracción los separa mediante interferencia. El espectro también puede extenderse al ultravioleta o al infrarrojo, fuera de lo visible.</p>
+    <div class="grid"><div class="card"><h3>Continuo</h3><p>Presenta un intervalo sin líneas aisladas: por ejemplo, radiación térmica de un filamento caliente.</p></div><div class="card"><h3>De líneas</h3><p>Presenta longitudes de onda particulares. Es una pista sobre la estructura interna de los átomos.</p></div></div>
+    <div class="teacher-note"><b>Lectura del gráfico:</b> el eje horizontal indica \(\lambda\), en nm; el vertical puede indicar intensidad relativa. La posición de un pico identifica una longitud de onda; su altura informa cuánta señal se registra allí. La pendiente entre picos no representa un nivel de energía.</div>
+  </section>
+
+  <section id="kirchhoff">
+    <div class="section-cover">
+    <div>
+    <h2><span>3</span> Kirchhoff y Bunsen: tres situaciones</h2>
+    <p><b>Gustav Kirchhoff (1824–1887)</b>, físico alemán, desarrolló con Robert Bunsen el análisis espectral en <b>1859</b> y lo publicó en 1860. Relacionaron las líneas brillantes emitidas por sustancias calentadas con las líneas oscuras del espectro solar: un gas puede absorber las mismas longitudes de onda que emite, si los átomos están en los estados apropiados.</p>
+    <p><b>Su descubrimiento abrió una nueva forma de investigar:</b> identificar sustancias por su luz y estudiar la composición del Sol. Juntos descubrieron el cesio en 1860 y el rubidio en 1861 mediante líneas espectrales que no correspondían a elementos conocidos.</p>
+    </div>
+    <figure class="scientist-card">
+      <img src="../assets/bohr/gustav-kirchhoff.png" width="768" height="1024" alt="Retrato recreado de Gustav Kirchhoff con barba, frente amplia y vestimenta académica del siglo XIX">
+      <figcaption><strong>Gustav Kirchhoff</strong>Con Bunsen, convirtió los espectros en una herramienta para identificar elementos.<small class="recreation">Recreación histórica con IA.</small></figcaption>
+    </figure>
+    </div>
+    <p>Las <b>leyes espectroscópicas de Kirchhoff</b> describen las siguientes situaciones; son diferentes de las leyes de circuitos.</p>
+    <figure class="figure diagram"><p class="scroll-hint">En celular, desplazá el esquema hacia los lados para leerlo completo.</p><div class="diagram-scroll"><img src="../assets/bohr/kirchhoff-espectros.svg" width="820" height="490" alt="Tres montajes: fuente caliente densa produce continuo, gas excitado produce líneas brillantes y fuente continua detrás de un gas más frío produce líneas oscuras"></div><figcaption>La fuente, el gas y la dirección de observación determinan el tipo de espectro. Las líneas del esquema son ilustrativas.</figcaption></figure>
+    <ol><li><b>Fuente caliente y densa:</b> un sólido, un líquido o un gas suficientemente denso produce aproximadamente un espectro continuo térmico.</li><li><b>Gas poco denso excitado:</b> produce líneas de emisión, brillantes sobre un fondo oscuro.</li><li><b>Luz continua que atraviesa un gas más frío:</b> presenta líneas de absorción, con menor intensidad en ciertas longitudes de onda.</li></ol>
+    <p>Una transición puede absorber y emitir la misma energía. Para absorber, debe haber átomos en el <b>estado inicial apropiado</b>. Las condiciones del gas modifican la intensidad de las líneas.</p>
+    <div class="note"><b>¿Desaparece la energía absorbida?</b> Se transfiere al átomo. Luego puede volver a emitirse en otras direcciones o distribuirse en otros procesos. En la dirección del observador llega menos luz de esa longitud de onda.</div>
+  </section>
+
+  <section>
+    <h2><span>4</span> Bohr: explicar al hidrógeno</h2>
+    <p>El modelo nuclear de Rutherford concentraba la carga positiva en un núcleo. Pero una órbita clásica del electrón planteaba un problema: al estar acelerado debería radiar, perder energía y cambiar de órbita. Tampoco explicaba las líneas discretas.</p>
+    <p>En 1913, Niels Bohr propuso estados permitidos para el hidrógeno. En su modelo histórico, el electrón ocupa <b>órbitas estacionarias</b> y no irradia mientras permanece en una de ellas; el intercambio de radiación ocurre entre estados.</p>
+    <div class="definition"><b>La idea central:</b> la energía del átomo está cuantizada. Cada estado permitido tiene una energía definida. El fotón intercambiado lleva la diferencia entre las energías inicial y final.</div>
+    <figure class="figure diagram"><p class="scroll-hint">Desplazá el esquema para leerlo completo.</p><div class="diagram-scroll"><img src="../assets/bohr/modelo-historico.svg" width="820" height="390" alt="Modelo histórico de Bohr con núcleo positivo, tres órbitas permitidas y un fotón asociado a una transición de 3 a 2"></div><figcaption>Representación histórica del átomo: órbitas esquemáticas, sin escala. La flecha indica una transición; no describe una trayectoria observada del electrón. El modelo cuántico posterior reemplaza las órbitas por orbitales.</figcaption></figure>
+    <div class="timeline"><article><strong>Rutherford</strong><p>Núcleo pequeño con carga positiva.</p></article><article><strong>Planck y Einstein</strong><p>Intercambio energético mediante cuantos y fotones.</p></article><article><strong>Bohr · 1913</strong><p>Estados permitidos y transiciones en hidrógeno.</p></article><article><strong>Modelo cuántico posterior</strong><p>Orbitales y probabilidades, sin órbitas clásicas definidas.</p></article></div>
+    <div class="warning"><b>Alcance:</b> el hidrógeno neutro tiene un protón y un electrón. Bohr se extiende a iones con un solo electrón, ajustando la carga nuclear. La fórmula de esta clase corresponde al hidrógeno; no explica por sí sola el espectro completo de sodio o helio neutro.</div>
+  </section>
+
+  <section id="niveles">
+    <h2><span>5</span> Una escalera que se comprime</h2>
+    <div class="formula-box"><p><b>Energías aproximadas del hidrógeno:</b></p><div class="formula">\[E_n=-\frac{13{,}6\ \mathrm{eV}}{n^2}\]</div><p>\(n=1,2,3,\ldots\) es el número cuántico principal; \(E_n\) es la energía del estado. \(n=1\) es el <b>estado fundamental</b>; los de mayor \(n\) son estados excitados.</p></div>
+    <p>Elegimos \(E=0\) para el electrón libre, en reposo y separado del protón a gran distancia. Los valores negativos indican estados ligados: hay que aportar energía para liberar el electrón. <b>Un nivel menos negativo tiene mayor energía.</b></p>
+    <figure class="figure diagram"><p class="scroll-hint">Desplazá el diagrama para leer las etiquetas.</p><div class="diagram-scroll"><img src="../assets/bohr/niveles-hidrogeno.svg" width="820" height="530" alt="Niveles energéticos del hidrógeno, límite de ionización en cero y transición de emisión de 3 a 2"></div><figcaption>El eje vertical representa energía en eV, no altura ni distancia al núcleo. Los niveles se acercan al aumentar n; el panel lateral amplía los estados excitados.</figcaption></figure>
+    <div class="table-scroll mini-table"><table><caption>Valores redondeados del modelo</caption><thead><tr><th>\(n\)</th><th>\(E_n\) (eV)</th><th>Lectura</th></tr></thead><tbody><tr><td>1</td><td>−13,60</td><td>Fundamental</td></tr><tr><td>2</td><td>−3,40</td><td>Primer estado excitado</td></tr><tr><td>3</td><td>−1,51</td><td>Excitado</td></tr><tr><td>4</td><td>−0,85</td><td>Excitado</td></tr><tr><td>5</td><td>−0,54</td><td>Excitado</td></tr><tr><td>6</td><td>−0,38</td><td>Excitado</td></tr><tr><td>Límite</td><td>0</td><td>Electrón libre</td></tr></tbody></table></div>
+    <p><b>Ionizar no es solo excitar:</b> desde \(n=1\), se necesitan al menos \(13{,}6\ \mathrm{eV}\) para liberar el electrón. Desde \(n=2\), el mínimo es \(3{,}4\ \mathrm{eV}\). Si un fotón ionizante supera ese mínimo, el excedente aparece como energía cinética, despreciando el retroceso del protón.</p>
+  </section>
+
+  <section>
+    <h2><span>6</span> Emisión y absorción: balance energético</h2>
+    <div class="grid"><div class="card"><h3>Emisión</h3><p>El átomo termina con menor energía y emite un fotón:</p><p>\(E_\gamma=E_i-E_f&gt;0\).</p><p>En hidrógeno, \(n_i&gt;n_f\).</p></div><div class="card"><h3>Absorción</h3><p>El átomo termina con mayor energía al absorber un fotón:</p><p>\(E_\gamma=E_f-E_i&gt;0\).</p><p>En hidrógeno, \(n_f&gt;n_i\).</p></div></div>
+    <div class="formula-box"><div class="formula">\[E_\gamma=|E_f-E_i|=hf=\frac{hc}{\lambda}\]</div><p>\(E_\gamma\): energía positiva del fotón; \(E_i,E_f\): energías inicial y final; \(h\): constante de Planck; \(f\): frecuencia; \(c\): velocidad de la luz en el vacío; \(\lambda\): longitud de onda en vacío.</p></div>
+    <p>Una diferencia de energía mayor produce un fotón de mayor frecuencia y menor longitud de onda. Entre estados ligados, su energía debe coincidir con la diferencia de niveles, dentro del ancho físico de la línea. También puede haber excitación mediante colisiones.</p>
+    <p>En un tubo de descarga, las colisiones preparan muchos átomos en distintos estados excitados. Cada átomo puede desexcitarse en un paso o en una <b>cascada de transiciones</b>: si cada paso emite un fotón, sus energías suman la diferencia total. El conjunto de átomos produce el patrón de líneas del tubo.</p>
+    <div class="teacher-note"><b>Conexión con la clase 15:</b> en el efecto fotoeléctrico un electrón sale de un material; al excitar un átomo puede seguir ligado. La ionización atómica es el proceso que lo libera.</div>
+    <div class="table-scroll"><table><caption>Magnitudes y conversiones</caption><thead><tr><th>Magnitud</th><th>Símbolo</th><th>Unidad o valor</th></tr></thead><tbody><tr><td>Energía</td><td>\(E\)</td><td>J; \(1\ \mathrm{eV}=1{,}602\times10^{-19}\ \mathrm J\)</td></tr><tr><td>Frecuencia</td><td>\(f\)</td><td>Hz = s⁻¹</td></tr><tr><td>Longitud de onda</td><td>\(\lambda\)</td><td>m; \(1\ \mathrm{nm}=10^{-9}\ \mathrm m\)</td></tr><tr><td>Constante de Planck</td><td>\(h\)</td><td>\(6{,}626\times10^{-34}\ \mathrm{J\,s}\)</td></tr><tr><td>Velocidad en vacío</td><td>\(c\)</td><td>\(2{,}998\times10^8\ \mathrm{m/s}\)</td></tr><tr><td>Producto útil</td><td>\(hc\)</td><td>\(1240\ \mathrm{eV\,nm}\)</td></tr></tbody></table></div>
+    <p>Usá \(\lambda(\mathrm{nm})\approx1240/E_\gamma(\mathrm{eV})\). Para usar \(h\) en J·s, convertí primero a joules. <b>El eV es una unidad de energía; el V es una unidad de tensión.</b></p>
+  </section>
+
+  <section id="balmer">
+    <h2><span>7</span> Hidrógeno: la serie de Balmer</h2>
+    <p>Las emisiones que terminan en \(n_f=2\) forman la <b>serie de Balmer</b>. Las primeras líneas son visibles; las siguientes se acercan al ultravioleta. Johann Balmer encontró un patrón matemático antes del modelo de Bohr.</p>
+    <figure class="figure diagram"><p class="scroll-hint">Desplazá el espectro para ver toda la escala.</p><div class="diagram-scroll"><img src="../assets/bohr/balmer-visible.svg" width="820" height="290" alt="Cuatro líneas de Balmer: H delta 410,2 nm, H gamma 434,0 nm, H beta 486,1 nm y H alfa 656,3 nm sobre un eje de 400 a 700 nm"></div><figcaption>Longitudes de onda de referencia en aire. Colores orientativos y grosor exagerado para facilitar la lectura.</figcaption></figure>
+    <div class="table-scroll"><table><caption>Cálculo escolar y datos de referencia</caption><thead><tr><th>Emisión</th><th>Línea</th><th>Modelo (eV)</th><th>Modelo (nm)</th><th>Referencia en aire (nm)</th></tr></thead><tbody><tr><td>\(3\to2\)</td><td>Hα · roja</td><td>1,889</td><td>656,5</td><td>656,3</td></tr><tr><td>\(4\to2\)</td><td>Hβ · azul verdosa</td><td>2,550</td><td>486,3</td><td>486,1</td></tr><tr><td>\(5\to2\)</td><td>Hγ · azul violeta</td><td>2,856</td><td>434,2</td><td>434,0</td></tr><tr><td>\(6\to2\)</td><td>Hδ · violeta</td><td>3,022</td><td>410,3</td><td>410,2</td></tr></tbody></table></div>
+    <p class="extra">Las diferencias combinan redondeo de constantes, aproximaciones del modelo y la distinción entre aire y vacío. Los valores tabulados provienen de <a class="inline-link" href="https://physics.nist.gov/PhysRefData/Handbook/Tables/hydrogentable2_a.htm">NIST</a>; no son mediciones del laboratorio virtual.</p>
+    <div class="note"><b>No todo es visible:</b> emisiones que terminan en \(n_f=1\): serie de Lyman, ultravioleta. Las que terminan en \(n_f=3\): serie de Paschen, infrarrojo.</div>
+    <div class="warning"><b>Absorción de Balmer:</b> para absorber un fotón que produce \(2\to3\), el átomo debe estar inicialmente en \(n=2\). En un gas frío predominan átomos en \(n=1\), cuyas transiciones de absorción hacia estados ligados corresponden a Lyman.</div>
+    <details><summary>Ampliación: relación de Rydberg</summary><p>Para emisiones, \(n_i&gt;n_f\):</p><p>\[\frac{1}{\lambda}=R_H\left(\frac{1}{n_f^2}-\frac{1}{n_i^2}\right)\]</p><p>\(R_H\approx1{,}097\times10^7\ \mathrm{m^{-1}}\). Es otra forma de expresar el patrón. En esta clase alcanza con calcular diferencias de energía y usar \(E_\gamma=hc/\lambda\).</p></details>
+  </section>
+
+  <section id="laboratorio">
+    <h2><span>8</span> Laboratorio: del nivel al fotón</h2>
+    <figure class="figure quantum-animation screen-only">
+      <p class="label">Animación didáctica · Remotion</p>
+      <p class="scroll-hint">Para leer los dos paneles en celular, desplazá el video hacia los costados. Usá los controles para pausar o repetir.</p>
+      <div class="quantum-video"><video controls muted loop playsinline preload="metadata" poster="../assets/bohr/saltos-cuanticos.png" aria-label="Animación de absorción, emisión y líneas de Balmer del hidrógeno"><source src="../assets/bohr/saltos-cuanticos.mp4" type="video/mp4">Tu navegador no reproduce el video. Consultá la guía de lectura y los diagramas de esta clase.</video></div>
+      <figcaption>Absorción 2→3, emisión 3→2 y formación del patrón de Balmer. El cambio de estado es discreto; las flechas no son trayectorias del electrón. Tiempos y tamaños son didácticos. Video sin audio.</figcaption>
+    </figure>
+    <div class="teacher-note animation-guide"><b>Guía para mirar los saltos cuánticos:</b><ol><li><b>Absorción:</b> el átomo comienza en \(n=2\). Recibe un fotón de aproximadamente \(1{,}889\ \mathrm{eV}\) y pasa a \(n=3\).</li><li><b>Emisión:</b> la transición seleccionada \(3\to2\) libera la misma diferencia de energía en un nuevo fotón. El modelo redondeado predice \(656{,}5\ \mathrm{nm}\) en vacío.</li><li><b>Balmer:</b> diferentes descensos hacia \(n=2\), en un conjunto de átomos, producen diferentes líneas. No todos los átomos realizan una misma secuencia.</li></ol></div>
+    <p>Elegí niveles y proceso. Anticipá quién gana energía y contrastá tu predicción con el diagrama y las lecturas.</p>
+    <div class="lab screen-only" id="bohr-lab">
+      <h3>Explorador de transiciones del hidrógeno</h3>
+      <div class="controls"><label for="process">Proceso<select id="process"><option value="emission">Emisión</option><option value="absorption">Absorción</option></select></label><label for="upper">Nivel de mayor energía<select id="upper"><option value="2">n = 2</option><option value="3" selected>n = 3</option><option value="4">n = 4</option><option value="5">n = 5</option><option value="6">n = 6</option></select></label><label for="lower">Nivel de menor energía<select id="lower"><option value="1">n = 1 · Lyman</option><option value="2" selected>n = 2 · Balmer</option><option value="3">n = 3 · Paschen</option></select></label></div>
+      <p class="scroll-hint">El diagrama se puede desplazar hacia los lados.</p>
+      <div class="lab-diagram"><svg id="transition-chart" viewBox="0 0 700 340" role="img" aria-labelledby="transition-title transition-desc"><title id="transition-title">Transición 3 a 2</title><desc id="transition-desc">Niveles de energía del hidrógeno.</desc></svg></div>
+      <div class="meters"><div class="meter"><small>Energía del fotón</small><output id="photon-energy">1,889 eV</output></div><div class="meter"><small>Longitud de onda en vacío</small><output id="photon-wave">656,5 nm</output></div><div class="meter"><small>Frecuencia</small><output id="photon-frequency">4,57 × 10¹⁴ Hz</output></div></div>
+      <p id="transition-status" class="lab-status" role="status" aria-live="polite"></p>
+      <button id="play-transition" type="button">Representar emisión</button>
+      <p id="animation-status" role="status" aria-live="polite">La flecha indica el cambio entre estados; el punto luminoso representa el fotón.</p>
+      <p class="sim-help">Átomo ideal preparado en el estado inicial. No calcula intensidades, probabilidades ni tiempos reales. La flecha une niveles de energía; no dibuja la trayectoria espacial de un electrón. Animación ralentizada. Los colores asignados al ultravioleta y al infrarrojo son convenciones del dibujo: no son colores que podamos ver.</p>
+    </div>
+    <noscript><div class="note">Activá JavaScript para los controles. Las tablas y los ejemplos permiten hacer las mismas comparaciones a mano.</div></noscript>
+    <div class="print-lab teacher-note"><b>En papel:</b> compará \(3\to2\), \(4\to2\) y \(2\to1\). Calculá energía y longitud de onda, dibujá las flechas sobre el diagrama y clasificá la radiación.</div>
+    <p><b>Desafío:</b> ¿un descenso de un solo valor de \(n\) siempre libera la misma energía? Compará \(3\to2\) con \(2\to1\).</p>
+  </section>
+
+  <section>
+    <h2><span>9</span> Dos ejemplos resueltos</h2>
+    <div class="example"><h3>A. Línea roja: emisión \(3\to2\)</h3><p><b>Problema:</b> un átomo pasa de \(n=3\) a \(n=2\). ¿Qué fotón emite?</p><p><b>Datos:</b> \(E_3=-13{,}6/9=-1{,}511\ \mathrm{eV}\); \(E_2=-13{,}6/4=-3{,}400\ \mathrm{eV}\).</p><p><b>Fórmula:</b> \(E_\gamma=E_i-E_f\); \(\lambda=hc/E_\gamma\).</p><p><b>Reemplazo:</b> \(E_\gamma=-1{,}511-(-3{,}400)=1{,}889\ \mathrm{eV}\).</p><p>\[\lambda\approx\frac{1240\ \mathrm{eV\,nm}}{1{,}889\ \mathrm{eV}}\approx656{,}5\ \mathrm{nm}\]</p><p><b>Resultado:</b> \(E_\gamma\approx3{,}03\times10^{-19}\ \mathrm J\); \(f\approx4{,}57\times10^{14}\ \mathrm{Hz}\).</p><p><b>Interpretación:</b> el átomo pierde energía y emite un fotón rojo. El cálculo aproxima Hα, tabulada cerca de \(656{,}3\ \mathrm{nm}\) en aire.</p></div>
+    <div class="example"><h3>B. Excitar sin ionizar: absorción \(2\to4\)</h3><p><b>Problema:</b> el átomo está en \(n=2\). ¿Qué energía debe absorber para llegar a \(n=4\)?</p><p><b>Datos:</b> \(E_2=-3{,}40\ \mathrm{eV}\); \(E_4=-0{,}85\ \mathrm{eV}\).</p><p><b>Fórmula:</b> \(E_\gamma=E_f-E_i\); \(\lambda=hc/E_\gamma\).</p><p><b>Reemplazo:</b> \(E_\gamma=-0{,}85-(-3{,}40)=2{,}55\ \mathrm{eV}\).</p><p>\[\lambda\approx\frac{1240\ \mathrm{eV\,nm}}{2{,}55\ \mathrm{eV}}\approx486{,}3\ \mathrm{nm}\]</p><p><b>Resultado:</b> \(E_\gamma\approx4{,}09\times10^{-19}\ \mathrm J\).</p><p><b>Interpretación:</b> se absorbe un fotón azul verdoso. El electrón sigue ligado porque su energía final es negativa. Un átomo en \(n=1\) no hace esta transición con ese fotón.</p></div>
+  </section>
+
+  <section id="huellas">
+    <h2><span>10</span> Una huella para cada elemento</h2>
+    <p>Hidrógeno, sodio y helio presentan patrones diferentes. La identificación compara <b>varias posiciones de líneas</b> con referencias: una coincidencia aislada puede ser ambigua. También importa el estado de ionización.</p>
+    <div class="lab screen-only"><h3>Comparador de espectros</h3>
+      <div class="controls"><label for="element">Elemento<select id="element"><option value="H">Hidrógeno neutro · H I</option><option value="Na">Sodio neutro · Na I</option><option value="He">Helio neutro · He I</option></select></label><label for="spectrum-kind">Representación<select id="spectrum-kind"><option value="emission">Líneas de emisión</option><option value="absorption">Líneas de absorción</option><option value="continuous">Continuo de comparación</option></select></label></div>
+      <p class="scroll-hint">Desplazá el gráfico para ver el intervalo de 400 a 700 nm.</p>
+      <div class="spectral-view"><svg id="spectrum-chart" viewBox="0 0 700 215" role="img" aria-labelledby="spectrum-title"><title id="spectrum-title">Espectro del hidrógeno</title></svg></div>
+      <ul class="spectral-lines" id="line-values" aria-label="Longitudes de onda representadas"></ul><p id="spectrum-description" role="status" aria-live="polite"></p>
+      <p class="sim-help">Selección de líneas visibles de átomos neutros, no su espectro completo. Posiciones tabuladas en aire. Alturas y grosores convencionales, sin intensidades experimentales. En absorción se supone una fuente continua detrás del gas y población suficiente en los niveles inferiores correspondientes.</p>
+    </div>
+    <div class="table-scroll mini-table"><table><caption>Patrones seleccionados, en nm (aire)</caption><thead><tr><th>Elemento neutro</th><th>Líneas de referencia</th></tr></thead><tbody><tr><td>Hidrógeno · H I</td><td>410,2 · 434,0 · 486,1 · 656,3</td></tr><tr><td>Sodio · Na I</td><td>589,0 · 589,6 (doblete amarillo)</td></tr><tr><td>Helio · He I</td><td>447,1 · 501,6 · 587,6 · 667,8</td></tr></tbody></table></div>
+    <p><b>Lectura:</b> cada pico marca una longitud de onda. El doblete del sodio puede parecer una sola línea a esta escala; un instrumento de mayor resolución permite separarlo.</p>
+    <div class="note"><b>Del laboratorio a las estrellas:</b> una fotosfera densa y caliente genera un continuo aproximado. En capas más externas, los átomos absorben algunas componentes y dejan líneas oscuras. Comparar patrones permite investigar su composición. <b>Una línea intensa no significa, por sí sola, una mayor abundancia:</b> también influyen la temperatura, la ionización y otras condiciones.</div>
+    <p class="extra">Aplicaciones cercanas: emisión rojiza del hidrógeno en ciertas nebulosas y luz amarilla de lámparas de sodio. Los carteles llamados “de neón” pueden contener otros gases o usar otras tecnologías.</p>
+  </section>
+
+  <section>
+    <h2><span>11</span> Experiencia: comparar fuentes de luz</h2>
+    <p><b>Pregunta:</b> ¿todas las fuentes blancas tienen el mismo espectro? Esta experiencia compara distribuciones; no identifica automáticamente todos los materiales de una lámpara.</p>
+    <p><b>Materiales:</b> espectroscopio escolar o red de difracción, LED blanco, lámpara fluorescente disponible, filamento incandescente si ya existe en el laboratorio y hoja de registro. También podés trabajar con espectros dados.</p>
+    <ol><li>El docente coloca las fuentes en soportes, con una geometría de observación comparable.</li><li>Observá cada fuente. Registrá líneas, bandas anchas y regiones de mayor brillo.</li><li>Compará y explicá. Si el instrumento no está calibrado, anotá colores y posiciones relativas sin inventar longitudes de onda.</li></ol>
+    <p><b>Variables:</b> cambiamos la fuente; observamos la distribución espectral; mantenemos instrumento, orientación y luz ambiente. La intensidad global no basta para decidir si el espectro es continuo.</p>
+    <div class="table-scroll mini-table"><table><caption>Registro de observaciones</caption><thead><tr><th>Fuente</th><th>¿Bandas o líneas?</th><th>Colores destacados</th><th>Explicación provisional</th></tr></thead><tbody><tr><td>LED blanco</td><td>__________</td><td>__________</td><td>__________</td></tr><tr><td>Fluorescente</td><td>__________</td><td>__________</td><td>__________</td></tr><tr><td>Filamento / espectro dado</td><td>__________</td><td>__________</td><td>__________</td></tr></tbody></table></div>
+    <div class="teacher-note"><b>Cuidados:</b> no mirar el Sol, láseres ni fuentes UV. No abrir lámparas ni manipular tubos de descarga o fuentes de alta tensión. Un tubo comercial de hidrógeno solo debe operar bajo supervisión docente.</div>
+    <p><b>Análisis:</b> el filamento aproxima un continuo térmico; la fluorescente combina líneas del gas con emisión del recubrimiento; un LED blanco suele combinar un pico azul y una banda del fósforo. Son fuentes reales con más procesos que el gas atómico ideal.</p>
+  </section>
+
+  <section>
+    <h2><span>12</span> Actividades: calcular y justificar</h2>
+    <p>Usá \(E_n=-13{,}6/n^2\ \mathrm{eV}\) y \(hc\approx1240\ \mathrm{eV\,nm}\). Mostrá datos, cálculo, unidades e interpretación.</p>
+    <ol class="exercises">
+      <li>Clasificá y justificá: a) filamento caliente; b) gas poco denso excitado sin fuente de fondo; c) luz continua detrás de gas más frío. Dibujá los tres espectros.<span class="work-line tall"></span></li>
+      <li>Un cartel se ve rojo. ¿Eso demuestra que emite una sola longitud de onda? ¿Qué instrumento y observación necesitarías?<span class="work-line"></span></li>
+      <li>Calculá \(E_1\), \(E_2\) y \(E_4\). Ordenalos de menor a mayor y explicá el signo negativo.<span class="work-line tall"></span></li>
+      <li>Para \(4\to2\), calculá energía del fotón en eV y J, longitud de onda y región del espectro. Compará con Hβ.<span class="work-line tall"></span></li>
+      <li>Calculá los fotones de \(2\to1\) y \(3\to2\). ¿Cuál tiene mayor frecuencia? ¿Por qué “bajar un nivel” no implica siempre la misma energía?<span class="work-line tall"></span></li>
+      <li>Un átomo está en \(n=1\) y recibe un fotón de \(2{,}55\ \mathrm{eV}\). ¿Puede realizar \(2\to4\)? ¿Qué condición falta? ¿Qué energía necesita para \(1\to2\)?<span class="work-line tall"></span></li>
+      <li>Construí una tabla para \(3,4,5,6\to2\): transición, energía (eV), longitud de onda (nm) y color. Graficá cuatro picos entre 400 y 700 nm con altura unitaria. Explicá qué representa esa altura.<span class="work-line tall"></span></li>
+      <li>Una muestra presenta líneas cerca de 410,2; 434,0; 486,1 y 656,3 nm. Comparala con la sección 10. ¿Qué elemento es compatible? ¿Podés asegurar que la muestra es pura?<span class="work-line tall"></span></li>
+      <li>Calculá la energía mínima de ionización desde \(n=2\). Si absorbe un fotón de \(4{,}0\ \mathrm{eV}\) y se ioniza, ¿qué energía cinética aproximada tendrá el electrón?<span class="work-line tall"></span></li>
+      <li>Explicá en cuatro oraciones cómo una línea oscura estelar puede revelar un elemento. Incluí fuente continua, absorción, nivel inicial y comparación de patrones.<span class="work-line tall"></span></li>
+    </ol>
+    <details class="screen-only"><summary>Orientaciones y resultados para revisar después</summary><ol><li>a) Continuo; b) emisión; c) absorción.</li><li>No: separá la luz y compará sus componentes.</li><li>−13,6 &lt; −3,4 &lt; −0,85 eV. Estados ligados.</li><li>2,55 eV ≈ 4,09 × 10⁻¹⁹ J; 486,3 nm, visible.</li><li>2→1: 10,2 eV y 121,6 nm (UV); 3→2: 1,889 eV y 656,5 nm. El primero tiene mayor frecuencia.</li><li>No está en n=2. Para 1→2 necesita 10,2 eV.</li><li>1,889; 2,550; 2,856; 3,022 eV. 656,5; 486,3; 434,2; 410,3 nm. Alturas convencionales, no intensidades medidas.</li><li>Compatible con hidrógeno; no demuestra pureza.</li><li>Mínimo: 3,4 eV. Excedente cinético: ≈ 0,6 eV.</li><li>Relacioná las cuatro ideas y los estados iniciales apropiados.</li></ol></details>
+  </section>
+
+  <section>
+    <h2><span>13</span> Límites y preguntas para pensar</h2>
+    <p>Las órbitas de Bohr no son trayectorias verificadas. El modelo no explica completamente átomos con varios electrones, intensidades ni detalles finos de las líneas. El modelo cuántico posterior utiliza <b>orbitales</b>: estados que permiten calcular probabilidades de encontrar el electrón.</p>
+    <ul><li>¿Qué observación sería difícil de explicar con energías atómicas continuas?</li><li>¿Por qué emisión y absorción pueden aparecer en la misma longitud de onda?</li><li>¿Un fotón violeta tiene más energía que uno rojo? ¿Una lámpara violeta siempre entrega más potencia que una roja?</li><li>¿Qué logró Bohr y qué preguntas quedaron abiertas?</li></ul>
+    <div class="teacher-note"><b>Evaluación de salida:</b> dibujá \(3\to2\) y \(2\to3\) con sus fotones; indicá quién gana energía y explicá una aplicación. Criterios: estados identificados, balance energético, unidades y justificación de la evidencia.</div>
+    <div class="lab screen-only"><h3>Comprobación rápida</h3><form id="exit-quiz"><label for="quiz-answer">Un átomo emite un fotón cuando…<select id="quiz-answer" required><option value="">Elegí una explicación</option><option value="up">Pasa a un estado de mayor energía</option><option value="down">Pasa a un estado de menor energía</option><option value="any">Permanece en cualquier estado permitido</option></select></label><p><button type="submit">Comprobar explicación</button></p><p id="quiz-result" class="quiz-result" role="status" aria-live="polite"></p></form></div>
+  </section>
+
+  <section>
+    <h2><span>14</span> Fuentes y continuidad</h2>
+    <ul class="source-list"><li><a href="https://openstax.org/books/astronomy-2e/pages/5-3-spectroscopy-in-astronomy">OpenStax · Espectroscopia en astronomía</a>: tipos de espectro y análisis estelar.</li><li><a href="https://openstax.org/books/astronomy-2e/pages/5-5-formation-of-spectral-lines">OpenStax · Formación de líneas</a>: transiciones y estados iniciales.</li><li><a href="https://openstax.org/books/chemistry-2e/pages/6-2-the-bohr-model">OpenStax · Modelo de Bohr</a> y <a href="https://openstax.org/books/college-physics-2e/pages/30-3-bohrs-theory-of-the-hydrogen-atom">teoría del hidrógeno</a>.</li><li><a href="https://www.nobelprize.org/prizes/physics/1922/bohr/facts/">Premio Nobel · Niels Bohr</a>: reseña y premio de 1922.</li><li><a href="https://www.kip.uni-heidelberg.de/200jahrekirchhoff/ausstellung?lang=en">Universidad de Heidelberg · Vida y trabajo de Kirchhoff</a>: análisis espectral con Bunsen y descubrimientos de cesio y rubidio.</li><li>NIST · Líneas de <a href="https://physics.nist.gov/PhysRefData/Handbook/Tables/hydrogentable2_a.htm">hidrógeno</a>, <a href="https://physics.nist.gov/PhysRefData/Handbook/Tables/sodiumtable2.htm">sodio</a> y <a href="https://physics.nist.gov/PhysRefData/Handbook/Tables/heliumtable2.htm">helio</a>. Conversión: 1 Å = 0,1 nm.</li></ul>
+    <p><b>Para continuar:</b> pasar de órbitas a orbitales y explorar la dualidad onda-partícula. ¿Cómo describimos un electrón cuando una trayectoria clásica ya no alcanza?</p>
+  </section>
+  <footer><b>Sistemas Multi Física - Profesor Javier Pereyra.</b> Sugerencia: comenzar con el patrón observado, construir la explicación energética y comparar evidencia. En impresión A4, diagramas y actividades reemplazan los controles.</footer>
+</article></main>
+<script>
+(() => {
+  'use strict';
+  const get=id=>document.getElementById(id), NS='http://www.w3.org/2000/svg';
+  const energy=n=>-13.6/(n*n), fmt=(n,d=2)=>n.toLocaleString('es-AR',{minimumFractionDigits:d,maximumFractionDigits:d});
+  const color=w=>w<400?'#644bb0':w<450?'#7662cc':w<490?'#187f9f':w<530?'#368149':w<590?'#b68a00':w<630?'#d06624':'#b7393f';
+  const node=(tag,attributes={},value)=>{const n=document.createElementNS(NS,tag);Object.entries(attributes).forEach(([k,v])=>n.setAttribute(k,v));if(value!==undefined)n.textContent=value;return n;};
+  const line=(svg,x1,y1,x2,y2,stroke='#1d3557',width=2)=>svg.append(node('line',{x1,y1,x2,y2,stroke,'stroke-width':width}));
+  const text=(svg,t,x,y,fill='#1d3557',size=14)=>svg.append(node('text',{x,y,fill,'font-size':size,'font-family':'Arial,sans-serif'},t));
+  const process=get('process'), upper=get('upper'), lower=get('lower'), svg=get('transition-chart');
+  let animation=null, selection=null;
+  const cancel=()=>{if(animation){animation.cancel();animation=null;}get('animation-status').textContent='La flecha indica el cambio entre estados; el punto luminoso representa el fotón.';};
+  function updateTransition(){
+    cancel();
+    const high=Number(upper.value),low=Number(lower.value), emission=process.value==='emission';
+    const valid=high>low;
+    get('play-transition').disabled=!valid;
+    if(!valid){get('transition-status').textContent='Elegí un nivel de mayor energía con n mayor que el del nivel de menor energía.';['photon-energy','photon-wave','photon-frequency'].forEach(id=>get(id).textContent='—');svg.replaceChildren(node('title',{id:'transition-title'},'Selección de niveles no válida'),node('desc',{id:'transition-desc'},'El nivel superior debe tener n mayor.'));text(svg,'Para una transición, el nivel superior debe tener n mayor.',35,170);selection=null;return;}
+    const initial=emission?high:low,final=emission?low:high,e=energy(high)-energy(low),wave=1240/e,f=e*1.602e-19/6.626e-34;
+    selection={initial,final,e,wave,emission};
+    get('photon-energy').textContent=fmt(e,3)+' eV';get('photon-wave').textContent=fmt(wave,1)+' nm';
+    const exponent=Math.floor(Math.log10(f)),sup={13:'¹³',14:'¹⁴',15:'¹⁵'};
+    get('photon-frequency').textContent=fmt(f/10**exponent,2)+' × 10'+(sup[exponent]||'^'+exponent)+' Hz';
+    const region=wave<400?'ultravioleta':wave<=700?'visible':'infrarroja';
+    const series=low===1?'Lyman':low===2?'Balmer':'Paschen';
+    get('transition-status').textContent=(emission?'Emisión: ':'Absorción: ')+initial+' → '+final+'. El átomo '+(emission?'pierde ':'gana ')+fmt(e,3)+' eV. Radiación '+region+'. Transición de la serie de '+series+'.'+(!emission?' Requiere un átomo inicialmente en n = '+initial+'.':'');
+    get('play-transition').textContent=emission?'Representar emisión':'Representar absorción';
+    svg.replaceChildren(node('title',{id:'transition-title'},(emission?'Emisión':'Absorción')+' '+initial+' → '+final),node('desc',{id:'transition-desc'},'Las alturas indican energía; la flecha muestra el cambio de estado. Los niveles excitados están ampliados en el panel lateral.'));
+    // Dos escalas explícitas: E completa y ampliación de estados excitados.
+    const yMain=n=>55-energy(n)*17, yZoom=n=>72-energy(n)*59;
+    text(svg,'Energía (eV)',15,25);line(svg,70,45,70,306,'#8a9dac',1);
+    text(svg,'0 · ionización',85,49,'#596b76',12);line(svg,70,55,290,55,'#8a9dac',1);
+    [1,2,3,4,5,6].forEach(n=>{const y=yMain(n);line(svg,115,y,220,y,n===initial||n===final?'#ac741c':'#8095a4',n===initial||n===final?3:1);if(n<=2)text(svg,'n='+n+' · '+fmt(energy(n),2),85,y+22,'#1d3557',12);});
+    text(svg,'Escala completa',85,323,'#596b76',12);
+    text(svg,'Ampliación: n ≥ 2',335,25,'#596b76',13);line(svg,310,45,310,300,'#d8d2c6',1);
+    const labelY={2:273,3:173,4:141,5:114,6:87};
+    [2,3,4,5,6].forEach(n=>{const y=yZoom(n);line(svg,340,y,435,y,n===initial||n===final?'#ac741c':'#8095a4',n===initial||n===final?3:1);line(svg,435,y,472,labelY[n]-4,'#8095a4',1);text(svg,'n='+n+'  '+fmt(energy(n),2)+' eV',480,labelY[n],'#1d3557',13);});
+    const origin=low===1?{x:255,y:yMain(initial)}:{x:414,y:yZoom(initial)},end=low===1?{x:255,y:yMain(final)}:{x:414,y:yZoom(final)};
+    const col=color(wave),direction=emission?1:-1;
+    line(svg,origin.x,origin.y,end.x,end.y,col,4);svg.append(node('polygon',{points:(end.x-7)+','+(end.y-direction*12)+' '+end.x+','+end.y+' '+(end.x+7)+','+(end.y-direction*12),fill:col}));
+    text(svg,'Fotón: '+fmt(wave,1)+' nm',448,302,col,15);text(svg,region,448,325,'#596b76',13);
+    svg.append(node('circle',{id:'photon-dot',cx:emission?465:640,cy:280,r:7,fill:col,opacity:0}));
+  }
+  [process,upper,lower].forEach(c=>c.addEventListener('change',updateTransition));
+  get('play-transition').addEventListener('click',()=>{
+    if(!selection)return;cancel();const dot=get('photon-dot'),em=selection.emission;
+    get('animation-status').textContent=em?'El átomo pasa a menor energía y emite un fotón.':'El fotón llega y es absorbido: el átomo pasa a mayor energía.';
+    if(matchMedia('(prefers-reduced-motion: reduce)').matches){dot.setAttribute('opacity','1');return;}
+    animation=dot.animate([{opacity:0,transform:'translateX(0px)'},{opacity:1,transform:'translateX(0px)',offset:.15},{opacity:1,transform:'translateX('+(em?175:-175)+'px)',offset:.85},{opacity:0,transform:'translateX('+(em?175:-175)+'px)'}],{duration:1600,fill:'none'});
+  });
+  const datasets={H:{name:'hidrógeno',lines:[410.2,434.0,486.1,656.3]},Na:{name:'sodio',lines:[589.0,589.6]},He:{name:'helio',lines:[447.1,501.6,587.6,667.8]}};
+  function updateSpectrum(){
+    const data=datasets[get('element').value],kind=get('spectrum-kind').value,chart=get('spectrum-chart'),x=w=>65+(w-400)/300*600;
+    const absorption=kind==='absorption',continuous=kind==='continuous';
+    chart.replaceChildren(node('title',{id:'spectrum-title'},(continuous?'Continuo de comparación':absorption?'Absorción de ':'Emisión de ')+(continuous?'':data.name)));
+    const defs=node('defs'),gradient=node('linearGradient',{id:'visible-gradient'});
+    ['#6550a3','#23669b','#368d6a','#c5ab25','#b84636'].forEach((c,i)=>gradient.append(node('stop',{offset:i*25+'%','stop-color':c})));defs.append(gradient);chart.append(defs);
+    text(chart,'Intensidad relativa (esquemática)',18,23,'#596b76',12);
+    chart.append(node('rect',{x:65,y:40,width:600,height:58,fill:absorption||continuous?'url(#visible-gradient)':'#111923'}));
+    if(!continuous)data.lines.forEach(w=>line(chart,x(w),42,x(w),96,absorption?'#111923':color(w),absorption?3:4));
+    line(chart,65,178,665,178,'#8a9dac',1);line(chart,65,110,65,178,'#8a9dac',1);
+    text(chart,'1',43,120,'#596b76',11);text(chart,'0',43,180,'#596b76',11);
+    if(continuous)line(chart,65,119,665,119,'#1d3557',2);
+    else if(absorption){line(chart,65,119,665,119,'#1d3557',1);data.lines.forEach(w=>line(chart,x(w),119,x(w),175,'#1d3557',2));}
+    else data.lines.forEach(w=>line(chart,x(w),176,x(w),119,color(w),2));
+    [400,450,500,550,600,650,700].forEach(w=>{line(chart,x(w),178,x(w),183,'#8a9dac',1);text(chart,String(w),x(w)-12,197,'#596b76',11);});
+    text(chart,'λ (nm)',603,212,'#596b76',11);
+    get('line-values').replaceChildren(...(continuous?[]:data.lines.map(w=>{const li=document.createElement('li');li.textContent=fmt(w,1)+' nm';return li;})));
+    get('spectrum-description').textContent=continuous?'Continuo ideal con intensidad uniforme para comparar; no representa una fuente térmica medida.':(absorption?'Se reduce la intensidad en ':'Aparecen picos en ')+data.lines.length+' posiciones seleccionadas de '+data.name+'.'+(get('element').value==='Na'?' El doblete de 589,0 y 589,6 nm casi se superpone a esta escala.':'')+(absorption&&get('element').value==='H'?' Estas líneas de Balmer requieren población en n = 2.':'');
+  }
+  ['element','spectrum-kind'].forEach(id=>get(id).addEventListener('change',updateSpectrum));
+  get('exit-quiz').addEventListener('submit',e=>{e.preventDefault();const correct=get('quiz-answer').value==='down';get('quiz-result').textContent=correct?'Correcto: el átomo pierde energía; el fotón lleva una cantidad positiva igual a la diferencia entre estados.':'Revisá el balance: para emitir un fotón, el átomo debe perder energía y terminar en un estado de menor energía.';});
+  updateTransition();updateSpectrum();
+})();
+</script>
+</body>
+</html>

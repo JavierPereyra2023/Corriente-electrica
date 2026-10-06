@@ -11,6 +11,7 @@ import {RayleighDispersion} from './rayleigh-dispersion.jsx';
 import {ModelosLuzCuantica} from './modelos-luz-visual.jsx';
 import {LaboratorioFotoelectrico} from './laboratorio-fotoelectrico.jsx';
 import {CavidadCuerpoNegro} from './cavidad-cuerpo-negro.jsx';
+import {SaltosCuanticosBohr} from './saltos-cuanticos.jsx';
 
 function PotenciaEnergia({format = 'wide'}) {
   const frame = useCurrentFrame();
@@ -20,6 +21,7 @@ function PotenciaEnergia({format = 'wide'}) {
 }
 function Root() {
   return <>
+    <Composition id="SaltosCuanticosBohr" component={SaltosCuanticosBohr} durationInFrames={720} fps={30} width={1920} height={1080}/>
     <Composition id="CavidadCuerpoNegro" component={CavidadCuerpoNegro} durationInFrames={720} fps={30} width={1200} height={1200}/>
     <Composition id="LaboratorioFotoelectrico" component={LaboratorioFotoelectrico} durationInFrames={720} fps={30} width={1200} height={1200}/>
     <Composition id="ModelosLuzCuantica" component={ModelosLuzCuantica} durationInFrames={720} fps={30} width={1200} height={1200}/>

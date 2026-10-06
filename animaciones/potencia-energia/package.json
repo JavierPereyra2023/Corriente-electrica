@@ -11,7 +11,9 @@
     "render:ondas": "remotion render src/index.jsx OndasMecanicas ../../assets/ondas/ondas-mecanicas.mp4 --codec=h264 --crf=19 --concurrency=4",
     "still:ondas": "remotion still src/index.jsx OndasMecanicas ../../assets/ondas/ondas-mecanicas.png --frame=330",
     "render:luz-cuantica": "remotion render src/index.jsx ModelosLuzCuantica ../../assets/luz-cuantica/modelos-luz-maxwell-foton.mp4 --codec=h264 --crf=19 --concurrency=4",
-    "still:luz-cuantica": "remotion still src/index.jsx ModelosLuzCuantica ../../assets/luz-cuantica/modelos-luz-maxwell-foton.png --frame=615"
+    "still:luz-cuantica": "remotion still src/index.jsx ModelosLuzCuantica ../../assets/luz-cuantica/modelos-luz-maxwell-foton.png --frame=615",
+    "render:bohr": "remotion render src/index.jsx SaltosCuanticosBohr ../../assets/bohr/saltos-cuanticos.mp4 --codec=h264 --crf=19 --concurrency=4 --muted",
+    "still:bohr": "remotion still src/index.jsx SaltosCuanticosBohr ../../assets/bohr/saltos-cuanticos.png --frame=425"
   },
   "dependencies": {
     "@remotion/cli": "4.0.513",
