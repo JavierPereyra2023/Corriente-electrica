@@ -1,4 +1,5 @@
 import React from 'react';
+import {LentesLaserRealista} from './lentes-laser.jsx';
 import {LentesRayos} from './lentes-rayos.jsx';
 import {YoungDobleRendija} from './young-doble-rendija.jsx';
 import {RayleighSecuencia} from './rayleigh-secuencia.jsx';
@@ -23,6 +24,7 @@ function PotenciaEnergia({format = 'wide'}) {
 }
 function Root() {
   return <>
+    <Composition id="LentesLaserRealista" component={LentesLaserRealista} durationInFrames={960} fps={30} width={1536} height={1024}/>
     <Composition id="LentesRayos" component={LentesRayos} durationInFrames={900} fps={30} width={1800} height={880}/>
     <Composition id="ComptonDispersion" component={ComptonDispersion} durationInFrames={720} fps={30} width={1920} height={1080}/>
     <Composition id="SaltosCuanticosBohr" component={SaltosCuanticosBohr} durationInFrames={720} fps={30} width={1920} height={1080}/>

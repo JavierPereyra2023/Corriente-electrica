@@ -25,6 +25,8 @@
     .ray-lab{display:block;width:100%;height:780px;border:1px solid var(--line);background:var(--page)}
     @media(max-width:760px){.ray-lab{height:900px}}
     @media print{.ray-lab,.interactive-figure{display:none}}
+    .video-figure video{display:block;width:100%;height:auto;background:#06090c}.video-links{margin-top:10px;font-size:.9rem}.video-figure .video-print{display:none}
+    @media print{.video-figure video,.video-links{display:none}.video-figure .video-print{display:block}}
   </style>
 </head>
 <body><main><article class="page">
@@ -86,6 +88,19 @@
     </ol>
     <figure class="figure"><div class="diagram-scroll" tabindex="0" role="region" aria-label="Rayos en una lente divergente con desplazamiento horizontal"><img src="../assets/lentes/rayos-divergente.svg" width="900" height="440" alt="Tres rayos atraviesan una lente divergente y se separan; sus prolongaciones hacia atrás localizan una imagen virtual derecha y menor del lado del objeto"></div><figcaption><strong>Figura 2.</strong> Los rayos emergentes no se cruzan entre sí; sus prolongaciones sí. Para un objeto real delante de esta lente, la imagen queda entre O y F izq.: virtual, derecha y menor.</figcaption></figure>
     <p><strong>Compará:</strong> la convergente desvía un rayo paralelo hacia el eje; la divergente lo desvía alejándolo del eje. Mirá siempre la dirección de salida, además de la forma de la lente.</p>
+    <h3>5.1. Video: dos láseres y dos tipos de lente</h3>
+    <p>Observá los haces verde y azul, que llegan paralelos al eje. En la primera escena se reúnen después de atravesar la lente convergente. En la segunda, la lente divergente los separa: seguí sus prolongaciones discontinuas para ubicar el foco virtual.</p>
+    <figure class="figure video-figure">
+      <video controls playsinline preload="metadata" width="1536" height="1024" poster="../assets/lentes/lentes-laser-poster.png" aria-label="Video de 32 segundos: geometría de haces láser verde y azul en una lente convergente y una divergente" aria-describedby="lentes-video-caption">
+        <source src="../assets/lentes/lentes-laser.mp4" type="video/mp4">
+        Tu navegador no puede reproducir este video. <a href="../assets/lentes/lentes-laser.mp4">Abrí el MP4 de las lentes.</a>
+      </video>
+      <img class="video-print" src="../assets/lentes/lentes-laser-poster.png" width="1536" height="1024" alt="Fotograma del video: un láser verde y uno azul llegan paralelos al eje, atraviesan una lente convergente y se cruzan en su foco real">
+      <figcaption id="lentes-video-caption"><strong>Video · Geometría de rayos con láser verde y azul.</strong> Recreación visual de laboratorio realizada con Remotion y fondos generados; no es una filmación de un experimento. Los haces se dibujan por etapas para poder seguirlos: la secuencia no representa el tiempo real de viaje de la luz. Las prolongaciones discontinuas son construcciones geométricas, no luz que retrocede.</figcaption>
+      <p class="video-links"><a href="../assets/lentes/lentes-laser.mp4" download>Descargar el video MP4</a> · 32 segundos · sin audio · también podés verlo en pantalla completa.</p>
+    </figure>
+    <div class="teacher-note"><strong>Cómo interpretar el video:</strong> usamos una lente delgada ideal y simplificamos la dispersión cromática. Por eso ambos colores comparten un foco en el modelo; una lente real de vidrio puede desviar y enfocar de manera algo diferente la luz verde y la azul. La visibilidad lateral de los haces es un recurso de simulación. Este video es para observar: <strong>no dirijas láseres a los ojos ni intentes reproducir el montaje sin equipamiento y supervisión especializados.</strong></div>
+    <details><summary>Descripción del video para repasar</summary><p><strong>0–16 segundos · Convergente:</strong> una lente más gruesa en el centro recibe primero un haz verde y luego uno azul, ambos paralelos al eje. Al salir se dirigen hacia el eje, se reúnen en el foco real del lado de salida y continúan después del cruce.</p><p><strong>16–32 segundos · Divergente:</strong> una lente más delgada en el centro recibe los mismos haces paralelos. Al salir se alejan del eje. Sus prolongaciones discontinuas hacia atrás se encuentran en el foco virtual del lado de entrada; la luz efectiva continúa hacia la derecha.</p></details>
   </section>
   <section>
     <h2><span>6</span> Real o virtual: ¿dónde se cruza la luz?</h2>

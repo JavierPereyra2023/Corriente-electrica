@@ -5,6 +5,10 @@
   "type": "module",
   "scripts": {
     "studio": "remotion studio src/index.jsx --no-open",
+    "studio:lentes": "remotion studio src/index.jsx --no-open --public-dir=../../assets",
+    "render:lentes-laser": "remotion render src/index.jsx LentesLaserRealista ../../assets/lentes/lentes-laser.mp4 --public-dir=../../assets --codec=h264 --crf=20 --pixel-format=yuv420p --concurrency=3 --muted",
+    "still:lentes-laser": "remotion still src/index.jsx LentesLaserRealista ../../assets/lentes/lentes-laser-poster.png --public-dir=../../assets --frame=420",
+    "check:lentes-laser": "node scripts/check-lentes-laser.mjs",
     "build:web": "node scripts/build-web.mjs",
     "render": "remotion render src/index.jsx InfografiaPotenciaEnergia ../../assets/potencia-energia/infografia-potencia-energia.mp4 --codec=h264 --crf=19 --concurrency=4",
     "still": "remotion still src/index.jsx InfografiaPotenciaEnergia ../../assets/potencia-energia/infografia-potencia-energia.png --frame=300",
