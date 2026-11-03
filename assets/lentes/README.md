@@ -4,7 +4,7 @@
 
 Prompt de la imagen: ilustración editorial de un banco óptico de aula secundaria argentina, horizontal 3:2, luz suave, tonos marfil, azul oscuro y dorado; lente biconvexa gruesa en el centro y lente bicóncava delgada en el centro, separadas en soportes; una lupa sobre un dibujo de una hoja. Materiales de vidrio realistas, sin personas, sin láser, sin concentración de luz solar, sin etiquetas, fórmulas, logotipos ni diagramas de rayos.
 
-Los cuatro SVG son dibujos vectoriales originales calculados con el modelo paraxial de lente delgada. Se dibujan rayos reales continuos y prolongaciones discontinuas. Las coordenadas son unidades del dibujo, no medidas de un experimento. El color identifica cada construcción, no distintas frecuencias de luz.
+Los cuatro SVG son dibujos vectoriales originales calculados con el modelo paraxial de lente delgada. Se dibujan rayos reales continuos y prolongaciones discontinuas. Las coordenadas son unidades del dibujo, no medidas de un experimento. El color identifica cada construcción, no distintas frecuencias de luz. Cada SVG incluye una leyenda de los rayos principales y un círculo violeta en el punto de encuentro (continuo si es real, discontinuo si es virtual). `rayos-convergente.svg` muestra el paso 3 (tres rayos y su cruce) y `imagen-convergente.svg`, la imagen ya construida.
 
 `trazado-interactivo.html` funciona localmente sin dependencias ni conexión: tres casos, cinco etapas y controles manuales. Comparte la geometría con la composición Remotion `LentesRayos` de 30 segundos, registrada en `animaciones/potencia-energia/src/index.jsx`. La sucesión de trazos es un recurso didáctico, no el tiempo de viaje de la luz.
 

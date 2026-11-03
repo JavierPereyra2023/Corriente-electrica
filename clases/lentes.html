@@ -20,11 +20,15 @@
     .definition,.example,.teacher-note{margin:16px 0;padding:14px 16px;border-left:5px solid var(--gold);background:var(--soft)}.teacher-note{background:var(--warm);border-left-color:#b17a10}.formula-box{margin:16px 0;padding:16px;border:1px solid #bbcdd8;background:#f5f9fb}.formula{padding:14px;overflow-x:auto;text-align:center;color:#fff;background:#101820;font-size:1.2rem}.formula mjx-container{margin:0!important}
     .figure{margin:20px 0;padding:12px;border:1px solid var(--line);background:#fbfaf6}.figure img{display:block;width:100%;height:auto}.figure figcaption{margin-top:10px;color:var(--muted);font-size:.91rem;line-height:1.5}.figure figcaption strong{color:var(--accent)}.cover{padding:0;border:0}.cover img{aspect-ratio:3/2;object-fit:cover}.diagram-scroll{overflow-x:auto;scrollbar-color:#b17a10 #eee7d9}.diagram-scroll img{min-width:640px}.scroll-hint{color:var(--muted);font:.82rem/1.5 Arial,sans-serif}.table-scroll{overflow-x:auto}table{width:100%;border-collapse:collapse;font:.9rem/1.5 Arial,sans-serif}th,td{padding:10px;border:1px solid var(--line);text-align:left;vertical-align:top}th{background:#ede7d9}.table-scroll table{min-width:550px}caption{margin-bottom:9px;text-align:left;color:var(--muted)}
     .lab-link{display:block;margin:16px 0;padding:16px 20px;color:#fff;background:var(--accent);text-decoration:none;font:700 1rem/1.5 Arial,sans-serif;border-bottom:5px solid var(--gold)}.lab-link small{display:block;font-weight:400;margin-top:5px}.exercises li{margin:20px 0}.work-line{display:block;min-height:48px;border-bottom:1px solid #c9c1b4}.drawing-space{display:block;height:110px;border:1px dashed #bcb3a2;margin-top:10px;background:#fffdf7}details{margin:18px 0;border:1px solid var(--line);padding:14px 16px;background:#fbfaf6}summary{cursor:pointer;color:var(--accent);font-weight:bold}details[open] summary{margin-bottom:12px}footer{margin-top:32px;border-top:1px solid var(--line);padding-top:16px;color:var(--muted);font-size:.9rem}
-    @media(max-width:760px){main{margin:0;padding:0}.page{padding:30px 18px;border:0;box-shadow:none}h1{font-size:1.95rem}h2{font-size:1.2rem}.meta,.grid{grid-template-columns:1fr}.doc-header{padding-left:20px}.figure{padding:8px;margin-left:0;margin-right:0}.cover{padding:0}.formula{font-size:1rem;padding:14px 5px}}
+    @media(max-width:760px){main{margin:0;padding:0}.page{padding:30px 18px;border:0;box-shadow:none}h1{font-size:1.95rem}h2{font-size:1.2rem}.meta,.grid,.ray-key{grid-template-columns:1fr}.doc-header{padding-left:20px}.figure{padding:8px;margin-left:0;margin-right:0}.cover{padding:0}.formula{font-size:1rem;padding:14px 5px}}
     @media print{@page{size:A4;margin:16mm}body{background:#fff;font-size:10.5pt}main{width:auto;margin:0;padding:0}.page{padding:0;border:0;box-shadow:none;background:#fff}.chapter-nav,.lab-link,.scroll-hint,.cover{display:none}h1{font-size:25pt}h2{break-after:avoid}.figure,.definition,.example,.teacher-note,.formula-box,tr{break-inside:avoid}.diagram-scroll,.table-scroll{overflow:visible}.diagram-scroll img{min-width:0;width:100%}.table-scroll table{min-width:0}details{display:none}.work-line{min-height:12mm}.drawing-space{height:25mm}*{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
     .ray-lab{display:block;width:100%;height:780px;border:1px solid var(--line);background:var(--page)}
     @media(max-width:760px){.ray-lab{height:900px}}
     @media print{.ray-lab,.interactive-figure{display:none}}
+    .lens-card{border-top:5px solid var(--card-accent,var(--accent))}.lens-card h3{display:flex;align-items:center;gap:10px;margin-top:0}.lens-card svg{flex:none;width:22px;height:40px}.lens-conv{--card-accent:#216f98}.lens-div{--card-accent:#b17a10}
+    .ray-key{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:14px 0;padding:0;list-style:none;font:.92rem/1.45 Arial,sans-serif}.ray-key li{display:flex;align-items:center;gap:12px;margin:0;padding:8px 12px;border:1px solid var(--line);background:#fbfaf6}.ray-key i{flex:none;width:34px;height:4px;border-radius:2px;background:var(--ray)}.ray-key .dashed{background:repeating-linear-gradient(90deg,#56616a 0 8px,transparent 8px 14px)}
+    .tag{display:inline-block;margin-right:6px;padding:1px 8px;border-radius:999px;font:700 .74rem/1.6 Arial,sans-serif;letter-spacing:.03em;text-transform:uppercase;white-space:nowrap}.tag-real{color:#fff;background:#216f98}.tag-virtual{color:#5b3a70;background:#efe6f4;border:1px dashed #7b4b95}.tag-none{color:var(--muted);background:#ede7d9}
+    tbody tr:nth-child(even){background:#fbfaf6}tbody tr.row-divider td{border-top:3px solid var(--accent)}.exercises li::marker{color:var(--accent);font-weight:700}.diagram-scroll{border:1px solid #e6dcc7;background:#fffdf7}
     .video-figure video{display:block;width:100%;height:auto;background:#06090c}.video-links{margin-top:10px;font-size:.9rem}.video-figure .video-print{display:none}
     @media print{.video-figure video,.video-links{display:none}.video-figure .video-print{display:block}}
   </style>
@@ -50,8 +54,8 @@
     <p>Podemos imaginar una lente como una organizadora de direcciones: algunos haces se reúnen y otros se separan. La comparación tiene un límite: la lente no decide ni empuja objetos; su efecto se explica por la refracción.</p>
     <div class="teacher-note"><strong>El modelo de esta clase:</strong> lentes delgadas de vidrio o plástico en aire, con índice de refracción mayor que el del aire; luz próxima al eje y ángulos pequeños. Representamos las dos refracciones mediante un único cambio de dirección en el plano central de la lente. Es una aproximación útil.</div>
     <div class="grid">
-      <div class="card"><h3>Lente convergente</h3><p>Es más gruesa en el centro que en los bordes. Un haz que llega paralelo al eje se reúne, después de atravesarla, en un foco real.</p></div>
-      <div class="card"><h3>Lente divergente</h3><p>Es más delgada en el centro que en los bordes. Un haz que llega paralelo al eje se separa al salir, como si procediera de un foco virtual anterior a la lente.</p></div>
+      <div class="card lens-card lens-conv"><h3><svg viewBox="0 0 22 40" aria-hidden="true"><path d="M11 1 Q-1 20 11 39 Q23 20 11 1Z" fill="#dceef4" stroke="#216f98" stroke-width="2"/></svg>Lente convergente</h3><p>Es más gruesa en el centro que en los bordes. Un haz que llega paralelo al eje se reúne, después de atravesarla, en un foco real.</p></div>
+      <div class="card lens-card lens-div"><h3><svg viewBox="0 0 22 40" aria-hidden="true"><path d="M2 1 Q10 20 2 39 L20 39 Q12 20 20 1Z" fill="#dceef4" stroke="#b17a10" stroke-width="2"/></svg>Lente divergente</h3><p>Es más delgada en el centro que en los bordes. Un haz que llega paralelo al eje se separa al salir, como si procediera de un foco virtual anterior a la lente.</p></div>
     </div>
     <p><strong>Atención:</strong> “convergente” no significa “siempre agranda”. La imagen también depende de dónde está el objeto.</p>
   </section>
@@ -65,7 +69,13 @@
       <li><strong>Objeto e imagen:</strong> usaremos una flecha como objeto. Para localizar la punta de su imagen, seguiremos rayos que salen de la punta del objeto.</li>
     </ul>
     <div class="definition"><strong>Cómo leer todos los esquemas:</strong> la luz avanza de izquierda a derecha. Las líneas continuas con flechas son rayos de luz. Las líneas discontinuas son <strong>prolongaciones geométricas</strong>: ayudan a localizar una imagen virtual; no representan luz viajando hacia atrás.</div>
-    <p>Los tres colores permiten seguir cada rayo antes y después de la lente; no representan tres colores físicos de la luz. Los dibujos son esquemáticos.</p>
+    <p>Los colores permiten seguir cada rayo antes y después de la lente; no representan colores físicos de la luz. Cada esquema repite esta clave en un recuadro y marca con un círculo violeta el punto donde se encuentran los rayos o sus prolongaciones. Los dibujos son esquemáticos.</p>
+    <ul class="ray-key" aria-label="Clave de colores de los esquemas">
+      <li><i style="--ray:#b44b29"></i><span><strong>Rayo 1:</strong> llega paralelo al eje.</span></li>
+      <li><i style="--ray:#216f98"></i><span><strong>Rayo 2:</strong> pasa por el centro óptico O.</span></li>
+      <li><i style="--ray:#588044"></i><span><strong>Rayo 3:</strong> rayo focal; sale paralelo al eje.</span></li>
+      <li><i class="dashed"></i><span><strong>Discontinua:</strong> prolongación geométrica, no luz.</span></li>
+    </ul>
   </section>
   <section>
     <h2><span>4</span> Tres rayos en una convergente</h2>
@@ -75,7 +85,7 @@
       <li><strong>Por el centro óptico O:</strong> continúa aproximadamente en línea recta.</li>
       <li><strong>Por F izq. antes de llegar a la lente:</strong> al salir, queda paralelo al eje.</li>
     </ol>
-    <figure class="figure"><div class="diagram-scroll" tabindex="0" role="region" aria-label="Esquema ampliable mediante desplazamiento: rayos en una lente convergente"><img src="../assets/lentes/rayos-convergente.svg" width="900" height="440" alt="Tres rayos parten de la punta de un objeto y atraviesan una lente convergente: paralelo y luego por el foco derecho, central sin desviarse, y por el foco izquierdo y luego paralelo"></div><figcaption><strong>Figura 1.</strong> Dos rayos bastan para encontrar un punto imagen. El tercero permite comprobar la construcción: los tres deben coincidir en el mismo punto en este modelo.</figcaption></figure>
+    <figure class="figure"><div class="diagram-scroll" tabindex="0" role="region" aria-label="Esquema ampliable mediante desplazamiento: rayos en una lente convergente"><img src="../assets/lentes/rayos-convergente.svg" width="900" height="440" alt="Tres rayos parten de la punta de un objeto y atraviesan una lente convergente: paralelo y luego por el foco derecho, central sin desviarse, y por el foco izquierdo y luego paralelo. Un círculo marca el punto donde se cruzan, debajo del eje"></div><figcaption><strong>Figura 1.</strong> Dos rayos bastan para encontrar un punto imagen. El tercero permite comprobar la construcción: los tres coinciden en el mismo punto, marcado con un círculo. Después del cruce, la luz sigue avanzando.</figcaption></figure>
     <p class="scroll-hint">En celular, deslizá el esquema horizontalmente para leer las etiquetas sin achicarlo.</p>
     <div class="teacher-note"><strong>No todos los rayos pasan por el foco:</strong> esa regla corresponde al rayo que llega paralelo al eje. El rayo central, por ejemplo, sigue otra trayectoria. Si el objeto está entre F izq. y la lente, el tercer rayo se elige de modo que la <strong>prolongación de su trayectoria incidente</strong> pase por F izq.; al salir también queda paralelo. Es el caso de la lupa.</div>
   </section>
@@ -114,12 +124,12 @@
     <h2><span>7</span> La posición del objeto cambia la imagen</h2>
     <p>En esta tabla, <strong>2F</strong> señala un punto ubicado al doble de la distancia focal desde O; no es otro foco. Todos los casos corresponden a un objeto real.</p>
     <div class="table-scroll" tabindex="0" role="region" aria-label="Tabla comparativa de imágenes según la posición del objeto"><table><caption>Leé cada fila siguiendo el recorrido objeto → lente → imagen.</caption><thead><tr><th>Lente y ubicación del objeto</th><th>¿Dónde queda la imagen?</th><th>¿Cómo es?</th></tr></thead><tbody>
-      <tr><td>Convergente: más allá de 2F izq.</td><td>Entre F der. y 2F der.</td><td>Real, invertida, menor.</td></tr>
-      <tr><td>Convergente: en 2F izq.</td><td>En 2F der.</td><td>Real, invertida, de igual tamaño.</td></tr>
-      <tr><td>Convergente: entre F izq. y 2F izq.</td><td>Más allá de 2F der.</td><td>Real, invertida, mayor.</td></tr>
-      <tr><td>Convergente: en F izq.</td><td>No hay imagen a distancia finita.</td><td>Los rayos de cada punto salen paralelos entre sí.</td></tr>
-      <tr><td>Convergente: entre F izq. y O</td><td>Del lado del objeto, más lejos de O que el objeto.</td><td>Virtual, derecha, mayor.</td></tr>
-      <tr><td>Divergente: cualquier posición delante de la lente</td><td>Entre F izq. y O.</td><td>Virtual, derecha, menor.</td></tr>
+      <tr><td>Convergente: más allá de 2F izq.</td><td>Entre F der. y 2F der.</td><td><span class="tag tag-real">Real</span>invertida, menor.</td></tr>
+      <tr><td>Convergente: en 2F izq.</td><td>En 2F der.</td><td><span class="tag tag-real">Real</span>invertida, de igual tamaño.</td></tr>
+      <tr><td>Convergente: entre F izq. y 2F izq.</td><td>Más allá de 2F der.</td><td><span class="tag tag-real">Real</span>invertida, mayor.</td></tr>
+      <tr><td>Convergente: en F izq.</td><td>No hay imagen a distancia finita.</td><td><span class="tag tag-none">Sin imagen</span>los rayos de cada punto salen paralelos entre sí.</td></tr>
+      <tr><td>Convergente: entre F izq. y O</td><td>Del lado del objeto, más lejos de O que el objeto.</td><td><span class="tag tag-virtual">Virtual</span>derecha, mayor.</td></tr>
+      <tr class="row-divider"><td>Divergente: cualquier posición delante de la lente</td><td>Entre F izq. y O.</td><td><span class="tag tag-virtual">Virtual</span>derecha, menor.</td></tr>
     </tbody></table></div>
     <p><strong>Para interpretar:</strong> una lente convergente puede producir una imagen mayor y real, o mayor y virtual. El tamaño, por sí solo, no permite decidir si una imagen puede proyectarse.</p>
   </section>
