@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Microscopio compuesto · Laboratorio de rayos</title><link rel="icon" href="data:,"><style>
+:root{color-scheme:light;font-family:Arial,sans-serif;color:#1d3557;background:#fffdf7;--ink:#1d3557;--gold:#b17a10;--line:#d6c9af}*{box-sizing:border-box}body{margin:0;padding:14px}h1{font-size:1.3rem;margin:0 0 8px}h2{font-size:1.08rem;margin:0 0 12px}p{font-size:.95rem;line-height:1.5;margin:8px 0}a{color:var(--ink)}button,input,select{font:inherit}button,select{padding:9px 12px;border:1px solid var(--ink);border-radius:3px;background:#edf3f7;color:var(--ink)}button{cursor:pointer}button:focus-visible,input:focus-visible,a:focus-visible,select:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--gold);outline-offset:3px}button:disabled{opacity:.6;cursor:default}.stage-wrap{overflow-x:auto;border:1px solid var(--line);background:#fffdf7}.stage{min-width:680px}.stage svg{width:100%;height:auto;display:block}.controls{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:12px 0}.controls #play{background:var(--ink);color:white}.controls input[type=range]{flex:1;min-width:140px;accent-color:var(--ink)}output{font-variant-numeric:tabular-nums;font-size:.9rem}.steps{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}.steps button{background:#fffdf7;font-size:.85rem}.steps button[aria-current=step]{border-bottom:4px solid var(--gold)}.description,.notice{padding:10px 12px;background:#fff4cf;border-left:4px solid var(--gold)}.notice{font-size:.9rem}.error{border-left-color:#a23728;background:#fff0eb;color:#812518}.settings{margin:14px 0;border:1px solid var(--line);padding:14px;background:#fbfaf6}.settings-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.parameter{padding:10px;background:#fffdf7;border:1px solid var(--line);font-size:.88rem}.parameter label{display:block;line-height:1.5;min-height:2.8em}.parameter input[type=number]{display:block;width:100%;margin:6px 0;padding:7px;color:var(--ink);border:1px solid #8997a0;background:#fff}.parameter input[type=range]{width:100%;accent-color:var(--ink)}.preset-row,.options{display:flex;gap:10px 16px;flex-wrap:wrap;align-items:center;margin:12px 0}.preset-row select{max-width:100%;flex:1}.options label{display:inline-flex;align-items:center;gap:5px;font-size:.88rem}.options input{accent-color:var(--ink)}.options select{font-size:.88rem}.readouts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:12px 0}.readout{border:1px solid var(--line);padding:12px;background:#edf3f7;font-size:.88rem}.readout strong{display:block;margin-bottom:7px}.readout p{font-size:.88rem;margin:4px 0}.readout .value{font-weight:bold;font-variant-numeric:tabular-nums}.equations{font-size:.95rem;line-height:1.8}.fine{font-size:.83rem;color:#52616b}.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}.print-stage{display:none}[hidden]{display:none!important}details{border-top:1px solid var(--line);padding:12px 0;font-size:.9rem}summary{cursor:pointer;font-weight:bold}code{overflow-wrap:anywhere}.noscript{padding:12px;border:1px solid #a23728}
+@media(max-width:700px){.settings-grid,.readouts{grid-template-columns:repeat(2,minmax(0,1fr))}.stage{min-width:900px}}
+@media(max-width:450px){body{padding:8px}h1{font-size:1.1rem}.settings{padding:10px}.settings-grid,.readouts{grid-template-columns:1fr}.parameter label{min-height:0}.controls button{padding:9px}.controls input[type=range]{flex-basis:100%}.steps button{padding:8px}.description{font-size:.88rem}.options{align-items:flex-start}.preset-row{align-items:flex-start;flex-direction:column}.preset-row select{width:100%}}
+@media print{@page{size:A4;margin:12mm}body{padding:0}.stage-wrap,.controls,.steps,.screen-only,.options,.preset-row,.parameter input{display:none}.settings-grid{display:none}.print-stage{display:block;width:100%;height:auto}.readouts{grid-template-columns:repeat(3,minmax(0,1fr))}.settings{padding:0;border:0}.readout,details,.print-stage{break-inside:avoid}*{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
+</style></head><body>
+<h1>Microscopio compuesto: dos lentes, una construcción calculada</h1>
+<p class="screen-only">El esquema empieza completo y detenido. Cambiá una magnitud o elegí una etapa. Las posiciones se calculan con lentes delgadas; en celular podés desplazar el plano horizontalmente.</p>
+<div class="stage-wrap" tabindex="0" role="region" aria-label="Plano óptico desplazable del microscopio"><div id="stage" class="stage"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 820" role="img" aria-labelledby="micro-title micro-desc"><title id="micro-title">5 · Imagen virtual final</title><desc id="micro-desc">Modelo calculado de lentes delgadas. La imagen intermedia está entre el foco objeto y el ocular. Los rayos emergentes divergen y sus prolongaciones coinciden en una imagen virtual final finita. Entre f1 y 2f1, el objetivo por sí solo forma una imagen real, invertida y aumentada. Algunos rayos tienen inclinación grande: las ecuaciones siguen mostrando el modelo paraxial ideal, cuya precisión física disminuye fuera de ángulos pequeños. Los trazos continuos son luz; las prolongaciones virtuales no son luz que retrocede.</desc><defs><clipPath id="micro-clip"><rect x="66" y="238" width="1268" height="378"/></clipPath><marker id="m-a85d12" markerWidth="5" markerHeight="5" refX="4.5" refY="2.5" orient="auto"><path d="M0 0L5 2.5L0 5Z" fill="#a85d12"/></marker><marker id="m-176d7c" markerWidth="5" markerHeight="5" refX="4.5" refY="2.5" orient="auto"><path d="M0 0L5 2.5L0 5Z" fill="#176d7c"/></marker><marker id="m-7955a2" markerWidth="5" markerHeight="5" refX="4.5" refY="2.5" orient="auto"><path d="M0 0L5 2.5L0 5Z" fill="#7955a2"/></marker></defs><style>text{font-family:Arial,sans-serif;fill:#1d3557}</style><rect width="1400" height="820" rx="14" fill="#fffdf7"/><rect x="28" y="24" width="1344" height="119" rx="8" fill="#edf3f7"/><text x="50" y="64" font-size="29" font-weight="bold">5 · Imagen virtual final</text><text x="50" y="100" font-size="23">Las prolongaciones de los rayos emergentes coinciden en la imagen calculada.</text><g clip-path="url(#micro-clip)"><line x1="66" y1="388.195857" x2="1334" y2="388.195857" stroke="#87949c" stroke-dasharray="9 7"/><path d="M590.552417 243Q608.552417 427 590.552417 611Q572.552417 427 590.552417 243Z" fill="#dcebf2" fill-opacity=".7" stroke="#1d3557" stroke-width="2.5"/><path d="M988.543628 243Q1006.54363 427 988.543628 611Q970.543628 427 988.543628 243Z" fill="#dcebf2" fill-opacity=".7" stroke="#1d3557" stroke-width="2.5"/><path d="M510.954175 382.225989L590.552417 382.225989" fill="none" stroke="#a85d12" stroke-width="3.2"  pathLength="100" stroke-dasharray="100" stroke-dashoffset="0" marker-end="url(#m-a85d12)" opacity="1"/><path d="M590.552417 382.225989L988.543628 422.02511" fill="none" stroke="#a85d12" stroke-width="3.2"  pathLength="100" stroke-dasharray="100" stroke-dashoffset="0" marker-end="url(#m-a85d12)" opacity="1"/><path d="M988.543628 422.02511L1334 397.843164" fill="none" stroke="#a85d12" stroke-width="3.2"  pathLength="100" stroke-dasharray="100" stroke-dashoffset="0" marker-end="url(#m-a85d12)" opacity="1"/><path d="M192.561205 477.743879L988.543628 422.02511" fill="none" stroke="#a85d12" stroke-width="2.2" stroke-dasharray="11 8"  opacity="1"/><path d="M510.954175 382.225989L590.552417 388.195857" fill="none" stroke="#176d7c" stroke-width="3.2"  pathLength="100" stroke-dasharray="100" stroke-dashoffset="0" marker-end="url(#m-176d7c)" opacity="1"/><path d="M590.552417 388.195857L988.543628 418.045198" fill="none" stroke="#176d7c" stroke-width="3.2"  pathLength="100" stroke-dasharray="100" stroke-dashoffset="0" marker-end="url(#m-176d7c)" opacity="1"/><path d="M988.543628 418.045198L1334 392.13597" fill="none" stroke="#176d7c" stroke-width="3.2"  pathLength="100" stroke-dasharray="100" stroke-dashoffset="0" marker-end="url(#m-176d7c)" opacity="1"/><path d="M192.561205 477.743879L988.543628 418.045198" fill="none" stroke="#176d7c" stroke-width="2.2" stroke-dasharray="11 8"  opacity="1"/><path d="M510.954175 382.225989L590.552417 406.105461" fill="none" stroke="#7955a2" stroke-width="3.2"  pathLength="100" stroke-dasharray="100" stroke-dashoffset="0" marker-end="url(#m-7955a2)" opacity="1"/><path d="M590.552417 406.105461L988.543628 406.105461" fill="none" stroke="#7955a2" stroke-width="3.2"  pathLength="100" stroke-dasharray="100" stroke-dashoffset="0" marker-end="url(#m-7955a2)" opacity="1"/><path d="M988.543628 406.105461L1334 375.014388" fill="none" stroke="#7955a2" stroke-width="3.2"  pathLength="100" stroke-dasharray="100" stroke-dashoffset="0" marker-end="url(#m-7955a2)" opacity="1"/><path d="M192.561205 477.743879L988.543628 406.105461" fill="none" stroke="#7955a2" stroke-width="2.2" stroke-dasharray="11 8"  opacity="1"/><circle cx="530.853735" cy="388.195857" r="4" fill="#657580"/><text x="530.853735" y="413.195857" text-anchor="middle" font-size="18">F₁</text><circle cx="650.251099" cy="388.195857" r="4" fill="#657580"/><text x="650.251099" y="435.195857" text-anchor="middle" font-size="18">F′₁</text><circle cx="789.548023" cy="388.195857" r="4" fill="#657580"/><text x="789.548023" y="457.195857" text-anchor="middle" font-size="18">F₂</text><circle cx="1187.53923" cy="388.195857" r="4" fill="#657580"/><text x="1187.53923" y="413.195857" text-anchor="middle" font-size="18">F′₂</text><g opacity="1"><line x1="510.954175" y1="388.195857" x2="510.954175" y2="382.225989" stroke="#1d3557" stroke-width="3" /><path d="M510.954175 382.225989L509.461707 385.210923L512.446642 385.210923Z" fill="#1d3557"/><circle cx="510.954175" cy="382.225989" r="2.5" fill="#1d3557" stroke="#1d3557"/><line x1="510.954175" y1="382.225989" x2="534.954175" y2="366.225989" stroke="#697c8e" stroke-width="1"/><rect x="523.954175" y="355.225989" width="23" height="23" rx="3" fill="#fffdf7" stroke="#1d3557"/><text x="535.454175" y="372.225989" text-anchor="middle" font-size="17" font-weight="bold">1</text><title>Muestra: x=-8 mm; y=0.6 mm. </title></g><g opacity="1"><line x1="829.347144" y1="388.195857" x2="829.347144" y2="406.105461" stroke="#1d3557" stroke-width="3" /><path d="M829.347144 406.105461L825.847144 399.105461L832.847144 399.105461Z" fill="#1d3557"/><circle cx="829.347144" cy="406.105461" r="2.5" fill="#1d3557" stroke="#1d3557"/><line x1="829.347144" y1="406.105461" x2="853.347144" y2="390.105461" stroke="#697c8e" stroke-width="1"/><rect x="842.347144" y="379.105461" width="23" height="23" rx="3" fill="#fffdf7" stroke="#1d3557"/><text x="853.847144" y="396.105461" text-anchor="middle" font-size="17" font-weight="bold">2</text><title>Imagen intermedia: x=24 mm; y=-1.8 mm. </title></g><g opacity="1"><line x1="192.561205" y1="388.195857" x2="192.561205" y2="477.743879" stroke="#1d3557" stroke-width="3" /><path d="M192.561205 477.743879L189.061205 470.743879L196.061205 470.743879Z" fill="#1d3557"/><circle cx="192.561205" cy="477.743879" r="2.5" fill="#1d3557" stroke="#1d3557"/><line x1="192.561205" y1="477.743879" x2="216.561205" y2="461.743879" stroke="#697c8e" stroke-width="1"/><rect x="205.561205" y="450.743879" width="23" height="23" rx="3" fill="#fffdf7" stroke="#1d3557"/><text x="217.061205" y="467.743879" text-anchor="middle" font-size="17" font-weight="bold">3</text><title>Imagen final: x=-40 mm; y=-9 mm. </title></g></g><line x1="590.552417" x2="590.552417" y1="212" y2="233" stroke="#1d3557"/><text x="590.552417" y="179" text-anchor="middle" font-size="23" font-weight="bold">Objetivo</text><text x="590.552417" y="207" text-anchor="middle" font-size="20">f = 6 mm</text><line x1="988.543628" x2="988.543628" y1="212" y2="233" stroke="#1d3557"/><text x="988.543628" y="179" text-anchor="middle" font-size="23" font-weight="bold">Ocular</text><text x="988.543628" y="207" text-anchor="middle" font-size="20">f = 20 mm</text><path d="M510.954175 224H590.552417M510.954175 220V228M590.552417 220V228" fill="none" stroke="#7a8790"/><text x="550.753296" y="219" text-anchor="middle" font-size="16">s₁ = 8 mm</text><path d="M590.552417 224H988.543628M590.552417 220V228M988.543628 220V228" fill="none" stroke="#7a8790"/><text x="789.548023" y="219" text-anchor="middle" font-size="16">L = 40 mm</text><text x="46" y="647" font-size="20" font-weight="bold" fill="#1d3557">① Muestra</text><text x="46" y="673" font-size="18">x = −8 mm; h = 0.6 mm</text><text x="470" y="647" font-size="20" font-weight="bold" fill="#1d3557">② Intermedia real</text><text x="470" y="673" font-size="18">x=24 mm; y=-1.8 mm</text><text x="925" y="647" font-size="20" font-weight="bold" fill="#1d3557">③ Final virtual</text><text x="925" y="673" font-size="18">x=-40 mm; y=-9 mm</text><rect x="28" y="710" width="1344" height="86" rx="8" fill="#fff4cf" stroke="#d6c9af"/><text x="50" y="741" font-size="20"><tspan fill="#a85d12">1 Paralelo</tspan> · <tspan fill="#176d7c">2 Centro</tspan> · <tspan fill="#7955a2">3 Foco</tspan> · continuas: luz; discontinuas: prolongaciones virtuales.</text><text x="50" y="769" font-size="18">Punteado gris: eje o referencia hipotética. Misma escala en ambos ejes: 100 px = 10.0504732 mm.</text><text x="50" y="791" font-size="17">Secuencia explicativa: no representa la velocidad de la luz. Las lentes son símbolos de sus planos ópticos.</text></svg></div></div>
+<div id="print-stage" class="print-stage"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 820" role="img" aria-labelledby="print-micro-title print-micro-desc"><title id="print-micro-title">5 · Imagen virtual final</title><desc id="print-micro-desc">Modelo calculado de lentes delgadas. La imagen intermedia está entre el foco objeto y el ocular. Los rayos emergentes divergen y sus prolongaciones coinciden en una imagen virtual final finita. Entre f1 y 2f1, el objetivo por sí solo forma una imagen real, invertida y aumentada. Algunos rayos tienen inclinación grande: las ecuaciones siguen mostrando el modelo paraxial ideal, cuya precisión física disminuye fuera de ángulos pequeños. Los trazos continuos son luz; las prolongaciones virtuales no son luz que retrocede.</desc><defs><clipPath id="print-micro-clip"><rect x="66" y="238" width="1268" height="378"/></clipPath><marker id="print-m-a85d12" markerWidth="5" markerHeight="5" refX="4.5" refY="2.5" orient="auto"><path d="M0 0L5 2.5L0 5Z" fill="#a85d12"/></marker><marker id="print-m-176d7c" markerWidth="5" markerHeight="5" refX="4.5" refY="2.5" orient="auto"><path d="M0 0L5 2.5L0 5Z" fill="#176d7c"/></marker><marker id="print-m-7955a2" markerWidth="5" markerHeight="5" refX="4.5" refY="2.5" orient="auto"><path d="M0 0L5 2.5L0 5Z" fill="#7955a2"/></marker></defs><style>text{font-family:Arial,sans-serif;fill:#1d3557}</style><rect width="1400" height="820" rx="14" fill="#fffdf7"/><rect x="28" y="24" width="1344" height="119" rx="8" fill="#edf3f7"/><text x="50" y="64" font-size="29" font-weight="bold">5 · Imagen virtual final</text><text x="50" y="100" font-size="23">Las prolongaciones de los rayos emergentes coinciden en la imagen calculada.</text><g clip-path="url(#print-micro-clip)"><line x1="66" y1="388.195857" x2="1334" y2="388.195857" stroke="#87949c" stroke-dasharray="9 7"/><path d="M590.552417 243Q608.552417 427 590.552417 611Q572.552417 427 590.552417 243Z" fill="#dcebf2" fill-opacity=".7" stroke="#1d3557" stroke-width="2.5"/><path d="M988.543628 243Q1006.54363 427 988.543628 611Q970.543628 427 988.543628 243Z" fill="#dcebf2" fill-opacity=".7" stroke="#1d3557" stroke-width="2.5"/><path d="M510.954175 382.225989L590.552417 382.225989" fill="none" stroke="#a85d12" stroke-width="3.2"  pathLength="100" stroke-dasharray="100" stroke-dashoffset="0" marker-end="url(#print-m-a85d12)" opacity="1"/><path d="M590.552417 382.225989L988.543628 422.02511" fill="none" stroke="#a85d12" stroke-width="3.2"  pathLength="100" stroke-dasharray="100" stroke-dashoffset="0" marker-end="url(#print-m-a85d12)" opacity="1"/><path d="M988.543628 422.02511L1334 397.843164" fill="none" stroke="#a85d12" stroke-width="3.2"  pathLength="100" stroke-dasharray="100" stroke-dashoffset="0" marker-end="url(#print-m-a85d12)" opacity="1"/><path d="M192.561205 477.743879L988.543628 422.02511" fill="none" stroke="#a85d12" stroke-width="2.2" stroke-dasharray="11 8"  opacity="1"/><path d="M510.954175 382.225989L590.552417 388.195857" fill="none" stroke="#176d7c" stroke-width="3.2"  pathLength="100" stroke-dasharray="100" stroke-dashoffset="0" marker-end="url(#print-m-176d7c)" opacity="1"/><path d="M590.552417 388.195857L988.543628 418.045198" fill="none" stroke="#176d7c" stroke-width="3.2"  pathLength="100" stroke-dasharray="100" stroke-dashoffset="0" marker-end="url(#print-m-176d7c)" opacity="1"/><path d="M988.543628 418.045198L1334 392.13597" fill="none" stroke="#176d7c" stroke-width="3.2"  pathLength="100" stroke-dasharray="100" stroke-dashoffset="0" marker-end="url(#print-m-176d7c)" opacity="1"/><path d="M192.561205 477.743879L988.543628 418.045198" fill="none" stroke="#176d7c" stroke-width="2.2" stroke-dasharray="11 8"  opacity="1"/><path d="M510.954175 382.225989L590.552417 406.105461" fill="none" stroke="#7955a2" stroke-width="3.2"  pathLength="100" stroke-dasharray="100" stroke-dashoffset="0" marker-end="url(#print-m-7955a2)" opacity="1"/><path d="M590.552417 406.105461L988.543628 406.105461" fill="none" stroke="#7955a2" stroke-width="3.2"  pathLength="100" stroke-dasharray="100" stroke-dashoffset="0" marker-end="url(#print-m-7955a2)" opacity="1"/><path d="M988.543628 406.105461L1334 375.014388" fill="none" stroke="#7955a2" stroke-width="3.2"  pathLength="100" stroke-dasharray="100" stroke-dashoffset="0" marker-end="url(#print-m-7955a2)" opacity="1"/><path d="M192.561205 477.743879L988.543628 406.105461" fill="none" stroke="#7955a2" stroke-width="2.2" stroke-dasharray="11 8"  opacity="1"/><circle cx="530.853735" cy="388.195857" r="4" fill="#657580"/><text x="530.853735" y="413.195857" text-anchor="middle" font-size="18">F₁</text><circle cx="650.251099" cy="388.195857" r="4" fill="#657580"/><text x="650.251099" y="435.195857" text-anchor="middle" font-size="18">F′₁</text><circle cx="789.548023" cy="388.195857" r="4" fill="#657580"/><text x="789.548023" y="457.195857" text-anchor="middle" font-size="18">F₂</text><circle cx="1187.53923" cy="388.195857" r="4" fill="#657580"/><text x="1187.53923" y="413.195857" text-anchor="middle" font-size="18">F′₂</text><g opacity="1"><line x1="510.954175" y1="388.195857" x2="510.954175" y2="382.225989" stroke="#1d3557" stroke-width="3" /><path d="M510.954175 382.225989L509.461707 385.210923L512.446642 385.210923Z" fill="#1d3557"/><circle cx="510.954175" cy="382.225989" r="2.5" fill="#1d3557" stroke="#1d3557"/><line x1="510.954175" y1="382.225989" x2="534.954175" y2="366.225989" stroke="#697c8e" stroke-width="1"/><rect x="523.954175" y="355.225989" width="23" height="23" rx="3" fill="#fffdf7" stroke="#1d3557"/><text x="535.454175" y="372.225989" text-anchor="middle" font-size="17" font-weight="bold">1</text><title>Muestra: x=-8 mm; y=0.6 mm. </title></g><g opacity="1"><line x1="829.347144" y1="388.195857" x2="829.347144" y2="406.105461" stroke="#1d3557" stroke-width="3" /><path d="M829.347144 406.105461L825.847144 399.105461L832.847144 399.105461Z" fill="#1d3557"/><circle cx="829.347144" cy="406.105461" r="2.5" fill="#1d3557" stroke="#1d3557"/><line x1="829.347144" y1="406.105461" x2="853.347144" y2="390.105461" stroke="#697c8e" stroke-width="1"/><rect x="842.347144" y="379.105461" width="23" height="23" rx="3" fill="#fffdf7" stroke="#1d3557"/><text x="853.847144" y="396.105461" text-anchor="middle" font-size="17" font-weight="bold">2</text><title>Imagen intermedia: x=24 mm; y=-1.8 mm. </title></g><g opacity="1"><line x1="192.561205" y1="388.195857" x2="192.561205" y2="477.743879" stroke="#1d3557" stroke-width="3" /><path d="M192.561205 477.743879L189.061205 470.743879L196.061205 470.743879Z" fill="#1d3557"/><circle cx="192.561205" cy="477.743879" r="2.5" fill="#1d3557" stroke="#1d3557"/><line x1="192.561205" y1="477.743879" x2="216.561205" y2="461.743879" stroke="#697c8e" stroke-width="1"/><rect x="205.561205" y="450.743879" width="23" height="23" rx="3" fill="#fffdf7" stroke="#1d3557"/><text x="217.061205" y="467.743879" text-anchor="middle" font-size="17" font-weight="bold">3</text><title>Imagen final: x=-40 mm; y=-9 mm. </title></g></g><line x1="590.552417" x2="590.552417" y1="212" y2="233" stroke="#1d3557"/><text x="590.552417" y="179" text-anchor="middle" font-size="23" font-weight="bold">Objetivo</text><text x="590.552417" y="207" text-anchor="middle" font-size="20">f = 6 mm</text><line x1="988.543628" x2="988.543628" y1="212" y2="233" stroke="#1d3557"/><text x="988.543628" y="179" text-anchor="middle" font-size="23" font-weight="bold">Ocular</text><text x="988.543628" y="207" text-anchor="middle" font-size="20">f = 20 mm</text><path d="M510.954175 224H590.552417M510.954175 220V228M590.552417 220V228" fill="none" stroke="#7a8790"/><text x="550.753296" y="219" text-anchor="middle" font-size="16">s₁ = 8 mm</text><path d="M590.552417 224H988.543628M590.552417 220V228M988.543628 220V228" fill="none" stroke="#7a8790"/><text x="789.548023" y="219" text-anchor="middle" font-size="16">L = 40 mm</text><text x="46" y="647" font-size="20" font-weight="bold" fill="#1d3557">① Muestra</text><text x="46" y="673" font-size="18">x = −8 mm; h = 0.6 mm</text><text x="470" y="647" font-size="20" font-weight="bold" fill="#1d3557">② Intermedia real</text><text x="470" y="673" font-size="18">x=24 mm; y=-1.8 mm</text><text x="925" y="647" font-size="20" font-weight="bold" fill="#1d3557">③ Final virtual</text><text x="925" y="673" font-size="18">x=-40 mm; y=-9 mm</text><rect x="28" y="710" width="1344" height="86" rx="8" fill="#fff4cf" stroke="#d6c9af"/><text x="50" y="741" font-size="20"><tspan fill="#a85d12">1 Paralelo</tspan> · <tspan fill="#176d7c">2 Centro</tspan> · <tspan fill="#7955a2">3 Foco</tspan> · continuas: luz; discontinuas: prolongaciones virtuales.</text><text x="50" y="769" font-size="18">Punteado gris: eje o referencia hipotética. Misma escala en ambos ejes: 100 px = 10.0504732 mm.</text><text x="50" y="791" font-size="17">Secuencia explicativa: no representa la velocidad de la luz. Las lentes son símbolos de sus planos ópticos.</text></svg></div>
+<div class="controls" aria-label="Controles de reproducción"><button id="play" type="button" aria-pressed="false">Reproducir</button><button id="restart" type="button">Reiniciar</button><button id="analyze" type="button">Pausar y analizar rayos</button><label class="sr-only" for="seek">Tiempo de la explicación</label><input id="seek" type="range" min="0" max="719" value="719" step="1"><output id="time" for="seek">0:24 / 0:24</output></div>
+<nav class="steps" aria-label="Saltar a un paso"><button type="button" data-frame="60">1. Muestra</button><button type="button" data-frame="200">2. Objetivo</button><button type="button" data-frame="350">3. Imagen intermedia</button><button type="button" data-frame="500">4. Ocular</button><button type="button" data-frame="719">5. Imagen final</button></nav>
+<p id="status" class="description" role="status" aria-live="polite"></p>
+<p id="input-error" class="notice error" role="alert" hidden></p>
+<section class="settings" aria-labelledby="settings-title"><h2 id="settings-title">Laboratorio: cambiá una magnitud y compará</h2>
+<div class="preset-row screen-only"><label for="preset">Configuración de estudio</label><select id="preset"><option value="normal">Microscopio: imagen virtual finita</option><option value="objective-focus">Muestra en el foco del objetivo</option><option value="inside-objective">Muestra dentro del foco del objetivo</option><option value="ocular-focus">Imagen intermedia en el foco del ocular</option><option value="outside-ocular">Imagen intermedia fuera del foco del ocular</option><option value="on-ocular">Imagen intermedia en el plano del ocular</option><option value="before-intermediate">Ocular antes de la imagen del objetivo</option><option value="near-focus">Muy cerca del foco del ocular (imagen finita lejana)</option></select><button id="defaults" type="button">Restaurar valores iniciales</button></div>
+<div class="settings-grid">
+  <div class="parameter"><label for="f1-number">Distancia focal del objetivo, f₁ (mm)<input id="f1-number" data-param="f1" type="number" min="0.1" step="0.1" value="6"></label><input aria-label="Ajustar distancia focal del objetivo" data-range="f1" type="range" min="2" max="12" step="0.1" value="6"></div>
+  <div class="parameter"><label for="f2-number">Distancia focal del ocular, f₂ (mm)<input id="f2-number" data-param="f2" type="number" min="0.1" step="0.1" value="20"></label><input aria-label="Ajustar distancia focal del ocular" data-range="f2" type="range" min="5" max="40" step="0.1" value="20"></div>
+  <div class="parameter"><label for="L-number">Separación entre lentes, L (mm)<input id="L-number" data-param="L" type="number" min="0.1" step="0.1" value="40"></label><input aria-label="Ajustar separación entre lentes" data-range="L" type="range" min="10" max="100" step="0.1" value="40"></div>
+  <div class="parameter"><label for="s1-number">Distancia muestra–objetivo, s₁ (mm)<input id="s1-number" data-param="s1" type="number" min="0.1" step="0.1" value="8"></label><input aria-label="Ajustar posición de la muestra" data-range="s1" type="range" min="2" max="30" step="0.1" value="8"></div>
+  <div class="parameter"><label for="h-number">Altura de la muestra, h (mm)<input id="h-number" data-param="h" type="number" step="0.1" value="0.6"></label><input aria-label="Ajustar altura de la muestra" data-range="h" type="range" min="-3" max="3" step="0.1" value="0.6"></div>
+</div>
+<p class="fine">La muestra está en x = −s₁, el objetivo en x = 0 y el ocular en x = L. Las entradas numéricas admiten valores entre las marcas del deslizador. Cambiar un parámetro pausa la animación y muestra el resultado completo.</p>
+<div class="options screen-only" role="group" aria-label="Rayos y encuadre"><label for="family">Rayos principales de</label><select id="family"><option value="objective">Objetivo</option><option value="eyepiece">Ocular</option><option value="both">Ambas lentes</option></select><label><input id="ray-parallel" type="checkbox" checked>1. Paralelo</label><label><input id="ray-center" type="checkbox" checked>2. Centro</label><label><input id="ray-focus" type="checkbox" checked>3. Foco</label><label><input id="extensions" type="checkbox" checked>Prolongaciones</label><label><input id="fit-all" type="checkbox">Ajustar todo el campo</label></div>
+<p id="configuration" class="notice" aria-live="polite"></p>
+<div id="readouts" class="readouts" aria-label="Resultados calculados"></div>
+<p id="ray-note" class="fine"></p><p id="view-note" class="fine"></p>
+</section>
+<details open><summary>Ecuaciones, signos y qué significa el aumento</summary><div class="equations"><p><strong>Convención:</strong> luz hacia +x, altura positiva hacia arriba y distancias en milímetros. En cada lente, s &gt; 0 para un objeto real a la izquierda; s′ &gt; 0 para una imagen real a la derecha; s′ &lt; 0 para una imagen virtual a la izquierda. Ambas lentes son convergentes: f &gt; 0.</p><p><strong>Lente delgada:</strong> 1/f = 1/s + 1/s′. <strong>Aumento lateral:</strong> m = −s′/s.</p><p><strong>Objetivo:</strong> s′₁ = f₁s₁/(s₁ − f₁), m₁ = −s′₁/s₁.<br><strong>Ocular:</strong> s₂ = L − s′₁, s′₂ = f₂s₂/(s₂ − f₂), m₂ = −s′₂/s₂.<br><strong>Sistema finito no singular:</strong> M lateral = m₁m₂; h′ = M lateral · h.</p><p><strong>M lateral no es el aumento angular convencional de un microscopio.</strong> Aquí comparamos alturas en planos conjugados calculados. No se calcula aumento angular: requeriría especificar la posición del ojo y la referencia de observación.</p><p>En los casos singulares se usa también la propagación paraxial del sistema completo: un haz paralelo que sale del objetivo puede ser enfocado por el ocular. Las magnitudes que no tienen un valor finito definido se indican como tales, sin sustituirlas por números enormes ni por una imagen inventada.</p></div></details>
+<details><summary>Cómo leer los tres rayos y los casos especiales</summary><p>1. El rayo paralelo al eje sale dirigido al foco imagen. 2. El rayo que pasa por el centro óptico no cambia de dirección. 3. El rayo cuya recta incidente pasa por el foco objeto emerge paralelo al eje. Si el objeto de una lente es virtual, algunas reglas se interpretan con la prolongación de la recta incidente: no implican que la luz recorra hacia atrás esa construcción.</p><p>En el modo «Ocular», los rayos se calculan para que también puedan provenir de la muestra atravesando el objetivo; no se crean haces desligados del resto del sistema. Cuando una construcción principal no es aplicable se indica en el resultado.</p><p>Si el ocular intercepta la luz antes del punto donde enfocaría el objetivo aislado, ese punto no es una imagen real que llegue a formarse dentro del microscopio completo. Se indica como posición hipotética del objetivo aislado. Un trazo punteado de referencia no representa luz propagándose.</p></details>
+<details><summary>Límites del modelo y sugerencias para comparar</summary><p>Lentes delgadas ideales, luz paraxial, sin espesor ni aberraciones. No se modelan abertura, difracción, resolución, dispersión cromática, retina ni lentes de tubo de objetivos modernos. Los símbolos de las lentes representan sus planos ópticos, no dimensiones de fabricación. Si los rayos forman ángulos grandes con el eje, la aproximación pierde precisión.</p><p>El encuadre usa una misma escala horizontal y vertical y no modifica las posiciones físicas. Una imagen muy lejana puede quedar fuera de la vista; sus coordenadas siguen disponibles y podés activar «Ajustar todo el campo». Una imagen finita muy distante no es lo mismo que una imagen en el infinito.</p><p>Compará el caso inicial con «Imagen intermedia en el foco del ocular». Después mové apenas la separación: ¿salen rayos paralelos o casi paralelos? Explicá la diferencia usando las magnitudes calculadas. La secuencia de 24 segundos organiza la explicación, <strong>no representa el tiempo real de propagación de la luz</strong>.</p></details>
+<p><a href="../../clases/microscopios.html#rayos">Volver a la explicación de la clase 20</a></p>
+<noscript><p class="noscript">Activá JavaScript para modificar los parámetros. El esquema inicial sigue disponible como referencia.</p></noscript>
+<script>// Motor paraxial de lentes delgadas. Unidades: mm; +x = propagación; +y = arriba.
+// s>0: objeto a la izquierda; s'>0: imagen a la derecha; f>0: convergente.
+// Las tolerancias de comprobación NO se usan para convertir imágenes lejanas en infinito.
+const OPTICS_TOLERANCE = 1e-9;
+const SINGULAR_ULPS = 4;
+const DEFAULT_OPTICS = Object.freeze({f1:6, f2:20, L:40, s1:8, h:0.6});
+
+function finite(value, name) {
+  if (typeof value !== 'number' || !Number.isFinite(value)) throw new TypeError(`${name} debe ser un número finito.`);
+  return value;
+}
+function positive(value, name) {
+  finite(value,name);
+  if (value <= 0) throw new RangeError(`${name} debe ser mayor que cero.`);
+  return value;
+}
+function atNumericalZero(value, scale) {
+  return Math.abs(value) <= SINGULAR_ULPS * Number.EPSILON * Math.max(Number.MIN_VALUE,scale);
+}
+function calculated(value, name) {
+  if (!Number.isFinite(value)) throw new RangeError(`${name} excede la capacidad numérica del modelo.`);
+  return Object.is(value,-0) ? 0 : value;
+}
+
+/** Conjugación de una lente, incluyendo objetos virtuales (s<0).
+ * null denota una cantidad no definida/finita: nunca se devuelve Infinity o NaN.
+ * En s=0, la conjugación es degenerada: s'=0 y m=-s'/s no está definido.
+ */
+function solveThinLens(s, f) {
+  finite(s,'s'); positive(f,'f');
+  if (s === 0) return {s,f,sPrime:0,m:null,limitingM:1,kind:'degenerate'};
+  const denominator = s-f;
+  if (atNumericalZero(denominator,Math.max(Math.abs(s),f))) {
+    return {s,f,sPrime:null,m:null,kind:'infinity'};
+  }
+  const sPrime = calculated(f*(s/denominator),"s'");
+  const m = calculated(-f/denominator,'m');
+  return {s,f,sPrime,m,kind:sPrime>0?'real':'virtual'};
+}
+
+function propagateRay(point, slope, x) {
+  finite(point.x,'x inicial'); finite(point.y,'y inicial'); finite(slope,'pendiente'); finite(x,'x final');
+  return {x,y:calculated(point.y+slope*(x-point.x),'altura del rayo')};
+}
+
+function refractSlope(slope, height, f) {
+  finite(slope,'pendiente'); finite(height,'altura'); positive(f,'f');
+  return calculated(slope-height/f,'pendiente refractada');
+}
+
+/** Intersección algebraica. Las pendientes casi iguales conservan una intersección
+ * lejana si la diferencia es representable; sólo igualdad exacta => paralelas.
+ */
+function intersectLines(a,b) {
+  const p=a.point, q=b.point;
+  [p.x,p.y,q.x,q.y,a.slope,b.slope].forEach((v)=>finite(v,'recta'));
+  const delta=a.slope-b.slope;
+  if (delta===0) {
+    const separation=q.y-p.y-a.slope*(q.x-p.x);
+    const coincident=atNumericalZero(separation,Math.max(Math.abs(p.y),Math.abs(q.y),Math.abs(a.slope*(q.x-p.x))));
+    return {kind:coincident?'coincident':'parallel',x:null,y:null};
+  }
+  // Centrar en p evita restar grandes ordenadas al origen.
+  const dx=((q.y-p.y)-b.slope*(q.x-p.x))/delta;
+  const x=calculated(p.x+dx,'intersección x');
+  const y=calculated(p.y+a.slope*dx,'intersección y');
+  return {kind:'point',x,y};
+}
+
+function imageAt(lensX, solution, objectHeight) {
+  return {kind:solution.kind,
+    x:solution.sPrime===null?null:calculated(lensX+solution.sPrime,'posición imagen'),
+    y:solution.m===null?null:calculated(solution.m*objectHeight,'altura imagen')};
+}
+function foci(x,f) {return {object:{x:x-f,y:0},image:{x:x+f,y:0}};}
+
+function completeRay(inputs,id,family,lensHeight) {
+  const {s1,h,f1,f2,L}=inputs;
+  const origin={x:-s1,y:h};
+  const atObjective={x:0,y:calculated(lensHeight,'altura objetivo')};
+  const incomingSlope=calculated((lensHeight-h)/s1,'pendiente incidente');
+  const afterObjectiveSlope=refractSlope(incomingSlope,lensHeight,f1);
+  const atEyepiece=propagateRay(atObjective,afterObjectiveSlope,L);
+  const afterEyepieceSlope=refractSlope(afterObjectiveSlope,atEyepiece.y,f2);
+  return {id,family,origin,atObjective,atEyepiece,incomingSlope,afterObjectiveSlope,afterEyepieceSlope};
+}
+
+/** Los tres rayos principales de cada lente son selecciones distintas del MISMO
+ * haz. La familia ocular se retropropaga por el objetivo hasta la muestra real;
+ * nunca se crea luz que nace en una imagen virtual o en una imagen interceptada.
+ */
+function solveMicroscope(config = {}) {
+  const inputs={...DEFAULT_OPTICS,...config};
+  const {f1,f2,L,s1,h}=inputs;
+  positive(f1,'f1');positive(f2,'f2');positive(L,'L');positive(s1,'s1');finite(h,'h');
+  const first=solveThinLens(s1,f1);
+  const objective={...first,x:0,image:imageAt(0,first,h),foci:foci(0,f1)};
+  const intermediateRealized=first.kind==='real'&&first.sPrime<=L;
+  objective.image.realized=intermediateRealized;
+  objective.image.intercepted=first.kind==='real'&&first.sPrime>L;
+
+  // Matriz desde el plano de la muestra hasta inmediatamente DESPUÉS del ocular.
+  // [y2,u2]^T = [[A,B],[C,D]] [h,u0]^T, con determinante 1.
+  const a1=(f1-s1)/f1;
+  const A=1-L/f1;
+  const C=-1/f1-A/f2;
+  const s2=first.sPrime===null?null:calculated(L-first.sPrime,'s2');
+  const second=s2===null?{s:null,f:f2,sPrime:f2,m:null,kind:'real'}:solveThinLens(s2,f2);
+  // Formas algebraicamente equivalentes que evitan restar términos casi iguales
+  // al aproximarse al foco del ocular. Los resultados regulares se conservan
+  // desde solveThinLens, en lugar de mezclar dos evaluaciones cancelativas.
+  const B=s2===null?f1:a1*s2;
+  let D=s2===null?-f1/f2:a1*((f2-s2)/f2);
+  // Normalizar el cero analítico sólo al nivel de redondeo de máquina.
+  // La prueba s2=f2 emplea el denominador físico, no una tolerancia visual.
+  if (second.kind==='infinity') D=0;
+  const matrix={A,B,C,D};
+  Object.values(matrix).forEach((value)=>calculated(value,'matriz'));
+  let finalImage, totalLateral, finalDistance;
+  if (second.kind==='infinity') {
+    finalDistance=null;totalLateral=null;
+    finalImage={kind:'infinity',x:null,y:null};
+  } else {
+    finalDistance=second.kind==='degenerate'?0:second.sPrime;
+    totalLateral=first.kind==='infinity'?calculated(-f2/f1,'aumento combinado')
+      :second.kind==='degenerate'?first.m:calculated(first.m*second.m,'aumento lateral total');
+    const y=calculated(totalLateral*h,'altura final');
+    const atOcular=second.kind==='degenerate';
+    finalImage={kind:atOcular?'degenerate':finalDistance>0?'real':'virtual',x:calculated(L+finalDistance,'posición final'),y};
+  }
+  // El límite combinado también cubre s1=f1 y s2=0, donde no se puede
+  // sustituir sin más en m1*m2. En casos regulares conservamos ese producto;
+  // equivale a 1/D sin la cancelación numérica de la matriz expandida.
+  const eyepiece={...second,x:L,sPrime:finalDistance,image:{...finalImage},foci:foci(L,f2)};
+  const rayNotes=[];
+  const objectiveRays=[completeRay(inputs,'parallel','objective',h),completeRay(inputs,'center','objective',0)];
+  if (first.kind!=='infinity') {
+    const slope=-h/(s1-f1);
+    objectiveRays.push(completeRay(inputs,'focus','objective',h+s1*slope));
+  } else rayNotes.push('Rayo principal del foco objeto del objetivo no definido: muestra en su plano focal. Se conservan los otros rayos.');
+
+  const eyepieceRays=[];
+  if (s2!==null&&second.kind!=='degenerate') {
+    const yi=objective.image.y;
+    const addEyeRay=(id,eyeHeight,incidentSlope)=>{
+      const objectiveHeight=calculated(eyeHeight-L*incidentSlope,'rayo ocular en objetivo');
+      eyepieceRays.push(completeRay(inputs,id,'eyepiece',objectiveHeight));
+    };
+    addEyeRay('parallel',yi,0);
+    const centerSlope=-yi/s2;
+    addEyeRay('center',0,centerSlope);
+    if(second.kind!=='infinity') {
+      const focusSlope=-yi/(s2-f2);
+      addEyeRay('focus',yi+s2*focusSlope,focusSlope);
+    } else rayNotes.push('Rayo que se dirige al foco objeto del ocular no definido: la imagen intermedia está en ese plano focal.');
+  } else rayNotes.push(s2===null?'Objetivo afocal para la muestra: el ocular recibe un haz paralelo inclinado, sin objeto intermedio finito.':'La imagen intermedia coincide con el plano del ocular: sus tres rayos principales convencionales no constituyen una construcción regular.');
+
+  let status;
+  const messages=[];
+  if(first.kind==='infinity') {
+    status='objective-at-focus';
+    messages.push('La muestra está en el foco del objetivo: el haz que sale del objetivo es paralelo para cada punto. La imagen intermedia está en el infinito.');
+    messages.push('El ocular vuelve a reunir ese haz en una imagen REAL a una distancia f2 detrás de él. No hay imagen virtual final en esta configuración.');
+  } else if(second.kind==='degenerate') {
+    status='intermediate-at-eyepiece';
+    messages.push('La imagen intermedia cae en el propio plano del ocular. El cociente −s′2/s2 es 0/0: no define un aumento del ocular.');
+    messages.push('El trazado combinado conserva un cruce en el plano del ocular. No es el ajuste usual de observación con imagen virtual final.');
+  } else if(second.kind==='infinity') {
+    status='final-at-infinity';
+    messages.push('La imagen intermedia está en el foco objeto del ocular: los rayos emergentes son paralelos. La imagen final está en el infinito; no se dibuja una imagen virtual finita.');
+  } else if(first.kind==='virtual') {
+    status='objective-inside-focus';
+    messages.push('La muestra está dentro de la distancia focal del objetivo: su imagen es virtual y derecha. No se forma la imagen real intermedia del microscopio compuesto habitual.');
+  } else if(s2<0) {
+    status='virtual-object-eyepiece';
+    messages.push('El objetivo por sí solo enfocaría detrás del ocular. El ocular intercepta el haz antes de ese cruce: la imagen intermedia prevista actúa como objeto virtual para el ocular.');
+  } else if(finalImage.kind==='virtual') {
+    status='virtual-final';
+    messages.push('La imagen intermedia está entre el foco objeto y el ocular. Los rayos emergentes divergen y sus prolongaciones coinciden en una imagen virtual final finita.');
+  } else {
+    status='real-final';
+    messages.push('La imagen intermedia queda fuera de la distancia focal del ocular. El ocular reúne los rayos en una imagen real final: no es el ajuste con imagen virtual esperado.');
+  }
+  if(first.kind==='real'&&s1>f1&&s1<2*f1) messages.push('Entre f1 y 2f1, el objetivo por sí solo forma una imagen real, invertida y aumentada.');
+  if(first.kind==='virtual'&&finalImage.kind!=='infinity') messages.push(finalImage.kind==='virtual'?'El sistema completo aún puede dar una imagen virtual, pero sin la etapa real intermedia habitual.':'El sistema completo da una imagen real final, sin la etapa real intermedia habitual.');
+  const allRays=[...objectiveRays,...eyepieceRays];
+  const maxSlope=Math.max(...allRays.flatMap(r=>[Math.abs(r.incomingSlope),Math.abs(r.afterObjectiveSlope),Math.abs(r.afterEyepieceSlope)]));
+  const paraxialWarning=maxSlope>0.15;
+  if(paraxialWarning) messages.push('Algunos rayos tienen inclinación grande: las ecuaciones siguen mostrando el modelo paraxial ideal, cuya precisión física disminuye fuera de ángulos pequeños.');
+  const emergence=finalImage.kind==='infinity'?'parallel':finalImage.kind==='degenerate'?'at-plane':finalDistance<0?'diverging':'converging';
+  return {inputs,objective,eyepiece,totalLateral,finalImage,matrix,status,messages,
+    rayFamilies:{objective:objectiveRays,eyepiece:eyepieceRays},rayNotes,
+    intermediateRealized,emergence,maxSlope,paraxialWarning,
+    units:'mm',tolerance:OPTICS_TOLERANCE};
+}
+
+
+// Esta capa sólo transforma y recorta la geometría calculada; no resuelve lentes.
+function createMicroscopeView(model, fitAll=false) {
+  const {s1,L,f1,f2,h}=model.inputs;
+  const plot={left:66,right:1334,top:238,bottom:616};
+  let xMin=Math.min(-s1-0.2*L,-1.2*L,-f1),xMax=Math.max(L+1.5*f2,1.5*L);
+  const images=[model.objective.image,model.finalImage].filter(p=>Number.isFinite(p.x)&&Number.isFinite(p.y));
+  let ys=[0,h,-Math.max(1,Math.abs(h)*2),Math.max(1,Math.abs(h)*2)];
+  if(fitAll) {
+    for(const p of images){xMin=Math.min(xMin,p.x);xMax=Math.max(xMax,p.x);ys.push(p.y);}
+  } else {
+    for(const p of images)if(p.x>=xMin&&p.x<=xMax&&Math.abs(p.y)<(xMax-xMin)/2)ys.push(p.y);
+  }
+  const padX=(xMax-xMin)*0.04;xMin-=padX;xMax+=padX;
+  const yMin=Math.min(...ys),yMax=Math.max(...ys),cx=(xMin+xMax)/2,cy=(yMin+yMax)/2;
+  const scale=Math.min((plot.right-plot.left)/(xMax-xMin),(plot.bottom-plot.top)/(Math.max(1e-6,yMax-yMin)*1.35));
+  const px=(plot.left+plot.right)/2,py=(plot.top+plot.bottom)/2;
+  const bounds={xMin:cx-(plot.right-plot.left)/2/scale,xMax:cx+(plot.right-plot.left)/2/scale,yMin:cy-(plot.bottom-plot.top)/2/scale,yMax:cy+(plot.bottom-plot.top)/2/scale};
+  const map=p=>({x:px+(p.x-cx)*scale,y:py-(p.y-cy)*scale});
+  const contains=p=>p&&Number.isFinite(p.x)&&Number.isFinite(p.y)&&p.x>=bounds.xMin&&p.x<=bounds.xMax&&p.y>=bounds.yMin&&p.y<=bounds.yMax;
+  return {plot,bounds,scale,map,contains,fitAll};
+}
+
+function microEscape(value){return String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function microNumber(value){return Number.isFinite(value)?Number(value.toPrecision(9)).toString():'—';}
+function microWrap(value,limit=92){const lines=[''];for(const word of String(value).split(/\s+/)){if((lines.at(-1)+' '+word).length>limit&&lines.at(-1))lines.push(word);else lines[lines.length-1]+=(lines.at(-1)?' ':'')+word;}return lines;}
+
+function namespaceMicroscopeSVG(svg,prefix){return svg.replace(/id="([^"]+)"/g,(_,id)=>`id="${prefix}${id}"`).replace(/url\(#([^)]+)\)/g,(_,id)=>`url(#${prefix}${id})`).replace(/aria-labelledby="([^"]+)"/g,(_,ids)=>`aria-labelledby="${ids.split(' ').map(id=>prefix+id).join(' ')}"`);}
+
+function microscopeStage(frame=719,model=solveMicroscope()) {
+  if(frame<90)return ['1 · La muestra',`Distancia al objetivo: ${microNumber(model.inputs.s1)} mm. La punta de la muestra origina los rayos.`];
+  if(frame<210)return ['2 · El objetivo convergente','Cada trayectoria cambia de pendiente en el plano de la lente, según su distancia focal.'];
+  if(frame<360){
+    const image=model.objective.image;
+    if(image.kind==='infinity')return ['3 · Imagen intermedia en el infinito','El objetivo deja un haz paralelo para cada punto de la muestra.'];
+    if(image.intercepted)return ['3 · Imagen del objetivo aislado','El ocular intercepta la luz antes de que llegue a ese cruce; no es una imagen formada en el sistema.'];
+    return [image.kind==='real'?'3 · Imagen real intermedia':'3 · Imagen virtual del objetivo',image.kind==='real'?'Los rayos se encuentran en la posición calculada; la orientación depende del signo del aumento.':'No hay un cruce real tras el objetivo; se encuentran las prolongaciones de sus rayos.'];
+  }
+  if(frame<510)return ['4 · El ocular convergente',model.eyepiece.s===null?'Recibe el haz paralelo del objetivo y lo enfoca.':`Su distancia objeto es s₂ = ${microNumber(model.eyepiece.s)} mm; el signo también admite un objeto virtual.`];
+  const final=model.finalImage;
+  if(final.kind==='infinity')return ['5 · Imagen final en el infinito','Los rayos emergentes son paralelos; no existe una posición final finita que dibujar.'];
+  if(final.kind==='degenerate')return ['5 · Conjugación en el plano del ocular','No es la configuración habitual: el aumento del ocular por separado es indeterminado.'];
+  return [final.kind==='virtual'?'5 · Imagen virtual final':'5 · Imagen real final',final.kind==='virtual'?'Las prolongaciones de los rayos emergentes coinciden en la imagen calculada.':'Los rayos emergentes convergen; la imagen final es real, no virtual.'];
+}
+
+// Recorte de segmentos en el plano físico: no se cambian puntos imagen para encajarlos.
+function clipMicroSegment(a,b,bounds){
+  let lo=0,hi=1;const dx=b.x-a.x,dy=b.y-a.y;
+  const p=[-dx,dx,-dy,dy],q=[a.x-bounds.xMin,bounds.xMax-a.x,a.y-bounds.yMin,bounds.yMax-a.y];
+  for(let i=0;i<4;i++){if(p[i]===0){if(q[i]<0)return null;}else{const t=q[i]/p[i];if(p[i]<0)lo=Math.max(lo,t);else hi=Math.min(hi,t);if(lo>hi)return null;}}
+  return [{x:a.x+lo*dx,y:a.y+lo*dy},{x:a.x+hi*dx,y:a.y+hi*dy}];
+}
+
+function renderMicroscopeSVG(frame=719,options={}) {
+  const model=options.model||solveMicroscope(options.config||DEFAULT_OPTICS),view=createMicroscopeView(model,options.fitAll===true),{plot,bounds,map,contains}=view;
+  const enabled=options.rays||['parallel','center','focus'],showExtensions=options.extensions!==false,family=options.family||'objective';
+  const colors={parallel:'#a85d12',center:'#176d7c',focus:'#7955a2'};
+  const clamp=v=>Math.max(0,Math.min(1,v)),progress=(a,b)=>clamp((frame-a)/(b-a));
+  const incoming=progress(90,200),through=progress(210,345),outgoing=progress(360,500),extensions=progress(510,620);
+  const [title,explanation]=microscopeStage(frame,model);
+  const point=p=>{const q=map(p);return `${microNumber(q.x)} ${microNumber(q.y)}`;};
+  const line=(a,b,color,p=1,style='real')=>{
+    if(p<=0)return '';
+    const pair=clipMicroSegment(a,b,bounds);if(!pair)return '';
+    const [start,end]=pair;const dashed=style==='virtual'?'stroke-dasharray="11 8"':style==='reference'?'stroke-dasharray="3 7"':'';
+    return `<path d="M${point(start)}L${point(end)}" fill="none" stroke="${color}" stroke-width="${style==='real'?3.2:2.2}" ${dashed} ${style==='real'?`pathLength="100" stroke-dasharray="100" stroke-dashoffset="${microNumber((1-p)*100)}" marker-end="url(#m-${color.slice(1)})"`:''} opacity="${microNumber(style==='real'?1:p)}"/>`;
+  };
+  const raySets=family==='both'?[...model.rayFamilies.objective,...model.rayFamilies.eyepiece]:model.rayFamilies[family]||[];
+  let rayMarkup='';
+  for(const r of raySets.filter(r=>enabled.includes(r.id))){
+    const color=colors[r.id],exit={x:Math.max(bounds.xMax,model.inputs.L),y:r.atEyepiece.y+r.afterEyepieceSlope*(Math.max(bounds.xMax,model.inputs.L)-r.atEyepiece.x)};
+    rayMarkup+=line(r.origin,r.atObjective,color,incoming)+line(r.atObjective,r.atEyepiece,color,through)+line(r.atEyepiece,exit,color,outgoing);
+    if(showExtensions&&frame>=210){
+      const im=model.objective.image;
+      if(im.kind==='virtual')rayMarkup+=line(im,r.atObjective,color,through,'virtual');
+      if(im.intercepted)rayMarkup+=line(r.atEyepiece,im,'#697c8e',through,'reference');
+    }
+    if(showExtensions&&model.finalImage.kind==='virtual')rayMarkup+=line(model.finalImage,r.atEyepiece,color,extensions,'virtual');
+  }
+  const axis=map({x:0,y:0}).y;
+  const occupiedBadges=[];
+  const imageArrow=(p,label,detail,phase,role,number)=>{
+    if(phase<=0||p.x===null||p.y===null)return '';
+    if(!contains(p))return '';
+    const tip=map(p),base=map({x:p.x,y:0});
+    const screenBase=Math.max(plot.top,Math.min(plot.bottom,base.y));
+    const dash=role==='reference'?'stroke-dasharray="4 5"':'';
+    let badge;
+    for(const [dx,dy]of [[13,-27],[-35,-27],[13,8],[-35,8],[13,-52],[-35,-52]]){const candidate={x:Math.max(plot.left,Math.min(plot.right-23,tip.x+dx)),y:Math.max(plot.top,Math.min(plot.bottom-23,tip.y+dy))};if(!occupiedBadges.some(b=>Math.abs(b.x-candidate.x)<26&&Math.abs(b.y-candidate.y)<26)){badge=candidate;break;}}
+    badge=badge||{x:Math.max(plot.left,Math.min(plot.right-23,tip.x+13)),y:plot.top+occupiedBadges.length*26};occupiedBadges.push(badge);
+    const head=Math.min(7,Math.abs(screenBase-tip.y)/2),headY=tip.y+(tip.y<screenBase?head:-head);
+    return `<g opacity="${microNumber(phase)}"><line x1="${microNumber(tip.x)}" y1="${microNumber(screenBase)}" x2="${microNumber(tip.x)}" y2="${microNumber(tip.y)}" stroke="${role==='reference'?'#697c8e':'#1d3557'}" stroke-width="3" ${dash}/>${head>0?`<path d="M${microNumber(tip.x)} ${microNumber(tip.y)}L${microNumber(tip.x-head/2)} ${microNumber(headY)}L${microNumber(tip.x+head/2)} ${microNumber(headY)}Z" fill="#1d3557"/>`:''}<circle cx="${microNumber(tip.x)}" cy="${microNumber(tip.y)}" r="2.5" fill="${role==='reference'?'#fffdf7':'#1d3557'}" stroke="#1d3557"/><line x1="${microNumber(tip.x)}" y1="${microNumber(tip.y)}" x2="${microNumber(badge.x+11)}" y2="${microNumber(badge.y+11)}" stroke="#697c8e" stroke-width="1"/><rect x="${microNumber(badge.x)}" y="${microNumber(badge.y)}" width="23" height="23" rx="3" fill="#fffdf7" stroke="#1d3557"/><text x="${microNumber(badge.x+11.5)}" y="${microNumber(badge.y+17)}" text-anchor="middle" font-size="17" font-weight="bold">${number}</text><title>${microEscape(label)}: x=${microNumber(p.x)} mm; y=${microNumber(p.y)} mm. ${microEscape(detail)}</title></g>`;
+  };
+  // Etiquetas en carriles fijos: no se colocan sobre las trayectorias variables.
+  const tag=(x,title,value,color='#1d3557')=>`<text x="${x}" y="647" font-size="20" font-weight="bold" fill="${color}">${microEscape(title)}</text>${microWrap(value,39).slice(0,2).map((text,i)=>`<text x="${x}" y="${673+23*i}" font-size="18">${microEscape(text)}</text>`).join('')}`;
+  const imageText=(im)=>im.kind==='infinity'?'En el infinito':`x=${microNumber(im.x)} mm; y=${microNumber(im.y)} mm${!contains(im)?' · fuera de vista':''}`;
+  const intermediate=model.objective.image;
+  const annotations=tag(46,'① Muestra',`x = −${microNumber(model.inputs.s1)} mm; h = ${microNumber(model.inputs.h)} mm`)+
+    tag(470,intermediate.intercepted?'② Objetivo solo (no llega a formarse)':`② Intermedia ${intermediate.kind==='real'?'real':intermediate.kind==='virtual'?'virtual':'en infinito'}`,frame>=210?imageText(intermediate):'Se estudia en la etapa 3')+
+    tag(925,`③ Final ${model.finalImage.kind==='virtual'?'virtual':model.finalImage.kind==='real'?'real':model.finalImage.kind==='degenerate'?'en plano ocular':'en infinito'}`,frame>=510?imageText(model.finalImage):'Se estudia en la etapa 5');
+  const closeLensLabels=map({x:model.inputs.L,y:0}).x-map({x:0,y:0}).x<300;
+  const lens=(physicalX,name,f)=>{
+    const x=map({x:physicalX,y:0}).x;if(x<plot.left||x>plot.right)return '';
+    const labelX=closeLensLabels?(physicalX===0?455:945):Math.max(plot.left+120,Math.min(plot.right-120,x));
+    return `<path d="M${microNumber(x)} ${plot.top+5}Q${microNumber(x+18)} ${(plot.top+plot.bottom)/2} ${microNumber(x)} ${plot.bottom-5}Q${microNumber(x-18)} ${(plot.top+plot.bottom)/2} ${microNumber(x)} ${plot.top+5}Z" fill="#dcebf2" fill-opacity=".7" stroke="#1d3557" stroke-width="2.5"/><line x1="${microNumber(labelX)}" x2="${microNumber(x)}" y1="212" y2="233" stroke="#1d3557"/><text x="${microNumber(labelX)}" y="179" text-anchor="middle" font-size="23" font-weight="bold">${name}</text><text x="${microNumber(labelX)}" y="207" text-anchor="middle" font-size="20">f = ${microNumber(f)} mm</text>`;
+  };
+  const focalPoints=[['F₁',model.objective.foci.object],['F′₁',model.objective.foci.image],['F₂',model.eyepiece.foci.object],['F′₂',model.eyepiece.foci.image]];
+  const focalGroups=[];
+  for(const [label,p]of focalPoints.filter(([,p])=>contains(p)).sort((a,b)=>a[1].x-b[1].x)){const q=map(p),last=focalGroups.at(-1);if(last&&q.x-last.x<20){last.labels.push(label);last.points.push(q);}else focalGroups.push({x:q.x,labels:[label],points:[q]});}
+  const focals=focalGroups.map((g,i)=>{const q=g.points[0],offset=(axis>plot.bottom-80?-1:1)*(25+(i%3)*22),label=g.labels.join('/');return g.points.map(p=>`<circle cx="${microNumber(p.x)}" cy="${microNumber(p.y)}" r="4" fill="#657580"/>`).join('')+`<text x="${microNumber(g.x)}" y="${microNumber(q.y+offset)}" text-anchor="middle" font-size="18">${label}</text>`;}).join('');
+  const rulers=[[-model.inputs.s1,0,'s₁'],[0,model.inputs.L,'L']].map(([a,b,label])=>{const x1=map({x:a,y:0}).x,x2=map({x:b,y:0}).x;if(x2-x1<45)return '';return `<path d="M${microNumber(x1)} 224H${microNumber(x2)}M${microNumber(x1)} 220V228M${microNumber(x2)} 220V228" fill="none" stroke="#7a8790"/><text x="${microNumber((x1+x2)/2)}" y="219" text-anchor="middle" font-size="16">${label} = ${microNumber(b-a)} mm</text>`;}).join('');
+  const explanationLines=microWrap(explanation);
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 820" role="img" aria-labelledby="micro-title micro-desc"><title id="micro-title">${microEscape(title)}</title><desc id="micro-desc">Modelo calculado de lentes delgadas. ${microEscape(model.messages.join(' '))} Los trazos continuos son luz; las prolongaciones virtuales no son luz que retrocede.</desc><defs><clipPath id="micro-clip"><rect x="${plot.left}" y="${plot.top}" width="${plot.right-plot.left}" height="${plot.bottom-plot.top}"/></clipPath>${Object.values(colors).map(color=>`<marker id="m-${color.slice(1)}" markerWidth="5" markerHeight="5" refX="4.5" refY="2.5" orient="auto"><path d="M0 0L5 2.5L0 5Z" fill="${color}"/></marker>`).join('')}</defs><style>text{font-family:Arial,sans-serif;fill:#1d3557}</style><rect width="1400" height="820" rx="14" fill="#fffdf7"/><rect x="28" y="24" width="1344" height="119" rx="8" fill="#edf3f7"/><text x="50" y="64" font-size="29" font-weight="bold">${microEscape(title)}</text>${explanationLines.slice(0,2).map((s,i)=>`<text x="50" y="${100+i*27}" font-size="23">${microEscape(s)}</text>`).join('')}<g clip-path="url(#micro-clip)"><line x1="${plot.left}" y1="${microNumber(axis)}" x2="${plot.right}" y2="${microNumber(axis)}" stroke="#87949c" stroke-dasharray="9 7"/>${lens(0,'Objetivo',model.inputs.f1).split('<line')[0]}${lens(model.inputs.L,'Ocular',model.inputs.f2).split('<line')[0]}${rayMarkup}${focals}${imageArrow({x:-model.inputs.s1,y:model.inputs.h},'Muestra','',1,'object',1)}${imageArrow(intermediate,'Imagen intermedia','',through,intermediate.intercepted?'reference':'image',2)}${imageArrow(model.finalImage,'Imagen final','',extensions,'image',3)}</g>${lens(0,'Objetivo',model.inputs.f1).substring(lens(0,'Objetivo',model.inputs.f1).indexOf('<line'))}${lens(model.inputs.L,'Ocular',model.inputs.f2).substring(lens(model.inputs.L,'Ocular',model.inputs.f2).indexOf('<line'))}${rulers}${annotations}<rect x="28" y="710" width="1344" height="86" rx="8" fill="#fff4cf" stroke="#d6c9af"/><text x="50" y="741" font-size="20"><tspan fill="#a85d12">1 Paralelo</tspan> · <tspan fill="#176d7c">2 Centro</tspan> · <tspan fill="#7955a2">3 Foco</tspan> · continuas: luz; discontinuas: prolongaciones virtuales.</text><text x="50" y="769" font-size="18">Punteado gris: eje o referencia hipotética. Misma escala en ambos ejes: 100 px = ${microNumber(100/view.scale)} mm.</text><text x="50" y="791" font-size="17">Secuencia explicativa: no representa la velocidad de la luz. Las lentes son símbolos de sus planos ópticos.</text></svg>`;
+}
+
+
+
+const stage=document.getElementById('stage'),play=document.getElementById('play'),restart=document.getElementById('restart'),seek=document.getElementById('seek'),time=document.getElementById('time'),status=document.getElementById('status');
+const printStage=document.getElementById('print-stage'),errorBox=document.getElementById('input-error'),configuration=document.getElementById('configuration'),readouts=document.getElementById('readouts');
+let frame=719,playing=false,origin=0,request=0,lastStatus='',labModel=solveMicroscope(),validInputs=true;
+const duration=720,rate=30,reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
+const parameters=['f1','f2','L','s1','h'];
+function labFormat(value,unit=''){if(value===null||value===undefined)return 'No definido';const text=Math.abs(value)>1e6||(value!==0&&Math.abs(value)<1e-4)?value.toExponential(5):Number(value.toPrecision(9)).toLocaleString('es-AR',{maximumFractionDigits:9});return text+(unit?' '+unit:'');}
+function labOptions(){return {model:labModel,family:document.getElementById('family').value,rays:['parallel','center','focus'].filter(key=>document.getElementById('ray-'+key).checked),extensions:document.getElementById('extensions').checked,fitAll:document.getElementById('fit-all').checked};}
+function pause(){playing=false;cancelAnimationFrame(request);play.textContent='Reproducir';play.setAttribute('aria-pressed','false');}
+function draw(){
+  const opts=labOptions();stage.innerHTML=renderMicroscopeSVG(frame,opts);stage.dataset.status=labModel.status;stage.dataset.finalKind=labModel.finalImage.kind;
+  seek.value=String(frame);time.textContent='0:'+String(Math.round(frame/rate)).padStart(2,'0')+' / 0:24';
+  const info=microscopeStage(frame,labModel),nextStatus=info.join('. ');if(nextStatus!==lastStatus){status.textContent=nextStatus;lastStatus=nextStatus;}
+  const step=frame<90?0:frame<210?1:frame<360?2:frame<510?3:4;document.querySelectorAll('[data-frame]').forEach((b,i)=>{if(i===step)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current');});
+}
+function readoutCard(title,rows){const card=document.createElement('div');card.className='readout';const heading=document.createElement('strong');heading.textContent=title;card.append(heading);for(const [label,value]of rows){const row=document.createElement('p');row.textContent=label+': ';const strong=document.createElement('span');strong.className='value';strong.textContent=value;row.append(strong);card.append(row);}return card;}
+function updateResults(){
+  const m=labModel,a=m.objective,b=m.eyepiece;
+  const imageName=kind=>({real:'Real',virtual:'Virtual',infinity:'En el infinito',degenerate:'En el plano de la lente'}[kind]);
+  const distance=(lens)=>lens.image.kind==='infinity'?'En el infinito':labFormat(lens.sPrime,'mm');
+  const orientation=m.totalLateral===null?'Sin aumento lateral finito':m.totalLateral<0?'Invertida respecto de la muestra':'Derecha respecto de la muestra';
+  readouts.replaceChildren(readoutCard('Objetivo',[["s₁",labFormat(a.s,'mm')],["s′₁",distance(a)],["m₁ lateral",labFormat(a.m)],["Imagen",imageName(a.image.kind)],["Altura intermedia",labFormat(a.image.y,'mm')]]),readoutCard('Ocular',[["s₂",labFormat(b.s,'mm')],["s′₂",distance(b)],["m₂ lateral",labFormat(b.m)],["Imagen final",imageName(m.finalImage.kind)],["Altura final",labFormat(m.finalImage.y,'mm')]]),readoutCard('Sistema completo',[["M lateral",labFormat(m.totalLateral)],["Orientación",orientation],["x final",labFormat(m.finalImage.x,'mm')],["Aumento angular",'No calculado'],["Salida",{parallel:'Rayos paralelos',diverging:'Rayos divergentes',converging:'Rayos convergentes','at-plane':'Cruce en el plano ocular'}[m.emergence]]]));
+  configuration.textContent=m.messages.join(' ');
+  document.getElementById('ray-note').textContent=m.rayNotes.join(' ');
+  const view=createMicroscopeView(m,document.getElementById('fit-all').checked),outside=[['La imagen intermedia',a.image],['La imagen final',m.finalImage]].filter(([,p])=>p.x!==null&&p.y!==null&&!view.contains(p)).map(([name])=>name+' queda fuera del encuadre.').join(' ');
+  document.getElementById('view-note').textContent=(outside?outside+' Activá «Ajustar todo el campo» para incluirla. ':'')+'Escala uniforme: 100 px = '+labFormat(100/view.scale,'mm')+'. El encuadre no modifica las posiciones físicas.'+(document.getElementById('fit-all').checked&&Math.abs(view.map({x:m.inputs.L,y:0}).x-view.map({x:0,y:0}).x)<45?' Las lentes casi coinciden en pantalla a esta escala porque la imagen está muy lejos; desactivá el ajuste completo para estudiar el montaje.':'');
+  printStage.innerHTML=namespaceMicroscopeSVG(renderMicroscopeSVG(719,labOptions()),'print-');
+}
+function updatePhysical(){
+  pause();
+  try{
+    const config={};for(const key of parameters){const field=document.getElementById(key+'-number');if(field.value.trim()==='')throw new Error('Completá todas las magnitudes.');const value=Number(field.value);if(!Number.isFinite(value))throw new Error('Usá números finitos.');config[key]=value;document.querySelector('[data-range="'+key+'"]').value=String(value);}
+    const next=solveMicroscope(config);labModel=next;validInputs=true;play.disabled=false;errorBox.hidden=true;frame=719;updateResults();draw();
+  }catch(error){validInputs=false;play.disabled=true;errorBox.hidden=false;errorBox.textContent=error.message+' Se conserva el último esquema válido; corregí la entrada para actualizarlo.';}
+}
+function setParameters(config){for(const key of parameters)document.getElementById(key+'-number').value=String(config[key]);updatePhysical();}
+const studyPresets={normal:{...DEFAULT_OPTICS},'objective-focus':{...DEFAULT_OPTICS,s1:6},'inside-objective':{...DEFAULT_OPTICS,s1:4},'ocular-focus':{...DEFAULT_OPTICS,L:44},'outside-ocular':{...DEFAULT_OPTICS,L:50},'on-ocular':{...DEFAULT_OPTICS,L:24},'before-intermediate':{...DEFAULT_OPTICS,L:18},'near-focus':{...DEFAULT_OPTICS,L:44.00001}};
+document.querySelectorAll('[data-param]').forEach(input=>input.addEventListener('input',()=>{document.getElementById('preset').selectedIndex=-1;updatePhysical();}));
+document.querySelectorAll('[data-range]').forEach(input=>input.addEventListener('input',()=>{document.getElementById(input.dataset.range+'-number').value=input.value;document.getElementById('preset').selectedIndex=-1;updatePhysical();}));
+document.getElementById('preset').addEventListener('change',event=>{if(studyPresets[event.target.value])setParameters(studyPresets[event.target.value]);});
+document.getElementById('defaults').addEventListener('click',()=>{document.getElementById('preset').value='normal';setParameters(DEFAULT_OPTICS);});
+document.querySelectorAll('.options input,.options select').forEach(input=>input.addEventListener('change',()=>{pause();frame=719;updateResults();draw();}));
+function tick(now){if(!playing)return;frame=Math.min(duration-1,Math.floor((now-origin)*rate/1000));draw();if(frame>=duration-1){pause();return;}request=requestAnimationFrame(tick);}
+play.addEventListener('click',()=>{if(!validInputs)return;if(playing){pause();return;}if(frame>=duration-1)frame=0;playing=true;play.textContent='Pausar';play.setAttribute('aria-pressed','true');origin=performance.now()-frame*1000/rate;request=requestAnimationFrame(tick);});
+restart.addEventListener('click',()=>{pause();frame=0;draw();});
+document.getElementById('analyze').addEventListener('click',()=>{pause();frame=719;draw();});
+seek.addEventListener('input',()=>{pause();frame=Number(seek.value);draw();});
+document.querySelectorAll('[data-frame]').forEach(button=>button.addEventListener('click',()=>{pause();frame=Number(button.dataset.frame);draw();}));
+document.addEventListener('visibilitychange',()=>{if(document.hidden)pause();});
+reducedMotion.addEventListener('change',()=>{pause();frame=719;draw();});
+updateResults();draw();
+let reportedHeight=0;
+function reportLabHeight(){const height=Math.ceil(document.body.getBoundingClientRect().height)+4;if(height!==reportedHeight){reportedHeight=height;if(window.parent!==window)window.parent.postMessage({type:'microscope-lab-height',height},'*');}}
+new ResizeObserver(reportLabHeight).observe(document.body);
+window.addEventListener('load',reportLabHeight);
+
+</script></body></html>

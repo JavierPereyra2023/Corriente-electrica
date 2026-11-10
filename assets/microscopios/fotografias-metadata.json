@@ -1,0 +1,62 @@
+[
+  {
+    "file": "simple-leeuwenhoek.png",
+    "title": "File:Leeuwenhoek Microscope.png",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/d/de/Leeuwenhoek_Microscope.png",
+    "page": "https://commons.wikimedia.org/wiki/File:Leeuwenhoek_Microscope.png",
+    "artist": "Jeroen Rouwkema",
+    "license": "CC BY-SA 3.0",
+    "licenseurl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "description": "Leeuwenhoek_Microscope_Replica"
+  },
+  {
+    "file": "compuesto-campo-claro.jpg",
+    "title": "File:Optical microscope nikon alphaphot.jpg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/3/3a/Optical_microscope_nikon_alphaphot.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Optical_microscope_nikon_alphaphot.jpg",
+    "artist": "GcG(jawp)",
+    "license": "Public domain",
+    "licenseurl": null,
+    "description": "typical optical microscope for academic use in 1990-2000s,Nikon Alphaphot"
+  },
+  {
+    "file": "estereoscopico.jpg",
+    "title": "File:Optical stereo microscope nikon smz10.jpg",
+    "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/Optical_stereo_microscope_nikon_smz10.jpg/1280px-Optical_stereo_microscope_nikon_smz10.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Optical_stereo_microscope_nikon_smz10.jpg",
+    "artist": "GcG(jawp)",
+    "license": "Public domain",
+    "licenseurl": null,
+    "description": "typical optical stereo microscope for academic use in 1980-1990s,Nikon SMZ-10"
+  },
+  {
+    "file": "confocal-fluorescencia.jpg",
+    "title": "File:ZEISS LSM 710.jpg",
+    "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/49/ZEISS_LSM_710.jpg/1280px-ZEISS_LSM_710.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:ZEISS_LSM_710.jpg",
+    "artist": "ZEISS Microscopy",
+    "license": "CC BY 2.0",
+    "licenseurl": "https://creativecommons.org/licenses/by/2.0",
+    "description": "The new illumination and detection design of LSM 710 brings complete freedom to your fluorescence microscopy. You work with up to ten dyes and use continuous spectral detection across the complete wavelength range. LSM 710 enables confocal microscopy for a wide variety of applications. www.zeiss.com/confocal"
+  },
+  {
+    "file": "tem.jpg",
+    "title": "File:Transmission electron microscope (1).jpg",
+    "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7c/Transmission_electron_microscope_%281%29.jpg/1280px-Transmission_electron_microscope_%281%29.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Transmission_electron_microscope_(1).jpg",
+    "artist": "<a href=\"//commons.wikimedia.org/wiki/User:Gannu03\" title=\"User:Gannu03\">Gannu03</a>",
+    "license": "CC BY-SA 4.0",
+    "licenseurl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "Photograph of an FEI Tecnai Transmission Electron Microscope (TEM) installed in a research laboratory in India.\n<p>The instrument operates by transmitting a focused beam of high-energy electrons through an ultrathin specimen, revealing ultrastructure, crystal lattices, and nanoscale morphology.\n</p>\nThis microscope includes the main electron column, viewing optics, vacuum system, and associated control electronics."
+  },
+  {
+    "file": "sem.jpg",
+    "title": "File:Scanning electron microscope hg.jpg",
+    "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/09/Scanning_electron_microscope_hg.jpg/1280px-Scanning_electron_microscope_hg.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Scanning_electron_microscope_hg.jpg",
+    "artist": "Hannes Grobe at Geological Institute, Kiel (operator)",
+    "license": "CC BY-SA 2.5",
+    "licenseurl": "https://creativecommons.org/licenses/by-sa/2.5",
+    "description": "Scanning electron microscope (SEM) at the Geological-Palaeontological Institute (GIK) of Christian-Albrechts-University, Kiel, Germany; SEM type is a <b>Cambridge Stereoscan 150S</b>, operated from 1978 to 1993 at GIK. Middle background is the column producing the electron beam with the sample chamber at the bottom and two buttons for manipulation of the sample orientation. On the front (upper right) a camera body is connceted to take black/white images on film (24x36). On the left an EDAX (Energy Dispersive Analysis of X-rays) for semiquantitative analysis of elements is connected. X-rays are produced by the electron beam in interaction with the sample; its energy is element dependent."
+  }
+]
